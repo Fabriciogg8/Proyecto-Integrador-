@@ -22,7 +22,7 @@
 
 ## Descripción
 
-[Proporciona una descripción más detallada de la aplicación, su propósito y sus características clave.]
+Notas Prestadas es un proyecto desarrollado en el marco del proyecto Integrador dentro de la Carrera de Certified Tech Developer de Digital House. Esta aplicación tiene como propósito [proporcionar una descripción más detallada de la aplicación, su propósito y sus características clave].
 
 ## Tecnologías
 
@@ -31,23 +31,33 @@
 
 ## Capturas de Pantalla
 
-[Agrega capturas de pantalla que muestren la interfaz y la funcionalidad de la aplicación.]
+[Agregar capturas de pantalla que muestren la interfaz y la funcionalidad de la aplicación.]
 
 ## Características
 
-- [Enumera las principales características de la aplicación.]
+- [Enumerar las principales características de la aplicación.]
 
 ## Instalación
 
-[Proporciona instrucciones para la instalación de la aplicación en un entorno local o para su acceso en línea.]
+[Proporcionar instrucciones para la instalación de la aplicación en un entorno local o para su acceso en línea.]
 
 ## Uso
 
-[Proporciona instrucciones detalladas sobre cómo utilizar la aplicación y sacar el máximo provecho de ella.]
+[Proporcionar instrucciones detalladas sobre cómo utilizar la aplicación y sacar el máximo provecho de ella.]
 
 ## Contribución
 
-[Describe cómo otros pueden contribuir al desarrollo de la aplicación, incluyendo instrucciones para la creación de solicitudes de extracción (Pull Requests).]
+Integrantes: 
+*Fabricio González
+*Micaela Estigarribia
+*Leandro Cioli
+*Simón Pintos
+*Alina Casas
+*Virginia de Rebolledo
+*Sergio Racchumi
+*Matias Crino
+*Agustina Hernandez
+
 
 ## Licencia
 
