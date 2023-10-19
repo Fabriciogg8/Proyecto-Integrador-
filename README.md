@@ -47,16 +47,17 @@ Notas Prestadas es un proyecto desarrollado en el marco del proyecto Integrador 
 
 ## Contribución
 
-Integrantes: 
-*Fabricio González
-*Micaela Estigarribia
-*Leandro Cioli
-*Simón Pintos
-*Alina Casas
-*Virginia de Rebolledo
-*Sergio Racchumi
-*Matias Crino
-*Agustina Hernandez
+Integrantes:
+
+- **Fabricio González**
+- **Micaela Estigarribia**
+- **Leandro Cioli**
+- **Simón Pintos**
+- **Alina Casas**
+- **Virginia de Rebolledo**
+- **Sergio Racchumi**
+- **Matías Crino**
+- **Agustina Hernandez**
 
 
 ## Licencia
