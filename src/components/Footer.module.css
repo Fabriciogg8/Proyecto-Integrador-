@@ -1,0 +1,31 @@
+.footer {   
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+}
+
+.copyright { 
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.companyName{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.logos{
+    display: flex;
+    margin-right: 1rem;
+}
+
+.logos > a{
+    color:#fff;
+    margin-right: 1rem;
+}
