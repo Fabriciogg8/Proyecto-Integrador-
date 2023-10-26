@@ -1,13 +1,16 @@
 import '/src/styles/Detail.css'
 import '/src/styles/lightbox.css'
+import svgGolden from '/src/assets/chevron-left-golden.svg';
 import descLogo from '/src/assets/body-text.png'
 import brush from '/src/assets/brush.png'
+import { useState } from 'react'
 
 const Detail = () => {
+    const [isTrue, setIsTrue] = useState(false)
     return (
     <div className='everyDetail'>
         <div className="arrow-title">
-            <img src="./src/assets/prev2.png" className='btn-previous'/>
+            <img src={svgGolden} className='btn-previous'/>
             <a href="" className='title-a'>Guitarra Electrica Ibanez T0d10 Tim Henson</a>
         </div>
         <div className='containerDetail'>
@@ -18,33 +21,29 @@ const Detail = () => {
             </div>
             <div className='gallerySecundarias'>
                 <div>
-                    <a href="https://www.ibanez.com/common/product_artist_file/file/p_region_TOD10_CSV_1P_01_sub_1.jpg" data-lightbox="instruments" data-title="Caption1">
+                    <a href="https://www.ibanez.com/common/product_artist_file/file/p_region_TOD10_CSV_1P_01_sub_1.jpg" data-lightbox="instruments" data-title="Caption2">
                         <img src="https://www.ibanez.com/common/product_artist_file/file/p_region_TOD10_CSV_1P_01_sub_1.jpg"/>
                     </a>
-                    <a href="https://www.ibanez.com/common/product_artist_file/file/p_region_TOD10_CSV_1P_01_sub_2.jpg" data-lightbox="instruments" data-title="Caption1">
+                    <a href="https://www.ibanez.com/common/product_artist_file/file/p_region_TOD10_CSV_1P_01_sub_2.jpg" data-lightbox="instruments" data-title="Caption3">
                         <img src="https://www.ibanez.com/common/product_artist_file/file/p_region_TOD10_CSV_1P_01_sub_2.jpg"/>
                     </a>
                 </div>
                 <div>
-                    <a href="https://www.ibanez.com/common/product_artist_file/file/p_region_TOD10_CSV_1P_01_sub_3.jpg" data-lightbox="instruments" data-title="Caption1">
-                        <img src="https://www.ibanez.com/common/product_artist_file/file/p_region_TOD10_CSV_1P_01_sub_3.jpg"/>
+                    <a href="https://www.ibanez.com/common/product_artist_file/file/p_region_TOD10_CSV_1P_01_sub_3.jpg" data-lightbox="instruments" data-title="Caption4">
+                        <img src="https://www.ibanez.com/common/product_artist_file/file/p_region_TOD10_CSV_1P_01_sub_3.jpg" className='imagen-4'/>
                     </a>
-                    <a href="https://www.ibanez.com/common/product_artist_file/file/p_region_TOD10_CSV_1P_01_sub_4.jpg" data-lightbox="instruments" data-title="Caption1">
+                    <a href="https://www.ibanez.com/common/product_artist_file/file/p_region_TOD10_CSV_1P_01_sub_4.jpg" data-lightbox="instruments" data-title="Caption5">
                         <img src="https://www.ibanez.com/common/product_artist_file/file/p_region_TOD10_CSV_1P_01_sub_4.jpg"/>
                     </a>
-                </div>
-                {
-                /*
-                <div>
-                    <a href="https://f.fcdn.app/imgs/b58dcd/www.palaciodelamusica.com.uy/pmusuy/41fb/original/catalogo/T0D10-T0D10_2/2000-2000/guitarra-electrica-ibanez-t0d10-tim-henson-guitarra-electrica-ibanez-t0d10-tim-henson.jpg" data-lightbox="instruments" data-title="Caption1">
-                        <img src="https://f.fcdn.app/imgs/b58dcd/www.palaciodelamusica.com.uy/pmusuy/41fb/original/catalogo/T0D10-T0D10_2/2000-2000/guitarra-electrica-ibanez-t0d10-tim-henson-guitarra-electrica-ibanez-t0d10-tim-henson.jpg"/>
+                </div>              
+                {isTrue ? <div>
+                    <a href="https://f.fcdn.app/imgs/b58dcd/www.palaciodelamusica.com.uy/pmusuy/41fb/original/catalogo/T0D10-T0D10_2/2000-2000/guitarra-electrica-ibanez-t0d10-tim-henson-guitarra-electrica-ibanez-t0d10-tim-henson.jpg" data-lightbox="instruments" data-title="Caption6">
+                        <img src="https://f.fcdn.app/imgs/b58dcd/www.palaciodelamusica.com.uy/pmusuy/41fb/original/catalogo/T0D10-T0D10_2/2000-2000/guitarra-electrica-ibanez-t0d10-tim-henson-guitarra-electrica-ibanez-t0d10-tim-henson.jpg" className='imagen-6'/>
                     </a>
-                    <a href="https://www.txirula.com/92061-thickbox_default/ibanez-tod10-tim-henson.jpg" data-lightbox="instruments" data-title="Caption1">
-                        <img src="https://www.txirula.com/92061-thickbox_default/ibanez-tod10-tim-henson.jpg"/>
+                    <a href="https://www.txirula.com/92061-thickbox_default/ibanez-tod10-tim-henson.jpg" data-lightbox="instruments" data-title="Caption7">
+                        <img src="https://www.txirula.com/92061-thickbox_default/ibanez-tod10-tim-henson.jpg" className='imagen-7'/>
                     </a>
-                </div> 
-                */
-                }
+                </div>  : <button onClick={() => setIsTrue(!isTrue)} className='btn-images'>Ver más</button>}
             </div>
         </div>
         <div className="containerDetail2">
@@ -53,6 +52,7 @@ const Detail = () => {
                 <span>
                     Descripción
                 </span>
+                <hr />
                 <p>
                     La Ibanez Tim Henson TOD10 combina un aspecto especialmente limpio y elegante con características de <br />
                     interpretación optimizadas hasta el más mínimo detalle y sonidos polifacéticos. <br />Basada en el popular
@@ -70,6 +70,7 @@ const Detail = () => {
                 <span>
                     Detalles
                 </span>
+                <hr />
                 <p>
                     Tim Henson Signature <br />
                     Cuerpo de tilo americano <br />
