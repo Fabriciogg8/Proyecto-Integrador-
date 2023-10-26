@@ -10,7 +10,7 @@ function CardCategory() {
     <>
       
       <div className="col-md-3 card-space">
-          <div className="card text-center bg-dark animate__animated animate__fadeInUp">
+          <div className="card text-center bg-dark animate__animated animate__fadeInUp cardCategoria">
                 <div className="overflow">
                   <img src={guitarras} alt="a wallpaper" className="card-img-top" />
                 </div>

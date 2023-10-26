@@ -1,7 +1,7 @@
 #root {
 
   text-align: center;
-  background-color: rgb(71, 71, 71);
+  background-color: #f1efe2;
 }
 
 
@@ -18,5 +18,21 @@
   flex-wrap: wrap;
   margin: 0 auto;
 }
+
+
+
+
+.titulosCategorias{
+  background-color: #be9e44;
+  padding: 2px;
+  width: 80%;
+  color: white;
+  margin: 0 auto;
+  border-radius: 2px;
+  margin-top: 5%;
+}
+
+
+
 
 

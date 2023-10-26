@@ -4,7 +4,12 @@ import './components/Buscador'
 import Buscador from './components/Buscador'
 import CardCategory from './components/CardCategory'
 import CardProduct from './components/CardProduct'
-import logo from './assets/logo-sinLetrasFondo.png'
+
+import godin from './assets/godin.jpg'
+import jackson from './assets/jackson.jpg'
+import laney from './assets/laney.jpg'
+import stagg from './assets/stagg.jpg'
+import takamine from './assets/takamine.jpg'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,25 +18,38 @@ function App() {
     <>
       <Buscador/>
 
-    <h3>Explora nuestras categorías</h3>
+      <div className="container d-flex justify-content-center align-items-center h-100">
+        <div className="row cardsContainers">
+        <CardCategory/>
+        <CardCategory/>
+        <CardCategory/>
+        <CardCategory/>
+        </div>
+    </div>
+   
+    
+    <div className='titulosCategorias'>
+      <h3>Recomendaciones</h3>
+    </div>
+    
+    
     <div className="container d-flex justify-content-center align-items-center h-100">
       <div className="row cardsContainers">
-      <CardCategory/>
-      <CardCategory/>
-      <CardCategory/>
-      <CardCategory/>
+      <CardProduct/>
+      <CardProduct/>
+      <CardProduct/>
+      <CardProduct/>
+      <CardProduct/>
+      <CardProduct/>
       </div>
     </div>
 
-    <h3>Recomendaciones</h3>
-    <div className="container d-flex justify-content-center align-items-center h-100">
-      <div className="row cardsContainers">
-      <CardProduct/>
-      <CardProduct/>
-      <CardProduct/>
-      <CardProduct/>
-      </div>
-    </div>
+
+
+    
+	
+
+
 
     </>
   )

@@ -1,6 +1,6 @@
 import '../styles/Cards.css'
 
-import guitarras from '../assets/guitarras.jpg'
+import producto from '../assets/producto1.jpg'
 
 
 function CardProduct() {
@@ -11,7 +11,7 @@ function CardProduct() {
       <div className="col-md-4 card-space">
           <div className="card text-center bg-dark animate__animated animate__fadeInUp">
                 <div className="overflow">
-                  <img src={guitarras} alt="a wallpaper" className="card-img-top" />
+                  <img src={producto} alt="" className="card-img-top imgCardProducto" />
                 </div>
                 <div className="text-light">
                   <p className="card-title">Guitarra clasica Alhambra 1C black satin</p>
@@ -19,6 +19,7 @@ function CardProduct() {
                 </div>
             </div>
           </div>
+
      
     </>
   )
