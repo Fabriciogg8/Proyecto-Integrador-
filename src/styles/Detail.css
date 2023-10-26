@@ -1,0 +1,106 @@
+.containerDetail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4e577b;
+    padding: 8vh 0 11vh 0;
+}
+
+.containerDetail2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #262b3d
+}
+
+
+
+.arrow-title {
+    background-color: #4e577b;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.descripcionInstrumento {
+    margin: 0vh 1vw 0 0vw
+}
+
+.descripcionInstrumento span {
+    font-size: 3vh;
+    color: #be9e44;
+}
+
+.descripcionInstrumento p {
+    margin-top: 5vh;
+    color: white;
+}
+
+.detallesInstrumento {
+    margin: 10vh 0vw 0 4vw;
+    
+}
+
+.detallesInstrumento span{
+    font-size: 3vh;
+    color: #be9e44;
+}
+
+.detallesInstrumento p{
+    margin-top: 5vh;
+    color: white;
+}
+
+a img {
+    border: #be9e44 3px solid;
+}
+
+.btn-previous {
+    height: 3.2vh;
+    width: 3vw;
+    margin-top: 2px;
+    margin-right: 4vh;
+}
+
+.everyDetail {
+    background-color: #5e5e5e;
+}
+
+.title-a{
+    text-decoration: none;
+    color: inherit;
+    color: #be9e44;
+    font-weight: 600;
+    font-size: 3vh;
+    margin-left: 15.1vw;
+}
+
+
+
+.detalleBrush {
+    height: 2.5vh;
+    width: 1.6vw;
+}
+
+
+.gallerySecundarias {
+    display: flex;
+    flex-direction: column;
+}
+
+.gallerySecundarias div {
+    display: flex;
+    flex-wrap: wrap;
+}
+.gallerySecundarias div img {
+    width: 18em;
+}
+
+img {
+    width: 70vh;
+}
+
+.logoDescripcion{
+    width: 1.5vw;
+    
+}
