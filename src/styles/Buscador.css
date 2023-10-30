@@ -1,0 +1,12 @@
+.contenedorBuscador{
+    background-color: #12141a;
+}
+
+.contenedorBuscador h1{
+    color:#eea726;
+    text-shadow: 1px 1px 4px #d8c690;
+}
+
+.logo-buscador{
+    height: 100px;
+}
