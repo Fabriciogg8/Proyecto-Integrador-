@@ -8,7 +8,7 @@ function CardProduct() {
   return (
     <>
       
-      <div className="col-md-4 card-space">
+      <div className="col-md-6 card-space">
           <div className="card text-center bg-dark animate__animated animate__fadeInUp">
                 <div className="overflow">
                   <img src={producto} alt="" className="card-img-top imgCardProducto" />
