@@ -20,8 +20,6 @@
     padding-top: 7vh;
 }
 
-
-
 .arrow-title {
     background-color: #4e577b;
     display: flex;
@@ -116,6 +114,29 @@ a img {
     flex-wrap: wrap;   
 }
 
+.containerCaracteristicas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #262b3d;
+    color: #d8c690;
+    padding-bottom: 7vh;
+    padding-top: 7vh;
+}
+
+.caracteristicas{
+    margin: 0vh 1vw 0 0vw;
+    border: #be9e44 2px solid;
+    border-radius: 10px;
+    padding: 1.5vw;
+}
+
+.textoCaracteristicas ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 @media (max-width: 1100px) {
     .gallerySecundarias div {
         flex-direction: column;
@@ -178,5 +199,10 @@ a img {
 @media (max-width: 1100px) {
     .imagen-4 {
         height: 10.5vw;
+    }
+    .textoCaracteristicas ul{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 }

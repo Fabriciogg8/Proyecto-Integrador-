@@ -1,4 +1,4 @@
-import '/src/styles/Detail.css'
+import '../../styles/Product/Product-Detail.css'
 import '/src/styles/lightbox.css'
 import svgGolden from '/src/assets/chevron-left-golden.svg';
 import descLogo from '/src/assets/body-text.png'
@@ -87,6 +87,23 @@ const Detail = () => {
                     Clavijas de afinación Gotoh MG-T con bloqueo <br />
                     Incluye funda <br />
                 </p>
+            </div>
+        </div>
+        <div className='containerCaracteristicas'>
+            <div className="caracteristicas">
+                <img src={brush} className="detalleBrush" alt="" />
+                <span>
+                    Caracteristicas
+                </span>
+                <hr />
+                <div className='textoCaracteristicas'>
+                    <ul>
+                        <li>Tim Henson Signature</li>
+                        <li>Cuerpo de tilo americano</li>
+                        <li>Tim Henson Signature</li>
+                        <li>Cuerpo de tilo americano</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>    
