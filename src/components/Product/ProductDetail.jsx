@@ -4,6 +4,9 @@ import svgGolden from '/src/assets/chevron-left-golden.svg';
 import descLogo from '/src/assets/body-text.png'
 import brush from '/src/assets/brush.png'
 import { useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+
 
 const Detail = () => {
     const [isTrue, setIsTrue] = useState(false)
@@ -97,12 +100,10 @@ const Detail = () => {
                 </span>
                 <hr />
                 <div className='textoCaracteristicas'>
-                    <ul>
-                        <li>Tim Henson Signature</li>
-                        <li>Cuerpo de tilo americano</li>
-                        <li>Tim Henson Signature</li>
-                        <li>Cuerpo de tilo americano</li>
-                    </ul>
+                    <p><FontAwesomeIcon icon={faInfoCircle} style={{ marginRight: '10px' }}/>Tim Henson Signature</p>
+                    <p><FontAwesomeIcon icon={faInfoCircle} style={{ marginRight: '10px' }}/>Cuerpo de tilo americano</p>
+                    <p><FontAwesomeIcon icon={faInfoCircle} style={{ marginRight: '10px' }}/>Tim Henson Signature</p>
+                    <p><FontAwesomeIcon icon={faInfoCircle} style={{ marginRight: '10px' }}/>Cuerpo de tilo americano</p>
                 </div>
             </div>
         </div>

@@ -131,7 +131,7 @@ a img {
     padding: 1.5vw;
 }
 
-.textoCaracteristicas ul{
+.textoCaracteristicas{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
