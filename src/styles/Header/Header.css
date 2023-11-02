@@ -3,7 +3,7 @@
     position: sticky;
     top:0;
     display: flex; 
-    background-color: #262b3d;
+    background-color: var(--azul-grisaceo);
     width: 100%;
     height: 5em;
     justify-content: space-between;
@@ -114,4 +114,12 @@
     .opt-dropdown {
         display: none;
     }
+}
+
+.container-fluid > a{
+    text-decoration: none;
+}
+
+.navbar-brand > span{
+   padding: 10px;
 }

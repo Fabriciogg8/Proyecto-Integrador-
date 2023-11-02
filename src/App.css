@@ -1,6 +1,13 @@
 #root {
+  --azul-oscuro: #12141a;
+  --dorado: #eea726;
+  --amarillo-claro: #f1efe2;
+  --azul-grisaceo:#262b3d;
+  --azul-medio: #303752;
+  --gris:#c9c9c9;
+
   text-align: center;
-  background-color: #f1efe2;
+  background-color: var(--amarillo-claro)
 }
 
 
@@ -37,8 +44,8 @@
 /*---------CARROUSEL DE MARCAS -----------*/
 
 .scroller {
-  max-width: 72%;
-  margin: 0 auto;
+  max-width: 100% !important;
+  margin: 2% auto !important;
   background-color: white;
 }
 
