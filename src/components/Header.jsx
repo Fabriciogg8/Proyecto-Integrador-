@@ -1,4 +1,5 @@
-import '/src/styles/Header/Header.css';
+import '../styles/Header/Header.css';
+import logo from '../assets/logo-sinLetras.png'
 import { Link } from 'react-router-dom';
 
 const Header = () => {
@@ -7,7 +8,8 @@ const Header = () => {
           <div className="container-fluid">
             <Link to="/">
               <div className="navbar-brand">
-                <img src="src/assets/logo-sinLetras.png" alt=""/>            
+
+                <img src={logo} alt=""/>            
                 <small>Instrumentos prestados, tu inspiración temporal</small>
               </div>
             </Link>

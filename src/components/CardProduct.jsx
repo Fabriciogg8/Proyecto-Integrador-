@@ -1,9 +1,9 @@
 import '../styles/Cards.css'
-
+import { Link } from "react-router-dom";
 import producto from '../assets/producto1.jpg'
 
 
-function CardProduct() {
+function CardProduct({id, name, price}) {
 
   return (
     <>
@@ -11,11 +11,13 @@ function CardProduct() {
       <div className="col-md-6 card-space">
           <div className="card text-center bg-dark animate__animated animate__fadeInUp">
                 <div className="overflow">
+                <Link to={`/products/${id}`}> 
                   <img src={producto} alt="" className="card-img-top imgCardProducto" />
+                </Link>
                 </div>
                 <div className="text-light">
-                  <p className="card-title">Guitarra clasica Alhambra 1C black satin</p>
-                <h6>USD/H 10</h6>
+                  <p className="card-title">{name}</p>
+                <h6>${price}</h6>
                 </div>
             </div>
           </div>
