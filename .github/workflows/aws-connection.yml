@@ -2,7 +2,7 @@ name: Conexión a S3
 on:
   push:
     branches:
-      - main
+      - amazon-deploy
 
 jobs:
   deploy:
@@ -25,7 +25,7 @@ jobs:
 
     - name: Copia de archivos a Amazon S3
       run: |
-        aws s3 sync . s3://1023c07-grupo5/ --delete
+        aws s3 sync ./dist s3://1023c07-grupo5/ --delete
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
