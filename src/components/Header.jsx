@@ -1,14 +1,14 @@
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
-import "../styles/Header/Header.css"
+import '../styles/Header/Header.css'
 import { useAuthStore } from '../hooks/useAuthStore.js'
 
 const Header = () => {
   const { status, user, startLogout } = useAuthStore()
 
-    const logout = () => {
-      startLogout()
-    }
+  const logout = () => {
+    startLogout()
+  }
 
   return (
     // <nav className='navbar sticky-top navbar-expand-lg bg-dark-blue'>
@@ -83,9 +83,7 @@ const Header = () => {
               </>
             ) : (
               <NavDropdown
-                title={
-                  <span className='user-sub'>{user.sub}</span>
-                }
+                title={<span className='user-sub'>{user.sub}</span>}
                 id='basic-nav-dropdown'
               >
                 <NavDropdown.Item as={NavLink} to={'/1'}>
