@@ -8,7 +8,7 @@ const Header = () => {
             <Link to="/">
               <div className="navbar-brand">
                 <img src="src/assets/logo-sinLetras.png" alt=""/>            
-                Instrumentos prestados, tu inspiración temporal
+                <small>Instrumentos prestados, tu inspiración temporal</small>
               </div>
             </Link>
                 <div className="dropdown">   
