@@ -8,8 +8,9 @@ const Header = () => {
           <div className="container-fluid">
             <Link to="/">
               <div className="navbar-brand">
+
                 <img src={logo} alt=""/>            
-                <span>Instrumentos prestados, tu inspiración temporal</span>
+                <small>Instrumentos prestados, tu inspiración temporal</small>
               </div>
             </Link>
                 <div className="dropdown">   
