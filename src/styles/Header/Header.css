@@ -99,6 +99,20 @@
 .button:hover {
   color: white;
 }
+.no-highlight {
+  color: white!important; 
+}
+
+.user-sub {
+  color: white !important; 
+}
+
+
+
+
+
+
+
 
 .opt-dropdown {
   color: #be9e44;

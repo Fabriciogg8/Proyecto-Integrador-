@@ -1,17 +1,18 @@
 import { Link } from 'react-router-dom'
 import { Container, Row, Col, Card } from 'react-bootstrap'
-import { SignUpForm } from '../forms/SignUpForm.jsx'
+import { SignInForm } from '../components/forms/SignInForm.jsx'
 import { useState } from 'react'
 import { isObjectEmpty } from '../helpers/helpers.js'
 import validator from 'validator'
+import { useAuthStore } from '../hooks/useAuthStore.js'
 
-export const SignUp = () => {
+export const SignIn = () => {
   const [errors, setErrors] = useState({})
+  const { startLogin } = useAuthStore()
 
-  const register = formValues => {
+  const login = ({ email, password }) => {
     const errors = {}
     setErrors(errors)
-    const { email, password, firstname, lastname } = formValues
 
     if (!validator.isEmail(email)) {
       errors.email = 'El email es invalido'
@@ -19,17 +20,13 @@ export const SignUp = () => {
     if (!validator.isLength(password, { min: 8, max: 30 })) {
       errors.password = 'El password es requerido'
     }
-    if (!validator.isLength(firstname, { min: 2, max: 30 })) {
-      errors.firstname = 'El nombre es requerido'
-    }
-    if (!validator.isLength(lastname, { min: 2, max: 30 })) {
-      errors.lastname = 'El apellido es requerido'
-    }
 
     if (!isObjectEmpty(errors)) {
       setErrors(errors)
       return
     }
+
+    startLogin({ email, password })
   }
 
   return (
@@ -37,11 +34,11 @@ export const SignUp = () => {
       <Row>
         <Col sm='12' md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
           <Card body>
-            <h3>Crear Cuenta</h3>
+            <h3>Iniciar Sesion</h3>
             <hr />
-            <SignUpForm errors={errors} onSubmitCallback={register} />
+            <SignInForm errors={errors} onSubmitCallback={login} />
             <div className='mt-4'>
-              <Link to={'/signin'}>Ya tienes una cuenta ? Iniciar Sesion.</Link>
+              <Link to={'/signup'}>No tienes una cuenta ? Registrate.</Link>
             </div>
           </Card>
         </Col>
