@@ -1,56 +1,54 @@
 /*------CARD CATEGORIAS*/
 
 .cardCategoria:hover {
-    box-shadow: 0px 2px 15px 5px #dbae26 !important;
-    transition: all 0.3s linear;
-  }
-  
-  .card-body {
-    padding: 2rem 0 !important;
-  }
-  
-  .card-text {
-    padding: 0.3rem 1rem;
-    font-size: 1rem;
-  }
-  
-  .overflow {
-    overflow: hidden;
-  }
-  
-  .card-img-top {
-    transform: scale(1);
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .card-img-top:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-  }
-  
-  .cardsContainers{
-    margin: 4%;
-  }
-  
-  
+  box-shadow: 0px 2px 15px 5px #dbae26 !important;
+  transition: all 0.3s linear;
+}
 
-  .card-space{
-    margin-bottom: 2%;
-  }
+.card-body {
+  padding: 2rem 0 !important;
+}
 
-  /*-------------------*/
+.card-text {
+  padding: 0.3rem 1rem;
+  font-size: 1rem;
+}
 
-  /*------CARD PRODUCTOS----*/
+.overflow {
+  overflow: hidden;
+}
 
-  .cardButton{
-    width: 50%;
-      color: #262b3d;
-      font-weight: 700;
-      background-color: #eea726;
-      padding: 1%;
-  }
+.card-img-top {
+  transform: scale(1);
+  transition: all 0.2s ease-in-out;
+}
 
-  .imgCardProducto:hover{
-    transform: scale(1);
-    cursor: pointer;
-  }
+.card-img-top:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.cardsContainers {
+  margin: 4%;
+}
+
+.card-space {
+  margin-bottom: 2%;
+}
+
+/*-------------------*/
+
+/*------CARD PRODUCTOS----*/
+
+.cardButton {
+  width: 50%;
+  color: #262b3d;
+  font-weight: 700;
+  background-color: #eea726;
+  padding: 1%;
+}
+
+.imgCardProducto:hover {
+  transform: scale(1);
+  cursor: pointer;
+}

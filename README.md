@@ -59,7 +59,6 @@ Integrantes:
 - **Matías Crino**
 - **Agustina Hernandez**
 
-
 ## Licencia
 
 [Indica la licencia bajo la cual se distribuye la aplicación.]
