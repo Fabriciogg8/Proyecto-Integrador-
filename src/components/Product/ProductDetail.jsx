@@ -7,8 +7,8 @@ import prod from '../../assets/producto1.jpg'
 import { useState } from 'react'
 
 const Detail = () => {
-    const [isTrue, setIsTrue] = useState(false)
-    return (
+  const [isTrue, setIsTrue] = useState(false)
+  return (
     <div className='everyDetail'>
         <section className="arrow-title">
             <div className='contTituloProd'>
@@ -28,6 +28,11 @@ const Detail = () => {
                     <img src={prod} className='prodDetailGallery' alt="" />
                 </div>
             </div>
+           : (
+            <button onClick={() => setIsTrue(!isTrue)} className='btn-images'>
+              Ver más
+            </button>
+          )
         </div>
 
         <section className='descripYCaract'>
@@ -55,4 +60,4 @@ const Detail = () => {
     );
 };
 
-export default Detail;
+export default Detail

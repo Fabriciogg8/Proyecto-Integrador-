@@ -9,23 +9,23 @@
     bottom: 0;
 }
 
-.copyright { 
-    display: flex;
-    align-items: center;
-    margin-left: 1rem;
+.copyright {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
 }
 
-.companyName{
-    font-size: 1.2rem;
-    margin-right: 1rem;
+.companyName {
+  font-size: 1.2rem;
+  margin-right: 1rem;
 }
 
-.logos{
-    display: flex;
-    margin-right: 1rem;
+.logos {
+  display: flex;
+  margin-right: 1rem;
 }
 
-.logos > a{
-    color: #be9e44;
-    margin-right: 1rem;
+.logos > a {
+  color: #be9e44;
+  margin-right: 1rem;
 }
