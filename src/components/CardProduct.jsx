@@ -1,5 +1,5 @@
 import '../styles/Cards.css'
-
+import { Link } from "react-router-dom";
 import producto from '../assets/producto1.jpg'
 
 function CardProduct() {
