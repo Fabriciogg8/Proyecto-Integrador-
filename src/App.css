@@ -96,3 +96,30 @@
 .test {
   background: red !important;
 }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100% !important; 
+}
+
+.footer {
+    width: 100%;
+    background-color: var(--azul-grisaceo);
+    color: #be9e44;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+}
+
+.main-container {
+  flex: 1; /* Esto hará que el contenedor principal ocupe el espacio restante */
+  overflow-y: auto; /* Si el contenido es más grande que la pantalla, se mostrará un scroll */
+}

@@ -1,5 +1,13 @@
+import Home from '../screens/Home'
+
+
 export const Layout = () => {
-  return <div>Layout</div>
+    return (
+      <div className='main-container'>
+        <Home />
+      </div>
+    )
+  
 }
 
 export default Layout

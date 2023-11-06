@@ -36,19 +36,17 @@ export const SignUp = () => {
   }
 
   return (
-    <Container className='mt-5'>
-      <Row>
-        <Col sm='12' md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
-          <Card body>
-            <h3>Crear Cuenta</h3>
-            <hr />
-            <SignUpForm errors={errors} onSubmitCallback={register} />
-            <div className='mt-4'>
-              <Link to={'/signin'}>Ya tienes una cuenta ? Iniciar Sesion.</Link>
-            </div>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+    <Row className='mt-3'>
+      <Col sm='12' md={{ span: 8, offset: 2 }} lg={{ span: 6, offset: 3 }}>
+        <Card body>
+          <h3 className='text-center'>Crear Cuenta</h3>
+          <hr />
+          <SignUpForm errors={errors} onSubmitCallback={register} />
+          <div className='mt-4 ms-2'>
+            <Link to={'/signin'}>Ya tienes una cuenta ? Iniciar Sesion.</Link>
+          </div>
+        </Card>
+      </Col>
+    </Row>
   )
 }

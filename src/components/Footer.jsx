@@ -3,7 +3,7 @@ import styles from '../styles/Footer/Footer.module.css'
 
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
+    <footer className="footer">
       <div className={styles.copyright}>
         <p className={styles.companyName}>
           © {new Date().getFullYear()} Company Name
