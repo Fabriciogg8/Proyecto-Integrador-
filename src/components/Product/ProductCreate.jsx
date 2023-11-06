@@ -7,7 +7,7 @@ const ProductCreate = () => {
     const handleSelectChange = (event) => {
         setSelectedCategory(event.target.value);
       };
-    const token = localStorage.getItem('jwt');
+    const token = localStorage.getItem('token');
     const handleSubmit = async (event) => {
         event.preventDefault()
         const formData = new FormData(event.target);
