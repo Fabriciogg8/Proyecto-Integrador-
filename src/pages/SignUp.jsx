@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Container, Row, Col, Card } from 'react-bootstrap'
+import { Row, Col, Card } from 'react-bootstrap'
 import { SignUpForm } from '../components/forms/SignUpForm.jsx'
 import { useState } from 'react'
 import { isObjectEmpty } from '../helpers/helpers.js'
