@@ -1,14 +1,3 @@
-.header {
-    position: sticky;
-    top:0;
-    display: flex; 
-    background-color: var(--header-background-color);
-    width: 100%;
-    height: 5em;
-    justify-content: space-between;
-
-}
-
 .logoSlogan {
   display: flex;
 }

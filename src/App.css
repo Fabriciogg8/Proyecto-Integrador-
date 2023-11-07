@@ -105,18 +105,19 @@ html, body, #root {
 .app-container {
   display: flex;
   flex-direction: column;
-  height: 100% !important; 
+  min-height: 100% !important; 
 }
 
-.footer {
+.header {
+    position: sticky;
+    top:0;
+    display: flex; 
+    background-color: var(--header-background-color);
     width: 100%;
-    background-color: var(--azul-grisaceo);
-    color: #be9e44;
-    display: flex;
+    height: 5em;
     justify-content: space-between;
-    align-items: center;
-    position: absolute;
-    bottom: 0;
+    z-index: 1000;
+
 }
 
 .main-container {

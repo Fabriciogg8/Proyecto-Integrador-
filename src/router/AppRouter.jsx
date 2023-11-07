@@ -1,9 +1,10 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { Container } from 'react-bootstrap'
 import { SignIn } from '../pages/SignIn'
 import { SignUp } from '../pages/SignUp'
-import { Layout } from '../pages/Layout'
+import  Home  from '../pages/Home'
 import { useAuthStore } from '../hooks/useAuthStore'
+import  Header  from '../components/Header'
+import Footer from '../components/Footer'
 import { useEffect } from 'react'
 
 export const AppRouter = () => {
@@ -18,25 +19,27 @@ export const AppRouter = () => {
   }
 
   return (
-    <>
-      <Container>
+    <div className='app-container'>
+      <Header/>
+      <div className='main-container'>
         <Routes>
           {status === 'not-authenticated' ? (
             <>
               <Route path='/signin' element={<SignIn />} />
               <Route path='/signup' element={<SignUp />} />
-              <Route path='/' element={<Layout />} />
+              <Route path='/' element={<Home />} />
             </>
           ) : (
             <>
-              <Route path='/' element={<Layout />} />
+              <Route path='/' element={<Home />} />
               <Route path='/*' element={<Navigate to='/' />} />
             </>
           )}
 
-          <Route path='/*' element={<Navigate to='/auth/' />} />
+          <Route path='/*' element={<Navigate to='/' />} />
         </Routes>
-      </Container>
-    </>
+      </div>
+      <Footer/>
+    </div>
   )
 }

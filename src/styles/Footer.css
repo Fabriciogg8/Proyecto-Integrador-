@@ -1,0 +1,15 @@
+.logo {
+  margin-right: 20px; /* Agrega margen a la derecha para separar del resto de los elementos */
+}
+
+/* Estilos para los iconos */
+.icons {
+  display: flex;
+  align-items: center;
+}
+
+.icons a {
+  margin-left: 10px; /* Añade margen entre los iconos */
+  color:  #be9e44;;
+
+}

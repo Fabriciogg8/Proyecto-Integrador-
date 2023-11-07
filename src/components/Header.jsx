@@ -1,6 +1,6 @@
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
-import '../styles/Header/Header.css'
+import '../styles/Header.css'
 import { useAuthStore } from '../hooks/useAuthStore.js'
 const Header = () => {
   const { status, user, startLogout } = useAuthStore()

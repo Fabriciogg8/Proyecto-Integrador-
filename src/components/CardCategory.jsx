@@ -1,5 +1,4 @@
 import '../styles/Cards.css'
-import logo from '../assets/logo-sinLetrasFondo.png'
 
 import guitarras from '../assets/guitarras.jpg'
 
