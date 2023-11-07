@@ -39,7 +39,7 @@ export const SignUpForm = ({ errors, onSubmitCallback }) => {
   }, [errorMessage])
 
   return (
-    <Form onSubmit={onSubmit}>
+    <Form onSubmit={onSubmit} className='m-2'>
       <Row>
         <Col md='6' xs='12'>
           <Form.Group controlId='formBasicFirstName' className='mb-3'>
