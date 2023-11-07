@@ -7,15 +7,14 @@
 .icons > a {
   margin-left: 10px; /* Añade margen entre los iconos */
   color: white;
-
 }
 
-.logo{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.logo > p{
-    margin: 0 !important;
+.logo > p {
+  margin: 0 !important;
 }

@@ -14,7 +14,7 @@ const Header = () => {
       <Navbar expand='lg' className='bg-dark-blue fixed-top'>
         <Container className='flex'>
           <Navbar.Brand href='/' className='me-auto'>
-            <img src='src/assets/logo-sinLetras.png' alt='' />
+            <img src='/logo-sinLetras.png' alt='' />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse

@@ -30,8 +30,8 @@ export const SignIn = () => {
   }
 
   return (
-    <Container className="flex justify-content-center align-items-center">
-      <Card body>
+    <Container className='d-flex justify-content-center align-items-center'>
+      <Card body style={{ width: '45rem' }}>
         <h3 className='text-center'>Iniciar Sesion</h3>
         <hr />
         <SignInForm errors={errors} onSubmitCallback={login} />

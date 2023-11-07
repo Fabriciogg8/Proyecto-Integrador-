@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Card, Container} from 'react-bootstrap'
+import { Card, Container } from 'react-bootstrap'
 import { SignUpForm } from '../components/forms/SignUpForm.jsx'
 import { useState } from 'react'
 import { isObjectEmpty } from '../helpers/helpers.js'
@@ -36,8 +36,8 @@ export const SignUp = () => {
   }
 
   return (
-    <Container>
-      <Card body>
+    <Container className='d-flex justify-content-center align-items-center'>
+      <Card body style={{ width: '45rem' }}>
         <h3 className='text-center'>Crear Cuenta</h3>
         <hr />
         <SignUpForm errors={errors} onSubmitCallback={register} />
