@@ -13,6 +13,10 @@
   text-decoration: none;
 }
 
+.user-dropdown {
+  color: white !important;
+}
+
 .navbar-brand small {
   margin-left: 10px;
 }

@@ -40,16 +40,15 @@ const Header = () => {
                   </Nav.Link>
                 </>
               ) : (
-                <NavDropdown
+                <NavDropdown 
                   title={<span className='user-sub'>{user.firstName}</span>}
                   id='basic-nav-dropdown'
                 >
-                  <NavDropdown.Item as={NavLink} to={'/1'}>
-                    Registrar Producto
-                  </NavDropdown.Item>
-                  <NavDropdown.Item as={NavLink} to={'/2'}>
-                    Otra cosa
-                  </NavDropdown.Item>
+                  {user.role === 'ADMIN' && ( // Agregamos condición para el rol de administrador
+                    <NavDropdown.Item as={NavLink} to={'/admin-panel'}>
+                      Administración
+                    </NavDropdown.Item>
+                  )}
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={logout}>
                     Cerrar Sesión

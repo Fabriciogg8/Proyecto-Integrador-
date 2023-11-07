@@ -7,9 +7,10 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useEffect } from 'react'
 import { ProductDetails } from '../pages/ProductDetails'
+import { AdminPanel } from '../pages/AdminPanel'
 
 export const AppRouter = () => {
-  const { status, checkAuthToken } = useAuthStore()
+  const { status, user, checkAuthToken } = useAuthStore()
 
   useEffect(() => {
     checkAuthToken()
@@ -34,6 +35,9 @@ export const AppRouter = () => {
           ) : (
             <>
               <Route path='/' element={<Home />} />
+              {user.role === 'ADMIN' && ( // Verificar si el usuario es un ADMIN
+                <Route path='/admin-panel' element={<AdminPanel />} />
+              )}
               <Route path='/*' element={<Navigate to='/' />} />
             </>
           )}
