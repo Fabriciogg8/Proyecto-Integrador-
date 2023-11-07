@@ -53,6 +53,14 @@
     left: unset;
 }
 
+.header > button{
+  color: white;
+}
+
+.navbar-toggler{
+  background-color: white;
+}
+
 @media(max-width:767px) {
     .navbar-brand small {
         display: none;

@@ -30,7 +30,7 @@ export const SignIn = () => {
   }
 
   return (
-    <Container className=''>
+    <Container className="flex justify-content-center align-items-center">
       <Card body>
         <h3 className='text-center'>Iniciar Sesion</h3>
         <hr />

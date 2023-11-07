@@ -1,8 +1,6 @@
 import '../../styles/Product/Product-Detail.css'
 import '../../styles/lightbox.css'
 import svgGolden from '../../assets/chevron-left-golden.svg';
-import descLogo from '../../assets/body-text.png'
-import brush from '../../assets/brush.png'
 import prod from '../../assets/producto1.jpg'
 import { useState } from 'react'
 
