@@ -5,10 +5,10 @@ const Footer = () => {
   return (
     <footer className='footer'>
       <div className='d-flex mb-2'>
-        <div className='p-2 ms-4'>
+        <div className='p-2 ms-4 logo'>
           <p className=''>© {new Date().getFullYear()} Company Name</p>
         </div>
-        <div className='ms-auto p-2 me-2'>
+        <div className='ms-auto p-2 me-2 icons'>
           <a
             href='https://www.facebook.com/'
             target='_blank'

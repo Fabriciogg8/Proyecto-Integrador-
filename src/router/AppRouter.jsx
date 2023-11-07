@@ -20,8 +20,8 @@ export const AppRouter = () => {
 
   return (
     <div className='app-container'>
-      <Header/>
-      <div className='main-container'>
+      <Header />
+      <div className='main-container d-flex justify-content-center align-items-center'>
         <Routes>
           {status === 'not-authenticated' ? (
             <>
@@ -39,7 +39,7 @@ export const AppRouter = () => {
           <Route path='/*' element={<Navigate to='/' />} />
         </Routes>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   )
 }

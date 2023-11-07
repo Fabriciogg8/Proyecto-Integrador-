@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Card } from 'react-bootstrap'
+import { Card, Container } from 'react-bootstrap'
 import { SignInForm } from '../components/forms/SignInForm.jsx'
 import { useState } from 'react'
 import { isObjectEmpty } from '../helpers/helpers.js'
@@ -30,13 +30,15 @@ export const SignIn = () => {
   }
 
   return (
-    <Card body>
-      <h3 className='text-center'>Iniciar Sesion</h3>
-      <hr />
-      <SignInForm errors={errors} onSubmitCallback={login} />
-      <div className='mt-4 ms-2'>
-        <Link to={'/signup'}>No tienes una cuenta ? Registrate.</Link>
-      </div>
-    </Card>
+    <Container className=''>
+      <Card body>
+        <h3 className='text-center'>Iniciar Sesion</h3>
+        <hr />
+        <SignInForm errors={errors} onSubmitCallback={login} />
+        <div className='mt-4 ms-2'>
+          <Link to={'/signup'}>No tienes una cuenta ? Registrate.</Link>
+        </div>
+      </Card>
+    </Container>
   )
 }

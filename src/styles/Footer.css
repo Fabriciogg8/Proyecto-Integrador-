@@ -1,15 +1,21 @@
-.logo {
-  margin-right: 20px; /* Agrega margen a la derecha para separar del resto de los elementos */
-}
-
 /* Estilos para los iconos */
 .icons {
   display: flex;
   align-items: center;
 }
 
-.icons a {
+.icons > a {
   margin-left: 10px; /* Añade margen entre los iconos */
-  color:  #be9e44;;
+  color: white;
 
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo > p{
+    margin: 0 !important;
 }
