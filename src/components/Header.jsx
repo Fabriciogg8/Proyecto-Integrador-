@@ -1,6 +1,6 @@
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
-import '../styles/Header/Header.css'
+import '../styles/Header.css'
 import { useAuthStore } from '../hooks/useAuthStore.js'
 const Header = () => {
   const { status, user, startLogout } = useAuthStore()
@@ -14,7 +14,7 @@ const Header = () => {
       <Navbar expand='lg' className='bg-dark-blue fixed-top'>
         <Container className='flex'>
           <Navbar.Brand href='/' className='me-auto'>
-            <img src='src/assets/logo-sinLetras.png' alt='' />
+            <img src='/logo-sinLetras.png' alt='' />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse

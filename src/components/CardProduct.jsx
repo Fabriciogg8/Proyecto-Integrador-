@@ -1,12 +1,15 @@
+import { Link } from 'react-router-dom'
 import '../styles/Cards.css'
-import { Link } from "react-router-dom";
-import producto from '../assets/producto1.jpg'
+import producto from '/producto1.jpg'
 
-function CardProduct() {
+function CardProduct({id, name, price }) {
   return (
     <>
-      <div className='col-md-6 card-space'>
-        <div className='card text-center bg-dark animate__animated animate__fadeInUp'>
+      <Link
+        to={`/productDetails/${id}`}
+        className='col-lg-4 col-md-6 col-sm-12 card-space'
+      >
+        <div className='card text-center bg-dark animate__animated animate__fadeInUp card-hover-effect'>
           <div className='overflow'>
             <img
               src={producto}
@@ -15,13 +18,11 @@ function CardProduct() {
             />
           </div>
           <div className='text-light'>
-            <p className='card-title'>
-              Guitarra clasica Alhambra 1C black satin
-            </p>
-            <h6>USD/H 10</h6>
+            <p className='card-title'>{name}</p>
+            <p>USD {price}</p>
           </div>
         </div>
-      </div>
+      </Link>
     </>
   )
 }

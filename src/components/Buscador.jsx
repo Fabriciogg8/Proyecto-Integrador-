@@ -1,4 +1,4 @@
-import logo from '../assets/logo-sinLetrasFondo.png'
+import logo from '/logo-sinLetrasFondo.png'
 import '../styles/Buscador.css'
 
 function Buscador() {

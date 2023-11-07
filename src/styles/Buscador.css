@@ -1,17 +1,16 @@
-.contenedorBuscador{
-    background-color: var(--azul-oscuro);
+.contenedorBuscador {
+  background-color: var(--azul-oscuro);
 }
 
-.contenedorBuscador h1{
-    color:var(--dorado);
-    font-size: 2em;
-    text-shadow: 1px 1px 3px #d8c690;
+.contenedorBuscador h1 {
+  color: var(--dorado);
+  font-size: 2em;
+  text-shadow: 1px 1px 3px #d8c690;
 }
 
-.contenedorBuscador p{
-    color:var(--amarillo-claro);
-    font-size: 1em;
-    
+.contenedorBuscador p {
+  color: var(--amarillo-claro);
+  font-size: 1em;
 }
 
 .logo-buscador {
