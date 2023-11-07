@@ -1,53 +1,47 @@
-import '../App.css';
+import '../App.css'
 
-import godin from '../assets/godin.jpg'
-import jackson from '../assets/jackson.jpg'
-import laney from '../assets/laney.jpg'
-import stagg from '../assets/stagg.jpg'
-import takamine from '../assets/takamine.jpg'
+import godin from '/godin.jpg'
+import jackson from '/jackson.jpg'
+import laney from '/laney.jpg'
+import stagg from '/stagg.jpg'
+import takamine from '/takamine.jpg'
 
+const BrandSlider = () => {
+  const scrollers = document.querySelectorAll('.scroller')
 
-const BrandSlider = () => { 
-    
-    const scrollers = document.querySelectorAll(".scroller");
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    addAnimation()
+  }
 
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      addAnimation();
-    }
-  
-    function addAnimation() {
-      scrollers.forEach((scroller) => {
-        scroller.setAttribute("data-animated", true);
-      
-        const scrollerInner = scroller.querySelector(".scroller__inner");
-        const scrollerContent = Array.from(scrollerInner.children);
-  
-        scrollerContent.forEach((item) => {
-          const duplicatedItem = item.cloneNode(true);
-          duplicatedItem.setAttribute("aria-hidden", true);
-          scrollerInner.appendChild(duplicatedItem);
-        });
-      });
-    }
-  
+  function addAnimation() {
+    scrollers.forEach(scroller => {
+      scroller.setAttribute('data-animated', true)
 
+      const scrollerInner = scroller.querySelector('.scroller__inner')
+      const scrollerContent = Array.from(scrollerInner.children)
 
-  return ( 
+      scrollerContent.forEach(item => {
+        const duplicatedItem = item.cloneNode(true)
+        duplicatedItem.setAttribute('aria-hidden', true)
+        scrollerInner.appendChild(duplicatedItem)
+      })
+    })
+  }
+
+  return (
     <>
-    <div className="scroller" data-direction="right" data-speed="slow">
-      <div className="scroller__inner">
-        <img src={stagg} height="90" width="110" alt="" />
-        <img src={takamine} height="90" width="110" alt="" />
-        <img src={laney} height="90" width="110" alt="" />
-        <img src={jackson} height="90" width="110" alt="" />
-        <img src={godin} height="90" width="110" alt="" />
-        <img src={godin} height="90" width="110" alt="" />
-        <img src={godin} height="90" width="110" alt="" />
-        <img src={godin} height="90" width="110" alt="" />
+      <div className='scroller' data-direction='right' data-speed='slow'>
+        <div className='scroller__inner'>
+          <img src={stagg} height='90' width='110' alt='' />
+          <img src={takamine} height='90' width='110' alt='' />
+          <img src={laney} height='90' width='110' alt='' />
+          <img src={jackson} height='90' width='110' alt='' />
+          <img src={godin} height='90' width='110' alt='' />
+          <img src={godin} height='90' width='110' alt='' />
+          <img src={godin} height='90' width='110' alt='' />
+          <img src={godin} height='90' width='110' alt='' />
+        </div>
       </div>
-    </div>
-
-
     </>
   )
 }

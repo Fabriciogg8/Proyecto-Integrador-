@@ -36,7 +36,7 @@ export const SignInForm = ({ errors, onSubmitCallback }) => {
   }, [errorMessage])
 
   return (
-    <Form onSubmit={onSubmit}>
+    <Form onSubmit={onSubmit} className='m-2'>
       <Form.Group controlId='formBasicEmail' className='mb-3'>
         <Form.Label>Correo Electronico: </Form.Label>
         <Form.Control

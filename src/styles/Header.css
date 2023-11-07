@@ -1,14 +1,3 @@
-.header {
-    position: sticky;
-    top:0;
-    display: flex; 
-    background-color: var(--header-background-color);
-    width: 100%;
-    height: 5em;
-    justify-content: space-between;
-
-}
-
 .logoSlogan {
   display: flex;
 }
@@ -18,14 +7,14 @@
 }
 
 .navbar-brand {
-    font-size: 1em;
-    font-weight: 500;
-    color: var(--headings-text-color);
-    text-decoration: none;
+  font-size: 1em;
+  font-weight: 500;
+  color: var(--headings-text-color);
+  text-decoration: none;
 }
 
 .navbar-brand small {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .navbar-brand:hover {
@@ -60,14 +49,22 @@
 }
 
 .dropdown-menu[data-bs-popper] {
-    right: 0;
-    left: unset;
+  right: 0;
+  left: unset;
 }
 
-@media(max-width:767px) {
-    .navbar-brand small {
-        display: none;
-    }
+.header > button {
+  color: white;
+}
+
+.navbar-toggler {
+  background-color: white;
+}
+
+@media (max-width: 767px) {
+  .navbar-brand small {
+    display: none;
+  }
 }
 
 @media (min-width: 992px) {
@@ -77,7 +74,7 @@
 }
 
 @media (max-width: 2180px) {
-    .navbar-brand img {
-        height: 2.5em;
-    }
+  .navbar-brand img {
+    height: 2.5em;
+  }
 }
