@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import '../styles/Cards.css'
+import '../../styles/Cards.css'
 import producto from '/producto1.jpg'
 
 function CardProduct({id, name, price }) {
