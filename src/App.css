@@ -1,0 +1,126 @@
+.img-card {
+  height: 100px;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
+  width: 90vw;
+  height: auto;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.titulosCategorias {
+  background-color: #be9e44;
+  padding: 2px;
+  width: 80%;
+  color: white;
+  margin: 0 auto;
+  border-radius: 2px;
+  margin-top: 3%;
+}
+
+/*---------CARROUSEL DE MARCAS -----------*/
+
+.scroller {
+  max-width: 100% !important;
+  margin: 2% auto !important;
+  background-color: white;
+}
+
+.scroller__inner {
+  padding-block: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.scroller[data-animated='true'] {
+  overflow: hidden;
+  -webkit-mask: linear-gradient(
+    90deg,
+    transparent,
+    white 20%,
+    white 80%,
+    transparent
+  );
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.scroller[data-animated='true'] .scroller__inner {
+  width: max-content;
+  flex-wrap: nowrap;
+  animation: scroll var(--_animation-duration, 40s)
+    var(--_animation-direction, forwards) linear infinite;
+}
+
+.scroller[data-direction='right'] {
+  --_animation-direction: reverse;
+}
+
+.scroller[data-direction='left'] {
+  --_animation-direction: forwards;
+}
+
+.scroller[data-speed='fast'] {
+  --_animation-duration: 20s;
+}
+
+.scroller[data-speed='slow'] {
+  --_animation-duration: 60s;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}
+
+.tag-list {
+  margin: 0;
+  padding-inline: 0;
+  list-style: none;
+}
+
+.tag-list li {
+  padding: 1rem;
+  background: var(--clr-primary-400);
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem -0.25rem var(--clr-primary-900);
+}
+
+/* for testing purposed to ensure the animation lined up correctly */
+.test {
+  background: red !important;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100% !important;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  background-color: var(--header-background-color);
+  width: 100%;
+  height: 5em;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.main-container {
+  flex: 1; /* Esto hará que el contenedor principal ocupe el espacio restante */
+  overflow-y: auto; /* Si el contenido es más grande que la pantalla, se mostrará un scroll */
+}

@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700;900&family=Montserrat:wght@300;400&display=swap');
+
+:root {
+  /* font families */
+  --headings-font-family: 'Lato', sans-serif;
+  --body-font-family: 'Montserrat', sans-serif;
+
+  /* base text colors */
+  --headings-text-color: #be9e44;
+  --links-text-color: var(--headings-font-family);
+  --body-text-color: white;
+
+  /* base background color */
+  --body-background-color: #242424;
+  --header-background-color: #262b3d;
+  --footer-background-color: #262b3d;
+
+  /* base buttons style */
+  /* primary */
+  --primary-button-text-color: #242424;
+  --primary-button-background-color: #be9e44;
+  --primary-button-border-color: #be9e44;
+
+  --primary-button-text-color-hover: #242424;
+  --primary-button-background-color-hover: #d8c690;
+  --primary-button-border-color-hover: #be9e44;
+
+  /* secondary */
+  --secondary-button-text-color: #d8c690;
+  --secondary-button-background-color: #12141a;
+  --secondary-button-border-color: #d8c690;
+
+  --secondary-button-text-color-hover: white;
+  --secondary-button-background-color-hover: #6c757d;
+  --secondary-button-border-color-hover: #12141a;
+
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  background-color: var(--body-background-color);
+}
+
+* {
+  transition: all 0.2s ease;
+}
+
+body {
+  font-family: var(--body-font-family);
+  background-color: var(--body-background-color);
+  color: var(--body-text-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--headings-font-family);
+  color: var(--headings-text-color);
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+a {
+  text-decoration: none;
+}
