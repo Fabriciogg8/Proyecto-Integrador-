@@ -7,7 +7,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useEffect } from 'react'
 import { ProductDetails } from '../pages/ProductDetails'
-import Busqueda from '../pages/Busqueda'
+import Resultados from '../pages/Resultados'
 
 export const AppRouter = () => {
   const { status, checkAuthToken } = useAuthStore()
@@ -31,7 +31,7 @@ export const AppRouter = () => {
               <Route path='/signup' element={<SignUp />} />
               <Route path='/productdetails/:id' element={<ProductDetails />} />
               <Route path='/' element={<Home />} />
-              <Route path='/busqueda' element={<Busqueda/>} />
+              <Route path='/resultados' element={<Resultados/>} />
             </>
           ) : (
             <>

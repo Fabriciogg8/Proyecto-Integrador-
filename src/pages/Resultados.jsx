@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Buscador from "../components/Buscador";
 import { Container } from "react-bootstrap";
+import '../styles/Resultados.css'
 
 const instrumentos = [
     { id: 1, name: 'Guitarra Acústica', price: 299 },
@@ -63,28 +64,29 @@ function listarCategorias(){
     return(
         <Container>
         <Buscador/>
-        <div className="listaCategorias">
-            <h2>Categorías</h2>
-            <ul>
-                {
-                    productosPorCategoria.map(producto => (
-                        <li key={producto.id}>
-                            <label>
-                                <input type="checkbox" checked = {categoriaSeleccionada.includes(producto.name)} onChange={() => handleCategoriaSeleccionada(producto.name)} />
-                                {producto.name} ({producto.cantidad})
-                            </label>
-                        </li>
-                    )
-                )}
-            </ul>
-        </div>
-        <div className="productosFiltrados">
-            <h2>Productos</h2>
-            <ul>
-                {filtrarProductos().map((producto) => (
-                    <li key={producto.id}>{producto.name}</li>
-                ))}
-            </ul>
+        <div className="productosYCategorias">
+            <div className="listaCategorias">
+                <h2>Categorías</h2>
+                <button onClick={() => setCategoriaSeleccionada([])}>Borrar Filtros</button>
+                <ul>
+                    {
+                        productosPorCategoria.map(producto => (
+                            <li key={producto.id}>
+                                <label>
+                                    <input type="checkbox" checked = {categoriaSeleccionada.includes(producto.name)} onChange={() => handleCategoriaSeleccionada(producto.name)} />
+                                    {producto.name} ({producto.cantidad})
+                                </label>
+                            </li>
+                        )
+                    )}
+                </ul>
+            </div>
+            <div className="productosFiltrados">
+                <h2>Productos</h2>
+                    {filtrarProductos().map((producto) => (
+                        <li key={producto.id}>{producto.name} <p>{" Precio: "} {producto.price}</p></li>
+                    ))}
+            </div>
         </div>
         </Container>
     )

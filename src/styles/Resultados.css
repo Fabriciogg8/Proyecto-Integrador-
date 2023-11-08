@@ -1,0 +1,10 @@
+.productosYCategorias{
+    display: flex;
+    flex-direction:row;
+}
+.productosFiltrados{
+    margin-left: 30rem;
+}
+li{
+    list-style: none;
+}
