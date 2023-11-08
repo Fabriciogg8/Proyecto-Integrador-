@@ -6,11 +6,19 @@
   background-color: var(--header-background-color);
 }
 
+.img{
+  border: none;
+}
+
 .navbar-brand {
   font-size: 1em;
   font-weight: 500;
   color: var(--headings-text-color);
   text-decoration: none;
+}
+
+.user-dropdown {
+  color: white !important;
 }
 
 .navbar-brand small {

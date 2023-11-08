@@ -1,0 +1,22 @@
+.admin-panel {
+  display: flex;
+  height: 100vh; 
+}
+
+.sidebar {
+    width: 20%;
+    background-color: rgb(134, 128, 128);
+    height: 100%;
+    color: white;
+}
+
+.sidebar > li {
+    color: white;
+}
+
+  .main-content {
+    width: 80%;
+    background-color: rgb(236, 14, 14)c2c;
+    height: 100%;
+  }
+
