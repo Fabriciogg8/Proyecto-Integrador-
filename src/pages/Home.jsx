@@ -7,6 +7,9 @@ import Buscador from '../components/buscador/Buscador'
 import BrandSlider from '../components/buscador/BrandSlider'
 import { ProductContext } from '../conexts/ProductContext'
 
+import ProductList from '../components/ProductList'
+
+
 const Home = () => {
   const { products, fetchProducts } = useContext(ProductContext)
 
@@ -77,4 +80,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home;
