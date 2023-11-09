@@ -5,6 +5,9 @@ import CardProduct from '../components/CardProduct'
 import Buscador from '../components/Buscador'
 import BrandSlider from '../components/BrandSlider'
 
+import ProductList from '../components/ProductList'
+
+
 const Home = () => {
   const instrumentos = [
     { id: 1, name: 'Guitarra Acústica', price: 299 },
@@ -57,26 +60,14 @@ const Home = () => {
             : null}
         </div>
 
-        <div className='container d-flex justify-content-center align-items-center h-100'>
-          <div className='row cardsContainers'>
-            {instrumentos.length
-              ? instrumentos.map(instrumento => {
-                  return (
-                    <CardProduct
-                      key={instrumento.id}
-                      id={instrumento.id}
-                      name={instrumento.name}
-                      price={instrumento.price}
-                    />
-                  )
-                })
-              : null}
-          </div>
-        </div>
-        <BrandSlider />
-      </Container>
-    </>
-  )
-}
+<div className='container d-flex justify-content-center align-items-center h-100'>
+  {/* Utilizar ProductList con la lista de instrumentos */}
+  <ProductList products={instrumentos} />
+</div>
+<BrandSlider />
+</Container>
+</>
+);
+};
 
-export default Home
+export default Home;
