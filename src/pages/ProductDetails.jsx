@@ -8,7 +8,6 @@ export const ProductDetails = () => {
   const { currentProduct, fetchCurrentProduct } = useContext(ProductContext)
 
   useEffect(() => {
-    console.log("ejecutando fetch a", id)
     fetchCurrentProduct(id)
   }, []);
 
