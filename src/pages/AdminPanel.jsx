@@ -1,6 +1,6 @@
 import { Link, Routes, Route } from 'react-router-dom'
 import ProductCreate from '../components/product/ProductCreate'
-import { ProductList } from '../components/product/ProductList'
+import { ProductList } from '../components/product/ProductListAdmin'
 
 export const AdminPanel = () => {
     const isMobile = window.innerWidth < 768
