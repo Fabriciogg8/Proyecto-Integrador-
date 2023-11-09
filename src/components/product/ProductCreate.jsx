@@ -41,7 +41,7 @@ const ProductCreate = () => {
             const response = await fetch('http://52.201.124.42:8001/api/v1/products', {
                 method: 'POST',
                 headers: {
-                    'Content-type': 'application/json',
+                    'Content-type': 'multipart/form-data',
                     'Authorization' : `${token}`
                 },
                 body: JSON.stringify(data)
