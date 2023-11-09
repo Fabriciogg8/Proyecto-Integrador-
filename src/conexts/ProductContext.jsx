@@ -1,10 +1,11 @@
 import { createContext, useState } from 'react'
-import { GET_RANDOM_PRODUCTS } from '../helpers/endpoints'
+import { GET_RANDOM_PRODUCTS, GET_CURRENT_PRODUCT } from '../helpers/endpoints'
 
 export const ProductContext = createContext()
 
 export const ProductContextProvider = ({ children }) => {
   const [products, setProducts] = useState([])
+  const [currentProduct, setCurrentProduct] = useState({})
 
 
     async function fetchProducts () {
@@ -13,7 +14,7 @@ export const ProductContextProvider = ({ children }) => {
         if (response.ok) {
             const data = await response.json()
             const {content} = data
-            setProducts(content) // Actualiza el estado con los datos obtenidos
+            setProducts(content) 
         } else {
             throw new Error('Error al obtener los productos')
         }
@@ -22,9 +23,30 @@ export const ProductContextProvider = ({ children }) => {
         }
     }
 
+        async function fetchCurrentProduct(id) {
+          console.log(id)
+          try {
+            const response = await fetch(`GET_CURRENT_PRODUCT/${id}`)
+            console.log(response)
+            if (response.ok) {
+              const data = await response.json()
+              console.log(data)
+              const { content } = data
+              setCurrentProduct(content) 
+            } else {
+              throw new Error('Error al obtener el producto')
+            }
+          } catch (error) {
+            console.error('Error fetching product:', error)
+          }
+        }
+
+
     const value = {
-        products,
-        fetchProducts
+      products,
+      currentProduct,
+      fetchProducts,
+      fetchCurrentProduct,
     }
 
   return (

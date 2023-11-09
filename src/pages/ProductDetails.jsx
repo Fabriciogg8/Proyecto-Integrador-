@@ -1,20 +1,19 @@
 import { useParams } from 'react-router-dom'
+import { useContext, useEffect } from 'react'
 import { ProductDetail } from '../components/product/ProductDetail'
+import { ProductContext } from '../conexts/ProductContext'
 
 export const ProductDetails = () => {
   const { id } = useParams()
+  const { currentProduct, fetchCurrentProduct } = useContext(ProductContext)
 
-  const producto = {
-    id: id,
-    categoria: 'Instrumentos de Cuerda',
-    nombre: 'Guitarra Acústica',
-    marca: 'Fender',
-    color: 'Natural',
-    material: 'Madera de Cedro',
-    precio: 799.99,
-    descripcion:
-      'Una guitarra acústica de alta calidad adecuada para músicos principiantes y profesionales. Ofrece un sonido rico y cálido con una excelente resonancia. Fabricada con materiales duraderos y seleccionados para brindar una experiencia musical excepcional.',
-  }
+  useEffect(() => {
+    fetchCurrentProduct(id)
+  }, [])
+
+  const producto = currentProduct
+
+  console.log(producto)
 
   return (
     <ProductDetail

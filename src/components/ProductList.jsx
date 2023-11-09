@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import CardProduct from './product/CardProduct' // Ajusta la ruta según la ubicación de tu componente CardProduct
+import CardProduct from './product/CardProduct' 
 
 const ProductList = ({ products }) => {
   const [currentPage, setCurrentPage] = useState(1)

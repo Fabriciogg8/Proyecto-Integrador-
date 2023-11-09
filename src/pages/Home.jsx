@@ -52,25 +52,6 @@ const Home = () => {
         </div>
 
         <div className='container d-flex justify-content-center align-items-center h-100'>
-          {/* <div className='row cardsContainers'>
-            {instrumentos.length
-              ? instrumentos.map(instrumento => {
-                const imagen =
-                  instrumento.images && instrumento.images.length > 0
-                    ? instrumento.images[0]
-                    : null
-                  return (
-                    <CardProduct
-                      key={instrumento.id}
-                      id={instrumento.id}
-                      name={instrumento.name}
-                      price={instrumento.price}
-                      image={imagen}
-                    />
-                  )
-                })
-              : null}
-          </div> */}
           <ProductList products={instrumentos} />
         </div>
         <BrandSlider />
