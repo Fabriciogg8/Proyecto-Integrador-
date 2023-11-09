@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Buscador from "../components/Buscador";
+import Buscador from "../components/buscador/Buscador";
 import { Container } from "react-bootstrap";
 import '../styles/Resultados.css'
 
