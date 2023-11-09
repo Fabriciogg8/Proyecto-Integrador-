@@ -38,7 +38,7 @@ const ProductCreate = () => {
         }
 
         try {
-            const response = await fetch('http://52.201.124.42:8001/api/v1/products', {
+            const response = await fetch('http://174.129.92.139:8001/api/v1/products', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json',
