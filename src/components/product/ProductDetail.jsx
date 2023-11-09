@@ -2,6 +2,8 @@ import '../../styles/Product-Detail.css'
 import {Link} from 'react-router-dom'
 import { BsArrowLeft } from 'react-icons/bs'
 import prod from '/producto1.jpg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 
 export const ProductDetail = ({
   categoria,
@@ -51,10 +53,10 @@ export const ProductDetail = ({
         <div className='caracteristicasProd'>
           <h4>Caracteristicas</h4>
           <hr />
-          <p>Marca: {marca}</p>
-          <p>Color: {color}</p>
-          <p>Material: {material}</p>
-          <p>Precio: {precio}</p>
+          <p><FontAwesomeIcon icon={faInfoCircle} style={{ marginRight: '10px' }}/>Marca: {marca}</p>
+          <p><FontAwesomeIcon icon={faInfoCircle} style={{ marginRight: '10px' }}/>Color: {color}</p>
+          <p><FontAwesomeIcon icon={faInfoCircle} style={{ marginRight: '10px' }}/>Material: {material}</p>
+          <p><FontAwesomeIcon icon={faInfoCircle} style={{ marginRight: '10px' }}/>Precio: {precio}</p>
         </div>
       </section>
     </div>

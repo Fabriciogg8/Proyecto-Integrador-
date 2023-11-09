@@ -95,3 +95,29 @@
 .test {
   background: red !important;
 }
+
+.pagination {
+  margin-top: 40px;
+  justify-content: left;
+  align-items: center;
+}
+
+.pagination button {
+  margin: 0 5px; /* Espaciado entre los botones */
+  padding: 8px 12px; 
+  font-size: 14px; 
+  background-color: #4f4d47; /* Color de los botones */
+  color: #fff; 
+  border: none; 
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #121847; 
+}
+
+.pagination span {
+  margin: 0 10px; 
+  font-size: 14px; 
+  color: #d7d5c9; 
+}
