@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom'
 import '../../styles/Cards.css'
-import producto from '/producto1.jpg'
 
-function CardProduct({id, name, price }) {
+function CardProduct({ id, name, price, image }) {
   return (
     <>
       <Link
@@ -12,7 +11,7 @@ function CardProduct({id, name, price }) {
         <div className='card text-center bg-dark animate__animated animate__fadeInUp card-hover-effect'>
           <div className='overflow'>
             <img
-              src={producto}
+              src={image}
               alt=''
               className='card-img-top imgCardProducto'
             />
