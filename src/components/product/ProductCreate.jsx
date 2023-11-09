@@ -1,5 +1,6 @@
 import '/src/styles/ProductCreate.css'
 import { useState } from 'react';
+import { CREATE_PRODUCT } from '../../helpers/endpoints';
 
 const ProductCreate = () => {
 
@@ -38,13 +39,13 @@ const ProductCreate = () => {
         }
 
         try {
-            const response = await fetch('http://52.201.124.42:8001/api/v1/products', {
-                method: 'POST',
-                headers: {
-                    'Content-type': 'multipart/form-data',
-                    'Authorization' : `${token}`
-                },
-                body: JSON.stringify(data)
+            const response = await fetch(CREATE_PRODUCT, {
+              method: 'POST',
+              headers: {
+                'Content-type': 'multipart/form-data',
+                Authorization: `${token}`,
+              },
+              body: JSON.stringify(data),
             })
             console.log(data);
             if (response.ok) {

@@ -5,3 +5,5 @@ export const REGISTER_USER_ENDPOINT = `${API_URL}/auth/register`
 export const LOGIN_USER_ENDPOINT = `${API_URL}/auth/login`
 export const GET_RANDOM_PRODUCTS = `${API_URL}/products?order=random`
 export const GET_CURRENT_PRODUCT = `${API_URL}/products`
+export const CREATE_PRODUCT = `${API_URL}/products`
+export const DELETE_PRODUCT = `${API_URL}/products`

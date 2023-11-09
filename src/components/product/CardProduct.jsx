@@ -6,7 +6,7 @@ function CardProduct({ id, name, price, image }) {
     <>
       <Link
         to={`/productDetails/${id}`}
-        className='col-lg-4 col-md-6 col-sm-12 card-space'
+        className='col-lg-6 col-md-6 col-sm-12 card-space'
       >
         <div className='card text-center bg-dark animate__animated animate__fadeInUp card-hover-effect'>
           <div className='overflow'>
