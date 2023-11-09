@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import { BsArrowLeft } from 'react-icons/bs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import producto from '/producto1.jpg'
 
 export const ProductDetail = ({
   categoria,
@@ -10,7 +11,6 @@ export const ProductDetail = ({
   marca,
   precio,
   descripcion,
-  imagenes,
 }) => {
 
   return (
@@ -33,13 +33,11 @@ export const ProductDetail = ({
       <div>
         <div className='contenedorGalery'>
           <div className='galeryContainer'>
-              {imagenes && imagenes.length > 0 ? (
-                imagenes.map((imagen, index) => (
-                  <img key={index} src={imagen} className='galleryImg' alt='imagen' />
-                ))
-              ) : (
-                <p>No hay imágenes disponibles</p>
-              )}
+            <img src={producto} className='galleryImg' alt='imagen' />
+            <img src={producto} className='galleryImg' alt='imagen' />
+            <img src={producto} className='galleryImg' alt='imagen' />
+            <img src={producto} className='galleryImg' alt='imagen' />
+            <img src={producto} className='galleryImg' alt='imagen' />
           </div>
         </div>
         <section className='descripYCaract'>
