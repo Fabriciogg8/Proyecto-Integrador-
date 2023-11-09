@@ -1,0 +1,30 @@
+.productosYCategorias{
+    display: flex;
+    flex-direction:row;
+}
+.productosFiltrados{
+    margin-left: 30rem;
+}
+li{
+    list-style: none;
+}
+/* Estilos para pantallas chicas (celular) */
+@media (max-width: 768px) {
+    .productosYCategorias {
+        flex-direction: column; 
+    }
+
+    .productosFiltrados {
+        margin-left: 0; 
+    }
+}
+/* Estilos para pantallas medianas (tablet) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .productosYCategorias {
+        flex-direction: row; 
+    }
+
+    .productosFiltrados {
+        margin-left: 15rem; 
+    }
+}
