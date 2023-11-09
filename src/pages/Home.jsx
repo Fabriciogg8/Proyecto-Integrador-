@@ -2,11 +2,9 @@ import '../styles/Home.css'
 import { useContext, useEffect } from 'react'
 import { Container } from 'react-bootstrap'
 import CardCategory from '../components/product/CardCategory'
-import CardProduct from '../components/product/CardProduct'
 import Buscador from '../components/buscador/Buscador'
 import BrandSlider from '../components/buscador/BrandSlider'
 import { ProductContext } from '../conexts/ProductContext'
-
 import ProductList from '../components/ProductList'
 
 
@@ -54,7 +52,7 @@ const Home = () => {
         </div>
 
         <div className='container d-flex justify-content-center align-items-center h-100'>
-          <div className='row cardsContainers'>
+          {/* <div className='row cardsContainers'>
             {instrumentos.length
               ? instrumentos.map(instrumento => {
                 const imagen =
@@ -72,7 +70,8 @@ const Home = () => {
                   )
                 })
               : null}
-          </div>
+          </div> */}
+          <ProductList products={instrumentos} />
         </div>
         <BrandSlider />
       </Container>
