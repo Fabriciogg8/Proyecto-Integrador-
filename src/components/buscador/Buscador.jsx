@@ -1,5 +1,5 @@
 import logo from '/logo-sinLetrasFondo.png'
-import '../styles/Buscador.css'
+import '../../styles/Buscador.css'
 
 function Buscador() {
   return (

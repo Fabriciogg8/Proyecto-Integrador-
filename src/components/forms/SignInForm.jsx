@@ -21,7 +21,6 @@ export const SignInForm = ({ errors, onSubmitCallback }) => {
 
   const onSubmit = e => {
     e.preventDefault()
-    console.log(formValues)
     onSubmitCallback(formValues)
   }
 

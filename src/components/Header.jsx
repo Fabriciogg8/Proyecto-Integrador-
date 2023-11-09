@@ -9,12 +9,13 @@ const Header = () => {
     startLogout()
   }
 
+
   return (
     <header className='header'>
       <Navbar expand='lg' className='bg-dark-blue fixed-top'>
         <Container className='flex'>
           <Navbar.Brand href='/' className='me-auto'>
-            <img src='/logo-sinLetras.png' alt='' />
+            <img src='/logo-sinLetras.png' alt='' className='img'/>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse
@@ -39,17 +40,24 @@ const Header = () => {
                     Crear Cuenta
                   </Nav.Link>
                 </>
+              ) : user.role === 'ADMIN' ? (
+                <NavDropdown
+                  title={<span className='user-sub'>{user.firstName}</span>}
+                  id='basic-nav-dropdown'
+                >
+                  <NavDropdown.Item as={NavLink} to={'/admin-panel'}>
+                    Administración
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item onClick={logout}>
+                    Cerrar Sesión
+                  </NavDropdown.Item>
+                </NavDropdown>
               ) : (
                 <NavDropdown
                   title={<span className='user-sub'>{user.firstName}</span>}
                   id='basic-nav-dropdown'
                 >
-                  <NavDropdown.Item as={NavLink} to={'/1'}>
-                    Registrar Producto
-                  </NavDropdown.Item>
-                  <NavDropdown.Item as={NavLink} to={'/2'}>
-                    Otra cosa
-                  </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={logout}>
                     Cerrar Sesión

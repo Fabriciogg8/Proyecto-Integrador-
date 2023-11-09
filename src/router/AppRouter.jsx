@@ -8,9 +8,10 @@ import Footer from '../components/Footer'
 import { useEffect } from 'react'
 import { ProductDetails } from '../pages/ProductDetails'
 import Resultados from '../pages/Resultados'
+import { AdminPanel } from '../pages/AdminPanel'
 
 export const AppRouter = () => {
-  const { status, checkAuthToken } = useAuthStore()
+  const { status, user, checkAuthToken } = useAuthStore()
 
   useEffect(() => {
     checkAuthToken()
@@ -23,24 +24,27 @@ export const AppRouter = () => {
   return (
     <div className='app-container'>
       <Header />
-      <div className='main-container d-flex justify-content-center align-items-center'>
+      <div className='main-container'>
         <Routes>
           {status === 'not-authenticated' ? (
             <>
+              <Route path='/*' element={<Home />} />
               <Route path='/signin' element={<SignIn />} />
               <Route path='/signup' element={<SignUp />} />
               <Route path='/productdetails/:id' element={<ProductDetails />} />
-              <Route path='/' element={<Home />} />
               <Route path='/resultados' element={<Resultados/>} />
             </>
           ) : (
             <>
-              <Route path='/' element={<Home />} />
-              <Route path='/*' element={<Navigate to='/' />} />
+              <Route path='/*' element={<Home />} />
+              <Route path='/productdetails/:id' element={<ProductDetails />} />
+              {user.role === 'ADMIN' ? (
+                <Route path='/admin-panel/*' element={<AdminPanel />} />
+              ) : (
+                <Route path='/admin-panel/*' element={<Navigate to='/' />} />
+              )}
             </>
           )}
-
-          <Route path='/*' element={<Navigate to='/' />} />
         </Routes>
       </div>
       <Footer />

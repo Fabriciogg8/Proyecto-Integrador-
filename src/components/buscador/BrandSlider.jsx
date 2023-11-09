@@ -1,4 +1,4 @@
-import '../App.css'
+import '../../App.css'
 
 import godin from '/godin.jpg'
 import jackson from '/jackson.jpg'
