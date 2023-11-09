@@ -8,8 +8,9 @@ export const ProductDetails = () => {
   const { currentProduct, fetchCurrentProduct } = useContext(ProductContext)
 
   useEffect(() => {
+    console.log("ejecutando fetch a", id)
     fetchCurrentProduct(id)
-  }, [])
+  }, []);
 
   const producto = currentProduct
 
@@ -18,14 +19,13 @@ export const ProductDetails = () => {
   return (
     <ProductDetail
       key={producto.id}
-      categoria={producto.categoria}
-      nombre={producto.nombre}
-      marca={producto.marca}
-      color={producto.color}
-      material={producto.material}
-      precio={producto.precio}
-      descripcion={producto.descripcion}
-      caracteristicas={producto.caracteristicas}
+      categoria={producto.category}
+      nombre={producto.name}
+      marca={producto.brand}
+      precio={producto.price}
+      descripcion={producto.description}
+      caracteristicas={producto.description}
+      imagenes={producto.images}
     />
   )
 }
