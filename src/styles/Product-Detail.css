@@ -219,3 +219,27 @@ a img {
 .caracteristicasProd > hr {
   border: 1px solid var(--dorado);
 }
+
+.policy h1{
+  text-decoration: underline;
+  margin: 1rem 2rem;
+}
+
+.typePolicy{
+  display: flex;
+  flex-direction: row;
+}
+.typePolicy h5{
+  font-size: 1.5rem;
+  text-align: center;
+}
+.uso{
+  width: 50%;
+  margin: 2rem 3rem;
+  text-align: justify;
+}
+.almacenamiento{
+  width: 50%;
+  margin: 2rem 3rem;
+  text-align: justify;
+}
