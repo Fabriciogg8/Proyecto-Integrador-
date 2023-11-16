@@ -9,7 +9,7 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import ImageSlider from './ImageSlider'
 import { useState } from 'react'
 
-export const ProductDetail = ({
+const ProductDetail = ({
   categoria,
   nombre,
   marca,
@@ -99,3 +99,6 @@ export const ProductDetail = ({
     </div>
   )
 }
+
+
+export default ProductDetail
