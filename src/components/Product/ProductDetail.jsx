@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom'
 import '../../styles/Product-Detail.css'
 
-import prod from '../../../public/producto1.jpg'
+import prod from '/producto1.jpg'
 import { BsArrowLeft } from 'react-icons/bs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
