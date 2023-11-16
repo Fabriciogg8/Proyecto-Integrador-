@@ -3,7 +3,10 @@ import { createContext, useContext, useEffect, useReducer, useState } from "reac
 export const ContextGlobal = createContext(undefined);
 
 //Constantes
-const URL_BASE = 'http://52.201.124.42:8001'
+//const URL_BASE = 'http://52.201.124.42:8001'
+//const URL_BASE = 'http://localhost:8080'
+//const URL_BASE = 'http://35.173.235.150:8001'
+const URL_BASE = 'http://174.129.92.139:8001'
 const initStateApi = []
 
 const apiReducer = (state, action) =>{
@@ -40,6 +43,7 @@ const url = URL_BASE+'/api/v1/products';
       .then(res => res.json())
       .then(data => {
         let desordenados = data.content.sort(function() { return Math.random() - 0.5 })
+        //let desordenados = data.sort(function() { return Math.random() - 0.5 })
         dispatchApi({type : 'GET_API', payload: desordenados})
       })
       
