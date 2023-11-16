@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { useContext, useEffect } from 'react'
-import { ProductDetail } from '../components/product/ProductDetail.jsx'
+import { ProductDetail } from '../components/product/ProductDetail'
 import { ProductContext } from '../conexts/ProductContext'
 
 export const ProductDetails = () => {
