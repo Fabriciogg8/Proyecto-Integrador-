@@ -3,7 +3,7 @@ import CardProduct from './product/CardProduct'
 
 const ProductList = ({ products }) => {
   const [currentPage, setCurrentPage] = useState(1)
-  const productsPerPage = 10
+  const productsPerPage = 6
 
   const indexOfLastProduct = currentPage * productsPerPage
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage
