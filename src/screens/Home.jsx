@@ -5,6 +5,7 @@ import Buscador from '../components/Buscador'
 import BrandSlider from '../components/BrandSlider'
 import { useGlobalContext } from '../components/global.context';
 
+import CategoryProduct from '../components/CategoryProduct.jsx';
 
 const Home = () => { 
     const {apiState} =  useGlobalContext();
@@ -43,6 +44,7 @@ const Home = () => {
 
     <BrandSlider/>
 
+          <CategoryProduct/>
     </>
   )
 }

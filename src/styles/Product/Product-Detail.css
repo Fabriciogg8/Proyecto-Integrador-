@@ -233,3 +233,139 @@
     border: 1px solid var(--dorado);
 }
 
+/*---DETALLE GALERIA---*/
+
+
+
+.slider {
+    position: fixed;
+    top: 0; left:0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    z-index: 100;
+    background: rgba(0, 0, 0, .8);
+    
+    
+  }
+  
+  .image {
+    width: 50%;
+    height: 50%;
+    border-radius: 10px;
+    padding: 5%;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 920px){
+    .image {
+        width: 88%;
+        height: 50%;
+        border-radius: 10px;
+        padding: 5%;
+        margin: 0 auto;
+      }
+    }
+  
+  .right-arrow {
+    position: absolute;
+    top: 50%;
+    right: 45px;
+    font-size: 3rem;
+    color: rgb(255 255 255 / 53%);
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .left-arrow {
+    position: absolute;
+    top: 50%;
+    left: 45px;
+    font-size: 3rem;
+    color: rgb(255 255 255 / 53%);
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .slide {
+    opacity: 0;
+    transition-duration: 1s ease;
+  }
+  
+  .slide.active {
+    opacity: 1;
+    transition-duration: 0.5s;
+    transform: scale(1.06);
+  }
+
+
+
+/*----------------------*/
+
+
+
+
+/*.g-container{
+
+}
+
+.img-galery{
+
+}
+.popUpGalery{
+    position: fixed;
+    top: 0; left:0;
+    z-index: 100;
+    background: rgba(0, 0, 0, .8);
+    height: 100%;
+    width: 100%;
+
+
+}
+
+.popUpGalery img{
+    position: absolute;
+    top: 55%;left:50%;
+    transform: translate(-50%, -50%);
+    width: 520px;
+    border-radius: 5px;
+    border:3px solid #fff;
+    object-fit: cover;
+
+}
+
+.popUpGalery span{
+    position: absolute;
+    top: 8%;right:35px;
+    font-size: 60px;
+    font-weight: bolder;
+    color: #fff;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.buttons-gallery{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    
+
+}
+
+.buttons-gallery button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff5;
+    color: #fff;
+    border: none;
+}
+*/
+
