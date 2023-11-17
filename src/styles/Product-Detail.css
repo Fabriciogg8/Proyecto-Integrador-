@@ -224,3 +224,78 @@ a img {
 .caracteristicasProd > hr {
   border: 1px solid var(--dorado);
 }
+
+
+/*---DETALLE GALERIA---*/
+
+
+
+.slider {
+  position: fixed;
+  top: 0; left:0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  z-index: 100;
+  background: rgba(0, 0, 0, .8);
+  
+  
+}
+
+.image {
+  width: 50%;
+  height: 50%;
+  border-radius: 10px;
+  padding: 5%;
+  margin: 0 auto;
+}
+
+@media (max-width: 920px){
+  .image {
+      width: 88%;
+      height: 50%;
+      border-radius: 10px;
+      padding: 5%;
+      margin: 0 auto;
+    }
+  }
+
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  right: 45px;
+  font-size: 3rem;
+  color: rgb(255 255 255 / 53%);
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.left-arrow {
+  position: absolute;
+  top: 50%;
+  left: 45px;
+  font-size: 3rem;
+  color: rgb(255 255 255 / 53%);
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.slide {
+  opacity: 0;
+  transition-duration: 1s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  transition-duration: 0.5s;
+  transform: scale(1.06);
+}
+
+
+
+/*----------------------*/

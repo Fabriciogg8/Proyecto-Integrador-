@@ -127,7 +127,7 @@ const ProductCreate = () => {
                     onSubmit={handleSubmit}
                     className='px-md-2'
                     method='post'
-                    action='http://52.201.124.42:8001/api/v1/products'
+                    action='http://174.129.92.139:8001/api/v1/products'
                   >
                     <div className='margin-labels mb-4'>
                       <label htmlFor=''>Name</label>
