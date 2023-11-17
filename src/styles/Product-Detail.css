@@ -140,6 +140,11 @@ a img {
   cursor: pointer;
 }
 
+.text-start-second {
+  display: flex;
+  flex-direction: row;
+}
+
 .title-a {
   text-decoration: none;
   font-weight: 600;

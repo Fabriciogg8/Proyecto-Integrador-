@@ -4,8 +4,10 @@ import { BsArrowLeft } from 'react-icons/bs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import producto from '/producto1.jpg'
+import ShareButton from '../ShareButton'
 
-export const ProductDetail = ({
+export const ProductDetail = (
+  {
   categoria,
   nombre,
   marca,
@@ -21,7 +23,8 @@ export const ProductDetail = ({
             <h1 className='mb-0'>{nombre}</h1>
             <p className='title-a mb-0'>{categoria}</p>
           </div>
-          <div className='text-start'>
+          <div className='text-start-second'>
+          <ShareButton name={nombre} description={descripcion} image={producto}/>
             <button className='btn btn-light'>
               <Link to='/'>
                 <BsArrowLeft className='iconBack' />
