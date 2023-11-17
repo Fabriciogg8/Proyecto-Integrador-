@@ -1,6 +1,7 @@
-import '../../styles/Cards.css'
-
-import guitarras from '/guitarras.jpg'
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
+import '../../styles/Cards.css';
+import guitarras from '/guitarras.jpg';
 
 function CardCategory() {
   return (
@@ -11,7 +12,7 @@ function CardCategory() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default CardCategory
+export default CardCategory;

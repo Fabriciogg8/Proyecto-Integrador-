@@ -28,3 +28,12 @@ li{
         margin-left: 15rem; 
     }
 }
+
+  .listaCategorias, .productosFiltrados {
+    width: 48%; /* o ajusta según tu diseño */
+  }
+
+  button {
+    margin-top: 15px;
+
+  } 
