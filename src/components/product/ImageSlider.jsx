@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../styles/Product/Product-Detail.css'
+import '../../styles/Product-Detail.css'
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 
 const ImageSlider = ({ slides, show }) => {
