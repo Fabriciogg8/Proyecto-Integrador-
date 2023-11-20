@@ -1,18 +1,47 @@
-import '../../styles/Product-Detail.css'
 import {Link} from 'react-router-dom'
+import '../../styles/Product-Detail.css'
+
+import prod from '/producto1.jpg'
 import { BsArrowLeft } from 'react-icons/bs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-import producto from '/producto1.jpg'
 
-export const ProductDetail = ({
+import ImageSlider from './ImageSlider'
+import { useState } from 'react'
+
+const ProductDetail = ({
   categoria,
   nombre,
   marca,
   precio,
   descripcion,
 }) => {
-
+    const [showG, setShowG] = useState(null);
+    const showGallery = (showG) =>{
+        setShowG(showG);
+      };
+      const data = [
+        {
+          image:
+            'https://images.unsplash.com/photo-1546768292-fb12f6c92568?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+        },
+        {
+          image:
+            'https://images.unsplash.com/photo-1501446529957-6226bd447c46?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1489&q=80'
+        },
+        {
+          image:
+            'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80'
+        },
+        {
+          image:
+            'https://images.unsplash.com/photo-1475189778702-5ec9941484ae?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1351&q=80'
+        },
+        {
+          image:
+            'https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80'
+        }
+      ];
   return (
     <div className='everyDetail'>
       <section className='top-section'>
@@ -31,15 +60,17 @@ export const ProductDetail = ({
         </div>
       </section>
       <div>
-        <div className='contenedorGalery'>
-          <div className='galeryContainer'>
-            <img src={producto} className='galleryImg' alt='imagen' />
-            <img src={producto} className='galleryImg' alt='imagen' />
-            <img src={producto} className='galleryImg' alt='imagen' />
-            <img src={producto} className='galleryImg' alt='imagen' />
-            <img src={producto} className='galleryImg' alt='imagen' />
-          </div>
-        </div>
+      <div className='contenedorGalery'>
+                <div className='galeryContainer g-container'>
+                    <img src={prod} className='prodDetailGallery' alt="" onClick={() => showGallery(true)}/>
+                    <img src={prod} className='prodDetailGallery' alt="" />
+                    <img src={prod} className='prodDetailGallery' alt="" />
+                    <img src={prod} className='prodDetailGallery' alt="" />
+                    <img src={prod} className='prodDetailGallery' alt="" />
+                </div>
+            </div>
+            {<ImageSlider slides={data} show={showG} />}
+
         <section className='descripYCaract'>
           <div className='descripcionProd'>
             <h4>Detalles</h4>
@@ -68,3 +99,6 @@ export const ProductDetail = ({
     </div>
   )
 }
+
+
+export default ProductDetail;
