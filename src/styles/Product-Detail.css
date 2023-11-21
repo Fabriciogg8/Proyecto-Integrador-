@@ -38,6 +38,11 @@
   align-items: center;
 }
 
+.text-start-second {
+  display: flex;
+  flex-direction: row;
+}
+
 .contTituloProd {
   display: flex;
   flex-direction: column;
@@ -138,6 +143,11 @@ a img {
   transform: scale(1.1);
   transition: all 0.3s linear;
   cursor: pointer;
+}
+
+.text-start-second {
+  display: flex;
+  flex-direction: row;
 }
 
 .title-a {
