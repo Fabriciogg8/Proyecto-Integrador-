@@ -5,11 +5,9 @@ import prod from '/producto1.jpg'
 import { BsArrowLeft } from 'react-icons/bs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-
 import ImageSlider from './ImageSlider'
-import { useState } from 'react'
 
-const ProductDetail = ({
+export const ProductDetail = ({
   categoria,
   nombre,
   marca,
