@@ -73,7 +73,6 @@ const ShareButton = ({name, description, image}) => {
         <section>
             <button className='btn-modal' onClick={toggleModal}>
             <svg  className="share-icon-button" viewBox="-1 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlnssketch="http://www.bohemiancoding.com/sketch/ns">
-                <title>share</title>
                 <defs>
                 </defs>
                     <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" sketchtype="MSPage">

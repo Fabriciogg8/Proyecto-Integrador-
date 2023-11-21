@@ -6,12 +6,10 @@ function CategoryProduct() {
 
   return (
     <>
-      
         <div className="col-md-8 card-space administrationCardContainer">
         <div className="card text-center administration-card">
                 <div className="text-light">
                   <h2 className="card-title">Asignar Categoría</h2>
-
                     <div className='inputsCardContainer'>
                         <select className="form-select" name="selectProductos" id="selectProductos">
                             <option value="DEFAULT" disabled>Seleccione un instrumento existente...</option>
@@ -30,8 +28,6 @@ function CategoryProduct() {
                 </div>
             </div>
         </div>
-
-     
     </>
   )
 }

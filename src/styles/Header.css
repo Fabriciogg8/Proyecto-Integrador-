@@ -35,7 +35,7 @@
 }
 
 .button {
-  color: #be9e44;
+  color: var(--headings-text-color);
   border: none;
 }
 
@@ -51,7 +51,7 @@
 }
 
 .opt-dropdown {
-  color: #be9e44;
+  color: var(--headings-text-color);
   background-color: #262b3d;
   border: none;
 }
