@@ -52,7 +52,7 @@
 
 .opt-dropdown {
   color: var(--headings-text-color);
-  background-color: #262b3d;
+  background-color: var(--header-background-color);
   border: none;
 }
 

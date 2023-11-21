@@ -9,9 +9,9 @@
 
 .input-values-instruments {
     background-color: white;
-    border: 1px solid #be9e44;
+    border: 1px solid var(--primary-button-background-color);
     border-radius: 5px;
-    color: #262b3d;
+    color: var(--header-background-color);
     padding: 5px;
 }
 
@@ -59,20 +59,20 @@ input[type="file"]{
 
 .submitt {
     display: block;
-    background-color: #d8c690;
+    background-color: var(--secondary-button-text-color);
     margin-top: 2vh;
 }
 
 .form-background {
     background-color: #4e577b;
-    border: 3px solid #262b3d;
-    color: #be9e44;
+    border: 3px solid var(--header-background-color);
+    color: var(--primary-button-background-color);
 }
 
 .form-select {
     background-color: #4e577b;
     border: 2px solid var(--headings-text-color);
-    color: #d8c690;
+    color: var(--secondary-button-text-color);
 }
 
 .form-select:active {

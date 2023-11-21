@@ -5,7 +5,7 @@
 .contenedorBuscador h1 {
   color: var(--dorado);
   font-size: 2em;
-  text-shadow: 1px 1px 3px #d8c690;
+  text-shadow: 1px 1px 3px var(--secondary-button-text-color);
 }
 
 .contenedorBuscador p {
