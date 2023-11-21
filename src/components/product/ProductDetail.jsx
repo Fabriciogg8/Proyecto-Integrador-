@@ -6,6 +6,7 @@ import { BsArrowLeft } from 'react-icons/bs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import ImageSlider from './ImageSlider'
+import {useState} from 'react'
 
 export const ProductDetail = ({
   categoria,
