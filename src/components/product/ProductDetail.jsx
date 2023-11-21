@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
 import '../../styles/Product-Detail.css'
-
+import ShareButton from '../ShareButton'
 import prod from '/producto1.jpg'
 import { BsArrowLeft } from 'react-icons/bs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -50,7 +50,8 @@ const ProductDetail = ({
             <h1 className='mb-0'>{nombre}</h1>
             <p className='title-a mb-0'>{categoria}</p>
           </div>
-          <div className='text-start'>
+          <div className='text-start-second'>
+            <ShareButton name={nombre} description={descripcion} image={prod}/>
             <button className='btn btn-light'>
               <Link to='/'>
                 <BsArrowLeft className='iconBack' />

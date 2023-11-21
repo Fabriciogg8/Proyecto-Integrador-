@@ -38,6 +38,11 @@
   align-items: center;
 }
 
+.text-start-second {
+  display: flex;
+  flex-direction: row;
+}
+
 .contTituloProd {
   display: flex;
   flex-direction: column;
