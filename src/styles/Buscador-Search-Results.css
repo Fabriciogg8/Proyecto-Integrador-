@@ -1,0 +1,31 @@
+.search-results-page .search-bar-wrapper {
+    margin-bottom: 10px;
+}
+
+.search-results-page .search-bar {
+    top: 0;
+    width: 100%;
+    border-radius: 0;
+    padding: 25px;
+}
+.search-results-page .search-bar-title{
+    margin-bottom: 1rem;
+}
+
+.search-results-title h4 {
+    display: inline-block;
+}
+
+.search-results-title {
+    color: var(--headings-text-color);
+    font-size: 22px;
+}
+
+.no-results-found-text {
+    color: var(--body-text-color-inverted);
+}
+
+.no-results-found-wrapper {
+    margin-top: 10px;
+    padding: 20px;
+}

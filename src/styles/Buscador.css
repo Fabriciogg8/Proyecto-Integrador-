@@ -1,18 +1,156 @@
-.contenedorBuscador {
-  background-color: var(--azul-oscuro);
+
+.search-bar {
+  padding: 35px 20px;
+  background-color: var(--secondary-background-color);
+} 
+
+.search-bar h5 {
+  color: white;
 }
 
-.contenedorBuscador h1 {
-  color: var(--dorado);
-  font-size: 2em;
-  text-shadow: 1px 1px 3px #d8c690;
+.search-bar button {
+  box-shadow: none;
 }
 
-.contenedorBuscador p {
-  color: var(--amarillo-claro);
-  font-size: 1em;
+.react-datepicker__input-container input{
+    background: var(--secondary-button-text-color-hover);
+    color: #4f4f4f;
+    border-radius: 0.25rem;
+    height: calc(2.645rem + 2px);
+    box-shadow: none;
+    font-size: 1rem;
+    padding-top: 0.33rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #bdbdbd;
+    padding-bottom: 0.33rem;
 }
 
-.logo-buscador {
-  height: 100px;
+.react-datepicker__input-container input:focus, .input-field-wrapper .form-control:focus {
+  transition: all .2s linear;
+  border-color: var( --secondary-foreground-color);
+  outline: 0;
+  box-shadow: inset 0 0 0 1px var( --secondary-foreground-color);
+}
+
+.input-field-wrapper:has(.form-control:focus) .input-wrapper span, .datepicker-wrapper:has(.react-datepicker__input-container input:focus) .input-wrapper span {
+
+  border-color: var( --secondary-foreground-color);
+  background-color: var( --secondary-foreground-color);
+  color: var(--secondary-background-color);
+  box-shadow: inset 0 0 0 1px var( --secondary-foreground-color);
+}
+
+
+.react-datepicker__day--in-selecting-range:not(.react-datepicker__day--in-range) {
+  background-color: var(--secondary-foreground-color) !important;
+  color: var( --secondary-background-color) !important;
+}
+
+.react-datepicker__day--in-range, .react-datepicker__day--selected {
+  background-color: var(--secondary-foreground-color) !important;
+  color: var( --secondary-background-color) !important;
+}
+
+.datepicker-wrapper {
+  position: relative;
+}
+
+.row { 
+  align-items: flex-end !important;
+  justify-content: center;
+}
+
+.btn {
+  height: calc(2.645rem + 2px);
+}
+
+.btn svg {
+  margin-right: 5px;
+}
+.input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper>span {
+  background-color: var(--secondary-button-text-color-hover);
+  border-top: 1px solid #bdbdbd;
+  border-left: 1px solid #bdbdbd;
+  border-bottom: 1px solid #bdbdbd;
+  line-height: 2.15;
+  height: calc(2.645rem + 2px);
+  padding: 3.68px .5rem;
+  color: var(--secondary-foreground-color);
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.input-field-wrapper .form-control, .react-datepicker-wrapper input{
+  border-top: 1px solid #bdbdbd;
+  border-right: 1px solid #bdbdbd;
+  border-left: transparent;
+  border-bottom: 1px solid #bdbdbd;
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+
+.search-bar-button {
+  position: sticky;
+  text-align: right;
+  top:150px;
+  opacity: 0;
+  z-index: -1;
+  height: 0;
+}
+
+.search-bar-button.show-search-bar-button {
+  opacity: 1;
+  z-index: 2;
+  height: auto;
+}
+
+.search-bar-button button {
+  border-radius: .5rem 0 0 .5rem;
+  background-color: var(--secondary-foreground-color);
+  font-size: 18px;
+  padding: .5rem 1rem;
+  box-shadow: 0 0px 10px 2px rgba(211, 201, 201, 0.274);
+}
+
+.search-bar-title {
+  margin-bottom: 2rem;
+}
+.search-bar-label {
+  color: var(--body-text-color);
+}
+label {
+  margin-bottom: 10px;
+}
+
+
+@media(min-width: 768px) {
+  .search-bar-wrapper {
+    height: 200px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .search-bar {
+    padding: 35px;
+    border-radius: 5px;
+    position: absolute;
+    top: -100px;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 15px 3px rgba(0,0,0,0.3);
+  } 
+}
+
+@media (max-width: 767px) {
+  .button-wrapper, label {
+    margin-top: 15px;
+  }
+  .button-wrapper .btn, input, .react-datepicker-wrapper {
+    width: 100% !important;
+  }
 }
