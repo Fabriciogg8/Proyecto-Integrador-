@@ -6,13 +6,14 @@ import  ProductDetail  from "../components/product/ProductDetail"
 
 export const ProductDetails = () => {
   const { id } = useParams()
-  const { currentProduct, fetchCurrentProduct } = useContext(ProductContext)
+
+  const { state, fetchCurrentProduct } = useContext(ProductContext)
 
   useEffect(() => {
     fetchCurrentProduct(id)
   }, []);
 
-  const producto = currentProduct
+  const producto = state.currentProduct
 
   console.log(producto)
 

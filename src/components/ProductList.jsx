@@ -19,14 +19,21 @@ const ProductList = ({ products, currentPage, nextPage, prevPage, goToFirstPage,
   return (
     <div>
       <div className='row cardsContainers'>
-        {currentProducts.map((instrumento) => (
-          <CardProduct
-            key={instrumento.id}
-            id={instrumento.id}
-            name={instrumento.name}
-            price={instrumento.price}
-          />
-        ))}
+        {currentProducts.map(instrumento => {
+          const imagen =
+            instrumento.images && instrumento.images.length > 0 
+              ? instrumento.images[0]
+              : null
+          return (
+            <CardProduct
+              key={instrumento.id}
+              id={instrumento.id}
+              name={instrumento.name}
+              price={instrumento.price}
+              image={imagen}
+            />
+          )
+        })}
       </div>
       <Pagination
         currentPage={currentPage}
@@ -41,3 +48,4 @@ const ProductList = ({ products, currentPage, nextPage, prevPage, goToFirstPage,
 };
 
 export default ProductList;
+
