@@ -21,7 +21,7 @@
 .containerDetail2 {
   display: flex;
   justify-content: center;
-  background-color: #262b3d;
+  background-color: var(--header-background-color);
   padding-bottom: 7vh;
   padding-top: 7vh;
 }
@@ -60,49 +60,49 @@
 
 .descripcionInstrumento {
   margin: 0vh 1vw 0 0vw;
-  border: #be9e44 2px solid;
+  border: var(--headings-text-color) 2px solid;
   border-radius: 10px;
   padding: 1.5vw;
 }
 
 .descripcionInstrumento span {
   font-size: 3vh;
-  color: #d8c690;
+  color: var(--secondary-button-text-color);
 }
 
 .descripcionInstrumento p {
   margin-top: 5vh;
-  color: #d8c690;
+  color: var(--secondary-button-text-color);
 }
 
 .detallesInstrumento {
   margin: 0vh 0vw 0vh 4vw;
   padding: 1.5vw;
-  border: #be9e44 2px solid;
+  border: var(--headings-text-color) 2px solid;
   border-radius: 10px;
 }
 
 hr {
-  border-color: #be9e44;
+  border-color: var(--headings-text-color);
 }
 
 .detallesInstrumento span {
   font-size: 3vh;
-  color: #d8c690;
+  color: var(--secondary-button-text-color);
 }
 .detallesInstrumento span {
   font-size: 3vh;
-  color: #d8c690;
+  color: var(--secondary-button-text-color);
 }
 
 .detallesInstrumento p {
   margin-top: 5vh;
-  color: #d8c690;
+  color: var(--secondary-button-text-color);
   padding-bottom: 4px;
 }
 
 a img {
-  border: #be9e44 3px solid;
+  border: var(--headings-text-color) 3px solid;
 }
 
 .btn-previous {
@@ -123,7 +123,7 @@ a img {
 .title-a {
   text-decoration: none;
   color: inherit;
-  color: #be9e44;
+  color: var(--headings-text-color);
   font-weight: 600;
   font-size: 3vh;
 }
