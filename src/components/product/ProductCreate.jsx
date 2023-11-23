@@ -20,8 +20,10 @@ const ProductCreate = () => {
       formData.append('price', parseFloat(formData.get('price')));
       formData.append('discount', parseInt(formData.get('discount')));
       
-      for (let i = 0; i < selectedFiles.length; i++) {
-        formData.append(`images[${i}]`, selectedFiles[i]);
+      if(selectedFiles.length > 0){
+        for (let i = 0; i < selectedFiles.length; i++) {
+          formData.append('images', selectedFiles[i]);
+        }
       }
 
         try {
@@ -38,7 +40,9 @@ const ProductCreate = () => {
                 const responseData = await response.json();
                 console.log(responseData)
             }
-            
+            formData.forEach((value, key) => {
+              console.log(`${key}: ${value}`);
+          });
         } catch (error) {
             console.error('Error en la solicitud: ', error)
         }
