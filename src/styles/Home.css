@@ -13,7 +13,7 @@
 }
 
 .titulosCategorias {
-  background-color: #be9e44;
+  background-color: var(--headings-text-color);
   padding: 2px;
   width: 80%;
   color: white;

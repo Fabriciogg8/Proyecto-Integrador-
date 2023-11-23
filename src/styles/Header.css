@@ -39,7 +39,7 @@ nav {
 }
 
 .button {
-  color: #be9e44;
+  color: var(--headings-text-color);
   border: none;
 }
 
@@ -55,8 +55,8 @@ nav {
 }
 
 .opt-dropdown {
-  color: #be9e44;
-  background-color: #262b3d;
+  color: var(--headings-text-color);
+  background-color: var(--header-background-color);
   border: none;
 }
 

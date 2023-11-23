@@ -1,0 +1,126 @@
+.btn-modal {
+    border: none;
+    background-color: transparent;
+}
+
+.share-icon-button {
+    height: 6vh;
+    background-color: transparent;
+}
+
+.share-icon-button:hover path {
+    fill: white;
+}
+
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(73, 73, 73, 0.8) !important;
+    z-index: 998;
+}
+.modal-content {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background-color: #4e577b;
+    padding: 14px 28px;
+    border-radius: 3px;
+    max-width: 600px;
+    min-width: 300px;
+    z-index: 999;
+    border: 3px solid gray;
+}
+
+.modal-content h2 {
+    font-size: 260%;
+}
+
+.custom-svg {
+    height: 4.6vh;
+    width: 9vw;
+    padding-left: 4vw;
+}
+
+.custom-svg circle, .custom-svg path {
+    stroke: var(--headings-text-color);
+}
+
+.custom-svg:hover circle, .custom-svg:hover path {
+    stroke: #fff;
+  }
+
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    padding: 5px 7px;
+    border: none;
+    background-color: transparent;
+}
+
+.copy-to-clipboard {
+    height: 3.5vh;
+}
+
+.display-copies {
+    display: flex;
+    justify-content: space-between;
+}
+.btn-copy-to-clipboard{
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 5px;
+    margin: 5px 0 0 3px;
+}
+
+.input-disabled {
+    width: 100%;
+    background-color: white;
+    border: 3px solid black;
+    color: black;
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.social-network-img {
+    height: 6.5vh;
+}
+
+.buttons-social-networks {
+    display: flex;
+    justify-content: space-around;
+    background-color: #a6b0d6;
+    border: 3px solid var(--header-background-color);
+}
+
+.buttons-social-networks button{
+    background-color: transparent;
+    border: none;
+}
+
+.input-desc {
+    background-color: white;
+    color: black;
+    border: 3px solid black;
+    padding: 8px;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+
+::placeholder {
+    color:black;
+}

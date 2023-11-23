@@ -42,7 +42,7 @@
 
 .cardButton {
   width: 50%;
-  color: #262b3d;
+  color: var(--header-background-color);
   font-weight: 700;
   background-color: #eea726;
   padding: 1%;
