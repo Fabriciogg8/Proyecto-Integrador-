@@ -57,3 +57,11 @@
   transform: translateY(-5px);
   transition: transform 0.3s ease-in-out;
 }
+
+/*------CARD POLICY----*/
+.policy h5{
+  color: var(--headings-text-color);
+}
+.policy p{
+  color: var(--body-text-color-inverted);
+}
