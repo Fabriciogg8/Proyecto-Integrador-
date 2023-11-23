@@ -1,3 +1,7 @@
+.carousel.slide {
+    opacity: 1;
+}
+
 .carousel-inner {
     height: 400px;
 }
@@ -66,7 +70,7 @@
     .hero-text {
         font-size: 20px;
     }
-    .overlay {
+    .carousel-overlay {
         height: 100%;
         width: 100%;
         position: absolute;
@@ -78,7 +82,7 @@
         opacity: 1;
     }
     .carousel-inner {
-        height: 600px;
+        height: 500px;
     }
     .carousel-control-next {
         padding-right: 30px;
