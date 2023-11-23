@@ -21,8 +21,8 @@ const ProductCreate = () => {
             model: formData.get('model'),
             description: formData.get('description'),
             price: priceFloatData,
-            discount: discountIntData,
-            images: selectedFiles
+            discount: discountIntData
+            
             /*Comentado hasta pulir detalles (Probar con detalles de guitarra primero y seguir después con los demás)
             tipo_cuerda: formData.get(document.getElementById('tipo_cuerda')),
             cantidad_cuerdas: formData.get(document.getElementById('cant_cuerda')),
@@ -41,9 +41,10 @@ const ProductCreate = () => {
         try {
             const response = await fetch(CREATE_PRODUCT, {
               method: 'POST',
+              mode: 'no-cors',
               headers: {
                 'Content-type': 'multipart/form-data',
-                Authorization: `${token}`,
+                Authorization: token,
               },
               body: JSON.stringify(data),
             })
@@ -51,12 +52,11 @@ const ProductCreate = () => {
             if (response.ok) {
                 const responseData = await response.json();
                 console.log(responseData)
-            } else {
-                console.log('Error al enviar la solicitud al servidor')
             }
         } catch (error) {
             console.error('Error en la solicitud: ', error)
         }
+        console.log(data)
     }
 
     
@@ -127,7 +127,7 @@ const ProductCreate = () => {
                     onSubmit={handleSubmit}
                     className='px-md-2'
                     method='post'
-                    action='http://52.201.124.42:8001/api/v1/products'
+                    action='http://174.129.92.139:8001/api/v1/products'
                   >
                     <div className='margin-labels mb-4'>
                       <label htmlFor=''>Name</label>

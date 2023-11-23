@@ -31,5 +31,11 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'react/prop-types': 'off',
+    'react/no-unknown-property': [
+      'error',
+      {
+        ignore: ['sketchtype', 'xmlnssketch'], 
+      },
+    ],
   },
 }
