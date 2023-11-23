@@ -10,53 +10,39 @@ const ProductCreate = () => {
       };
     const token = localStorage.getItem('token');
     const handleSubmit = async (event) => {
-        event.preventDefault()
-        const formData = new FormData(event.target);
-        const priceFloatData = parseFloat(formData.get('price'));
-        const discountIntData = parseInt(formData.get('discount'));
-        const data = {
-            name: formData.get('name'),
-            category: selectedCategory,
-            brand: formData.get('brand'),
-            model: formData.get('model'),
-            description: formData.get('description'),
-            price: priceFloatData,
-            discount: discountIntData
-            
-            /*Comentado hasta pulir detalles (Probar con detalles de guitarra primero y seguir después con los demás)
-            tipo_cuerda: formData.get(document.getElementById('tipo_cuerda')),
-            cantidad_cuerdas: formData.get(document.getElementById('cant_cuerda')),
-            guitarra_cuerpo: formData.get(document.getElementById('tipo_cuerpo')),
-            guitarra_tamano: formData.get(document.getElementById('tamanio')),
-            incluye_funda: formData.get(document.getElementById('funda')),*/
-            
-
-            /* piano_sensibilidad: formData.get('piano_sensibilidad'),
-            teclas_cantidad: formData.get('teclas_cantidad'),
-            viento_terminacion_laca: formData.get('viento_terminacion_laca'),
-            percusion_cantidad_cuerpos: formData.get('percusion_cantidad_cuerpos'),
-            percusion_incluye_platillo: formData.get('percusion_incluye_platillo'),*/
-        }
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      formData.append('name', formData.get('name'));
+      formData.append('category', selectedCategory);
+      formData.append('brand', formData.get('brand'))
+      formData.append('model', formData.get('model'));
+      formData.append('description', formData.get('description'));
+      formData.append('price', parseFloat(formData.get('price')));
+      formData.append('discount', parseInt(formData.get('discount')));
+      
+      for (let i = 0; i < selectedFiles.length; i++) {
+        formData.append(`images[${i}]`, selectedFiles[i]);
+      }
 
         try {
             const response = await fetch(CREATE_PRODUCT, {
               method: 'POST',
-              mode: 'no-cors',
+              mode: 'cors',
               headers: {
-                'Content-type': 'multipart/form-data',
-                Authorization: token,
+                'Authorization': `${token}`,
               },
-              body: JSON.stringify(data),
-            })
-            console.log(data);
+              body: formData,
+            });
+            console.log(formData);
             if (response.ok) {
                 const responseData = await response.json();
                 console.log(responseData)
             }
+            
         } catch (error) {
             console.error('Error en la solicitud: ', error)
         }
-        console.log(data)
+        console.log(formData)
     }
 
     
@@ -127,7 +113,7 @@ const ProductCreate = () => {
                     onSubmit={handleSubmit}
                     className='px-md-2'
                     method='post'
-                    action='http://174.129.92.139:8001/api/v1/products'
+                    action={CREATE_PRODUCT}
                   >
                     <div className='margin-labels mb-4'>
                       <label htmlFor=''>Name</label>
