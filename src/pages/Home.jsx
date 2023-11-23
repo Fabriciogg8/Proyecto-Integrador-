@@ -6,17 +6,16 @@ import Buscador from '../components/buscador/Buscador'
 import BrandSlider from '../components/buscador/BrandSlider'
 import { ProductContext } from '../conexts/ProductContext'
 import ProductList from '../components/ProductList'
-
+import Hero from '../components/hero/Hero'
 
 const Home = () => {
-  const { products, fetchProducts } = useContext(ProductContext)
-
+  const { state, fetchProducts } = useContext(ProductContext);
   useEffect(() => {
     fetchProducts()
   }, [])
 
 
-  const instrumentos = products
+  const instrumentos = state.products
 
   const categorias = [
     { id: 1, name: 'Guitarras', img: 'url_guitarras.jpg' },
@@ -36,8 +35,9 @@ const Home = () => {
 
   return (
     <>
+    <Hero />
+    <Buscador />
       <Container>
-        <Buscador />
         <div className='card-container d-flex flex-row overflow-auto justify-content-start'>
           {' '}
           {categorias.length
