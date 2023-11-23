@@ -5,13 +5,14 @@ import { ProductContext } from '../conexts/ProductContext'
 
 export const ProductDetails = () => {
   const { id } = useParams()
-  const { currentProduct, fetchCurrentProduct } = useContext(ProductContext)
+
+  const { state, fetchCurrentProduct } = useContext(ProductContext)
 
   useEffect(() => {
     fetchCurrentProduct(id)
   }, []);
 
-  const producto = currentProduct
+  const producto = state.currentProduct
 
   console.log(producto)
 

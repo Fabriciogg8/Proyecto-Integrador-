@@ -35,7 +35,7 @@ const ProductList = ({ products }) => {
       <div className='row cardsContainers'>
         {currentProducts.map(instrumento => {
           const imagen =
-            instrumento.images && instrumento.images.length > 0
+            instrumento.images && instrumento.images.length > 0 
               ? instrumento.images[0]
               : null
           return (
@@ -69,4 +69,4 @@ const ProductList = ({ products }) => {
   )
 }
 
-export default ProductList
+export default ProductList;
