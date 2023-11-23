@@ -3,12 +3,13 @@ import { SignIn } from '../pages/SignIn'
 import { SignUp } from '../pages/SignUp'
 import Home from '../pages/Home'
 import { useAuthStore } from '../hooks/useAuthStore'
-import Header from '../components/Header'
+import Header from '../components/header/Header'
 import Footer from '../components/Footer'
 import { useEffect } from 'react'
 import { ProductDetails } from '../pages/ProductDetails'
 import Resultados from '../pages/Resultados'
 import { AdminPanel } from '../pages/AdminPanel'
+import  SearchResults  from '../pages/SearchResults'
 
 export const AppRouter = () => {
   const { status, user, checkAuthToken } = useAuthStore()
@@ -32,7 +33,7 @@ export const AppRouter = () => {
               <Route path='/signin' element={<SignIn />} />
               <Route path='/signup' element={<SignUp />} />
               <Route path='/productdetails/:id' element={<ProductDetails />} />
-              <Route path='/resultados' element={<Resultados/>} />
+              <Route path='/resultados' element={<SearchResults/>} />
             </>
           ) : (
             <>
