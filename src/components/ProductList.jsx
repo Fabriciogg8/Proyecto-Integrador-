@@ -1,41 +1,27 @@
-import { useState } from 'react'
-import CardProduct from './product/CardProduct' 
+// eslint-disable-next-line no-unused-vars
+import React, { useEffect, useState } from 'react';
+import CardProduct from './product/CardProduct';
+import Pagination from './Pagination';
 
-const ProductList = ({ products }) => {
-  const [currentPage, setCurrentPage] = useState(1)
-  const productsPerPage = 10
+export const productsPerPage = 6;
 
-  const indexOfLastProduct = currentPage * productsPerPage
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage
-  const currentProducts = products.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct,
-  )
+const ProductList = ({ products, currentPage, nextPage, prevPage, goToFirstPage, productsPerPage }) => {
+  const [totalPages, setTotalPages] = useState(1);
 
-  const totalPages = Math.ceil(products.length / productsPerPage)
+  useEffect(() => {
+    setTotalPages(Math.ceil(products.length / productsPerPage));
+  }, [products, productsPerPage]);
 
-  const nextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1)
-    }
-  }
-
-  const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1)
-    }
-  }
-
-  const goToFirstPage = () => {
-    setCurrentPage(1)
-  }
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
   return (
-    <>
+    <div>
       <div className='row cardsContainers'>
         {currentProducts.map(instrumento => {
           const imagen =
-            instrumento.images && instrumento.images.length > 0
+            instrumento.images && instrumento.images.length > 0 
               ? instrumento.images[0]
               : null
           return (
@@ -48,25 +34,18 @@ const ProductList = ({ products }) => {
             />
           )
         })}
-
-        {/* Bloque de paginación*/}
-        <div className='pagination'>
-          <button onClick={prevPage} disabled={currentPage === 1}>
-            Anterior
-          </button>
-          <button onClick={nextPage} disabled={currentPage === totalPages}>
-            Siguiente
-          </button>
-          <button onClick={goToFirstPage} disabled={currentPage === 1}>
-            Ir al Inicio
-          </button>
-          <span>
-            Página {currentPage} de {totalPages}
-          </span>
-        </div>
       </div>
-    </>
-  )
-}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        nextPage={nextPage}
+        prevPage={prevPage}
+        goToFirstPage={goToFirstPage}
+        productsPerPage={productsPerPage}
+      />
+    </div>
+  );
+};
 
-export default ProductList
+export default ProductList;
+

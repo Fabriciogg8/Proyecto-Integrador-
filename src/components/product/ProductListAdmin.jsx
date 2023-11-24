@@ -5,14 +5,13 @@ import { DELETE_PRODUCT } from '../../helpers/endpoints'
 
 export const ProductList = () => {
 
-    const { products, fetchProducts } = useContext(ProductContext)
-
+    const { state, fetchProducts } = useContext(ProductContext)
     useEffect(() => {
       fetchProducts()
     }, [])
 
 
-  const instrumentos = products
+  const instrumentos = state.products
 
   const handleEdit = id => {
     // Lógica para editar el producto con el ID dado
