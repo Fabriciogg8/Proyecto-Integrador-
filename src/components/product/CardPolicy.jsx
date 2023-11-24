@@ -1,3 +1,5 @@
+import '../../styles/Cards.css'
+
 const CardPolicy = () =>{
     return(
         <div className="policy">
