@@ -6,10 +6,12 @@ import ProductList from '../components/ProductList'
 import { ProductContext } from '../conexts/ProductContext';
 import '../styles/Buscador-Search-Results.css'
 
+export const productsPerPage = 6;
 
 const SearchResults = () => {
     const [searchTitle, setSearchTitle] = useState("");
     const { state, findProductsByName } = useContext(ProductContext);
+    const [currentPage, setCurrentPage] = useState(1);
     
     useEffect(() => {
         if(searchTitle) {
@@ -25,6 +27,24 @@ const SearchResults = () => {
         setSearchTitle(searchName);
     }, )
     
+    const nextPage = () => {
+        if (currentPage < totalPages) {
+          setCurrentPage(currentPage + 1);
+        }
+      };
+    
+      const prevPage = () => {
+        if (currentPage > 1) {
+          setCurrentPage(currentPage - 1);
+        }
+      };
+    
+      const goToFirstPage = () => {
+        setCurrentPage(1);
+      };
+
+      const totalPages = Math.ceil(state.searchResults.length / productsPerPage);
+
     return(
         <div className="search-results-page">
             <Buscador />
@@ -35,7 +55,13 @@ const SearchResults = () => {
                 </div>
             {state.searchResults.length > 0 ? 
                 (<div className='container d-flex justify-content-center align-items-center h-100'>
-                <ProductList products={state.searchResults} />
+                <ProductList products={state.searchResults}  
+                    totalPages={totalPages}
+                    nextPage={nextPage}
+                    prevPage={prevPage}
+                    goToFirstPage={goToFirstPage}
+                    productsPerPage={productsPerPage}
+                />
             </div>)
              :
                 (<div className="no-results-found-wrapper">
