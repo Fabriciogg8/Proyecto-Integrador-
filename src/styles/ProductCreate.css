@@ -9,9 +9,9 @@
 
 .input-values-instruments {
     background-color: white;
-    border: 1px solid #be9e44;
+    border: 1px solid var(--primary-button-background-color);
     border-radius: 5px;
-    color: #262b3d;
+    color: var(--header-background-color);
     padding: 5px;
 }
 
@@ -40,7 +40,7 @@ input[type="file"]{
 }
 
 .file-button {
-    color: #be9e44;
+    color: var(--headings-text-color);
     height: 7vh;
     width: 45%;
     background-color: #4e577b;
@@ -49,7 +49,7 @@ input[type="file"]{
     justify-content: center;
     align-items: center;    
     border-radius: 5px;
-    border: 2px solid #be9e44;
+    border: 2px solid var(--headings-text-color);
 }
 
 .photo-upload {
@@ -59,20 +59,20 @@ input[type="file"]{
 
 .submitt {
     display: block;
-    background-color: #d8c690;
+    background-color: var(--secondary-button-text-color);
     margin-top: 2vh;
 }
 
 .form-background {
     background-color: #4e577b;
-    border: 3px solid #262b3d;
-    color: #be9e44;
+    border: 3px solid var(--header-background-color);
+    color: var(--primary-button-background-color);
 }
 
 .form-select {
     background-color: #4e577b;
-    border: 2px solid #be9e44;
-    color: #d8c690;
+    border: 2px solid var(--headings-text-color);
+    color: var(--secondary-button-text-color);
 }
 
 .form-select:active {

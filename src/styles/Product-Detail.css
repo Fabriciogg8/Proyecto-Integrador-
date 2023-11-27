@@ -21,7 +21,7 @@
 .containerDetail2 {
   display: flex;
   justify-content: center;
-  background-color: #262b3d;
+  background-color: var(--header-background-color);
   padding-bottom: 7vh;
   padding-top: 7vh;
 }
@@ -36,6 +36,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.text-start-second {
+  display: flex;
+  flex-direction: row;
 }
 
 .contTituloProd {
@@ -55,49 +60,49 @@
 
 .descripcionInstrumento {
   margin: 0vh 1vw 0 0vw;
-  border: #be9e44 2px solid;
+  border: var(--headings-text-color) 2px solid;
   border-radius: 10px;
   padding: 1.5vw;
 }
 
 .descripcionInstrumento span {
   font-size: 3vh;
-  color: #d8c690;
+  color: var(--secondary-button-text-color);
 }
 
 .descripcionInstrumento p {
   margin-top: 5vh;
-  color: #d8c690;
+  color: var(--secondary-button-text-color);
 }
 
 .detallesInstrumento {
   margin: 0vh 0vw 0vh 4vw;
   padding: 1.5vw;
-  border: #be9e44 2px solid;
+  border: var(--headings-text-color) 2px solid;
   border-radius: 10px;
 }
 
 hr {
-  border-color: #be9e44;
+  border-color: var(--headings-text-color);
 }
 
 .detallesInstrumento span {
   font-size: 3vh;
-  color: #d8c690;
+  color: var(--secondary-button-text-color);
 }
 .detallesInstrumento span {
   font-size: 3vh;
-  color: #d8c690;
+  color: var(--secondary-button-text-color);
 }
 
 .detallesInstrumento p {
   margin-top: 5vh;
-  color: #d8c690;
+  color: var(--secondary-button-text-color);
   padding-bottom: 4px;
 }
 
 a img {
-  border: #be9e44 3px solid;
+  border: var(--headings-text-color) 3px solid;
 }
 
 .btn-previous {
@@ -118,7 +123,7 @@ a img {
 .title-a {
   text-decoration: none;
   color: inherit;
-  color: #be9e44;
+  color: var(--headings-text-color);
   font-weight: 600;
   font-size: 3vh;
 }
@@ -138,6 +143,11 @@ a img {
   transform: scale(1.1);
   transition: all 0.3s linear;
   cursor: pointer;
+}
+
+.text-start-second {
+  display: flex;
+  flex-direction: row;
 }
 
 .title-a {
@@ -220,6 +230,30 @@ a img {
   border: 1px solid var(--dorado);
 }
 
+.policy h1{
+  text-decoration: underline;
+  margin: 1rem 2rem;
+}
+
+.typePolicy{
+  display: flex;
+  flex-direction: row;
+}
+.typePolicy h5{
+  font-size: 1.5rem;
+  text-align: center;
+}
+.uso{
+  width: 50%;
+  margin: 2rem 3rem;
+  text-align: justify;
+}
+.almacenamiento{
+  width: 50%;
+  margin: 2rem 3rem;
+  text-align: justify;
+}
+=======
 
 /*---DETALLE GALERIA---*/
 
@@ -294,3 +328,4 @@ a img {
 
 
 /*----------------------*/
+

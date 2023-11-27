@@ -13,7 +13,7 @@
 }
 
 .titulosCategorias {
-  background-color: #be9e44;
+  background-color: var(--headings-text-color);
   padding: 2px;
   width: 80%;
   color: white;
@@ -119,5 +119,5 @@
 .pagination span {
   margin: 0 10px; 
   font-size: 14px; 
-  color: #d7d5c9; 
+  color:  var(--headings-text-color); 
 }

@@ -122,5 +122,7 @@ body,
 
 .main-container {
   flex: 1; /* Esto hará que el contenedor principal ocupe el espacio restante */
-  overflow-y: auto; /* Si el contenido es más grande que la pantalla, se mostrará un scroll */
+
+  position: relative;
+  overflow: visible;
 }
