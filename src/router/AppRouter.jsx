@@ -10,6 +10,7 @@ import { ProductDetails } from '../pages/ProductDetails'
 import Resultados from '../pages/Resultados'
 import { AdminPanel } from '../pages/AdminPanel'
 import  SearchResults  from '../pages/SearchResults'
+import {Reservas} from '../pages/Reservas'
 
 export const AppRouter = () => {
   const { status, user, checkAuthToken } = useAuthStore()
@@ -34,6 +35,7 @@ export const AppRouter = () => {
               <Route path='/signup' element={<SignUp />} />
               <Route path='/productdetails/:id' element={<ProductDetails />} />
               <Route path='/resultados' element={<SearchResults/>} />
+              <Route path='/reservas/:id' element={<Reservas/>}/>
             </>
           ) : (
             <>

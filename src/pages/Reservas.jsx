@@ -1,26 +1,22 @@
+import ProductDetail from '../components/product/ProductDetail'
 import { useParams } from 'react-router-dom'
 import { useContext, useEffect } from 'react'
 import { ProductContext } from '../conexts/ProductContext'
-import CardPolicy from '../components/product/CardPolicy'
-import  ProductDetail  from "../components/product/ProductDetail"
-import { Link } from 'react-router-dom';
+import {DetalleReserva} from '../components/forms/DetalleReserva'
 
-export const ProductDetails = () => {
-  const { id } = useParams()
+export const Reservas = () => {
+    const { id } = useParams()
 
   const { state, fetchCurrentProduct } = useContext(ProductContext)
 
   useEffect(() => {
     fetchCurrentProduct(id)
   }, []);
+  const producto = state.currentProduct;
 
-  const producto = state.currentProduct
-
-  console.log(producto)
-
-  return (
-    <div className='Details'>
-      <ProductDetail
+  return(
+    <div className='reservas'>
+        <ProductDetail
         key={producto.id}
         categoria={producto.category}
         nombre={producto.name}
@@ -30,12 +26,6 @@ export const ProductDetails = () => {
         caracteristicas={producto.description}
         imagenes={producto.images}
       />
-      <CardPolicy/>
-      <div className="text-center">
-        <Link to={`/reservas/${id}`} className='btn btn-primary mt-3'>
-          Ir a Reservas
-        </Link>
-      </div>
+      <DetalleReserva/>
     </div>
-  )
-}
+)}
