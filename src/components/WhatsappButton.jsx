@@ -22,7 +22,7 @@ export default function WhatsappButton() {
 
     const strChat = 'Buenas!🤝 \nComo te podemos ayudar?'
     const shareOptions = {
-    number: '+59897550692', 
+    number: '+59899496410', 
     message: '¡Hola desde WhatsApp!',
     chatMessage: strChat
     };
