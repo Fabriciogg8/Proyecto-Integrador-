@@ -243,16 +243,30 @@ a img {
   font-size: 1.5rem;
   text-align: center;
 }
-.uso{
-  width: 50%;
+.uso , .almacenamiento , .devolucion{
+  width: 100%;
   margin: 2rem 3rem;
   text-align: justify;
 }
-.almacenamiento{
-  width: 50%;
-  margin: 2rem 3rem;
-  text-align: justify;
-}
+
+
+@media (max-width: 700px){
+  .uso,
+  .almacenamiento,
+  .devolucion {
+    width: 75%;
+    margin: 2rem 6%;
+  }
+  
+  .typePolicy {
+    flex-direction: column;
+  }
+  }
+
+
+
+
+
 
 /*---DETALLE GALERIA---*/
 
