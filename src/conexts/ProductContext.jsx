@@ -3,7 +3,7 @@ import { GET_RANDOM_PRODUCTS, GET_CURRENT_PRODUCT } from '../helpers/endpoints'
 
 export const ProductContext = createContext();
 
-export const initialState = { products: [], currentProduct: [], searchResults: [], searchInput: "", token: JSON.parse(localStorage.getItem("token")) || [], suggestions: [] };
+export const initialState = { products: [], currentProduct: [], searchResults: [], searchInput: "", token: localStorage.getItem("token") || [], suggestions: [] };
 
 
 export const ProductContextProvider = ({ children }) => {
