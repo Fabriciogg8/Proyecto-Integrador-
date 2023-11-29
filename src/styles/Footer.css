@@ -18,3 +18,7 @@
 .logo > p {
   margin: 0 !important;
 }
+
+footer {
+  background-color: var(--footer-background-color);
+}

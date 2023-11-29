@@ -15,11 +15,11 @@ const ProductList = ({ products, currentPage, nextPage, prevPage, goToFirstPage,
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
-
+  console.log(currentProducts);
   return (
     <div>
       <div className='row cardsContainers'>
-        {currentProducts.map(instrumento => {
+        {products.map(instrumento => {
           const imagen =
             instrumento.images && instrumento.images.length > 0 
               ? instrumento.images[0]
