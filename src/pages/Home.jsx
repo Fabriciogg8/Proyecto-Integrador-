@@ -8,6 +8,7 @@ import { ProductContext } from '../conexts/ProductContext'
 import ProductList, { productsPerPage } from '../components/ProductList';
 import '../styles/Home.css';
 import Hero from '../components/hero/Hero'
+import WhatsappButton from '../components/WhatsappButton'
 
 const Home = () => {
   const { state, fetchProducts } = useContext(ProductContext);
@@ -70,6 +71,7 @@ const Home = () => {
       />
 
       <BrandSlider />
+      <WhatsappButton/>
     </Container>
   </>
   );
