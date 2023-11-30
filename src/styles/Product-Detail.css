@@ -324,6 +324,31 @@ a img {
   transform: scale(1.06);
 }
 
+#root {
+  background-color: #5e5e5e;
+}
+
+.mb-3 .date{
+ margin-right: 1vw;
+}
+
+.react-datepicker__input-container input {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  border-left: 1px solid #ced4da;
+  height: calc(1.5em + 0.75rem + 2px); 
+  width: 8vw;
+}
+
+.react-datepicker__input-container input:focus {
+  border-left-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.container h2{
+  margin-top: 2%;
+}
+
 
 
 /*----------------------*/
