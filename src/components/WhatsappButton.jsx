@@ -22,19 +22,18 @@ export default function WhatsappButton() {
 
     const strChat = 'Buenas!🤝 \nComo te podemos ayudar?'
     const shareOptions = {
-    number: '+59899496410', 
-    message: '¡Hola desde WhatsApp!',
-    chatMessage: strChat
+      number: '+59899496410', 
+      message: '¡Hola desde WhatsApp!',
+      chatMessage: strChat
     };
 
     const handleSuccess = () => {
         setExitoWhatsapp(true);
     }
-
-    console.log(exitoWhatsapp)
+    
     return (
         <section>
-            <FloatingWhatsApp phoneNumber={shareOptions.number} message={shareOptions.message} accountName='Notas Prestadas' avatar='logo-no-png.png' chatMessage={shareOptions.chatMessage}
+            <FloatingWhatsApp phoneNumber={shareOptions.number} message={shareOptions.message} accountName='Notas Prestadas' avatar='/logo-no-png.png' chatMessage={shareOptions.chatMessage}
             allowClickAway onSubmit={handleSuccess} darkMode onError={handleError}/>
             {exitoWhatsapp && (
                 <div>
@@ -46,7 +45,12 @@ export default function WhatsappButton() {
                       </svg>
                     </div>
                     <button className='btn-close-modal-confirm' onClick={toggleModal}>
-                      Seguir navegando <img src="arrow-confirm.svg" className='arrow-confirm-size'/>
+                      Seguir navegando 
+                      <svg className='arrow-confirm-size' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" strokeWidth="0"/>
+                        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"/>
+                        <g id="SVGRepo_iconCarrier"> <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/> </g>
+                      </svg>
                     </button>
                 </div>
             </div>
@@ -58,3 +62,4 @@ export default function WhatsappButton() {
 
     )
 }
+
