@@ -333,11 +333,8 @@ a img {
 }
 
 .react-datepicker__input-container input {
-  border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
   border-left: 1px solid #ced4da;
-  height: calc(1.5em + 0.75rem + 2px); 
-  width: 8vw;
 }
 
 .react-datepicker__input-container input:focus {
