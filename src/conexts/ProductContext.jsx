@@ -52,7 +52,7 @@ export const ProductContextProvider = ({ children }) => {
       if (response.ok) {
         const data = await response.json()
         const { content } = data
-
+        console.log(content)
         dispatch({type: "fetchProducts" , payload: content})
       } else {
         throw new Error('Error al obtener los productos')
@@ -78,9 +78,6 @@ export const ProductContextProvider = ({ children }) => {
     }
   }
 
-
-  const token = "eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJBZG1pbiIsImxhc3ROYW1lIjoiQWRtaW4iLCJyb2xlIjoiQURNSU4iLCJzdWIiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwMDc1MDE4NSwiZXhwIjoxNzAwODM2NTg1fQ.ZwxvpBko4odFtTnH8gDSCl3xEjMNyqhf-3S0U3SaGG4"
-
   const findProductsByName = async (name) => {
     try {
       const response = await fetch(`${GET_CURRENT_PRODUCT}?name=${name}`)
@@ -96,6 +93,7 @@ export const ProductContextProvider = ({ children }) => {
     } catch (error) {
       console.error('Error en la solicitud:', error)
     }
+    console.log(state)
   }
 
   const getSuggestions = async (value) => {

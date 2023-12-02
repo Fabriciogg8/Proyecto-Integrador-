@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import ImageSlider from './ImageSlider'
 import {useState} from 'react'
+import WhatsappButton from '../WhatsappButton'
 
 export const ProductDetail = ({
   categoria,
@@ -95,6 +96,7 @@ export const ProductDetail = ({
             </p>
           </div>
         </section>
+        <WhatsappButton/>
       </div>
     </div>
   )
