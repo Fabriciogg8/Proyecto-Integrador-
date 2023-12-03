@@ -3,12 +3,15 @@ import React, { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { useAuthStore } from '../../hooks/useAuthStore.js'
+
 
 export const DetalleReserva = () => {
+  const { status, user, startLogout } = useAuthStore()
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
+    firstName: user.firstName,
+    lastName:  user.lastName,
+    email: user.email,
     expandOption: false,
     startDate: null,
     endDate: null,

@@ -41,6 +41,7 @@ export const AppRouter = () => {
             <>
               <Route path='/*' element={<Home />} />
               <Route path='/productdetails/:id' element={<ProductDetails />} />
+              <Route path='/reservas/:id' element={<Reservas/>}/>
               {user.role === 'ADMIN' ? (
                 <Route path='/admin-panel/*' element={<AdminPanel />} />
               ) : (
