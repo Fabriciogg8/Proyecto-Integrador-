@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import '../../App.css'
 
 import godin from '/godin.jpg'
@@ -8,10 +9,13 @@ import takamine from '/takamine.jpg'
 
 const BrandSlider = () => {
   const scrollers = document.querySelectorAll('.scroller')
-
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    addAnimation()
-  }
+  const [isEffectAdded, setIsEffectAdded] = useState(false);
+  
+  useEffect(() => {
+    if ((!window.matchMedia('(prefers-reduced-motion: reduce)').matches) && !isEffectAdded) {
+      addAnimation();
+    }
+  }, )
 
   function addAnimation() {
     scrollers.forEach(scroller => {
@@ -26,6 +30,7 @@ const BrandSlider = () => {
         scrollerInner.appendChild(duplicatedItem)
       })
     })
+    setIsEffectAdded(true);
   }
 
   return (

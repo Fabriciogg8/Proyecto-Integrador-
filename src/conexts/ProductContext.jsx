@@ -99,7 +99,7 @@ export const ProductContextProvider = ({ children }) => {
   const getSuggestions = async (value) => {
     try {
       const response = await fetch(`${GET_CURRENT_PRODUCT}?name=${value}&limit=5`, {
-        });
+      });
   
       if (!response.ok) {
         throw new Error('Error al obtener sugerencias');

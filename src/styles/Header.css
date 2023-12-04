@@ -10,6 +10,10 @@
   border: none;
 }
 
+nav {
+  height: inherit;
+}
+
 .navbar-brand {
   font-size: 1em;
   font-weight: 500;
@@ -35,7 +39,7 @@
 }
 
 .button {
-  color: #be9e44;
+  color: var(--headings-text-color);
   border: none;
 }
 
@@ -48,11 +52,25 @@
 
 .user-sub {
   color: white !important;
+  font-weight: 600;
+}
+
+.user-sub p {
+  color: var(--headings-text-color);
+  font-weight: 900;
+  display: inline-block;
+  background-color: white;
+  border: 3px solid var(--headings-text-color);
+  border-radius: 50%;
+  width: 2.2vw;
+  height: 4.8vh;
+  padding: 0.6vh 0vw 0.1vh 0.33vw;
+  margin: 5px;
 }
 
 .opt-dropdown {
-  color: #be9e44;
-  background-color: #262b3d;
+  color: var(--headings-text-color);
+  background-color: var(--header-background-color);
   border: none;
 }
 

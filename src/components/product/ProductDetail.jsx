@@ -1,13 +1,13 @@
 import {Link} from 'react-router-dom'
 import '../../styles/Product-Detail.css'
-
-import prod from '../../../public/producto1.jpg'
+import ShareButton from '../ShareButton'
+import prod from '/producto1.jpg'
 import { BsArrowLeft } from 'react-icons/bs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-
 import ImageSlider from './ImageSlider'
-import { useState } from 'react'
+import {useState} from 'react'
+import WhatsappButton from '../WhatsappButton'
 
 export const ProductDetail = ({
   categoria,
@@ -50,7 +50,8 @@ export const ProductDetail = ({
             <h1 className='mb-0'>{nombre}</h1>
             <p className='title-a mb-0'>{categoria}</p>
           </div>
-          <div className='text-start'>
+          <div className='text-start-second'>
+            <ShareButton name={nombre} description={descripcion} image={prod}/>
             <button className='btn btn-light'>
               <Link to='/'>
                 <BsArrowLeft className='iconBack' />
@@ -98,7 +99,11 @@ export const ProductDetail = ({
             </p>
           </div>
         </section>
+        <WhatsappButton/>
       </div>
     </div>
   )
 }
+
+
+export default ProductDetail;
