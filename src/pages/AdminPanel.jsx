@@ -1,5 +1,7 @@
 import { Link, Routes, Route } from 'react-router-dom'
 import ProductCreate from '../components/product/ProductCreate'
+import CreateCategory from '../components/category/CreateCategory'
+import CategoryProduct from '../components/CategoryProduct'
 import { ProductList } from '../components/product/ProductListAdmin'
 
 export const AdminPanel = () => {
@@ -30,6 +32,16 @@ export const AdminPanel = () => {
                   Crear Producto
                 </Link>
               </li>
+              <li>
+                <Link to='crear-categoria' className='text-light'>
+                  Agregar Categoría
+                </Link>
+              </li>
+              <li>
+                <Link to='asignar-categoria' className='text-light'>
+                  Asignar Categoría
+                </Link>
+              </li>
             </ul>
           </nav>
         </aside>
@@ -38,6 +50,8 @@ export const AdminPanel = () => {
             <Route path='/' element={null}/>
             <Route path='ver-productos' element={<ProductList />} />e
             <Route path='crear-producto' element={<ProductCreate />} />
+            <Route path='crear-categoria' element={<CreateCategory />} />
+            <Route path='asignar-categoria' element={<CategoryProduct />} />
           </Routes>
         </div>
       </div>

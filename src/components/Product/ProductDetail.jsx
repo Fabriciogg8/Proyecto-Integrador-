@@ -1,17 +1,12 @@
-import '../../styles/Product-Detail.css'
 import {Link} from 'react-router-dom'
-import '../../styles/Product/Product-Detail.css'
-import '../../styles/lightbox.css'
-import svgGolden from '../../assets/chevron-left-golden.svg';
-import descLogo from '../../assets/body-text.png'
-import brush from '../../assets/brush.png'
-import prod from '../../assets/producto1.jpg'
+import '../../styles/Product-Detail.css'
+
+import prod from '../../../public/producto1.jpg'
 import { BsArrowLeft } from 'react-icons/bs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-import producto from '/producto1.jpg'
-import prod2 from '../../assets/percusion.jpg'
-import ImageSlider from '../Product/ImageSlider'
+
+import ImageSlider from './ImageSlider'
 import { useState } from 'react'
 
 export const ProductDetail = ({
@@ -65,6 +60,7 @@ export const ProductDetail = ({
         </div>
       </section>
       <div>
+       
       <div className='contenedorGalery'>
                 <div className='galeryContainer g-container'>
                     <img src={prod} className='prodDetailGallery' alt="" onClick={() => showGallery(true)}/>
@@ -74,7 +70,9 @@ export const ProductDetail = ({
                     <img src={prod} className='prodDetailGallery' alt="" />
                 </div>
             </div>
-            {<ImageSlider slides={data} show={showG} />}
+            
+            { <ImageSlider slides={data} show={showG} /> }
+            
 
         <section className='descripYCaract'>
           <div className='descripcionProd'>
