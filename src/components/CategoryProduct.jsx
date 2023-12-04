@@ -23,6 +23,7 @@ function CategoryProduct() {
   }, [])
 
   const instrumentos = products
+  console.log(instrumentos)
 
   useEffect(() => {
     getCategories();

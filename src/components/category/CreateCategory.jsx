@@ -7,39 +7,31 @@ const CreateCategory = () => {
 
     const {state} = useContext(ProductContext);
     const token = state.token;
-    const handleSubmit = async (event) => {
-        event.preventDefault()
-        const formData = new FormData(event.target);
-        const data = {
-            categoryName: formData.get('name'),
-            description: formData.get('description')
-           
-        }
+    
 
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJBbGluYSIsImxhc3ROYW1lIjoiQ2FzYXMiLCJyb2xlIjoiQURNSU4iLCJzdWIiOiJhbGlAbWFpbC5jb20iLCJpYXQiOjE3MDE3MzAzMTYsImV4cCI6MTcwMTgxNjcxNn0.KPKoN4zM-CYAFvgaIVJP0UcFNk0V4ZOMU0xG341dHXQ");
 
-        try {
-         //agregarle la url
-            const response = await fetch(CREATE_CATEGORIES, {
-              method: 'POST',
-              headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-type' : 'multipart/form-data',
-              },
-              body: JSON.stringify(data),
-            })
-            
-            console.log(data);
-            if (response.ok) {
-                const responseData = await response.json();
-                console.log(responseData)
-            } else {
-                console.log('Error al enviar la solicitud al servidor')
-            }
-        } catch (error) {
-            console.error('Error en la solicitud: ', error)
-        }
-    }
+var raw = JSON.stringify({
+  "name": event.target.name.value,
+  "description": event.target.description.value,
+});
 
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: raw,
+  redirect: 'follow'
+};
+
+fetch("http://174.129.92.139:8001/api/v1/categories", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+}
     
     // Upload Images
     const [selectedFiles, setSelectedFiles] = useState([]);
