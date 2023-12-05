@@ -7,7 +7,6 @@ const Pagination = ({
   nextPage,
   prevPage,
   goToFirstPage,
-  
 }) => {
   return (
     <div className='pagination'>
