@@ -28,6 +28,7 @@ export const ProductDetails = () => {
         descripcion={producto.description}
         caracteristicas={producto.description}
         imagenes={producto.images}
+        id={producto.id}
       />
       <CardPolicy/>
     </div>

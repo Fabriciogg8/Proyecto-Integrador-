@@ -8,6 +8,7 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import ImageSlider from './ImageSlider'
 import {useState} from 'react'
 import WhatsappButton from '../WhatsappButton'
+import ScoreProduct from '../product/ScoreProduct'
 
 export const ProductDetail = ({
   categoria,
@@ -15,6 +16,7 @@ export const ProductDetail = ({
   marca,
   precio,
   descripcion,
+  id
 }) => {
     const [showG, setShowG] = useState(null);
     const showGallery = (showG) =>{
@@ -95,8 +97,10 @@ export const ProductDetail = ({
               Precio: {precio}
             </p>
           </div>
+          <ScoreProduct id={id}/>
         </section>
         <WhatsappButton/>
+        
       </div>
     </div>
   )
