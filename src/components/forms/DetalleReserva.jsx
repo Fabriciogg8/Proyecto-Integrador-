@@ -1,37 +1,53 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useAuthStore } from '../../hooks/useAuthStore.js'
 
-
 export const DetalleReserva = () => {
-  const { status, user, startLogout } = useAuthStore()
+  const [reservationData, setReservationData] = useState([]);
+
+  useEffect(() => {
+    const fetchReservationData = async () => {
+      try {
+        const resp = await fetch('http://174.129.92.139:8001/api/v1/reservations/19');
+        if (!resp.ok) {
+          throw new Error('Error al obtener datos de reserva');
+        }
+        const data = await resp.json();
+        setReservationData(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchReservationData();
+  }, []);
+
+  const { user } = useAuthStore();
   const [formData, setFormData] = useState({
     firstName: user.firstName,
-    lastName:  user.lastName,
-    email: user.email,
-    expandOption: false,
-    startDate: null,
-    endDate: null,
-  })
+    lastName: user.lastName,
+    email: user.sub,
+    startDate: reservationData.length > 0 ? reservationData[0].startDate : null,
+    endDate: reservationData.length > 0 ? reservationData[0].endDate : null,
+  });
+  console.log(reservationData)
 
-  const handleChange = e => {
-    const { name, value, type, checked } = e.target
-    setFormData(prevData => ({
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prevData) => ({
       ...prevData,
       [name]: type === 'checkbox' ? checked : value,
-    }))
-  }
+    }));
+  };
 
   const handleChangeDate = (date, field) => {
-    setFormData(prevData => ({
+    setFormData((prevData) => ({
       ...prevData,
       [field]: date,
-    }))
-  }
-
+    }));
+  };
   const handleSubmit = e => {
     e.preventDefault()
     // Puedes manejar la lógica de envío del formulario aquí
@@ -52,8 +68,7 @@ export const DetalleReserva = () => {
             id='firstName'
             name='firstName'
             value={formData.firstName}
-            onChange={handleChange}
-            required
+            readOnly
           />
         </div>
         <div className='mb-3'>
@@ -66,8 +81,7 @@ export const DetalleReserva = () => {
             id='lastName'
             name='lastName'
             value={formData.lastName}
-            onChange={handleChange}
-            required
+            readOnly
           />
         </div>
         <div className='mb-3'>
@@ -80,22 +94,8 @@ export const DetalleReserva = () => {
             id='email'
             name='email'
             value={formData.email}
-            onChange={handleChange}
-            required
+            readOnly
           />
-        </div>
-        <div className='mb-3 form-check'>
-          <input
-            type='checkbox'
-            className='form-check-input'
-            id='expandOption'
-            name='expandOption'
-            checked={formData.expandOption}
-            onChange={handleChange}
-          />
-          <label className='form-check-label' htmlFor='expandOption'>
-            Ampliar Opciones
-          </label>
         </div>
         <div className="mb-3">
           <label htmlFor="startDate" className="form-label date">
@@ -109,7 +109,7 @@ export const DetalleReserva = () => {
             name="startDate"
             dateFormat="dd/MM/yyyy"
             minDate={new Date()} // Evita fechas pasadas
-            required
+            readOnly
           />
         </div>
         <div className="mb-3">
@@ -123,8 +123,8 @@ export const DetalleReserva = () => {
             id="endDate"
             name="endDate"
             dateFormat="dd/MM/yyyy"
-            minDate={formData.startDate} // Evita fechas anteriores a la fecha de inicio
-            required
+            minDate={formData.endDate} // Evita fechas anteriores a la fecha de inicio
+            readOnly
           />
         </div>
 

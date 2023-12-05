@@ -8,11 +8,13 @@ import es from 'date-fns/locale/es';
 const Calendario = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
-  const onChange = (dates) => {
+  const onChange = (dates) => { 
     const [start, end] = dates;
     setStartDate(start);
     setEndDate(end);
   };
+  console.log('start',startDate);
+  console.log('end',endDate);
   return (
     <DatePicker
       dateFormat="dd/MM/yyyy"
@@ -26,8 +28,11 @@ const Calendario = () => {
       locale={es}
 
       showDisabledMonthNavigation
+      
     />
+    
   );
+
 }
 
 export default Calendario;
