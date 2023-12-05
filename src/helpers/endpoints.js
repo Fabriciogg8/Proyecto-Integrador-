@@ -7,3 +7,5 @@ export const GET_RANDOM_PRODUCTS = `${API_URL}/products?order=random`
 export const GET_CURRENT_PRODUCT = `${API_URL}/products`
 export const CREATE_PRODUCT = `${API_URL}/products`
 export const DELETE_PRODUCT = `${API_URL}/products`
+export const GET_ALL_CATEGORIES = `${API_URL}/categories`
+export const CREATE_CATEGORIES = `${API_URL}/categories`

@@ -30,6 +30,7 @@ const ImageSlider = ({ slides, show }) => {
       ];
 
 
+
   const [current, setCurrent] = useState(0);
   const length = slides.length;
 
@@ -48,27 +49,31 @@ const ImageSlider = ({ slides, show }) => {
   return (
 
     
-
-    <section className='sliderContainer' style={show ? {display:"block"} : {display:"none"}}>
-        <div className='slider'>
-        <FaArrowAltCircleLeft className='left-arrow' onClick={prevSlide} />
-        <FaArrowAltCircleRight className='right-arrow' onClick={nextSlide} />
-        {data.map((slide, index) => {
-            return (
-            <div
-                className={index === current ? 'slide active' : 'slide'}
-                key={index}
-            >
-                
-                {index === current && (
-                <img src={slide.image} alt='travel image' className='image' />
-                )}
-                
-            </div>
-            );
-        })}
-        </div>
-    </section>
+    
+      <section className='sliderContainer' style={show ? {display:"block"} : {display:"none"}}>
+          <div className='slider'>
+            
+          <FaArrowAltCircleLeft className='left-arrow' onClick={prevSlide} />
+          <FaArrowAltCircleRight className='right-arrow' onClick={nextSlide} />
+        
+          {data.map((slide, index) => {
+              return (
+              <div
+                  className={index === current ? 'slide active' : 'slide'}
+                  key={index}
+              >
+                <p className='closeGallery'>&times;</p>
+                  {index === current && (
+                  <img src={slide.image} alt='travel image' className='image' />
+                  )}
+                  
+              </div>
+              );
+          })}
+          </div>
+      </section>
+ 
+     
   );
 };
 

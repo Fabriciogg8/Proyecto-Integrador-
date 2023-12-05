@@ -61,6 +61,7 @@ export const ProductDetail = ({
         </div>
       </section>
       <div>
+       
       <div className='contenedorGalery'>
                 <div className='galeryContainer g-container'>
                     <img src={prod} className='prodDetailGallery' alt="" onClick={() => showGallery(true)}/>
@@ -70,7 +71,9 @@ export const ProductDetail = ({
                     <img src={prod} className='prodDetailGallery' alt="" />
                 </div>
             </div>
-            {<ImageSlider slides={data} show={showG} />}
+            
+            { <ImageSlider slides={data} show={showG} /> }
+            
 
         <section className='descripYCaract'>
           <div className='descripcionProd'>

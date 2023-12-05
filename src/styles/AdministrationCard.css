@@ -1,11 +1,14 @@
 .administration-card{
     padding: 2%;
-    background-color: var(--azul-grisaceo);
+    background-color: var(--header-background-color);
+    margin-top: 5%;
+    
 }
 
 .administrationCardContainer{
     margin: 0 auto;
     margin-bottom: 5%;
+
 }
 
 .administration-card h2{
