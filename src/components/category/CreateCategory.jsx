@@ -15,6 +15,7 @@ const CreateCategory = () => {
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJBbGluYSIsImxhc3ROYW1lIjoiQ2FzYXMiLCJyb2xlIjoiQURNSU4iLCJzdWIiOiJhbGlAbWFpbC5jb20iLCJpYXQiOjE3MDE3MzAzMTYsImV4cCI6MTcwMTgxNjcxNn0.KPKoN4zM-CYAFvgaIVJP0UcFNk0V4ZOMU0xG341dHXQ");
 
+    console.log(event.target.name.value)
 var raw = JSON.stringify({
   "name": event.target.name.value,
   "description": event.target.description.value,

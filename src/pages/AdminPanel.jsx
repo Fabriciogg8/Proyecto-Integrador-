@@ -51,6 +51,7 @@ export const AdminPanel = () => {
             <Route path='ver-productos' element={<ProductList />} />e
             <Route path='crear-producto' element={<ProductCreate />} />
             <Route path='crear-categoria' element={<CreateCategory />} />
+            
             <Route path='asignar-categoria' element={<CategoryProduct />} />
           </Routes>
         </div>
