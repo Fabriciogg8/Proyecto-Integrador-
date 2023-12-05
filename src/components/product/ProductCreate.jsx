@@ -47,11 +47,9 @@ const ProductCreate = () => {
             });
             console.log(formData);
             if (response.ok) {
-                const responseData = await response.json();
-                console.log(responseData)
+                console.log("ANDUVO")
             } else if (!response.ok) {
-              const responseDat = await response.json();
-              console.log(responseDat)
+              console.log("no anduvo")
             }
         } catch (error) {
             console.error('Error en la solicitud: ', error)
