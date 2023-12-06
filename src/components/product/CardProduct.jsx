@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
 import '../../styles/Cards.css'
 import imageNotAvailable from '/no-image-available.png'
 
@@ -25,6 +26,7 @@ function CardProduct({ id, name, price }) {
           </div>
         </div>
       </Link>
+      
     </>
   )
 }
