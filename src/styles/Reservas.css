@@ -1,0 +1,27 @@
+.reservas{
+    background-color: #4e577b;
+    padding: 1.5%;
+}
+.row{
+}
+
+.col-md-6{
+    background-color:  #4e577b;
+}
+
+.sub{   
+    background-color: #c0c9ef;
+    border-radius: 2%;
+    padding: 1%;
+    margin-top: -5vh;
+}
+
+.sub button{
+    margin: 2% 32% 3%;
+    width: 12vw;
+}
+
+.reservasProducto .everyDetail {
+    background-color:  #4e577b;
+
+};
