@@ -1,0 +1,21 @@
+.date-score-product {
+    font-size: 17.4px;
+}
+
+.justify-items-left-score{
+    display: flex;
+    justify-content:left;
+}
+
+.container-score {
+    background-color: transparent;
+}
+
+.container-comments {
+    border-top: 2px solid var(--primary-button-background-color);
+    
+}
+
+.font-comments-score{
+    color: white;
+}

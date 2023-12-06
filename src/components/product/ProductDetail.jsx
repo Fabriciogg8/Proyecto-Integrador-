@@ -9,6 +9,7 @@ import ImageSlider from './ImageSlider'
 import {useState} from 'react'
 import WhatsappButton from '../WhatsappButton'
 import ScoreProduct from '../product/ScoreProduct'
+import ShowScores from '../product/ShowScores'
 
 export const ProductDetail = ({
   categoria,
@@ -73,7 +74,6 @@ export const ProductDetail = ({
                 </div>
             </div>
             {<ImageSlider slides={data} show={showG} />}
-
         <section className='descripYCaract'>
           <div className='descripcionProd'>
             <h4>Detalles</h4>
@@ -100,7 +100,7 @@ export const ProductDetail = ({
           <ScoreProduct id={id}/>
         </section>
         <WhatsappButton/>
-        
+        <ShowScores id={id}/>
       </div>
     </div>
   )
