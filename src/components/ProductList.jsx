@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import CardProduct from './product/CardProduct';
 import Pagination from './Pagination';
 
-export const productsPerPage = 10;
+export const productsPerPage = 5;
 
 const ProductList = ({ products, currentPage, nextPage, prevPage, goToFirstPage }) => {
   const [totalPages, setTotalPages] = useState(1);
