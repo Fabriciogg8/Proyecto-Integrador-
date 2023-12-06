@@ -79,8 +79,9 @@ input[type="file"]{
     border: 2px solid white;
 }
 
-.warning-message {
-    color: red;
+.warning-message-score {
+    color: #ffba82;
+    padding-left: 2px;
 }
 
 .score-product-button-activate {
