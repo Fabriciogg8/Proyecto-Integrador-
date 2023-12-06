@@ -8,12 +8,12 @@
 }
 
 .container-score {
-    background-color: transparent;
+    background-color: #5e5e5e;
 }
 
 .container-comments {
     border-top: 2px solid var(--primary-button-background-color);
-    
+    background-color: #5e5e5e;
 }
 
 .font-comments-score{

@@ -10,6 +10,7 @@ import {useState} from 'react'
 import WhatsappButton from '../WhatsappButton'
 import ScoreProduct from '../product/ScoreProduct'
 import ShowScores from '../product/ShowScores'
+import { Rating } from 'react-simple-star-rating'
 
 export const ProductDetail = ({
   categoria,
@@ -17,7 +18,9 @@ export const ProductDetail = ({
   marca,
   precio,
   descripcion,
-  id
+  id,
+  rating,
+  ratingCount
 }) => {
     const [showG, setShowG] = useState(null);
     const showGallery = (showG) =>{
@@ -75,6 +78,13 @@ export const ProductDetail = ({
             </div>
             {<ImageSlider slides={data} show={showG} />}
         <section className='descripYCaract'>
+          <div className='rating-ratingCount'>
+            <span>
+              Valoraciones recibidas:
+              <span>{ratingCount}</span>
+            </span>
+            <Rating initialValue={rating} size={36} readonly allowFraction/>
+          </div>
           <div className='descripcionProd'>
             <h4>Detalles</h4>
             <p>{descripcion}</p>

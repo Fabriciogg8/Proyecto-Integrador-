@@ -53,10 +53,6 @@ const ScoreProduct = ({id}) => {
   
   const handleSubmit = async (event) =>{
       event.preventDefault();
-      //const formData = new FormData();
-      //formData.append('productId', 2002);
-      //formData.append('rating', rating);
-      //formData.append('comment', event.target.comment.value);
       const data = {
         productId: id,
         rating: rating,
@@ -105,6 +101,7 @@ const ScoreProduct = ({id}) => {
                     <Rating
                       emptyColor='#3d4772'
                       onClick={handleRating}
+                      allowFraction
                     />
                     <div className='margin-labels mb-4'>
                       <label htmlFor='form3Example1q'>Comentario</label>

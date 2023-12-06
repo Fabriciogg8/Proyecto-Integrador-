@@ -68,7 +68,7 @@ export default function ShowScores({id}) {
                                     {object.userName}
                                 </MDBTypography>
                                 <div className="mb-3">
-                                <Rating readonly size={22} initialValue={object.rating}/>
+                                <Rating readonly size={22} allowFraction initialValue={object.rating}/>
                                 <p className="mb-0 date-score-product">
                                     {object.createdAt.split('T')[0]}
                                 </p>
