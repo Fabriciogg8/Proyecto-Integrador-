@@ -1,58 +1,62 @@
 
 import React, { useContext, useEffect, useState } from 'react';
-import { Container, Row } from 'react-bootstrap'
-import CardCategory from '../components/product/CardCategory'
-import Buscador from '../components/buscador/Buscador'
-import BrandSlider from '../components/buscador/BrandSlider'
-import { ProductContext } from '../conexts/ProductContext'
+import { Container, Row } from 'react-bootstrap';
+import CardCategory from '../components/product/CardCategory';
+import Buscador from '../components/buscador/Buscador';
+import BrandSlider from '../components/buscador/BrandSlider';
+import { ProductContext } from '../conexts/ProductContext';
 import ProductList, { productsPerPage } from '../components/ProductList';
 import '../styles/Home.css';
-import Hero from '../components/hero/Hero'
-import WhatsappButton from '../components/WhatsappButton'
+import Hero from '../components/hero/Hero';
+import WhatsappButton from '../components/WhatsappButton';
 
 const Home = () => {
   const { state, fetchProducts } = useContext(ProductContext);
   const [categorias, setCategorias] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
-
-  // const [selectedCategory, setSelectedCategory] = useState(null);
+  const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    const fetchData = async () => {
+      try {
+        // Fetch para obtener categorías
+        const responseCategorias = await fetch("http://174.129.92.139:8001/api/v1/categories");
+        const categoriasData = await responseCategorias.json();
+        setCategorias(categoriasData);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const instrumentos = state.products
+        // Fetch para obtener productos
+        await fetchProducts();
+      } catch (error) {
+        console.error("Error al obtener categorías y productos:", error);
+      }
+    };
 
-  
+    fetchData();
+  }, [fetchProducts]);
 
-  /*const categorias = [*/
-    // ... (código de categorías)
-    useEffect(() => {
-      const fetchCategories = async () => {
-        try {
-          const response = await fetch("http://174.129.92.139:8001/api/v1/categories");
-          const data = await response.json();
-          // Actualizar el estado con las categorías obtenidas
-          setCategorias(data);
-        } catch (error) {
-          console.error("Error al obtener categorías:", error);
-        }
-      };
-    
-      fetchCategories();
-    }, [])
-  /*];*/
-  
-  // const handleCategoryClick = (categoryName) => {
-  //   setSelectedCategory(categoryName);
-  // };
+  useEffect(() => {
+    // Verifica si state.products está definido antes de intentar acceder a él
+    if (state.products) {
+      // Obtener categorías únicas de los productos
+      const uniqueCategories = Array.from(
+        new Set(state.products.map((producto) => producto.category.name))
+      ).filter(Boolean); // Filtra las categorías sin nombre
 
-  // const filteredProducts = selectedCategory
-  // ? instrumentos.filter((producto) =>
-  //     producto.categories && producto.categories.includes(selectedCategory)
-  //   )
-  // : instrumentos;
+      // Crear un array de objetos de categoría con la cantidad de productos por categoría
+      const categoriasConCantidad = uniqueCategories.map((categoria) => ({
+        name: categoria,
+        count: state.products.filter(
+          (producto) => producto.category.name === categoria
+        ).length,
+      }));
+
+      // Actualizar el estado con las categorías y la cantidad de productos
+      setCategorias(categoriasConCantidad);
+
+      // Actualizar el estado con los productos
+      setProductos(state.products);
+    }
+  }, [state.products]);
 
   const handleCategoryClick = (categoryName) => {
     // Verifica si la categoría ya está seleccionada
@@ -72,18 +76,16 @@ const Home = () => {
     setSelectedCategories([]);
   };
 
-  // Filtra los productos según las categorías seleccionadas
+  // Filtra los productos solo si hay categorías seleccionadas
   const filteredProducts = selectedCategories.length > 0
-  ? instrumentos.filter((producto) =>
-      producto.categories && producto.categories.some((category) =>
-        selectedCategories.includes(category)
+    ? productos.filter((producto) =>
+        selectedCategories.includes(producto.category.name)
       )
-    )
-  : instrumentos;
-
-  const totalProductsCount = instrumentos.length;
-  const filteredProductsCount = filteredProducts.length;
-
+    : productos;
+  
+  const [currentPage, setCurrentPage] = useState(1);
+  const instrumentos = state.products
+  
   const nextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
@@ -100,81 +102,52 @@ const Home = () => {
     setCurrentPage(1);
   };
 
-  const totalPages = Math.ceil(instrumentos.length / productsPerPage);
+  const totalPages = Math.ceil(productos.length / productsPerPage);
 
   return (
     <>
-    <Hero />
-    <Buscador />
+      <Hero />
+      <Buscador />
       <Container>
-      {/* <div className='card-container d-flex flex-row overflow-auto justify-content-start'>
-        {categorias.length
-          ? categorias.map((categoria) => (
-              <CardCategory
-                key={categoria.id}
-                name={categoria.name}
-              />
-            ))
-          : null}
-      </div> */}
-       <Row className='justify-content-start flex-wrap'>
+        <Row className='justify-content-start flex-wrap'>
           {categorias.length
             ? categorias.map((categoria) => (
-                <CardCategory key={categoria.id} name={categoria.name} onClick={handleCategoryClick} />
+                <CardCategory
+                  key={categoria.name}
+                  name={categoria.name}
+                  onClick={() => handleCategoryClick(categoria.name)}
+                />
               ))
             : null}
         </Row>
-      
-      {selectedCategories.length > 0 && (
-        <button className="botonFiltro" onClick={clearFilters}>Limpiar Filtros</button>
-      )}
 
-      <p className='leyendaFiltros'>
-        Productos filtrados: {filteredProductsCount} / Total: {totalProductsCount}
-      </p>
+        {selectedCategories.length > 0 && (
+          <button className="botonFiltro" onClick={clearFilters}>
+            Limpiar Filtros
+          </button>
+        )}
 
-      {/* Asegúrate de pasar productsPerPage a ProductList */}
-      {/* <ProductList
-        products={instrumentos}
-        currentPage={currentPage}
-        nextPage={nextPage}
-        prevPage={prevPage}
-        goToFirstPage={goToFirstPage}
-        productsPerPage={productsPerPage}
-      /> */}
-        {/* Verificar si hay productos antes de renderizar ProductList */}
-      {/* {filteredProducts.length > 0 && (
-        <ProductList
-          products={filteredProducts}
-          currentPage={currentPage}
-          nextPage={nextPage}
-          prevPage={prevPage}
-          goToFirstPage={goToFirstPage}
-          productsPerPage={productsPerPage}
-        />
-      )} */}
+        <p className='leyendaFiltros'>
+          Productos filtrados: {filteredProducts.length} / Total: {productos.length}
+        </p>
 
-      {/* Mostrar mensaje si no hay productos */}
-      {/* {filteredProducts.length === 0 && (
-        <p>No existen productos para la categoría seleccionada.</p>
-      )} */}
-       {filteredProducts.length > 0 ? (
-        <ProductList
-          products={filteredProducts}
-          currentPage={currentPage}
-          nextPage={nextPage}
-          prevPage={prevPage}
-          goToFirstPage={goToFirstPage}
-          productsPerPage={productsPerPage}
-        />
-      ) : (
-        <p className='leyendaFiltros'>No existen productos para las categorías seleccionadas.</p>
-      )}
+        {filteredProducts.length > 0 ? (
+          <ProductList
+            products={filteredProducts}
+            currentPage={1}
+            nextPage={nextPage}
+            prevPage={prevPage}
+            goToFirstPage={goToFirstPage}
+            productsPerPage={productsPerPage}
+          />
+        ) : (
+          <p className='leyendaFiltros'>No existen productos para las categorías seleccionadas.</p>
+        )}
 
-      <BrandSlider />
-      <WhatsappButton/>
-    </Container>
-  </>
+        <BrandSlider />
+        <WhatsappButton />
+      </Container>
+    </>
   );
 };
 
