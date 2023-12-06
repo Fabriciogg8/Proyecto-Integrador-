@@ -31,6 +31,7 @@ const ProductList = ({ products, currentPage, nextPage, prevPage, goToFirstPage,
               name={instrumento.name}
               price={instrumento.price}
               image={imagen}
+              
             />
           )
         })}

@@ -328,7 +328,7 @@ a img {
   right: 45px;
   font-size: 3rem;
   color: rgb(255 255 255 / 53%);
-  z-index: 10;
+  z-index: 1000;
   cursor: pointer;
   user-select: none;
 }
@@ -339,7 +339,7 @@ a img {
   left: 45px;
   font-size: 3rem;
   color: rgb(255 255 255 / 53%);
-  z-index: 10;
+  z-index: 1000;
   cursor: pointer;
   user-select: none;
 }
@@ -353,8 +353,20 @@ a img {
   opacity: 1;
   transition-duration: 0.5s;
   transform: scale(1.06);
+  display: flex;
 }
 
+.closeGallery{
+  font-size: 80px;
+  position: absolute;
+  top: 2%;
+  right: 7%;
+  font-size: 3rem;
+  color: white;
+  z-index: 200;
+  cursor: pointer;
+  user-select: none;
+}
 
 
 /*----------------------*/

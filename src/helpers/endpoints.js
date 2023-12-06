@@ -10,3 +10,5 @@ export const DELETE_PRODUCT = `${API_URL}/products`
 export const CREATE_REVIEW = `${API_URL}/reviews`
 export const GET_RESERVATIONS = `${API_URL}/reservations`
 export const GET_REVIEWS_ON_SPECIFIC_PRODUCT = `${API_URL}/reviews/product/`
+export const GET_ALL_CATEGORIES = `${API_URL}/categories`
+export const CREATE_CATEGORIES = `${API_URL}/categories`
