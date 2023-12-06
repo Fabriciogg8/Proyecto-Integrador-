@@ -1,5 +1,4 @@
-
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap'
 import CardCategory from '../components/product/CardCategory'
 import Buscador from '../components/buscador/Buscador'

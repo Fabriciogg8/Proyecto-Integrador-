@@ -8,6 +8,9 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import ImageSlider from './ImageSlider'
 import {useState} from 'react'
 import WhatsappButton from '../WhatsappButton'
+import ScoreProduct from '../product/ScoreProduct'
+import ShowScores from '../product/ShowScores'
+import { Rating } from 'react-simple-star-rating'
 
 export const ProductDetail = ({
   categoria,
@@ -15,6 +18,9 @@ export const ProductDetail = ({
   marca,
   precio,
   descripcion,
+  id,
+  rating,
+  ratingCount
 }) => {
     const [showG, setShowG] = useState(null);
     const showGallery = (showG) =>{
@@ -76,6 +82,13 @@ export const ProductDetail = ({
             
 
         <section className='descripYCaract'>
+          <div className='rating-ratingCount'>
+            <span>
+              Valoraciones recibidas:
+              <span>{ratingCount}</span>
+            </span>
+            <Rating initialValue={rating} size={36} readonly allowFraction/>
+          </div>
           <div className='descripcionProd'>
             <h4>Detalles</h4>
             <p>{descripcion}</p>
@@ -98,8 +111,10 @@ export const ProductDetail = ({
               Precio: {precio}
             </p>
           </div>
+          <ScoreProduct id={id}/>
         </section>
         <WhatsappButton/>
+        <ShowScores id={id}/>
       </div>
     </div>
   )

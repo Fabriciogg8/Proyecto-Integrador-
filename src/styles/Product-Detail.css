@@ -156,6 +156,23 @@ a img {
   font-size: 1.5em;
 }
 
+.rating-ratingCount {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+.rating-ratingCount span{
+  color: var(--primary-button-background-color);
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.rating-ratingCount span span{
+  color: white;
+  font-weight: 600;
+  font-size: 30px;
+}
 
 /*IMAGENES DE PRODUCTO*/
 @media (min-width: 920px) {
