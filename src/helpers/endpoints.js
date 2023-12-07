@@ -12,3 +12,6 @@ export const GET_RESERVATIONS = `${API_URL}/reservations`
 export const GET_REVIEWS_ON_SPECIFIC_PRODUCT = `${API_URL}/reviews/product/`
 export const GET_ALL_CATEGORIES = `${API_URL}/categories`
 export const CREATE_CATEGORIES = `${API_URL}/categories`
+export const CREATE_CHARACTERISTIC = `${API_URL}/characteristic`
+export const DELETE_CHARACTERISTIC = `${API_URL}/characteristic/`
+export const GET_CHARACTERISTIC = `${API_URL}/characteristic`
