@@ -20,6 +20,7 @@
     height: calc(2.645rem + 2px);
     box-shadow: none;
     font-size: 1rem;
+    margin-bottom: 0;
     padding-top: 0.33rem;
     padding: 0.5rem 1rem;
     border: 1px solid #bdbdbd;

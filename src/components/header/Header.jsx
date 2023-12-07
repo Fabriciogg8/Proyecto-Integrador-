@@ -44,30 +44,26 @@ const Header = () => {
                     Crear Cuenta
                   </Nav.Link>
                 </>
-              ) : user.role === 'ADMIN' ? (
-                <NavDropdown
-                  title={<span className='user-sub'>{user.firstName} {user.lastName}<p>{userAvatar}</p></span>}
-                  id='basic-nav-dropdown'
-                >
-                  <NavDropdown.Item as={NavLink} to={'/admin-panel'}>
-                    Administración
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={logout}>
-                    Cerrar Sesión
-                  </NavDropdown.Item>
-                </NavDropdown>
               ) : (
+               
                 <NavDropdown
-                  title={<span className='user-sub'>{userAvatar}</span>}
-                  id='basic-nav-dropdown'
-                >
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={logout}>
-                    Cerrar Sesión
-                  </NavDropdown.Item>
-                </NavDropdown>
-              )}
+                      title={<span className='user-sub'>{user.firstName} {user.lastName}<div className='user-pill'><p>{userAvatar}</p></div></span>}
+                      id='basic-nav-dropdown'
+                    >
+                      {user.role === 'ADMIN' && (
+                         <>
+                          <NavDropdown.Item as={NavLink} to={'/admin-panel'}>
+                            Administración
+                          </NavDropdown.Item> 
+                          <NavDropdown.Divider />
+                        </> 
+                      )}
+                      <>
+                        <NavDropdown.Item onClick={logout}>
+                        Cerrar Sesión
+                      </NavDropdown.Item></>  
+                </NavDropdown> 
+                  )}
             </Nav>
           </Navbar.Collapse>
         </Container>
