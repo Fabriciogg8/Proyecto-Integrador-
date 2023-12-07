@@ -4,6 +4,7 @@ import { ProductContext } from '../conexts/ProductContext'
 import CardPolicy from '../components/product/CardPolicy'
 import  ProductDetail  from "../components/product/ProductDetail"
 import { Link } from 'react-router-dom';
+import { useAuthStore } from '../hooks/useAuthStore'
 
 export const ProductDetails = () => {
   const { id } = useParams()
@@ -15,6 +16,17 @@ export const ProductDetails = () => {
   }, []);
 
   const producto = state.currentProduct
+
+  const { user } = useAuthStore();
+
+  const handlerOnClickReserva = () =>{
+    if (!user.sub || user.sub.trim() === '') {
+      window.location.href = '/signin';
+    } else {
+      window.location.href = `/reservas/${id}`;
+    }
+    
+  }
 
   console.log(producto)
 
@@ -32,10 +44,12 @@ export const ProductDetails = () => {
       />
       <CardPolicy/>
       <div className="text-center">
-        <Link to={`/reservas/${id}`} className='btn btn-primary mt-3'>
+        <button onClick={handlerOnClickReserva} className='btn btn-primary mt-3'>
           Ir a Reservas
-        </Link>
+        </button>
       </div>
     </div>
   )
 }
+
+
