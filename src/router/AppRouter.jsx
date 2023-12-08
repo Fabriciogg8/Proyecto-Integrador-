@@ -10,6 +10,7 @@ import { ProductDetails } from '../pages/ProductDetails'
 import Resultados from '../pages/Resultados'
 import { AdminPanel } from '../pages/AdminPanel'
 import  SearchResults  from '../pages/SearchResults'
+import FavouritesList from '../components/product/FavouritesList'
 
 export const AppRouter = () => {
   const { status, user, checkAuthToken } = useAuthStore()
@@ -39,6 +40,7 @@ export const AppRouter = () => {
             <>
               <Route path='/*' element={<Home />} />
               <Route path='/productdetails/:id' element={<ProductDetails />} />
+              <Route path='/favourites' element={<FavouritesList/>}/>
               {user.role === 'ADMIN' ? (
                 <Route path='/admin-panel/*' element={<AdminPanel />} />
               ) : (
