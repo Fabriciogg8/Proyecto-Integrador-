@@ -5,28 +5,7 @@ import Pagination from './Pagination';
 
 export const productsPerPage = 6;
 
-const ProductList = ({ products, currentPage, nextPage, prevPage, goToFirstPage, productsPerPage }) => {
-
-  const [totalPages, setTotalPages] = useState(1);
-  const [pageSize, setPageSize] = useState(10);  
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`http://174.129.92.139:8001/api/v1/products?page=${currentPage}&order=random`);
-        const data = await response.json();
-        setTotalPages(data.totalPages);
-        setPageSize(data.pageable.pageSize);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    };
-  
-    fetchData();
-  }, []);
-  // useEffect(() => {
-  //   setTotalPages();
-  // }, [products, productsPerPage]);
-
+const ProductList = ({ products, currentPage}) => {
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
@@ -50,14 +29,14 @@ const ProductList = ({ products, currentPage, nextPage, prevPage, goToFirstPage,
           )
         })}
       </div>
-      <Pagination
+      {/* <Pagination
         currentPage={currentPage}
-        totalPages={totalPages}
-        nextPage={nextPage}
-        prevPage={prevPage}
-        goToFirstPage={goToFirstPage}
-        productsPerPage={pageSize}
-      />
+        // totalPages={totalPages}
+        // nextPage={nextPage}
+        // prevPage={prevPage}
+        // goToFirstPage={goToFirstPage}
+        // productsPerPage={pageSize}
+      /> */}
     </div>
   );
 };

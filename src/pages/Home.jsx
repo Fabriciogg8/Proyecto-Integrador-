@@ -6,6 +6,7 @@ import Buscador from '../components/buscador/Buscador';
 import BrandSlider from '../components/buscador/BrandSlider';
 import { ProductContext } from '../conexts/ProductContext';
 import ProductList, { productsPerPage } from '../components/ProductList';
+import Pagination from '../components/Pagination';
 import '../styles/Home.css';
 import Hero from '../components/hero/Hero';
 
@@ -36,30 +37,10 @@ const Home = () => {
 
     fetchData();
   }, [currentPage]);
-  console.log(totalPages)
-  console.log(currentPage)
-  console.log(productos.length)
-
-
+  
   const categorias = [
     // ... (código de categorías)
   ];
-
-  const nextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  const goToFirstPage = () => {
-    setCurrentPage(1);
-  };
 
   return (
     <>
@@ -80,12 +61,17 @@ const Home = () => {
 
         <ProductList
           products={productos}
-          currentPage={currentPage}
-          nextPage={nextPage}
-          prevPage={prevPage}
-          goToFirstPage={goToFirstPage}
-          productsPerPage={pageSize}
+          // currentPage={currentPage}
+          // nextPage={nextPage}
+          // prevPage={prevPage}
+          // goToFirstPage={goToFirstPage}
+          // productsPerPage={pageSize}
         />
+        <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        setCurrentPage={setCurrentPage}
+      />
 
         <BrandSlider />
       </Container>
