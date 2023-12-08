@@ -15,3 +15,4 @@ export const CREATE_CATEGORIES = `${API_URL}/categories`
 export const CREATE_CHARACTERISTIC = `${API_URL}/characteristic`
 export const DELETE_CHARACTERISTIC = `${API_URL}/characteristic/`
 export const GET_CHARACTERISTIC = `${API_URL}/characteristic`
+export const UPDATE_CHARACTERISTIC = `${API_URL}/characteristic/`

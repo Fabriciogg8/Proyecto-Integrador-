@@ -2,10 +2,23 @@ import { Table, Button } from 'react-bootstrap'
 import { useState, useEffect } from 'react';
 import '../../styles/CharacteristicAdmin.css'
 import { DELETE_CHARACTERISTIC, GET_CHARACTERISTIC } from '../../helpers/endpoints';
+import CharacteristicCreate from './CharacteristicCreate';
+import CharacteristicUpdate from './CharacteristicUpdate';
 
 const CharacteristicAdmin = () => {
     const [reservas, setReservas] = useState([]);
     const token = localStorage.getItem('token')
+    const [stateCreateCharacteristic, setStateCreateCharacteristic] = useState(false)
+    const handleStateCreate = () => {
+        setStateCreateCharacteristic(true)
+    }
+
+    const [nameActual, setNameActual] = useState('')
+    const [stateUpdateCharacteristic, setStateUpdateCharacteristic] = useState(false)
+    const handleStateUpdate = (name) => {
+        setStateUpdateCharacteristic(true)
+        setNameActual(name)
+    }
 
     const handleDelete = async (name) => {
         try {
@@ -55,11 +68,14 @@ const CharacteristicAdmin = () => {
         <h1 className='text-center' style={{ color: 'black' }}>
             Lista de Productos
         </h1>
+        {stateCreateCharacteristic ? <CharacteristicCreate/> : 
+        <button className='buttonCreateCharacteristic' onClick={handleStateCreate}>Añadir Nueva</button>}
+        {stateUpdateCharacteristic && (<CharacteristicUpdate name={nameActual}/>)}
         <Table striped bordered hover>
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Nombre</th>
+                <th>Icono</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -72,6 +88,7 @@ const CharacteristicAdmin = () => {
                     <Button
                         variant='secondary'
                         className='mx-2'
+                        onClick={() => handleStateUpdate(object.name)}
                     >
                         Editar
                     </Button>

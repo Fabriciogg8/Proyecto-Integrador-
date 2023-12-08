@@ -1,12 +1,12 @@
-import { CREATE_CHARACTERISTIC } from '../../helpers/endpoints';
+import { UPDATE_CHARACTERISTIC } from '../../helpers/endpoints';
 import '/src/styles/CharacteristicAdmin.css'
 import { useState } from 'react';
 
-const CharacteristicCreate = () => {
+const CharacteristicUpdate = ({name}) => {
     const [selectedFile, setSelectedFile] = useState(null);
 
     const handleFileChange = (event) => {
-        const file = event.target.files[0]; // Tomar solo el primer archivo
+        const file = event.target.files[0]; 
         if (file && file.type.startsWith('image/')) {
             setSelectedFile(file);
         } else {
@@ -19,24 +19,25 @@ const CharacteristicCreate = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
-        formData.append('name', event.target.name.value);
-        formData.append('image', selectedFile); // Cambiado a singular
-        
-
+        formData.append('name', encodeURIComponent(event.target.name.value));
+        if (selectedFile) {
+            formData.append('image', selectedFile); // Cambiado a singular
+        }
+        console.log(event.target.name.value)
         try {
-            const response = await fetch(CREATE_CHARACTERISTIC, {
-                method: 'POST',
+            const response = await fetch(`${UPDATE_CHARACTERISTIC}${name}`, {
+                method: 'PUT',
                 headers: {
                 'Authorization': `Bearer ${token}`
                 },
                 body: formData,
             });
-            console.log(selectedFile)
-            console.log(event.target.name.value);
+            console.log(event.target.name.value)
+            console.log(formData);
             if (response.ok) {
-                console.log("ANDUVO")
+                console.log("ANDUVO EL PUT")
             } else if (!response.ok) {
-                console.log("no anduvo")
+                console.log("no anduvo el put")
             }
         } catch (error) {
             console.error('Error en la solicitud: ', error)
@@ -53,7 +54,7 @@ const CharacteristicCreate = () => {
                     <div className='col-lg-8 col-xl-12'>
                         <div className='card rounded-3 form-background'>
                             <div className='card-body p-4 p-md-5'>
-                                <h3 className='mb-4 px-md-2'>Ingrese una Característica</h3>
+                                <h3 className='mb-4 px-md-2'>Actualice la característica &quot;{name}&quot;</h3>
                                 <form
                                     onSubmit={handleSubmit}
                                     className='px-md-2'
@@ -78,7 +79,7 @@ const CharacteristicCreate = () => {
                                     />
                                     <label className='file-button' htmlFor='file'>
                                         <img src='/photo-upload.svg' className='photo-upload' />
-                                        Elige las fotos
+                                        Elige su icono
                                     </label>
                                     <button type='submit' className='btn btn-lg mb-1 submitt'>
                                         Agregar
@@ -93,4 +94,4 @@ const CharacteristicCreate = () => {
     )
 }
 
-export default CharacteristicCreate;
+export default CharacteristicUpdate;
