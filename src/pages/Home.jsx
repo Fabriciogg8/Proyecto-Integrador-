@@ -44,14 +44,14 @@ const Home = () => {
     }, [])
 
   const handleCategoryClick = (categoryName) => {
-    // Verifica si la categoría ya está seleccionada
+
     if (selectedCategories.includes(categoryName)) {
-      // Si ya está seleccionada, quítala
+  
       setSelectedCategories((prevSelected) =>
         prevSelected.filter((category) => category !== categoryName)
       );
     } else {
-      // Si no está seleccionada, agrégala
+      
       setSelectedCategories((prevSelected) => [...prevSelected, categoryName]);
     }
   };
@@ -61,14 +61,13 @@ const Home = () => {
     setSelectedCategories([]);
   };
 
-  // Filtra los productos según las categorías seleccionadas
   const filteredProducts = selectedCategories.length > 0
   ? instrumentos.filter((producto) =>
-      producto.categories && producto.categories.some((category) =>
-        selectedCategories.includes(category)
-      )
+      producto.category && selectedCategories.includes(producto.category)
     )
   : instrumentos;
+
+  console.log(filteredProducts)
 
   const totalProductsCount = instrumentos.length;
   const filteredProductsCount = filteredProducts.length;
@@ -99,7 +98,7 @@ const Home = () => {
         <Row className='justify-content-start flex-wrap'>
           {categorias.length
             ? categorias.map((categoria) => (
-                <CardCategory key={categoria.id} name={categoria.name} onClick={handleCategoryClick} />
+                <CardCategory key={categoria.name} name={categoria.name} onClick={handleCategoryClick} />
               ))
             : null}
         </Row>
@@ -110,6 +109,9 @@ const Home = () => {
 
       <p className='leyendaFiltros'>
         Productos filtrados: {filteredProductsCount} / Total: {totalProductsCount}
+      </p>
+      <p className='leyendaFiltros'>
+        Categorías filtradas: {selectedCategories.join(' - ')}
       </p>
 
       {filteredProducts.length > 0 ? (
