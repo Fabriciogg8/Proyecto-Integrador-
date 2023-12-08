@@ -4,7 +4,12 @@ import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 
 const ImageSlider = ({ slides, show }) => {
 
-    
+
+  const [showG, setShowG] = useState(show);
+    const showGallery = (showG) =>{
+        setShowG(showG);
+      };
+    show = showG
 
     const data = [
         {
@@ -62,7 +67,7 @@ const ImageSlider = ({ slides, show }) => {
                   className={index === current ? 'slide active' : 'slide'}
                   key={index}
               >
-                <p className='closeGallery'>&times;</p>
+                <button className='closeGallery' onClick={() => showGallery(false)}>&times;</button>
                   {index === current && (
                   <img src={slide.image} alt='travel image' className='image' />
                   )}
