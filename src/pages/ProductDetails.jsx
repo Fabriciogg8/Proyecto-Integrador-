@@ -1,4 +1,5 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate,useParams } from 'react-router-dom'
+
 import { useContext, useEffect } from 'react'
 import { ProductContext } from '../conexts/ProductContext'
 import CardPolicy from '../components/product/CardPolicy'
@@ -6,50 +7,52 @@ import  ProductDetail  from "../components/product/ProductDetail"
 import { Link } from 'react-router-dom';
 import { useAuthStore } from '../hooks/useAuthStore'
 
-export const ProductDetails = () => {
-  const { id } = useParams()
-
-  const { state, fetchCurrentProduct } = useContext(ProductContext)
+const ProductDetails = () => {
+  const { id } = useParams();
+  const { state, fetchCurrentProduct } = useContext(ProductContext);
+  const { user } = useAuthStore();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetchCurrentProduct(id)
-  }, []);
+    fetchCurrentProduct(id);
+  }, [id, fetchCurrentProduct]);
 
-  const producto = state.currentProduct
-
-  const { user } = useAuthStore();
-
-  const handlerOnClickReserva = () =>{
+  const handleOnClickReserva = async () => {
     if (!user.sub || user.sub.trim() === '') {
-      window.location.href = '/signin';
+      // Si el usuario no ha iniciado sesión, redirige al formulario específico para reservas
+      navigate('/signinReserva');
     } else {
-      window.location.href = `/reservas/${id}`;
+      // Si el usuario ya ha iniciado sesión, redirige a la página de reservas
+      navigate(`/reservas/${id}`);
     }
-    
+  };
+
+  if (!state.currentProduct) {
+    return <div>Loading...</div>;
   }
 
-  console.log(producto)
+  const { category, name, brand, price, description, images } = state.currentProduct;
 
   return (
     <div className='Details'>
       <ProductDetail
-        key={producto.id}
-        categoria={producto.category}
-        nombre={producto.name}
-        marca={producto.brand}
-        precio={producto.price}
-        descripcion={producto.description}
-        caracteristicas={producto.description}
-        imagenes={producto.images}
+        key={id}
+        categoria={category}
+        nombre={name}
+        marca={brand}
+        precio={price}
+        descripcion={description}
+        caracteristicas={description}
+        imagenes={images}
       />
-      <CardPolicy/>
+      <CardPolicy />
       <div className="text-center">
-        <button onClick={handlerOnClickReserva} className='btn btn-primary mt-3'>
+        <button onClick={handleOnClickReserva} className='btn btn-primary mt-3'>
           Ir a Reservas
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-
+export default ProductDetails;
