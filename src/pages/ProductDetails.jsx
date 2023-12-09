@@ -1,34 +1,32 @@
 import { useParams } from 'react-router-dom'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ProductContext } from '../conexts/ProductContext'
 import CardPolicy from '../components/product/CardPolicy'
 import  ProductDetail  from "../components/product/ProductDetail"
-import { Link } from 'react-router-dom';
 import { useAuthStore } from '../hooks/useAuthStore'
 
 export const ProductDetails = () => {
   const { id } = useParams()
-
   const { state, fetchCurrentProduct } = useContext(ProductContext)
+  const producto = state.currentProduct
+  const { user } = useAuthStore()
+  const [showText, setShowText] = useState(false)
 
   useEffect(() => {
     fetchCurrentProduct(id)
   }, []);
 
-  const producto = state.currentProduct
-
-  const { user } = useAuthStore();
-
   const handlerOnClickReserva = () =>{
+    setShowText(true)
     if (!user.sub || user.sub.trim() === '') {
-      window.location.href = '/signin';
+      setShowText((prevShowText) => {
+        window.location.href = `/signin?showText=${prevShowText}&productId=${id}`;
+        return prevShowText;
+      });
     } else {
       window.location.href = `/reservas/${id}`;
     }
-    
   }
-
-  console.log(producto)
 
   return (
     <div className='Details'>
@@ -51,5 +49,3 @@ export const ProductDetails = () => {
     </div>
   )
 }
-
-

@@ -29,8 +29,7 @@ const Home = () => {
         setProductos(data.content);
         setTotalPages(data.totalPages);
         setPageSize(data.pageable.pageSize);
-        console.log(data.totalElements)
-      } catch (error) {
+        } catch (error) {
         console.error('Error fetching products:', error);
       }
     };
@@ -61,11 +60,6 @@ const Home = () => {
 
         <ProductList
           products={productos}
-          // currentPage={currentPage}
-          // nextPage={nextPage}
-          // prevPage={prevPage}
-          // goToFirstPage={goToFirstPage}
-          // productsPerPage={pageSize}
         />
         <Pagination
         currentPage={currentPage}
