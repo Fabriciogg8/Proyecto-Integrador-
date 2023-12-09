@@ -27,18 +27,10 @@ export const SignIn = () => {
     }
     startLogin({ email, password })
   }
-
-    /*Codigo para poder mostrar el texto de login obligatorio cuando se quiere reservar sin haber iniciado sesión*/
-    useEffect(() => {
-        const params = new URLSearchParams(window.location.search);
-        setShowText(params.get('showText') === 'true');
-      }, []
-      );
     
   return (
     <Container className='d-flex justify-content-center align-items-center'>
       <Card body style={{ width: '45rem' }}>
-        {showText && <p className='aclaracionSignIn'>Para poder reservar productos inicia sesión o en caso de no contar con una cuenta, registrate</p>}
         <h3 className='text-center'>Iniciar Sesion</h3>
         <hr />
         <SignInForm errors={errors} onSubmitCallback={login}/>
