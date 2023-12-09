@@ -1,4 +1,4 @@
-import { createContext, useState, useReducer, useEffect } from 'react';
+import React, { createContext, useReducer, useEffect } from 'react';
 import { GET_RANDOM_PRODUCTS, GET_CURRENT_PRODUCT } from '../helpers/endpoints';
 
 export const ProductContext = createContext();
@@ -70,7 +70,6 @@ export const ProductContextProvider = ({ children }) => {
       if (response.ok) {
         const data = await response.json();
         const { content } = data;
-        console.log("Fetched Products:", content);
         dispatch({ type: "fetchProducts", payload: content });
       } else {
         throw new Error('Error al obtener los productos');
@@ -81,12 +80,10 @@ export const ProductContextProvider = ({ children }) => {
   }
 
   async function fetchCurrentProduct(id) {
-    console.log("Fetching current product with ID:", id);
     try {
       const response = await fetch(`${GET_CURRENT_PRODUCT}/${id}`);
       if (response.ok) {
         const data = await response.json();
-        console.log("Fetched Current Product:", data);
         dispatch({ type: "fetchCurrentProduct", payload: data });
       } else {
         throw new Error('Error al obtener el producto');
@@ -102,7 +99,6 @@ export const ProductContextProvider = ({ children }) => {
       if (response.ok) {
         const data = await response.json();
         const { content } = data;
-        console.log("Search Results:", content);
         dispatch({ type: "searchResults", payload: content });
       } else {
         console.error('Error en la solicitud - respuesta no exitosa:', response);
@@ -111,7 +107,6 @@ export const ProductContextProvider = ({ children }) => {
     } catch (error) {
       console.error('Error en la solicitud:', error);
     }
-    console.log("Current State:", state);
   };
 
   const getSuggestions = async (value) => {
@@ -124,7 +119,6 @@ export const ProductContextProvider = ({ children }) => {
   
       const data = await response.json();
       const { content } = data;
-      console.log("Suggestions:", content);
       dispatch({ type: "updateSuggestions", payload: content });
     } catch (error) {
       console.error('Error al obtener sugerencias:', error);
