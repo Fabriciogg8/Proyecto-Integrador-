@@ -65,3 +65,9 @@
 .policy p{
   color: var(--body-text-color-inverted);
 }
+
+/*------CARD SIGNIN----*/
+.aclaracionSignIn{
+  text-align: center;
+  color: var(--secondary-background-color);
+}

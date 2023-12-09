@@ -1,16 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import React, { useState, useEffect, useContext } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useAuthStore } from '../../hooks/useAuthStore.js'
+import { ProductContext } from '../../conexts/ProductContext.jsx'
 
 export const DetalleReserva = () => {
+  const { id } = useParams()
   const [reservationData, setReservationData] = useState([]);
+  const { state, fetchCurrentProduct } = useContext(ProductContext)
+  useEffect(() => {
+    fetchCurrentProduct(id)
+  }, []);
 
   useEffect(() => {
     const fetchReservationData = async () => {
       try {
-        const resp = await fetch('http://174.129.92.139:8001/api/v1/reservations/19');
+        const resp = await fetch(`http://174.129.92.139:8001/api/v1/reservations/${id}`);
         if (!resp.ok) {
           throw new Error('Error al obtener datos de reserva');
         }
