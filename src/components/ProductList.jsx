@@ -1,7 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
 import CardProduct from './product/CardProduct';
-import Pagination from './Pagination';
 
 export const productsPerPage = 6;
 
@@ -29,14 +28,6 @@ const ProductList = ({ products, currentPage}) => {
           )
         })}
       </div>
-      {/* <Pagination
-        currentPage={currentPage}
-        // totalPages={totalPages}
-        // nextPage={nextPage}
-        // prevPage={prevPage}
-        // goToFirstPage={goToFirstPage}
-        // productsPerPage={pageSize}
-      /> */}
     </div>
   );
 };

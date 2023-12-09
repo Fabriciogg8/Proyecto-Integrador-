@@ -1,64 +1,34 @@
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import React, { useState, useEffect, useContext } from 'react'
-import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useAuthStore } from '../../hooks/useAuthStore.js'
 import { ProductContext } from '../../conexts/ProductContext.jsx'
+import { useReservaContext } from '../../conexts/ReservaContext.jsx'
+import Calendario from '../buscador/Calendario.jsx'
+import { format } from 'date-fns';
+import es from 'date-fns/locale/es';
 
 export const DetalleReserva = () => {
   const { id } = useParams()
-  const [reservationData, setReservationData] = useState([]);
   const { state, fetchCurrentProduct } = useContext(ProductContext)
+  const { user } = useAuthStore();
+  const {startDate, endDate} = useReservaContext()
+
   useEffect(() => {
     fetchCurrentProduct(id)
   }, []);
-
-  useEffect(() => {
-    const fetchReservationData = async () => {
-      try {
-        const resp = await fetch(`http://174.129.92.139:8001/api/v1/reservations/${id}`);
-        if (!resp.ok) {
-          throw new Error('Error al obtener datos de reserva');
-        }
-        const data = await resp.json();
-        setReservationData(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchReservationData();
-  }, []);
-
-  const { user } = useAuthStore();
+  
   const [formData, setFormData] = useState({
     firstName: user.firstName,
     lastName: user.lastName,
     email: user.sub,
-    startDate: reservationData.length > 0 ? reservationData[0].startDate : null,
-    endDate: reservationData.length > 0 ? reservationData[0].endDate : null,
+    startDate: format(startDate, 'd MMMM yyyy', { locale: es }),
+    endDate: format(endDate, 'd MMMM yyyy', { locale: es })
   });
-  console.log(reservationData)
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: type === 'checkbox' ? checked : value,
-    }));
-  };
-
-  const handleChangeDate = (date, field) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [field]: date,
-    }));
-  };
   const handleSubmit = e => {
     e.preventDefault()
-    // Puedes manejar la lógica de envío del formulario aquí
-    console.log('Datos del formulario:', formData)
   }
 
   return (
@@ -78,6 +48,7 @@ export const DetalleReserva = () => {
             readOnly
           />
         </div>
+
         <div className='mb-3'>
           <label htmlFor='lastName' className='form-label'>
             Apellido
@@ -91,6 +62,7 @@ export const DetalleReserva = () => {
             readOnly
           />
         </div>
+
         <div className='mb-3'>
           <label htmlFor='email' className='form-label'>
             Correo Electrónico
@@ -104,53 +76,35 @@ export const DetalleReserva = () => {
             readOnly
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="startDate" className="form-label date">
-            Fecha de Inicio   
+
+        <div className='mb-3'>
+          <label htmlFor='fechaInicio' className='form-label'>
+            Fecha Inicio
           </label>
-          <DatePicker
-            selected={formData.startDate}
-            onChange={(date) => handleChangeDate(date, 'startDate')}
-            className="form-control"
-            id="startDate"
-            name="startDate"
-            dateFormat="dd/MM/yyyy"
-            minDate={new Date()} // Evita fechas pasadas
-            readOnly
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="endDate" className="form-label date">
-            Fecha de Fin
-          </label>
-          <DatePicker
-            selected={formData.endDate}
-            onChange={(date) => handleChangeDate(date, 'endDate')}
-            className="form-control"
-            id="endDate"
-            name="endDate"
-            dateFormat="dd/MM/yyyy"
-            minDate={formData.endDate} // Evita fechas anteriores a la fecha de inicio
+          <input
+            type='text'
+            className='form-control'
+            id='email'
+            name='email'
+            value={formData.startDate}
             readOnly
           />
         </div>
 
-        {formData.expandOption && (
-          <div className='mb-3'>
-            {/* Agrega aquí los campos adicionales para opciones ampliadas */}
-            <label htmlFor='additionalField' className='form-label'>
-              Campo Adicional
-            </label>
-            <input
-              type='text'
-              className='form-control'
-              id='additionalField'
-              name='additionalField'
-              value={formData.additionalField}
-              onChange={handleChange}
-            />
-          </div>
-        )}
+        <div className='mb-3'>
+          <label htmlFor='fechaFin' className='form-label'>
+            Fecha Fin
+          </label>
+          <input
+            type='text'
+            className='form-control'
+            id='email'
+            name='email'
+            value={formData.endDate}
+            readOnly
+          />
+        </div>
+
         <button type='submit' className='btn btn-primary'>
           Enviar Reserva
         </button>

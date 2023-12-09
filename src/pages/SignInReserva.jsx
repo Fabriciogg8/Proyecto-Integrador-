@@ -1,16 +1,23 @@
 import { Link } from 'react-router-dom';
 import { Card, Container } from 'react-bootstrap';
 import { SignInFormReserva } from '../components/forms/SignInFormReserva.jsx';
-import { useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { isObjectEmpty } from '../helpers/helpers.js';
 import validator from 'validator';
 import { useAuthStore } from '../hooks/useAuthStore';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { ProductContext } from '../conexts/ProductContext'
 
 export const SignInReserva = () => {
+  const { id } = useParams()
+  const { state, fetchCurrentProduct } = useContext(ProductContext)
   const [errors, setErrors] = useState({});
   const { startLogin } = useAuthStore();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchCurrentProduct(id);
+  }, [id, fetchCurrentProduct]);
 
   const login = async ({ email, password }) => {
     const errors = {};

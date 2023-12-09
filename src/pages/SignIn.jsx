@@ -9,7 +9,6 @@ import { useAuthStore } from '../hooks/useAuthStore.js'
 export const SignIn = () => {
   const [errors, setErrors] = useState({})
   const { startLogin } = useAuthStore()
-  const [showText, setShowText] = useState(false)
 
   const login = ({ email, password }) => {
     const errors = {}

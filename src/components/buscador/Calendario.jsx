@@ -2,19 +2,18 @@ import '../../styles/Buscador.css'
 import DatePicker from "react-datepicker"
 import { addMonths } from 'date-fns';
 import "react-datepicker/dist/react-datepicker.css";
-import React, { useState } from 'react';
+import React from 'react';
 import es from 'date-fns/locale/es';
+import { useReservaContext } from '../../conexts/ReservaContext';
 
 const Calendario = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(null);
+  const { startDate, endDate, updateDates } = useReservaContext();
+  
   const onChange = (dates) => { 
     const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
+    updateDates(start,end)
   };
-  console.log('start',startDate);
-  console.log('end',endDate);
+
   return (
     <DatePicker
       dateFormat="dd/MM/yyyy"
@@ -26,13 +25,8 @@ const Calendario = () => {
       endDate={endDate}
       selectsRange
       locale={es}
-
-      showDisabledMonthNavigation
-      
-    />
-    
+      showDisabledMonthNavigation/>
   );
-
 }
 
 export default Calendario;
