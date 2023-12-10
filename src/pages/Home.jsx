@@ -60,7 +60,7 @@ const Home = () => {
     setCurrentPage(1);
   };
 
-  const totalPages = Math.ceil(instrumentos.length / productsPerPage);
+  setTotalPages(Math.ceil(instrumentos.length / productsPerPage);)
 
   //-------favoritos-------------
 
