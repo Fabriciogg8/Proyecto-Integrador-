@@ -41,22 +41,22 @@ export const ProductDetails = () => {
   if (!state.currentProduct) {
       return <div>Loading...</div>;
     }
-  const { category, name, brand, price, description, images, rating, ratingCount, id } = state.currentProduct;
+  const product = state.currentProduct;
 
   return (
     <div className='Details'>
       <ProductDetail
-        key={id}
-        categoria={category}
-        nombre={name}
-        marca={brand}
-        precio={price}
-        descripcion={description}
-        caracteristicas={description}
-        imagenes={images}
-        rating={rating}
-        ratingCount={ratingCount}
-        id={id}
+        key={product.id}
+        categoria={product.category}
+        nombre={product.name}
+        marca={product.brand}
+        precio={product.price}
+        descripcion={product.description}
+        caracteristicas={product.description}
+        imagenes={product.images}
+        rating={product.rating}
+        ratingCount={product.ratingCount}
+        id={product.id}
       />
       <CardPolicy />
       <div className="text-center">
