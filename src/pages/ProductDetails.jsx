@@ -31,7 +31,7 @@ export const ProductDetails = () => {
     else{
   /**Verifica antes de avanzar sobre la reserva si se seleccionaron las fechas**/
     if (startDate && endDate) {
-      navigate('/reservas/${id}');
+      navigate(`/reservas/${id}`);
      } else {
       alert('Por favor, selecciona fechas de inicio y fin antes de continuar con la reserva.');
       navigate('/home');
