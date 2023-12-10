@@ -7,6 +7,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import ImageSlider from './ImageSlider'
 import {useState} from 'react'
+import WhatsappButton from '../WhatsappButton'
+import ScoreProduct from '../product/ScoreProduct'
+import ShowScores from '../product/ShowScores'
+import { Rating } from 'react-simple-star-rating'
+
+import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 
 export const ProductDetail = ({
   categoria,
@@ -14,11 +20,16 @@ export const ProductDetail = ({
   marca,
   precio,
   descripcion,
+  id,
+  rating,
+  ratingCount
 }) => {
-    const [showG, setShowG] = useState(null);
+    const [showG, setShowG] = useState(false);
     const showGallery = (showG) =>{
         setShowG(showG);
       };
+
+
       const data = [
         {
           image:
@@ -41,6 +52,28 @@ export const ProductDetail = ({
             'https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80'
         }
       ];
+
+
+//-----------------------------------------------------
+const [current, setCurrent] = useState(0);
+  const length = data.length;
+
+  const nextSlide = () => {
+    setCurrent(current === length - 1 ? 0 : current + 1);
+  };
+
+  const prevSlide = () => {
+    setCurrent(current === 0 ? length - 1 : current - 1);
+  };
+
+  if (!Array.isArray(data) || data.length <= 0) {
+    return null;
+  }
+
+
+//----------------------------------------------
+
+      
   return (
     <div className='everyDetail'>
       <section className='top-section'>
@@ -60,6 +93,7 @@ export const ProductDetail = ({
         </div>
       </section>
       <div>
+       
       <div className='contenedorGalery'>
                 <div className='galeryContainer g-container'>
                     <img src={prod} className='prodDetailGallery' alt="" onClick={() => showGallery(true)}/>
@@ -69,9 +103,42 @@ export const ProductDetail = ({
                     <img src={prod} className='prodDetailGallery' alt="" />
                 </div>
             </div>
-            {<ImageSlider slides={data} show={showG} />}
+            
+            { /*<ImageSlider slides={data} show={showG} />*/ }
+            
+            <section className='sliderContainer' style={showG ? {display:"block"} : {display:"none"}}>
+          <div className='slider'>
+            
+          <FaArrowAltCircleLeft className='left-arrow' onClick={prevSlide} />
+          <FaArrowAltCircleRight className='right-arrow' onClick={nextSlide} />
+        
+          {data.map((slide, index) => {
+              return (
+              <div
+                  className={index === current ? 'slide active' : 'slide'}
+                  key={index}
+              >
+                <p className='closeGallery' onClick={() => showGallery(false)}>&times;</p>
+                  {index === current && (
+                  <img src={slide.image} alt='travel image' className='image' />
+                  )}
+                  
+              </div>
+              );
+          })}
+          </div>
+      </section>
+
+
 
         <section className='descripYCaract'>
+          <div className='rating-ratingCount'>
+            <span>
+              Valoraciones recibidas:
+              <span>{ratingCount}</span>
+            </span>
+            <Rating initialValue={rating} size={36} readonly allowFraction/>
+          </div>
           <div className='descripcionProd'>
             <h4>Detalles</h4>
             <p>{descripcion}</p>
@@ -94,7 +161,10 @@ export const ProductDetail = ({
               Precio: {precio}
             </p>
           </div>
+          <ScoreProduct id={id}/>
         </section>
+        <WhatsappButton/>
+        <ShowScores id={id}/>
       </div>
     </div>
   )

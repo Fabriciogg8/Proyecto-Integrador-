@@ -2,15 +2,7 @@ import React, { createContext, useReducer, useEffect } from 'react';
 import { GET_RANDOM_PRODUCTS, GET_CURRENT_PRODUCT } from '../helpers/endpoints';
 
 export const ProductContext = createContext();
-
-export const initialState = {
-  products: [],
-  currentProduct: [],
-  searchResults: [],
-  searchInput: "",
-  token: [],
-  suggestions: [],
-};
+export const initialState = { products: [], currentProduct: [], searchResults: [], searchInput: "", token: localStorage.getItem("token") || [], suggestions: [] };
 
 export const ProductContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -132,3 +124,4 @@ export const ProductContextProvider = ({ children }) => {
     </ProductContext.Provider>
   );
 };
+

@@ -156,6 +156,23 @@ a img {
   font-size: 1.5em;
 }
 
+.rating-ratingCount {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+.rating-ratingCount span{
+  color: var(--primary-button-background-color);
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.rating-ratingCount span span{
+  color: white;
+  font-weight: 600;
+  font-size: 30px;
+}
 
 /*IMAGENES DE PRODUCTO*/
 @media (min-width: 920px) {
@@ -243,16 +260,30 @@ a img {
   font-size: 1.5rem;
   text-align: center;
 }
-.uso{
-  width: 50%;
+.uso , .almacenamiento , .devolucion{
+  width: 100%;
   margin: 2rem 3rem;
   text-align: justify;
 }
-.almacenamiento{
-  width: 50%;
-  margin: 2rem 3rem;
-  text-align: justify;
-}
+
+
+@media (max-width: 700px){
+  .uso,
+  .almacenamiento,
+  .devolucion {
+    width: 75%;
+    margin: 2rem 6%;
+  }
+  
+  .typePolicy {
+    flex-direction: column;
+  }
+  }
+
+
+
+
+
 
 /*---DETALLE GALERIA---*/
 
@@ -297,7 +328,7 @@ a img {
   right: 45px;
   font-size: 3rem;
   color: rgb(255 255 255 / 53%);
-  z-index: 10;
+  z-index: 1000;
   cursor: pointer;
   user-select: none;
 }
@@ -308,7 +339,7 @@ a img {
   left: 45px;
   font-size: 3rem;
   color: rgb(255 255 255 / 53%);
-  z-index: 10;
+  z-index: 1000;
   cursor: pointer;
   user-select: none;
 }
@@ -322,6 +353,7 @@ a img {
   opacity: 1;
   transition-duration: 0.5s;
   transform: scale(1.06);
+  display: flex;
 }
 
 #root {
@@ -344,6 +376,19 @@ a img {
 
 .container h2{
   margin-top: 2%;
+}
+
+
+.closeGallery{
+  font-size: 80px;
+  position: absolute;
+  top: 2%;
+  right: 7%;
+  font-size: 3rem;
+  color: white;
+  z-index: 200;
+  cursor: pointer;
+  user-select: none;
 }
 
 

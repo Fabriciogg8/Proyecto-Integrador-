@@ -71,3 +71,39 @@
   text-align: center;
   color: var(--secondary-background-color);
 }
+
+.fav-button{
+  width: 35px;
+    height: 35px;
+    padding: 1%;
+    border: none;
+    background-color: rgba(146, 146, 146, 0.521);
+    border-radius: 50%;
+    margin-bottom: auto;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+}
+
+.fav-button:hover{
+  width: 38px;
+  height: 38px;
+  padding: 1%;
+  background-color: rgba(29, 116, 17, 0.384);
+}
+
+.cardProduct{
+  height: 45%;
+  width: 45%;
+  padding: 1%;
+  margin: 3px;
+  background-color: var(--header-background-color);
+}
+
+.cardFavBtn{
+  display: flex;
+  align-items: end;
+  justify-content: end;
+
+}

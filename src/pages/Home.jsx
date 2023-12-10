@@ -1,4 +1,3 @@
-
 import React, { useContext, useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import CardCategory from '../components/product/CardCategory';
@@ -9,6 +8,10 @@ import ProductList, { productsPerPage } from '../components/ProductList';
 import Pagination from '../components/Pagination';
 import '../styles/Home.css';
 import Hero from '../components/hero/Hero';
+import WhatsappButton from '../components/WhatsappButton'
+import { USER_FAVORITES } from '../helpers/endpoints'
+import { useAuthStore } from '../hooks/useAuthStore'
+
 
 const Home = () => {
   const { state, fetchProducts } = useContext(ProductContext);
@@ -41,6 +44,33 @@ const Home = () => {
     // ... (código de categorías)
   ];
 
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const goToFirstPage = () => {
+    setCurrentPage(1);
+  };
+
+  const totalPages = Math.ceil(instrumentos.length / productsPerPage);
+
+  //-------favoritos-------------
+
+  const { status, user, checkAuthToken } = useAuthStore()
+
+  useEffect(() => {
+    checkAuthToken()
+  }, [status])  
+
+ 
   return (
     <>
       <Hero />
@@ -66,10 +96,10 @@ const Home = () => {
         totalPages={totalPages}
         setCurrentPage={setCurrentPage}
       />
-
-        <BrandSlider />
-      </Container>
-    </>
+      <BrandSlider />
+      <WhatsappButton/>
+    </Container>
+  </>
   );
 };
 
