@@ -41,7 +41,7 @@ export const SignInForm = ({ errors, onSubmitCallback }) => {
         <Form.Control
           name='email'
           type='email'
-          placeholder='Enter email'
+          placeholder='Ingrese su Email'
           value={formValues.email}
           onChange={onInputChange}
           isInvalid={errors.email}
@@ -55,7 +55,7 @@ export const SignInForm = ({ errors, onSubmitCallback }) => {
         <Form.Control
           name='password'
           type='password'
-          placeholder='Ingrese Contraseña'
+          placeholder='Ingrese su Contraseña'
           value={formValues.password}
           onChange={onInputChange}
           isInvalid={errors.password}
@@ -65,7 +65,7 @@ export const SignInForm = ({ errors, onSubmitCallback }) => {
         </Form.Control.Feedback>
       </Form.Group>
       <Button variant='primary' type='submit' className='mt-2'>
-        Iniciar Sesion
+        Iniciar Sesión
       </Button>
     </Form>
   )

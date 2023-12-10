@@ -15,10 +15,10 @@ export const SignIn = () => {
     setErrors(errors)
 
     if (!validator.isEmail(email)) {
-      errors.email = 'El email es invalido'
+      errors.email = 'El email es inválido'
     }
     if (!validator.isLength(password, { min: 8, max: 30 })) {
-      errors.password = 'El password es requerido'
+      errors.password = 'La contraseña es requerida'
     }
 
     if (!isObjectEmpty(errors)) {
@@ -32,7 +32,7 @@ export const SignIn = () => {
   return (
     <Container className='d-flex justify-content-center align-items-center'>
       <Card body style={{ width: '45rem' }}>
-        <h3 className='text-center'>Iniciar Sesion</h3>
+        <h3 className='text-center'>Iniciar Sesión</h3>
         <hr />
         <SignInForm errors={errors} onSubmitCallback={login} />
         <div className='mt-4 ms-2'>
