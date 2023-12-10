@@ -2,6 +2,7 @@ import { Table, Button } from 'react-bootstrap'
 import { useContext, useEffect } from 'react'
 import { ProductContext } from '../../conexts/ProductContext'
 import { DELETE_PRODUCT } from '../../helpers/endpoints'
+import Pagination from '../Pagination'
 
 export const ProductList = () => {
 
@@ -75,6 +76,7 @@ export const ProductList = () => {
           ))}
         </tbody>
       </Table>
+      <Pagination />
     </div>
   )
 }

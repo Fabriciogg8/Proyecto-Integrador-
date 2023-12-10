@@ -1,9 +1,9 @@
 import { createContext, useState, useReducer } from 'react'
-import { GET_RANDOM_PRODUCTS, GET_CURRENT_PRODUCT } from '../helpers/endpoints'
+import { GET_RANDOM_PRODUCTS, GET_CURRENT_PRODUCT, GET_ALL_PRODUCTS } from '../helpers/endpoints'
 
 export const ProductContext = createContext();
 
-export const initialState = { products: [], currentProduct: [], searchResults: [], searchInput: "", token: localStorage.getItem("token") || [], suggestions: [] };
+export const initialState = { products: [], allProducts: [], currentProduct: [], searchResults: [], searchInput: "", token: localStorage.getItem("token") || [], suggestions: [] };
 
 
 export const ProductContextProvider = ({ children }) => {
@@ -20,6 +20,11 @@ export const ProductContextProvider = ({ children }) => {
         return {
           ...state,
           currentProduct: action.payload
+        };
+      case "fetchAllProducts":
+        return{
+          ...state,
+          products: action.payload
         };
       case "searchResults":
         return {
@@ -63,7 +68,6 @@ export const ProductContextProvider = ({ children }) => {
   }
 
   async function fetchCurrentProduct(id) {
-    console.log(id)
     try {
       const response = await fetch(`${GET_CURRENT_PRODUCT}/${id}`)
       if (response.ok) {
@@ -78,9 +82,25 @@ export const ProductContextProvider = ({ children }) => {
     }
   }
 
-  const findProductsByName = async (name) => {
+  async function fetchAllProducts() {
     try {
-      const response = await fetch(`${GET_CURRENT_PRODUCT}?name=${name}`)
+      const response = await fetch(GET_ALL_PRODUCTS)
+      if (response.ok) {
+        const data = await response.json()
+        const { content } = data
+        console.log(content)
+        dispatch({type: "fetchAllProducts" , payload: content})
+      } else {
+        throw new Error('Error al obtener los productos')
+      }
+    } catch (error) {
+      console.error('Error fetching products:', error)
+    }
+  }
+
+  const findProductsByName = async (name, startDate, endDate) => {
+    try {
+      const response = await fetch(`${GET_CURRENT_PRODUCT}?name=${name}&startDate=${startDate}&endDate=${endDate}`)
       if (response.ok) {
         const data = await response.json()
         const { content } = data
@@ -117,7 +137,7 @@ export const ProductContextProvider = ({ children }) => {
   };
 
   return (
-    <ProductContext.Provider value={{state, dispatch, fetchProducts, fetchCurrentProduct, findProductsByName }}>
+    <ProductContext.Provider value={{state, dispatch, fetchProducts, fetchCurrentProduct, findProductsByName, fetchAllProducts }}>
       {children}
     </ProductContext.Provider>
   )

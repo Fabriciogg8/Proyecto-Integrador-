@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import '../../styles/Cards.css'
 import imageNotAvailable from '/no-image-available.png'
 
-function CardProduct({ id, name, price }) {
+function CardProduct({ id, name, price, image }) {
   const cardImage = imageNotAvailable
  
   return (
@@ -15,7 +15,7 @@ function CardProduct({ id, name, price }) {
         <div className='card text-center bg-dark animate__animated animate__fadeInUp card-hover-effect'>
           <div className='overflow'>
             <img
-              src={cardImage}
+              src={image}
               alt=''
               className='card-img-top imgCardProducto'
             />

@@ -1,7 +1,7 @@
-.admin-panel {
+/* .admin-panel {
   display: flex;
   height: 100vh; 
-}
+} */
 
 .sidebar {
     width: 20%;
@@ -20,3 +20,6 @@
     height: 100%;
   }
 
+.admin-panel .row {
+  align-items: unset !important;
+}

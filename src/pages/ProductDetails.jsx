@@ -5,16 +5,20 @@ import CardPolicy from '../components/product/CardPolicy'
 import  ProductDetail  from "../components/product/ProductDetail"
 
 export const ProductDetails = () => {
-  const { id } = useParams()
+  const { id } = useParams();
 
   const { state, fetchCurrentProduct } = useContext(ProductContext)
 
   useEffect(() => {
-    fetchCurrentProduct(id)
-  }, []);
+    if(id) {
+      fetchCurrentProduct(id);
+    }
+   
+  }, [id]);
+  
 
-  const producto = state.currentProduct
-
+  const producto = state.currentProduct;
+  console.log(id)
   console.log(producto)
 
   return (

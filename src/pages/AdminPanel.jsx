@@ -3,6 +3,8 @@ import ProductCreate from '../components/product/ProductCreate'
 import CreateCategory from '../components/category/CreateCategory'
 import CategoryProduct from '../components/CategoryProduct'
 import { ProductList } from '../components/product/ProductListAdmin'
+import '../styles/Panel.css'
+import { useAuthStore } from '../hooks/useAuthStore'
 
 export const AdminPanel = () => {
     const isMobile = window.innerWidth < 768
@@ -16,8 +18,8 @@ export const AdminPanel = () => {
     }
 
   return (
-    <div className='container-fluid admin-panel vh-100'>
-      <div className='row h-100'>
+    <div className='container-fluid admin-panel'>
+      <div className='row'>
         <aside className='col-3 bg-dark text-light p-4'>
           <nav>
             <p>Listado Permisos Administrador</p>
@@ -45,13 +47,12 @@ export const AdminPanel = () => {
             </ul>
           </nav>
         </aside>
-        <div className='col-9 p-4' style={{ backgroundColor: '#d8c690' }}>
+        <div className='col-9 p-4'>
           <Routes>
-            <Route path='/' element={null}/>
-            <Route path='ver-productos' element={<ProductList />} />e
+            <Route path='/' element={<AdminPanelOverview/>}/>
+            <Route path='ver-productos' element={<ProductList />} />
             <Route path='crear-producto' element={<ProductCreate />} />
             <Route path='crear-categoria' element={<CreateCategory />} />
-            
             <Route path='asignar-categoria' element={<CategoryProduct />} />
           </Routes>
         </div>
@@ -60,3 +61,27 @@ export const AdminPanel = () => {
   )
 }
 
+
+
+ 
+
+const AdminPanelOverview = () => {
+  const { status, user, startLogout } = useAuthStore();
+  let userName
+  if(user){
+    userName = `${user.firstName}`
+  }
+
+  if (user.role === 'ADMIN') {
+    return (
+      <div style={{color: "red" }}>
+        <p >Bienvenido al panel de administración, {userName}</p>
+        <div>
+            Resumen:
+
+            
+        </div>
+      </div>
+    )
+  }
+}
