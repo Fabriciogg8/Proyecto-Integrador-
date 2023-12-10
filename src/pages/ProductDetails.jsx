@@ -7,7 +7,7 @@ import  ProductDetail  from "../components/product/ProductDetail"
 import { useAuthStore } from '../hooks/useAuthStore'
 
 export const ProductDetails = () => {
-  const { id } = useParams()
+  const { id } = useParams();
   const { state, fetchCurrentProduct } = useContext(ProductContext)
   const { user } = useAuthStore()
   const navigate = useNavigate();

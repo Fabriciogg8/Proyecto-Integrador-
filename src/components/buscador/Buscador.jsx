@@ -6,11 +6,15 @@ import React, { useState, useEffect, useContext } from 'react';
 import Calendario from './Calendario';
 import { ProductContext } from '../../conexts/ProductContext';
 import { useNavigate } from 'react-router-dom';
+import es from 'date-fns/locale/es';
+import { addMonths } from 'date-fns';
 
 const Buscador = () => {
 
   const [showSearchButton, setShowSearchButton] = useState(false);
   const { state, dispatch, findProductsByName } = useContext(ProductContext);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,7 +35,8 @@ const Buscador = () => {
 
   const handleSearch =  (e) => {
     e.preventDefault();
-    findProductsByName(state.searchInput); 
+    findProductsByName(state.searchInput, Math.floor(startDate.valueOf() / 1000), Math.floor(endDate.valueOf() / 1000)); 
+    // findProductsByName(state.searchInput);
     navigate(`/resultados?name=${state.searchInput}`);
     
   };

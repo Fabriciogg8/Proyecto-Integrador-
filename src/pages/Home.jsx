@@ -24,7 +24,6 @@ const Home = () => {
         const data = await response.json();
         setProductos(data.content);
         setTotalPages(data.totalPages);
-        setPageSize(data.pageable.pageSize);
         } catch (error) {
         console.error('Error fetching products:', error);
       }

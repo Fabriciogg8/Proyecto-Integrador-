@@ -47,7 +47,7 @@ export const SignUpForm = ({ errors, onSubmitCallback }) => {
             <Form.Control
               name='firstname'
               type='text'
-              placeholder='Enter first name'
+              placeholder='Ingrese su nombre'
               value={formValues.firstname}
               onChange={onInputChange}
               isInvalid={errors.firstname}
@@ -63,7 +63,7 @@ export const SignUpForm = ({ errors, onSubmitCallback }) => {
             <Form.Control
               name='lastname'
               type='text'
-              placeholder='Enter last name'
+              placeholder='Ingrese su apellido'
               value={formValues.lastname}
               onChange={onInputChange}
               isInvalid={errors.lastname}
@@ -75,11 +75,11 @@ export const SignUpForm = ({ errors, onSubmitCallback }) => {
         </Col>
       </Row>
       <Form.Group controlId='formBasicEmail' className='mb-3'>
-        <Form.Label>Correo Electronico: </Form.Label>
+        <Form.Label>Correo Electrónico: </Form.Label>
         <Form.Control
           name='email'
           type='email'
-          placeholder='Enter email'
+          placeholder='Ingrese su Email'
           value={formValues.email}
           onChange={onInputChange}
           isInvalid={errors.email}
@@ -103,7 +103,7 @@ export const SignUpForm = ({ errors, onSubmitCallback }) => {
         </Form.Control.Feedback>
       </Form.Group>
       <Button variant='primary' type='submit' className='mt-2'>
-        Iniciar Sesion
+        Iniciar Sesión
       </Button>
     </Form>
   )
