@@ -5,9 +5,10 @@ import prod from '/producto1.jpg'
 import { BsArrowLeft } from 'react-icons/bs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
-import ImageSlider from './ImageSlider'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import WhatsappButton from '../WhatsappButton'
+import { USER_FAVORITES } from '../../helpers/endpoints'
+import { useAuthStore } from '../../hooks/useAuthStore'
 
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 
@@ -17,7 +18,9 @@ export const ProductDetail = ({
   marca,
   precio,
   descripcion,
+  id,
 }) => {
+  const {user} = useAuthStore()
     const [showG, setShowG] = useState(false);
     const showGallery = (showG) =>{
         setShowG(showG);
@@ -66,15 +69,39 @@ const [current, setCurrent] = useState(0);
 
 
 //----------------------------------------------
+const [favs, setFavs] = useState([]);
 
+const token = localStorage.getItem('token')
+  const getData = async () => {
+    try {
+        const response = await fetch(`${USER_FAVORITES}?userEmail=${user.sub}`, {
+            method: 'GET',
+            headers: {
+            'Authorization': `Bearer ${token}`
+            },
+        });
+        if (!response.ok) {
+            throw new Error(`Error en la solicitud: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log(data)
+        setFavs(data)
+        } catch (error) {
+            console.error("Error al obtener datos en el coso:", error);
+        }
+    };
+    useEffect(()=>{
+        getData();
+    }, [])
       
   return (
     <div className='everyDetail'>
       <section className='top-section'>
-        <div className='d-flex justify-content-between align-items-center'>
+        <div className='d-flex justify-content-between align-items-center detailHeader'>
           <div className='text-start'>
             <h1 className='mb-0'>{nombre}</h1>
             <p className='title-a mb-0'>{categoria}</p>
+            
           </div>
           <div className='text-start-second'>
             <ShareButton name={nombre} description={descripcion} image={prod}/>
@@ -85,6 +112,9 @@ const [current, setCurrent] = useState(0);
             </button>
           </div>
         </div>
+        {favs.map(fav => (
+                              fav.id == id ? <div className='favHead'><small>Éste producto se encuentra en tus favoritos ❤️</small></div> : ""
+                            ))}
       </section>
       <div>
        

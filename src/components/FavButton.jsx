@@ -6,11 +6,11 @@ const FavButton = ({id , email}) => {
   useEffect(() => {
     checkAuthToken()
   }, [status])*/
-
+  const token = localStorage.getItem('token')
     const handleClick = () =>{
         var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJMZWFuZHJvIiwibGFzdE5hbWUiOiJBZG1pbiIsInJvbGUiOiJBRE1JTiIsInN1YiI6ImxlYW5kcm9AYWRtaW4uY29tIiwiaWF0IjoxNzAxOTkxNTU5LCJleHAiOjE3MDIwNzc5NTl9.k3gGMA2FyMtkYdYQA8CkiLSC8gm5rn-DfOKaGpNDjgU");
+    myHeaders.append("Authorization", "Bearer "+token);
 
     var raw = JSON.stringify({
     "userEmail": email,

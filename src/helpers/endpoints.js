@@ -10,3 +10,4 @@ export const DELETE_PRODUCT = `${API_URL}/products`
 export const GET_ALL_CATEGORIES = `${API_URL}/categories`
 export const CREATE_CATEGORIES = `${API_URL}/categories`
 export const USER_FAVORITES = `${API_URL}/favorites/list`
+export const EDIT_PRODUCT =  `${API_URL}/products`

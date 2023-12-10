@@ -6,16 +6,28 @@
   padding: 8vh 0 11vh 0;
 }
 
+.detailHeader{
+  background: #0014505c;
+  padding: 2%;
+  border-radius: 0px 0px 5px 5px;
+}
+
 .top-section{
-  margin-left: 5rem !important;
-  margin-right: 5rem !important;
-  margin-top: 1rem !important;
+  margin-left: 2% !important;
+  margin-right: 2% !important;
+  margin-bottom: 4%;
 }
 
 @media (max-width: 1100px) {
   .containerDetail {
     flex-direction: column;
   }
+}
+
+.descripcionProd > h4, .caracteristicasProd > h4{
+  background-color: #0014505c;
+  padding: 8px;
+  border-radius: 0px 0px 4px 4px;
 }
 
 .containerDetail2 {
@@ -41,6 +53,7 @@
 .text-start-second {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .contTituloProd {
@@ -63,6 +76,18 @@
   border: var(--headings-text-color) 2px solid;
   border-radius: 10px;
   padding: 1.5vw;
+}
+
+.favHead{
+  font-size: 14px;
+  color: #032b5e;
+  background-color: var(--headings-text-color);
+  border-radius: 0px 0px 5px 5px;
+  padding: 3px;
+  padding-left: 2%;
+  font-weight: bold;
+  position: relative;
+  top: -10px;
 }
 
 .descripcionInstrumento span {
@@ -116,9 +141,6 @@ a img {
   fill: white;
 }
 
-.everyDetail {
-  background-color: #5e5e5e;
-}
 
 .title-a {
   text-decoration: none;
@@ -153,7 +175,7 @@ a img {
 .title-a {
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.5em;
+  font-size: 1.0em;
 }
 
 
@@ -247,8 +269,12 @@ a img {
   width: 100%;
   margin: 2rem 3rem;
   text-align: justify;
+  
 }
 
+.uso > p , .almacenamiento > p, .devolucion > p{
+  color: rgb(255, 246, 218);
+}
 
 @media (max-width: 700px){
   .uso,

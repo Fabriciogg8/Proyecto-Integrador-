@@ -9,18 +9,23 @@ import ProductList, { productsPerPage } from '../components/ProductList';
 import '../styles/Home.css';
 import Hero from '../components/hero/Hero'
 import WhatsappButton from '../components/WhatsappButton'
-import { USER_FAVORITES } from '../helpers/endpoints'
 import { useAuthStore } from '../hooks/useAuthStore'
+
 
 const Home = () => {
   const { state, fetchProducts } = useContext(ProductContext);
+  const { status, user, checkAuthToken } = useAuthStore()
   useEffect(() => {
     fetchProducts();
   }, []);
 
+
   const [currentPage, setCurrentPage] = useState(1);
   const instrumentos = state.products
 
+
+ 
+  
 
   const categorias = [
     // ... (código de categorías)
@@ -46,13 +51,7 @@ const Home = () => {
 
   //-------favoritos-------------
 
-  const { status, user, checkAuthToken } = useAuthStore()
-
-  useEffect(() => {
-    checkAuthToken()
-  }, [status])  
-
-  
+ 
 
   //----------------------
   return (

@@ -4,7 +4,7 @@ import '../../styles/Cards.css'
 import imageNotAvailable from '/no-image-available.png'
 import FavButton from '../FavButton';
 import { useAuthStore } from '../../hooks/useAuthStore'
-
+import { USER_FAVORITES } from '../../helpers/endpoints'
 
 function CardProduct({ id, name, price }) {
   const cardImage = imageNotAvailable
@@ -14,7 +14,51 @@ function CardProduct({ id, name, price }) {
     checkAuthToken()
   }, [status])
 
+  
+ 
 
+
+  /*const token = localStorage.getItem('token')
+  const getData = async () => {
+    try {
+        const response = await fetch(`${USER_FAVORITES}?userEmail=${user.sub}`, {
+            method: 'GET',
+            headers: {
+            'Authorization': `Bearer ${token}`
+            },
+        });
+        if (!response.ok) {
+            throw new Error(`Error en la solicitud: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log(data)
+        } catch (error) {
+            console.error("Error al obtener datos en el coso:", error);
+        }
+    };
+    useEffect(()=>{
+        getData();
+    }, [])*/
+
+
+
+
+
+  useEffect(() => {
+    /*console.log(user.sub)
+    fetch(USER_FAVORITES+`?userEmail=${user.sub}`, {
+      method: "GET",
+      headers: {
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJMZWFuZHJvIiwibGFzdE5hbWUiOiJBZG1pbiIsInJvbGUiOiJBRE1JTiIsInN1YiI6ImxlYW5kcm9AYWRtaW4uY29tIiwiaWF0IjoxNzAyMDg0ODgwLCJleHAiOjE3MDIxNzEyODB9.nHqCfL_S-a-jpg2CvvZzgnelkD_vThdNfomRAgNCKaE",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setFavs(data);
+        console.log(data);
+      })
+      .catch((error) => console.log(error));*/
+  }, []);
 
 
   return (
@@ -37,7 +81,7 @@ function CardProduct({ id, name, price }) {
           </div> 
           </Link>
           <div className='text-light'>
-            <p className='card-title'>{name}</p>
+            <p className='card-title tituloCard'>{name}</p>
             <p>USD {price}</p>
             
             

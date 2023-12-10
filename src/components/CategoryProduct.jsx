@@ -3,12 +3,13 @@ import '../styles/AdministrationCard.css'
 import { ProductContext } from '../conexts/ProductContext'
 import { GET_ALL_CATEGORIES } from '../helpers/endpoints'
 import { useContext, useEffect, useState } from 'react'
+import { EDIT_PRODUCT } from '../helpers/endpoints';
 
 function CategoryProduct() {
   
   const [selectedProduct, setSelectedProduct] = useState("");
   
-  
+  const token = localStorage.getItem('token');
   const { state, fetchProducts } = useContext(ProductContext)
 
     useEffect(() => {
@@ -41,14 +42,14 @@ function CategoryProduct() {
     alert(event.target.selectCategoria.value)
     var myHeaders = new Headers();
     //myHeaders.append("Content-Type", "multipart/form-data");
-    myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiJ9.eyJmaXJzdE5hbWUiOiJMZWFuZHJvIiwibGFzdE5hbWUiOiJBZG1pbiIsInJvbGUiOiJBRE1JTiIsInN1YiI6ImxlYW5kcm9AYWRtaW4uY29tIiwiaWF0IjoxNzAxOTkxNTU5LCJleHAiOjE3MDIwNzc5NTl9.k3gGMA2FyMtkYdYQA8CkiLSC8gm5rn-DfOKaGpNDjgU");
+    myHeaders.append("Authorization", `Bearer ${token}`);
       try {
         /*var raw = JSON.stringify({
           "category": event.target.selectCategoria.value,
         });*/
       
         alert(selectedProduct)
-       const response = await fetch(`http://174.129.92.139:8001/api/v1/products/${selectedProduct}`, {
+       const response = await fetch(`${EDIT_PRODUCT}/${selectedProduct}`, {
           method: 'PUT',
           headers: myHeaders,
           body:formData,
