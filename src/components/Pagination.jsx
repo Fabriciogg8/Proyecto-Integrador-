@@ -3,12 +3,28 @@ import React from 'react';
 
 const Pagination = ({
   currentPage,
+  setCurrentPage,
   totalPages,
-  nextPage,
-  prevPage,
-  goToFirstPage,
+  // nextPage,
+  // prevPage,
+  // goToFirstPage,
   
 }) => {
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const goToFirstPage = () => {
+    setCurrentPage(1);
+  };
   return (
     <div className='pagination'>
       <button onClick={prevPage} disabled={currentPage === 1}>
