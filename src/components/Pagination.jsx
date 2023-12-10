@@ -2,29 +2,14 @@
 import React from 'react';
 
 const Pagination = ({
+  prevPage,
+  nextPage,
+  goToFirstPage,
   currentPage,
-  setCurrentPage,
-  totalPages,
-  // nextPage,
-  // prevPage,
-  // goToFirstPage,
+  totalPages
   
 }) => {
-  const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
 
-  const nextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const goToFirstPage = () => {
-    setCurrentPage(1);
-  };
   return (
     <div className='pagination'>
       <button onClick={prevPage} disabled={currentPage === 1}>
