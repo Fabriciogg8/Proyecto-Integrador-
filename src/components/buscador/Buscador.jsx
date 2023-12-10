@@ -98,7 +98,7 @@ const Buscador = () => {
                     <span>
                       <FontAwesomeIcon icon={faCalendarDays} />
                     </span>
-                    <Calendario startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate} />
+                    <Calendario /> 
                   </div>
                 </div>
                 <div className='col-xs-12 col-sm-3 button-wrapper'>

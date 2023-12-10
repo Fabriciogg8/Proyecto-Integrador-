@@ -21,4 +21,5 @@
 
 footer {
   background-color: var(--footer-background-color);
+  margin-top: 2%;
 }

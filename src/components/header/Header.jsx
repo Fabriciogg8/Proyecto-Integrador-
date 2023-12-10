@@ -4,12 +4,14 @@ import '../../styles/Header.css'
 import { useAuthStore } from '../../hooks/useAuthStore.js'
 const Header = () => {
   const { status, user, startLogout } = useAuthStore()
+  
   let nombreAcortado;
   let apellidoAcortado;
   if(user.firstName){
     nombreAcortado  = user.firstName.substring(0, 1);
     apellidoAcortado = user.lastName.substring(0, 1);
   }
+  
   const logout = () => {
     startLogout()
   }
