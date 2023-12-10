@@ -2,6 +2,7 @@ import { Table, Button } from 'react-bootstrap'
 import { useContext, useEffect } from 'react'
 import { ProductContext } from '../../conexts/ProductContext'
 import { DELETE_PRODUCT } from '../../helpers/endpoints'
+import { Link } from 'react-router-dom'
 
 export const ProductList = () => {
 
@@ -56,13 +57,15 @@ export const ProductList = () => {
               <td>{instrumento.id}</td>
               <td>{instrumento.name}</td>
               <td>
-                <Button
-                  variant='secondary'
-                  onClick={() => handleEdit(instrumento.id)}
-                  className='mx-2'
-                >
-                  Editar
-                </Button>
+                <Link to='update-producto'>
+                  <Button
+                    variant='secondary'
+                    onClick={() => handleEdit(instrumento.id)}
+                    className='mx-2'
+                  >
+                    Editar
+                  </Button>
+                </Link>
                 <Button
                   variant='danger'
                   onClick={() => handleDelete(instrumento.id)}
