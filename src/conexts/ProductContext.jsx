@@ -4,6 +4,7 @@ import { GET_RANDOM_PRODUCTS, GET_CURRENT_PRODUCT } from '../helpers/endpoints';
 export const ProductContext = createContext();
 export const initialState = { products: [], currentProduct: [], searchResults: [], searchInput: "", token: localStorage.getItem("token") || [], suggestions: [] };
 
+
 export const ProductContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -18,6 +19,11 @@ export const ProductContextProvider = ({ children }) => {
         return {
           ...state,
           currentProduct: action.payload
+        };
+      case "fetchAllProducts":
+        return{
+          ...state,
+          products: action.payload
         };
       case "searchResults":
         return {
@@ -84,10 +90,9 @@ export const ProductContextProvider = ({ children }) => {
       console.error('Error fetching product:', error);
     }
   }
-
-  const findProductsByName = async (name) => {
+  const findProductsByName = async (name, startDate, endDate) => {
     try {
-      const response = await fetch(`${GET_CURRENT_PRODUCT}?name=${name}`);
+      const response = await fetch(`${GET_CURRENT_PRODUCT}?name=${name}&startDate=${startDate}&endDate=${endDate}`)
       if (response.ok) {
         const data = await response.json();
         const { content } = data;
