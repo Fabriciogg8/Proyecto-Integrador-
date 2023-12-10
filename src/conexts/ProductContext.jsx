@@ -48,7 +48,7 @@ export const ProductContextProvider = ({ children }) => {
     const storedToken = localStorage.getItem("token");
 
     try {
-      const parsedToken = storedToken ? JSON.parse(storedToken) : [];
+      const parsedToken = storedToken ? storedToken : [];
       dispatch({ type: "tokenUpdate", payload: parsedToken });
     } catch (error) {
       console.error('Error parsing token:', error);
