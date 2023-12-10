@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import CardProduct from './product/CardProduct';
 
-export const productsPerPage = 6;
+export const productsPerPage = 10;
 
 const ProductList = ({ products, currentPage}) => {
   const indexOfLastProduct = currentPage * productsPerPage;
