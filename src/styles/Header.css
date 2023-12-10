@@ -128,7 +128,6 @@ nav {
   left: 0;
   background-color: var(--header-background-color);
   transition: width 0.4s ease;
-  /* z-index: -1; */
 }
 
 .nav-item .dropdown-menu .dropdown-item:hover {
@@ -150,6 +149,21 @@ nav {
 @media (max-width: 767px) {
   .navbar-brand small {
     display: none;
+  }
+  .nav-link.dropdown-toggle::after, #basic-navbar-nav {
+    display: none;
+  }
+  .navbar-toggler-icon {
+    background-image: var(--mdb-navbar-toggler-icon-bg) !important;
+  }
+  .user-sub{ 
+    display: flex;
+    align-items: center;
+    
+  }
+  .user-sub .user-pill {
+    margin-left: 0;
+    margin-right: 10px;
   }
 }
 

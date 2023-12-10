@@ -16,10 +16,67 @@
 
   .main-content {
     width: 80%;
-    background-color: rgb(236, 14, 14)c2c;
     height: 100%;
   }
 
 .admin-panel .row {
   align-items: unset !important;
+}
+
+.admin-panel-welcome-title {
+  margin-bottom: 2rem;
+}
+
+.admin-panel-task-title {
+  padding-left: 1rem;
+}
+
+.admin-panel-task-item {
+  position: relative;
+  border-bottom: 1px solid rgb(180, 178, 178);
+}
+
+.admin-panel-task-item a {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  display: block;
+}
+
+.admin-panel-task-item::after {
+  content:"";
+  display: block;
+  height: 2px;
+  width: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: var(--header-background-color);
+  transition: width 0.4s ease;
+}
+
+
+.admin-panel-task-item:hover::after {
+  width: 100%;
+}
+
+
+.admin-panel-task-item a::after {
+  content: "";
+  height: 100%;
+  width: 0;
+  background-color: var(--header-background-color);
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: all 0.2s ease;
+}
+
+
+.admin-panel-task-item a.selected-task-item::after {
+  width: 10px;
+}
+
+.admin-panel-task-item a.selected-task-item {
+  font-weight: 600;
 }

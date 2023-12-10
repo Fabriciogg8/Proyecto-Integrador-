@@ -1,7 +1,7 @@
 import { useLocation, useParams } from 'react-router-dom'
 import React, { useState, useEffect, useContext } from 'react'
 import 'react-datepicker/dist/react-datepicker.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
+
 import { useAuthStore } from '../../hooks/useAuthStore.js'
 import { ProductContext } from '../../conexts/ProductContext.jsx'
 import { useReservaContext } from '../../conexts/ReservaContext.jsx'
