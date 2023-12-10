@@ -93,7 +93,7 @@ const Buscador = () => {
                     <span>
                       <FontAwesomeIcon icon={faCalendarDays} />
                     </span>
-                    <Calendario />
+                    <Calendario /> 
                   </div>
                 </div>
                 <div className='col-xs-12 col-sm-3 button-wrapper'>
