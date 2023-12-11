@@ -26,7 +26,7 @@ export const ProductDetails = () => {
       }
       else{
         Swal.fire('Por favor, selecciona la fecha antes de continuar con la reserva.');
-        navigate('/home');
+        navigate('/');
       }
     }
     else{
@@ -35,10 +35,11 @@ export const ProductDetails = () => {
       navigate(`/reservas/${id}`);
      } else {
       Swal.fire('Por favor, selecciona la fecha antes de continuar con la reserva.');
-      navigate('/home');
+      navigate('/');
     }
-
   }
+  }
+
   if (!state.currentProduct) {
     return <div>Loading...</div>
   }
@@ -67,6 +68,5 @@ export const ProductDetails = () => {
       </div>
     </div>
   )
-}
 }
 export default ProductDetails
