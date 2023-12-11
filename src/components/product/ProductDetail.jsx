@@ -5,15 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { useState, useEffect } from 'react'
 import WhatsappButton from '../WhatsappButton'
-import { Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { USER_FAVORITES } from '../../helpers/endpoints'
 import { useAuthStore } from '../../hooks/useAuthStore'
 import ScoreProduct from '../product/ScoreProduct'
 import ShowScores from '../product/ShowScores'
 import { Rating } from 'react-simple-star-rating'
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
-import { useNavigate, Link } from "react-router-dom";
-
 
 const ProductDetail = ({
   categoria,
@@ -118,6 +116,7 @@ const ProductDetail = ({
                   </button>
 
                 </div>
+              </div>
               </section>
               <div>
                 <div className='contenedorGalery'>
@@ -200,7 +199,7 @@ const ProductDetail = ({
                       </div>
                     ))}
 
-
+                    </div>
                   <ScoreProduct id={id} />
                 </section>
                 <WhatsappButton />
