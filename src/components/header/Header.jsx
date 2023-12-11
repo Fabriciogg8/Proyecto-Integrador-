@@ -77,16 +77,23 @@ const Header = () => {
                       >
                         Administración
                       </NavDropdown.Item>
-                      <NavDropdown.Divider />
-                      <NavDropdown.Item
-                        as={NavLink}
-                        to='/favourites'
-                        onClick={closeDrawer}
-                      >
-                        Favoritos
-                      </NavDropdown.Item>
                     </>
                   )}
+                  <NavDropdown.Item
+                    as={NavLink}
+                    to='/favourites'
+                    onClick={closeDrawer}
+                  >
+                    Favoritos
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    as={NavLink}
+                    to='/reservas'
+                    onClick={closeDrawer}
+                  >
+                    Ver Reservas
+                  </NavDropdown.Item>
+
                   <NavDropdown.Item onClick={logout}>
                     Cerrar Sesión
                   </NavDropdown.Item>

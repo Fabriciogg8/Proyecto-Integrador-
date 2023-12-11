@@ -5,14 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { useState, useEffect } from 'react'
 import WhatsappButton from '../WhatsappButton'
-import { Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { USER_FAVORITES } from '../../helpers/endpoints'
 import { useAuthStore } from '../../hooks/useAuthStore'
 import ScoreProduct from '../product/ScoreProduct'
 import ShowScores from '../product/ShowScores'
 import { Rating } from 'react-simple-star-rating'
-import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
+import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 
 const ProductDetail = ({
   categoria,
@@ -26,6 +25,7 @@ const ProductDetail = ({
   ratingCount,
   caracteristicas,
 }) => {
+  console.log(caracteristicas)
   const navigate = useNavigate()
   const { user } = useAuthStore()
 
@@ -66,7 +66,6 @@ const ProductDetail = ({
         throw new Error(`Error en la solicitud: ${response.status}`)
       }
       const data = await response.json()
-      console.log(data)
       setFavs(data)
     } catch (error) {
       console.error('Error al obtener datos en el coso:', error)
@@ -78,23 +77,46 @@ const ProductDetail = ({
 
   return (
     <div className='everyDetail'>
+      <section className='top-section'>
+        <div className='d-flex justify-content-between align-items-center detailHeader'>
+          <div className='text-start'>
+            <h1 className='mb-0'>{nombre}</h1>
+            <p className='title-a mb-0'>{categoria}</p>
+
+          </div>
+          <div className='text-start-second'>
+            {/**<ShareButton name={nombre} description={descripcion} image={prod} />**/}
+            <ShareButton name={nombre} description={descripcion} />
+            <button className='btn btn-light'>
+              <Link to='/'>
+                <BsArrowLeft className='iconBack' />
+              </Link>
+            </button>
+          </div>
+        </div>
+        {favs.map(fav => (
+          fav.id == id ? <div className='favHead'><small>Éste producto se encuentra en tus favoritos ❤️</small></div> : ""
+        ))}
+      </section>
       <div>
         <div className='everyDetail'>
           {nombre && (
-            <>
-              <section className='top-section'>
-                <div className='d-flex justify-content-between align-items-center'>
-                  <div className='text-start'>
-                    <h1 className='mb-0'>{nombre}</h1>
-                    <p className='title-a mb-0'>{categoria}</p>
-                  </div>
-                  <div className='text-start-second'>
-                    <ShareButton name={nombre} description={descripcion} />
-                    <button className='btn btn-light' onClick={navigateBack}>
-                      <BsArrowLeft className='iconBack' />
-                    </button>
-                  </div>
+
+            <><section className='top-section'>
+              <div className='d-flex justify-content-between align-items-center'>
+                <div className='text-start'>
+                  <h1 className='mb-0'>{nombre}</h1>
+                  <p className='title-a mb-0'>{categoria}</p>
                 </div>
+                <div className='text-start-second'>
+                  {/* <ShareButton name={nombre} description={descripcion} image={prod} /> */}
+                  <ShareButton name={nombre} description={descripcion} />
+                  <button className='btn btn-light' onClick={navigateBack}>
+                    <BsArrowLeft className='iconBack' />
+                  </button>
+
+                </div>
+              </div>
               </section>
               <div>
                 <div className='contenedorGalery'>
@@ -170,13 +192,14 @@ const ProductDetail = ({
                   </div>
                   <div className='caracteristicasProd'>
                     <h4>Caracteristicas</h4>
-                    {caracteristicas.map((object, index) => (
-                      <div key={index}>
-                        <img src={object.image} alt='' />
-                        <p>{object.name}</p>
+                    {caracteristicas.map((object,index) =>(
+                      <div key={index} className='div-caracs-individual'>
+                        <img src={object.image} alt="" />
+                        <span>{object.name}</span>
                       </div>
                     ))}
-                  </div>
+
+                    </div>
                   <ScoreProduct id={id} />
                 </section>
                 <WhatsappButton />

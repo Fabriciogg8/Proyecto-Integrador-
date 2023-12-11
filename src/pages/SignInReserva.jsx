@@ -7,6 +7,7 @@ import validator from 'validator'
 import { useAuthStore } from '../hooks/useAuthStore'
 import { useNavigate, useParams } from 'react-router-dom'
 import { ProductContext } from '../conexts/ProductContext'
+import '../styles/SigninReserva.css';
 
 export const SignInReserva = () => {
   const { id } = useParams()

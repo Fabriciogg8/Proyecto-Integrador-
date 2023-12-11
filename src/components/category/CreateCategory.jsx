@@ -29,26 +29,26 @@ const CreateCategory = () => {
       redirect: 'follow',
     }
 
-    fetch('http://174.129.92.139:8001/api/v1/categories', requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error))
-  }
-
-  // Upload Images
-  const [selectedFiles, setSelectedFiles] = useState([])
-  const handleFileChange = event => {
-    const files = event.target.files
-    if (files.length > 2) {
-      event.target.value = null
-    } else {
-      const imagesArray = []
-      for (let i = 0; i < files.length; i++) {
-        if (files[i].type.startsWith('image/')) {
-          imagesArray.push(files[i])
-        }
-      }
-      setSelectedFiles(imagesArray)
+fetch(CREATE_CATEGORIES, requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+}
+    
+    // Upload Images
+    const [selectedFiles, setSelectedFiles] = useState([]);
+    const handleFileChange = (event) => {
+        const files = event.target.files;
+        if (files.length > 2 ) {
+            event.target.value = null
+        } else {
+            const imagesArray = [];
+            for (let i = 0; i < files.length; i++) {
+                if (files[i].type.startsWith('image/')){
+                    imagesArray.push(files[i]);
+                }
+            }
+      setSelectedFiles(imagesArray);
     }
   }
 

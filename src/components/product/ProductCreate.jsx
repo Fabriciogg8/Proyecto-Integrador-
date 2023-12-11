@@ -29,43 +29,46 @@ const ProductCreate = () => {
     setSelectedCategory(event.target.value)
   }
 
-  const handleSubmit = async event => {
-    event.preventDefault()
-
-    const formData = new FormData()
-    formData.append('name', event.target.name.value)
-    formData.append('categoryName', selectedCategory)
-    formData.append('brand', event.target.brand.value)
-    formData.append('model', event.target.model.value)
-    formData.append('description', event.target.description.value)
-    formData.append('price', parseFloat(event.target.price.value))
-    formData.append('discount', parseInt(event.target.discount.value))
-
-    for (let i = 0; i < selectedCharacteristics.length; i++) {
-      formData.append('characteristics', selectedCharacteristics[i])
-    }
-
-    for (let i = 0; i < selectedFiles.length; i++) {
-      formData.append('imagesFiles', selectedFiles[i])
-    }
-
-    try {
-      const response = await fetch(CREATE_PRODUCT, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData,
-      })
-
-      console.log(formData)
-
-      if (response.ok) {
-        console.log('Éxito en la creación del producto')
-      } else {
-        console.log('Error en la creación del producto')
+  const handleSubmit = async (event) => {
+      event.preventDefault();
+      const formData = new FormData();
+      formData.append('name', event.target.name.value);
+      formData.append('categoryName', selectedCategory);
+      formData.append('brand', event.target.brand.value);
+      formData.append('model', event.target.model.value);
+      formData.append('description', event.target.description.value);
+      formData.append('price', parseFloat(event.target.price.value));
+      formData.append('discount', parseInt(event.target.discount.value));
+      formData.append('characteristics', selectedCharacteristics[0]);
+      if(selectedCharacteristics[1]){
+        formData.append('characteristics', selectedCharacteristics[1]);
       }
-    } catch (error) {
+      if(selectedCharacteristics[2]){
+        formData.append('characteristics', selectedCharacteristics[2]);
+      }
+      if(selectedCharacteristics[3]){
+        formData.append('characteristics', selectedCharacteristics[3]);
+      }
+      if(selectedCharacteristics[4]){
+        formData.append('characteristics', selectedCharacteristics[4]);
+
+      }
+      try {
+        const response = await fetch(CREATE_PRODUCT, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          },
+          body: formData,
+        });
+        console.log(formData);
+        if (response.ok) {
+            console.log("ANDUVO")
+        } else if (!response.ok) {
+          console.log("no anduvo")
+          console.log(selectedCharacteristics)
+        }
+      } catch (error) {
       console.error('Error en la solicitud: ', error)
     }
   }
@@ -82,7 +85,6 @@ const ProductCreate = () => {
       if (!response.ok) {
         throw new Error(`Error en la solicitud: ${response.status}`)
       }
-
       const data = await response.json()
       setArrayCharacteristics(data)
     } catch (error) {
@@ -149,12 +151,12 @@ const ProductCreate = () => {
                         onChange={handleSelectChange}
                       >
                         <option value='DEFAULT' disabled>
-                          Tipo de instrumento
+                          Tipo de categoría
                         </option>
-                        <option value='Cuerdaa'>Cuerda</option>
-                        <option value='Vientoo'>Viento</option>
-                        <option value='Percucionn'>Percusión</option>
-                        <option value='Tecladoo'>Teclado</option>
+                        <option value='Cuerdas'>Cuerda</option>
+                        <option value='Viento'>Viento</option>
+                        <option value='Percusión'>Percusión</option>
+                        <option value='Teclado'>Teclado</option>
                       </select>
                     </div>
                     {/* ... (se repite para cada Característica) */}
