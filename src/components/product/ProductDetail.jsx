@@ -26,6 +26,7 @@ const ProductDetail = ({
   ratingCount,
   caracteristicas,
 }) => {
+  console.log(caracteristicas)
   const navigate = useNavigate()
   const { user } = useAuthStore()
 
@@ -66,7 +67,6 @@ const ProductDetail = ({
         throw new Error(`Error en la solicitud: ${response.status}`)
       }
       const data = await response.json()
-      console.log(data)
       setFavs(data)
     } catch (error) {
       console.error('Error al obtener datos en el coso:', error)
@@ -170,13 +170,18 @@ const ProductDetail = ({
                   </div>
                   <div className='caracteristicasProd'>
                     <h4>Caracteristicas</h4>
-                    {caracteristicas.map((object, index) => (
-                      <div key={index}>
-                        <img src={object.image} alt='' />
-                        <p>{object.name}</p>
-                      </div>
-                    ))}
+                    {caracteristicas.length > 0 ? (
+                      caracteristicas.map((object, index) => (
+                        <div key={index}>
+                          <img src={object.image} alt='' />
+                          <p>{object.name}</p>
+                        </div>
+                      ))
+                    ) : (
+                      <p>No hay características disponibles.</p>
+                    )}
                   </div>
+
                   <ScoreProduct id={id} />
                 </section>
                 <WhatsappButton />
