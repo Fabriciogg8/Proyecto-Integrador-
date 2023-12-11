@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 import '../../styles/Cards.css'
 import imageNotAvailable from '/no-image-available.png'
-import FavButton from '../FavButton';
+import FavButton from '../FavButton'
 import { useAuthStore } from '../../hooks/useAuthStore'
 import { USER_FAVORITES } from '../../helpers/endpoints'
 
@@ -13,10 +13,6 @@ function CardProduct({ id, name, price, image }) {
   useEffect(() => {
     checkAuthToken()
   }, [status])
-
-  
- 
-
 
   /*const token = localStorage.getItem('token')
   const getData = async () => {
@@ -40,10 +36,6 @@ function CardProduct({ id, name, price, image }) {
         getData();
     }, [])*/
 
-
-
-
-
   useEffect(() => {
     /*console.log(user.sub)
     fetch(USER_FAVORITES+`?userEmail=${user.sub}`, {
@@ -58,38 +50,26 @@ function CardProduct({ id, name, price, image }) {
         console.log(data);
       })
       .catch((error) => console.log(error));*/
-  }, []);
-
+  }, [])
 
   return (
     <>
-      
-        <div className='card text-center  animate__animated animate__fadeInUp card-hover-effect cardProduct'>
+      <div className='card text-center  animate__animated animate__fadeInUp card-hover-effect cardProduct'>
         <div className='cardFavBtn'>
-              {status === 'not-authenticated' ? null : <FavButton id={id} email={user.sub}/>}
-            </div>
-          <Link
-            to={`/productDetails/${id}`}
-            
-          >
-          <div className='overflow'>
-            <img
-              src={image}
-              alt=''
-              className='card-img-top imgCardProducto'
-            />
-          </div> 
-          </Link>
-          <div className='text-light'>
-            <p className='card-title tituloCard'>{name}</p>
-            <p>USD {price}</p>
-            
-            
-          </div>
-          
+          {status === 'not-authenticated' ? null : (
+            <FavButton id={id} email={user.sub} />
+          )}
         </div>
-     
-      
+        <Link to={`/productDetails/${id}`}>
+          <div className='overflow'>
+            <img src={image} alt='' className='card-img-top imgCardProducto' />
+          </div>
+        </Link>
+        <div className='text-light'>
+          <p className='card-title tituloCard'>{name}</p>
+          <p>USD {price}</p>
+        </div>
+      </div>
     </>
   )
 }

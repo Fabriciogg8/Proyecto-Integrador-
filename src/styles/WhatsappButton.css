@@ -1,22 +1,22 @@
-.wrapper{
-  display:flex;
-  justify-content:center;
-  align-items:center;
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.checkmark__circle{
+.checkmark__circle {
   stroke-dasharray: 166;
   stroke-dashoffset: 166;
   stroke-width: 2;
   stroke-miterlimit: 10;
   stroke: #7ac142;
   fill: none;
-  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
 }
 
-.checkmark{
-  width: 56px
-  ;height: 56px;
+.checkmark {
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   display: block;
   stroke-width: 2;
@@ -24,79 +24,90 @@
   stroke-miterlimit: 10;
   margin: 10% auto;
   box-shadow: inset 0px 0px 0px #7ac142;
-  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
+  animation:
+    fill 0.4s ease-in-out 0.4s forwards,
+    scale 0.3s ease-in-out 0.9s both;
 }
 
-.checkmark__check{
+.checkmark__check {
   transform-origin: 50% 50%;
   stroke-dasharray: 48;
   stroke-dashoffset: 48;
-  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
 }
 
-@keyframes stroke{
-  100%{stroke-dashoffset: 0}
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
 }
 
-@keyframes scale{
-  0%, 100%{transform: none}50%{transform: scale3d(1.1, 1.1, 1)}
+@keyframes scale {
+  0%,
+  100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
 }
 
-@keyframes fill{
-  100%{box-shadow: inset 0px 0px 0px 30px #7ac142}
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #7ac142;
+  }
 }
-
 
 .btn-modal {
-    border: none;
-    background-color: transparent;
+  border: none;
+  background-color: transparent;
 }
 
 .share-icon-button {
-    height: 6vh;
-    background-color: transparent;
+  height: 6vh;
+  background-color: transparent;
 }
 
 .share-icon-button:hover path {
-    fill: white;
+  fill: white;
 }
 
 .overlay {
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
 }
 
 .overlay {
-    background: rgba(214, 214, 214, 0.8) !important;
-    z-index: 998;
+  background: rgba(214, 214, 214, 0.8) !important;
+  z-index: 998;
 }
 .modal-content-confirm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    line-height: 1.4;
-    background-color: #e2e2e2;
-    padding: 14px 28px;
-    border-radius: 3px;
-    max-width: 600px;
-    min-width: 300px;
-    z-index: 999;
-    border: 3px solid gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background-color: #e2e2e2;
+  padding: 14px 28px;
+  border-radius: 3px;
+  max-width: 600px;
+  min-width: 300px;
+  z-index: 999;
+  border: 3px solid gray;
 }
 
 .modal-content-confirm h2 {
-    font-size: 200%;
-    color: #7ac142;
+  font-size: 200%;
+  color: #7ac142;
 }
 
 .btn-close-modal-confirm {
@@ -108,15 +119,15 @@
   border: 3px solid #e2e2e2;
 }
 
-.arrow-confirm-size{
+.arrow-confirm-size {
   height: 3vh;
   width: 1.4vw;
 }
 
 .float-error-whatsapp {
   font-size: 110%;
-	position:fixed;
-	bottom:47px;
+  position: fixed;
+  bottom: 47px;
   right: 15vh;
   color: red;
 }

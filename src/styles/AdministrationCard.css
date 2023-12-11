@@ -1,26 +1,26 @@
-.administration-card{
-    padding: 2%;
-    background-color: var(--header-background-color);
-    margin-top: 5%;
-    
+.administration-card {
+  padding: 2%;
+  background-color: var(--header-background-color);
+  margin-top: 5%;
 }
 
-.administrationCardContainer{
-    margin: 0 auto;
-    margin-bottom: 5%;
-
+.administrationCardContainer {
+  margin: 0 auto;
+  margin-bottom: 5%;
 }
 
-.administration-card h2{
-    color: var(--dorado);
-    padding: 3%;
+.administration-card h2 {
+  color: var(--dorado);
+  padding: 3%;
 }
 
-.inputsCardContainer{
-    width: 70%;
-    margin: 0 auto;
+.inputsCardContainer {
+  width: 70%;
+  margin: 0 auto;
 }
 
-.inputsCardContainer > select, input, button{
-    /* margin-bottom: 4%; */
+.inputsCardContainer > select,
+input,
+button {
+  /* margin-bottom: 4%; */
 }

@@ -2,12 +2,10 @@ import { BrowserRouter } from 'react-router-dom'
 import { AppRouter } from './router/AppRouter'
 import { Provider } from 'react-redux'
 import { store } from './store/store'
-import {ProductContextProvider} from './conexts/ProductContext'
-import {ReservaContextProvider} from './conexts/ReservaContext'
+import { ProductContextProvider } from '../src/conexts/ProductContext'
+import { ReservaContextProvider } from '../src/conexts/ReservaContext'
 import './App.css'
 import './index.css'
-
-
 
 const App = () => {
   return (

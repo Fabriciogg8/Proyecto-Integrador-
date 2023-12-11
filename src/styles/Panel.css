@@ -3,22 +3,21 @@
   height: 100vh; 
 } */
 
-
 .sidebar {
-    width: 20%;
-    background-color: rgb(134, 128, 128);
-    height: 100%;
-    color: white;
+  width: 20%;
+  background-color: rgb(134, 128, 128);
+  height: 100%;
+  color: white;
 }
 
 .sidebar > li {
-    color: white;
+  color: white;
 }
 
-  .main-content {
-    width: 80%;
-    height: 100%;
-  }
+.main-content {
+  width: 80%;
+  height: 100%;
+}
 
 .admin-panel .row {
   align-items: unset !important;
@@ -45,34 +44,31 @@
 }
 
 .admin-panel-task-item::after {
-  content:"";
+  content: '';
   display: block;
   height: 2px;
   width: 0;
   position: absolute;
   left: 0;
   bottom: 0;
-  background-color: var(  --secondary-foreground-color);
+  background-color: var(--secondary-foreground-color);
   transition: width 0.4s ease;
 }
-
 
 .admin-panel-task-item:hover::after {
   width: 100%;
 }
 
-
 .admin-panel-task-item a::after {
-  content: "";
+  content: '';
   height: 100%;
   width: 0;
-  background-color: var(  --secondary-foreground-color);
+  background-color: var(--secondary-foreground-color);
   position: absolute;
   right: 0;
   top: 0;
   transition: all 0.2s ease;
 }
-
 
 .admin-panel-task-item a.selected-task-item::after {
   width: 10px;
