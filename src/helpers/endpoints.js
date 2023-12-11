@@ -17,3 +17,5 @@ export const DELETE_CHARACTERISTIC = `${API_URL}/characteristic/`
 export const GET_CHARACTERISTIC = `${API_URL}/characteristic`
 export const UPDATE_CHARACTERISTIC = `${API_URL}/characteristic/`
 export const USER_FAVORITES = `${API_URL}/favorites/list`
+export const USER_FAVORITES_REMOVE = `${API_URL}/favorites/remove`
+export const USER_FAVORITES_ADD = `${API_URL}/favorites/add`

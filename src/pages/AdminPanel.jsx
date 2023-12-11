@@ -4,7 +4,6 @@ import CreateCategory from '../components/category/CreateCategory'
 import CategoryProduct from '../components/CategoryProduct'
 import { ProductList } from '../components/product/ProductListAdmin'
 import CharacteristicAdmin from '../components/characteristic/CharacteristicAdmin'
-import ProductUpdate from '../components/product/ProductUpdate'
 
 export const AdminPanel = () => {
     const isMobile = window.innerWidth < 768
@@ -56,7 +55,6 @@ export const AdminPanel = () => {
           <Routes>
             <Route path='/' element={null}/>
             <Route path='ver-productos' element={<ProductList />} >
-              <Route path='update-producto' element={<ProductUpdate/>}/>
             </Route>
             <Route path='crear-producto' element={<ProductCreate />} />
             <Route path='crear-categoria' element={<CreateCategory />} />

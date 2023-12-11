@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useEffect} from "react";
-import '../../styles/Cards.css'
+import '../../styles/Favourite-Cards.css'
 import imageNotAvailable from '/no-image-available.png'
 import FavButton from '../FavButton';
 import { useAuthStore } from '../../hooks/useAuthStore'
