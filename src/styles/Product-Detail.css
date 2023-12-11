@@ -6,13 +6,13 @@
   padding: 8vh 0 11vh 0;
 }
 
-.detailHeader{
+.detailHeader {
   background: #0014505c;
   padding: 2%;
   border-radius: 0px 0px 5px 5px;
 }
 
-.top-section{
+.top-section {
   margin-left: 2% !important;
   margin-right: 2% !important;
   margin-bottom: 4%;
@@ -24,7 +24,8 @@
   }
 }
 
-.descripcionProd > h4, .caracteristicasProd > h4{
+.descripcionProd > h4,
+.caracteristicasProd > h4 {
   background-color: #0014505c;
   padding: 8px;
   border-radius: 0px 0px 4px 4px;
@@ -78,7 +79,7 @@
   padding: 1.5vw;
 }
 
-.favHead{
+.favHead {
   font-size: 14px;
   color: #032b5e;
   background-color: var(--headings-text-color);
@@ -141,7 +142,6 @@ a img {
   fill: white;
 }
 
-
 .title-a {
   text-decoration: none;
   color: inherit;
@@ -175,7 +175,7 @@ a img {
 .title-a {
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.0em;
+  font-size: 1em;
 }
 
 .rating-ratingCount {
@@ -184,13 +184,13 @@ a img {
   margin-bottom: 14px;
 }
 
-.rating-ratingCount span{
+.rating-ratingCount span {
   color: var(--primary-button-background-color);
   font-weight: 600;
   font-size: 30px;
 }
 
-.rating-ratingCount span span{
+.rating-ratingCount span span {
   color: white;
   font-weight: 600;
   font-size: 30px;
@@ -269,55 +269,52 @@ a img {
   border: 1px solid var(--dorado);
 }
 
-.policy h1{
+.policy h1 {
   text-decoration: underline;
   margin: 1rem 2rem;
 }
 
-.typePolicy{
+.typePolicy {
   display: flex;
   flex-direction: row;
 }
-.typePolicy h5{
+.typePolicy h5 {
   font-size: 1.5rem;
   text-align: center;
 }
-.uso , .almacenamiento , .devolucion{
+.uso,
+.almacenamiento,
+.devolucion {
   width: 100%;
   margin: 2rem 3rem;
   text-align: justify;
-  
 }
 
-.uso > p , .almacenamiento > p, .devolucion > p{
+.uso > p,
+.almacenamiento > p,
+.devolucion > p {
   color: rgb(255, 246, 218);
 }
 
-@media (max-width: 700px){
+@media (max-width: 700px) {
   .uso,
   .almacenamiento,
   .devolucion {
     width: 75%;
     margin: 2rem 6%;
   }
-  
+
   .typePolicy {
     flex-direction: column;
   }
-  }
-
-
-
-
-
+}
 
 /*---DETALLE GALERIA---*/
 
-
-
 .slider {
   position: fixed;
-  top: 0; left:0;
+  top: 0;
+  left: 0;
   height: 100%;
   width: 100%;
   display: flex;
@@ -325,9 +322,7 @@ a img {
   align-items: center;
   margin: 0 auto;
   z-index: 100;
-  background: rgba(0, 0, 0, .8);
-  
-  
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .image {
@@ -338,15 +333,15 @@ a img {
   margin: 0 auto;
 }
 
-@media (max-width: 920px){
+@media (max-width: 920px) {
   .image {
-      width: 88%;
-      height: 50%;
-      border-radius: 10px;
-      padding: 5%;
-      margin: 0 auto;
-    }
+    width: 88%;
+    height: 50%;
+    border-radius: 10px;
+    padding: 5%;
+    margin: 0 auto;
   }
+}
 
 .right-arrow {
   position: absolute;
@@ -386,8 +381,8 @@ a img {
   background-color: #5e5e5e;
 } */
 
-.mb-3 .date{
- margin-right: 1vw;
+.mb-3 .date {
+  margin-right: 1vw;
 }
 
 .react-datepicker__input-container input {
@@ -400,12 +395,11 @@ a img {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-.container h2{
+.container h2 {
   margin-top: 2%;
 }
 
-
-.closeGallery{
+.closeGallery {
   font-size: 80px;
   position: absolute;
   top: 2%;
@@ -417,7 +411,4 @@ a img {
   user-select: none;
 }
 
-
-
 /*----------------------*/
-

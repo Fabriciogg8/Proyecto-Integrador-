@@ -34,7 +34,7 @@ module.exports = {
     'react/no-unknown-property': [
       'error',
       {
-        ignore: ['sketchtype', 'xmlnssketch'], 
+        ignore: ['sketchtype', 'xmlnssketch'],
       },
     ],
   },

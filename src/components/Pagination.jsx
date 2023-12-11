@@ -1,15 +1,13 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React from 'react'
 
 const Pagination = ({
   prevPage,
   nextPage,
   goToFirstPage,
   currentPage,
-  totalPages
-  
+  totalPages,
 }) => {
-
   return (
     <div className='pagination'>
       <button onClick={prevPage} disabled={currentPage === 1}>
@@ -25,7 +23,7 @@ const Pagination = ({
         Página {currentPage} de {totalPages}
       </span>
     </div>
-  );
-};
+  )
+}
 
-export default Pagination;
+export default Pagination

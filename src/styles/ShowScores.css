@@ -1,21 +1,21 @@
 .date-score-product {
-    font-size: 17.4px;
+  font-size: 17.4px;
 }
 
-.justify-items-left-score{
-    display: flex;
-    justify-content:left;
+.justify-items-left-score {
+  display: flex;
+  justify-content: left;
 }
 
 .container-score {
-    background-color: #5e5e5e;
+  background-color: #5e5e5e;
 }
 
 .container-comments {
-    border-top: 2px solid var(--primary-button-background-color);
-    background-color: #5e5e5e;
+  border-top: 2px solid var(--primary-button-background-color);
+  background-color: #5e5e5e;
 }
 
-.font-comments-score{
-    color: white;
+.font-comments-score {
+  color: white;
 }

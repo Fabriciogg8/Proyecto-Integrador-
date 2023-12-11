@@ -16,17 +16,16 @@ import FavouritesList from '../components/product/FavouritesList'
 
 
 export const AppRouter = () => {
-  const { status, user, checkAuthToken } = useAuthStore();
+  const { status, user, checkAuthToken } = useAuthStore()
 
   useEffect(() => {
-    checkAuthToken();
+    checkAuthToken()
   }, [status])
 
   if (status === 'checking') {
-    return <h1>Checking...</h1>;
+    return <h1>Checking...</h1>
   }
 
- 
   return (
     <div className='app-container'>
       <Header />
@@ -60,6 +59,5 @@ export const AppRouter = () => {
       </div>
       <Footer />
     </div>
-  );
-};
-
+  )
+}

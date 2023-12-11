@@ -1,132 +1,162 @@
-import React, { createContext, useReducer, useEffect } from 'react';
-import { GET_RANDOM_PRODUCTS, GET_CURRENT_PRODUCT } from '../helpers/endpoints';
+import { createContext, useReducer, useEffect } from 'react'
+import { GET_RANDOM_PRODUCTS, GET_CURRENT_PRODUCT } from '../helpers/endpoints'
 
-export const ProductContext = createContext();
-export const initialState = { products: [], currentProduct: [], searchResults: [], searchInput: "", token: localStorage.getItem("token") || [], suggestions: [] };
-
+export const ProductContext = createContext()
+export const initialState = {
+  products: [],
+  currentProduct: [],
+  searchResults: [],
+  searchInput: '',
+  token: localStorage.getItem('token') || [],
+  suggestions: [],
+}
 
 export const ProductContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   function reducer(state, action) {
     switch (action.type) {
-      case "fetchProducts":
+      case 'fetchProducts':
         return {
           ...state,
-          products: action.payload
-        };
-      case "fetchCurrentProduct":
+          products: action.payload,
+        }
+      case 'fetchCurrentProduct':
         return {
           ...state,
-          currentProduct: action.payload
-        };
-      case "fetchAllProducts":
-        return{
-          ...state,
-          products: action.payload
-        };
-      case "searchResults":
+          currentProduct: action.payload,
+        }
+      case 'fetchAllProducts':
         return {
           ...state,
-          searchResults: action.payload
-        };
-      case "searchInput":
+          products: action.payload,
+        }
+      case 'searchResults':
         return {
           ...state,
-          searchInput: action.payload
-        };
-      case "tokenUpdate":
+          searchResults: action.payload,
+        }
+      case 'searchInput':
         return {
           ...state,
-          token: action.payload
-        };
-      case "updateSuggestions":
+          searchInput: action.payload,
+        }
+      case 'tokenUpdate':
         return {
           ...state,
-          suggestions: action.payload
-        };
+          token: action.payload,
+        }
+      case 'updateSuggestions':
+        return {
+          ...state,
+          suggestions: action.payload,
+        }
       default:
-        return state;
+        return state
     }
   }
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
+    const storedToken = localStorage.getItem('token')
 
     try {
-      const parsedToken = storedToken ? storedToken : [];
-      dispatch({ type: "tokenUpdate", payload: parsedToken });
+      const parsedToken = storedToken ? storedToken : []
+      dispatch({ type: 'tokenUpdate', payload: parsedToken })
     } catch (error) {
-      console.error('Error parsing token:', error);
-      dispatch({ type: "tokenUpdate", payload: [] });
+      console.error('Error parsing token:', error)
+      dispatch({ type: 'tokenUpdate', payload: [] })
     }
-  }, []);
+  }, [])
 
   async function fetchProducts() {
     try {
-      const response = await fetch(GET_RANDOM_PRODUCTS);
+      const response = await fetch(GET_RANDOM_PRODUCTS)
       if (response.ok) {
-        const data = await response.json();
-        const { content } = data;
-        dispatch({ type: "fetchProducts", payload: content });
+        const data = await response.json()
+        const { content } = data
+        dispatch({ type: 'fetchProducts', payload: content })
       } else {
-        throw new Error('Error al obtener los productos');
+        throw new Error('Error al obtener los productos')
       }
     } catch (error) {
-      console.error('Error fetching products:', error);
+      console.error('Error fetching products:', error)
     }
   }
 
   async function fetchCurrentProduct(id) {
     try {
-      const response = await fetch(`${GET_CURRENT_PRODUCT}/${id}`);
+      const response = await fetch(`${GET_CURRENT_PRODUCT}/${id}`)
       if (response.ok) {
-        const data = await response.json();
-        dispatch({ type: "fetchCurrentProduct", payload: data });
+        const data = await response.json()
+        dispatch({ type: 'fetchCurrentProduct', payload: data })
       } else {
-        throw new Error('Error al obtener el producto');
+        throw new Error('Error al obtener el producto')
       }
     } catch (error) {
-      console.error('Error fetching product:', error);
+      console.error('Error fetching product:', error)
     }
   }
-  const findProductsByName = async (name, startDate, endDate) => {
-    try {
-      const response = await fetch(`${GET_CURRENT_PRODUCT}?name=${name}&startDate=${startDate}&endDate=${endDate}`)
-      if (response.ok) {
-        const data = await response.json();
-        const { content } = data;
-        dispatch({ type: "searchResults", payload: content });
-      } else {
-        console.error('Error en la solicitud - respuesta no exitosa:', response);
-        throw new Error('Error al obtener los productos');
-      }
-    } catch (error) {
-      console.error('Error en la solicitud:', error);
-    }
-  };
 
-  const getSuggestions = async (value) => {
+  const findProductsByName = async (name, startTimestamp, endTimestamp) => {
+    console.log(name, startTimestamp, startTimestamp)
     try {
-      const response = await fetch(`${GET_CURRENT_PRODUCT}?name=${value}&limit=5`, {});
-  
-      if (!response.ok) {
-        throw new Error('Error al obtener sugerencias');
+      let url = `${GET_CURRENT_PRODUCT}?name=${name}`
+
+      if (startTimestamp !== null) {
+        url += `&startDate=${startTimestamp}`
       }
-  
-      const data = await response.json();
-      const { content } = data;
-      dispatch({ type: "updateSuggestions", payload: content });
+      if (endTimestamp !== null) {
+        url += `&endDate=${endTimestamp}`
+      }
+
+      const response = await fetch(url)
+
+      if (response.ok) {
+        const data = await response.json()
+        const { content } = data
+        console.log('Productos encontrados:', content)
+        dispatch({ type: 'searchResults', payload: content })
+      } else {
+        console.error('Error en la solicitud - respuesta no exitosa:', response)
+        throw new Error('Error al obtener los productos')
+      }
     } catch (error) {
-      console.error('Error al obtener sugerencias:', error);
-      dispatch({ type: "updateSuggestions", payload: [] });
+      console.error('Error en la solicitud:', error)
     }
-  };
+  }
+
+  const getSuggestions = async value => {
+    try {
+      const response = await fetch(
+        `${GET_CURRENT_PRODUCT}?name=${value}&limit=5`,
+        {},
+      )
+
+      if (!response.ok) {
+        throw new Error('Error al obtener sugerencias')
+      }
+
+      const data = await response.json()
+      const { content } = data
+      dispatch({ type: 'updateSuggestions', payload: content })
+    } catch (error) {
+      console.error('Error al obtener sugerencias:', error)
+      dispatch({ type: 'updateSuggestions', payload: [] })
+    }
+  }
 
   return (
-    <ProductContext.Provider value={{ state, dispatch, fetchProducts, fetchCurrentProduct, findProductsByName, getSuggestions }}>
+    <ProductContext.Provider
+      value={{
+        state,
+        dispatch,
+        fetchProducts,
+        fetchCurrentProduct,
+        findProductsByName,
+        getSuggestions,
+      }}
+    >
       {children}
     </ProductContext.Provider>
-  );
-};
-
+  )
+}

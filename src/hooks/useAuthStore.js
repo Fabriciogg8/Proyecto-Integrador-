@@ -12,7 +12,6 @@ import {
 } from '../helpers/endpoints'
 import { setAuthToken } from '../helpers/setAuthToken'
 
-
 export const useAuthStore = () => {
   const { status, user, errorMessage } = useSelector(state => state.auth)
   const dispatch = useDispatch()
@@ -102,8 +101,6 @@ export const useAuthStore = () => {
     localStorage.clear()
     dispatch(onLogout())
   }
-
-  
 
   return {
     errorMessage,

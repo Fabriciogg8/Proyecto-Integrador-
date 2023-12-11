@@ -1,42 +1,42 @@
-import { GET_REVIEWS_ON_SPECIFIC_PRODUCT } from '../../helpers/endpoints';
-import { useState, useEffect } from 'react';
+import { GET_REVIEWS_ON_SPECIFIC_PRODUCT } from '../../helpers/endpoints'
+import { useState, useEffect } from 'react'
 import { Rating } from 'react-simple-star-rating'
 import '/src/styles/ShowScores.css'
 import {
-    MDBCard,
-    MDBCardBody,
-    MDBCol,
-    MDBContainer,
-    MDBRow,
-    MDBCardImage,
-    MDBTypography,
-} from "mdb-react-ui-kit";
+  MDBCard,
+  MDBCardBody,
+  MDBCol,
+  MDBContainer,
+  MDBRow,
+  MDBCardImage,
+  MDBTypography,
+} from 'mdb-react-ui-kit'
 
-export default function ShowScores({id}) {
-    const [reservas, setReservas] = useState([]);
-    const token = localStorage.getItem('token')
+export default function ShowScores({ id }) {
+  const [reservas, setReservas] = useState([])
+  const token = localStorage.getItem('token')
 
-    const getData = async () => {
+  const getData = async () => {
     try {
-        const response = await fetch(`${GET_REVIEWS_ON_SPECIFIC_PRODUCT}${id}`, {
-            method: 'GET',
-            headers: {
-            'Authorization': `Bearer ${token}`
-            },
-        });
-        if (!response.ok) {
-            throw new Error(`Error en la solicitud: ${response.status}`);
-        }
-        const data = await response.json();
-        setReservas(data);
-        } catch (error) {
-            console.error("Error al obtener datos:", error);
-        }
-    };
-    useEffect(()=>{
-        getData();
-    })
-    return (
+      const response = await fetch(`${GET_REVIEWS_ON_SPECIFIC_PRODUCT}${id}`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      if (!response.ok) {
+        throw new Error(`Error en la solicitud: ${response.status}`)
+      }
+      const data = await response.json()
+      setReservas(data)
+    } catch (error) {
+      console.error('Error al obtener datos:', error)
+    }
+  }
+  useEffect(() => {
+    getData()
+  })
+  return (
     <section style={{ backgroundColor: 'transparent' }}>
         {reservas[0] && (
         <MDBContainer className="py-5 container-score" >
@@ -89,5 +89,5 @@ export default function ShowScores({id}) {
         </MDBContainer>
         )}
     </section>
-    );
+  )
 }
