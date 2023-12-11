@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap'
+import { Navbar, Nav, NavDropdown, Container, Offcanvas } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import { useAuthStore } from '../../hooks/useAuthStore.js'
 import '../../styles/Header.css'
@@ -103,6 +103,57 @@ const Header = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <Offcanvas show={showDrawer} onHide={closeDrawer}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title className='text-dark'>
+            Menú
+            { status !== 'not-authenticated' && (
+               <span className='user-sub text-dark'>
+                <div className='user-pill text-light'>
+                 <p>{userAvatar}</p>
+               </div>
+               {user.firstName} {user.lastName}
+               
+             </span>
+            )}
+            </Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <Nav className='flex-column'>
+            {status === 'not-authenticated' ? (
+              <>
+                <Nav.Link as={NavLink} to={'/signin'} className=' text-dark'  onClick={closeDrawer}>
+                  Iniciar Sesión
+                </Nav.Link>
+                <Nav.Link as={NavLink} to={'/signup'} className=' text-dark'  onClick={closeDrawer}>
+                  Crear Cuenta
+                </Nav.Link>
+              </>
+            ) : (
+              <>
+              <Nav.Link as={NavLink} to={'/admin-panel'} className='text-dark'  onClick={closeDrawer}>
+                Administración
+                 </Nav.Link> 
+                 <Nav.Link className='text-dark'
+                    as={NavLink}
+                    to='/favourites'
+                    onClick={closeDrawer}
+                  >
+                    Favoritos
+                  </Nav.Link>
+                  <Nav.Link className='text-dark'
+                    as={NavLink}
+                    to='/reservas'
+                    onClick={closeDrawer}
+                  >
+                    Ver Reservas
+                  </Nav.Link>
+                <Nav.Link onClick={logout} className='text-dark'>Cerrar Sesión</Nav.Link>
+              </>
+            )}
+          </Nav>
+        </Offcanvas.Body>
+      </Offcanvas>
     </header>
   )
 }
