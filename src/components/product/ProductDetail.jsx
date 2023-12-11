@@ -121,13 +121,15 @@ const ProductDetail = ({
                   className='sliderContainer'
                   style={showG ? { display: 'block' } : { display: 'none' }}
                 >
+                  
+                  <div className='slider'>
                   <p
                     className='closeGallery'
                     onClick={() => showGallery(false)}
                   >
                     &times;
                   </p>
-                  <div className='slider'>
+
                     <FaArrowAltCircleLeft
                       className='left-arrow'
                       onClick={prevSlide}
