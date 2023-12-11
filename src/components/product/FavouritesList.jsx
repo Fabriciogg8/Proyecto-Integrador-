@@ -60,7 +60,10 @@ const FavouritesList = () => {
                     />
                     <div>
                       <MDBTypography tag="h6" className="fw-bold mb-1 ">
-                        {object.name}<FavButton id={object.id} email={user.sub} className='fav-buttonn'/>
+                        {object.name}
+                        <span>
+                          <FavButton id={object.id} email={user.sub} className='fav-button-list'/>
+                        </span>
                       </MDBTypography>
                       <div className="d-flex align-items-center mb-3">
                       <p className="mb-0">

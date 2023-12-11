@@ -6,7 +6,7 @@ const CharacteristicCreate = () => {
     const [selectedFile, setSelectedFile] = useState(null);
 
     const handleFileChange = (event) => {
-        const file = event.target.files[0]; // Tomar solo el primer archivo
+        const file = event.target.files[0]; 
         if (file && file.type.startsWith('image/')) {
             setSelectedFile(file);
         } else {
@@ -20,7 +20,7 @@ const CharacteristicCreate = () => {
         event.preventDefault();
         const formData = new FormData();
         formData.append('name', event.target.name.value);
-        formData.append('image', selectedFile); // Cambiado a singular
+        formData.append('image', selectedFile); 
         
 
         try {

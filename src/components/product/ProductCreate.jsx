@@ -57,9 +57,18 @@ const ProductCreate = () => {
       formData.append('description', event.target.description.value);
       formData.append('price', parseFloat(event.target.price.value));
       formData.append('discount', parseInt(event.target.discount.value));
-      
-      for (let i = 0; i < selectedCharacteristics.length; i++) {
-        formData.append('characteristics', selectedCharacteristics[i]);
+      formData.append('characteristics', selectedCharacteristics[0]);
+      if(selectedCharacteristics[1]){
+        formData.append('characteristics', selectedCharacteristics[1]);
+      }
+      if(selectedCharacteristics[2]){
+        formData.append('characteristics', selectedCharacteristics[2]);
+      }
+      if(selectedCharacteristics[3]){
+        formData.append('characteristics', selectedCharacteristics[3]);
+      }
+      if(selectedCharacteristics[4]){
+        formData.append('characteristics', selectedCharacteristics[4]);
       }
       for (let i = 0; i < selectedFiles.length; i++) {
         formData.append('imagesFiles', selectedFiles[i]);
@@ -77,6 +86,7 @@ const ProductCreate = () => {
                 console.log("ANDUVO")
             } else if (!response.ok) {
               console.log("no anduvo")
+              console.log(selectedCharacteristics)
             }
         } catch (error) {
             console.error('Error en la solicitud: ', error)
@@ -143,12 +153,12 @@ const ProductCreate = () => {
                         onChange={handleSelectChange}
                       >
                         <option value='DEFAULT' disabled>
-                          Tipo de instrumento
+                          Tipo de categoría
                         </option>
-                        <option value='Cuerdaa'>Cuerda</option>
-                        <option value='Vientoo'>Viento</option>
-                        <option value='Percucionn'>Percusión</option>
-                        <option value='Tecladoo'>Teclado</option>
+                        <option value='Cuerdas'>Cuerda</option>
+                        <option value='Viento'>Viento</option>
+                        <option value='Percusión'>Percusión</option>
+                        <option value='Teclado'>Teclado</option>
                       </select>
                     </div>
                     <div className='col-md-6 mb-4'>

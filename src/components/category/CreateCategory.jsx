@@ -28,7 +28,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("http://174.129.92.139:8001/api/v1/categories", requestOptions)
+fetch(CREATE_CATEGORIES, requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
