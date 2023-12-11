@@ -131,9 +131,10 @@ const Header = () => {
               </>
             ) : (
               <>
+              {user.role === 'ADMIN' && (
               <Nav.Link as={NavLink} to={'/admin-panel'} className='text-dark'  onClick={closeDrawer}>
                 Administración
-                 </Nav.Link> 
+                 </Nav.Link> )}
                  <Nav.Link className='text-dark'
                     as={NavLink}
                     to='/favourites'
