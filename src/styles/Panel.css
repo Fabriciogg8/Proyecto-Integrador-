@@ -3,6 +3,7 @@
   height: 100vh; 
 } */
 
+
 .sidebar {
     width: 20%;
     background-color: rgb(134, 128, 128);
@@ -33,7 +34,7 @@
 
 .admin-panel-task-item {
   position: relative;
-  border-bottom: 1px solid rgb(180, 178, 178);
+  border-bottom: 1px solid rgba(180, 178, 178, 0.288);
 }
 
 .admin-panel-task-item a {
@@ -51,7 +52,7 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  background-color: var(--header-background-color);
+  background-color: var(  --secondary-foreground-color);
   transition: width 0.4s ease;
 }
 
@@ -65,7 +66,7 @@
   content: "";
   height: 100%;
   width: 0;
-  background-color: var(--header-background-color);
+  background-color: var(  --secondary-foreground-color);
   position: absolute;
   right: 0;
   top: 0;

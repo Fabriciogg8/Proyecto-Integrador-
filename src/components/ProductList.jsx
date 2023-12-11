@@ -8,7 +8,7 @@ const ProductList = ({ products, currentPage}) => {
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
-  console.log(currentProducts);
+  
   return (
     <div>
       <div className='row cardsContainers'>
@@ -24,7 +24,6 @@ const ProductList = ({ products, currentPage}) => {
               name={instrumento.name}
               price={instrumento.price}
               image={imagen}
-              
             />
           )
         })}
