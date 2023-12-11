@@ -68,7 +68,7 @@ const CharacteristicAdmin = () => {
   return (
     <div style={{ backgroundColor: '#d8c690' }}>
       <h1 className='text-center' style={{ color: 'black' }}>
-        Lista de Productos
+        Lista de Caracteristicas
       </h1>
       {stateCreateCharacteristic ? (
         <CharacteristicCreate />
