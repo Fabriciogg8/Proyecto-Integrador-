@@ -77,27 +77,6 @@ const ProductDetail = ({
 
   return (
     <div className='everyDetail'>
-      <section className='top-section'>
-        <div className='d-flex justify-content-between align-items-center detailHeader'>
-          <div className='text-start'>
-            <h1 className='mb-0'>{nombre}</h1>
-            <p className='title-a mb-0'>{categoria}</p>
-
-          </div>
-          <div className='text-start-second'>
-            {/**<ShareButton name={nombre} description={descripcion} image={prod} />**/}
-            <ShareButton name={nombre} description={descripcion} />
-            <button className='btn btn-light'>
-              <Link to='/'>
-                <BsArrowLeft className='iconBack' />
-              </Link>
-            </button>
-          </div>
-        </div>
-        {favs.map(fav => (
-          fav.id == id ? <div className='favHead'><small>Éste producto se encuentra en tus favoritos ❤️</small></div> : ""
-        ))}
-      </section>
       <div>
         <div className='everyDetail'>
           {nombre && (
@@ -117,6 +96,9 @@ const ProductDetail = ({
 
                 </div>
               </div>
+              {favs.map(fav => (
+          fav.id == id ? <div className='favHead'><small>Éste producto se encuentra en tus favoritos ❤️</small></div> : ""
+        ))}
               </section>
               <div>
                 <div className='contenedorGalery'>

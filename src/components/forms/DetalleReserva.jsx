@@ -2,7 +2,7 @@ import { useLocation, useParams } from 'react-router-dom'
 import React, { useState, useEffect, useContext } from 'react'
 import 'react-datepicker/dist/react-datepicker.css'
 import Swal from 'sweetalert2';
-
+import { GET_RESERVATIONS } from '../../helpers/endpoints.js';
 import { useAuthStore } from '../../hooks/useAuthStore.js'
 import { ProductContext } from '../../conexts/ProductContext.jsx'
 import { useReservaContext } from '../../conexts/ReservaContext.jsx'
@@ -25,8 +25,8 @@ export const DetalleReserva = () => {
     firstName: user.firstName,
     lastName: user.lastName,
     email: user.sub,
-    startDateForm: format(startDate, 'd MMMM yyyy', { locale: es }),
-    endDateForm: format(endDate, 'd MMMM yyyy', { locale: es })
+    startDateForm: startDate,
+    endDateForm: endDate
   });
 
 
@@ -40,9 +40,9 @@ export const DetalleReserva = () => {
     try{
       const formData = new FormData();
       formData.append('productId', id);
-      formData.append('startDate', convertDateToNumber(startDate));
-      formData.append('endDate', convertDateToNumber(endDate));
-      const response =await fetch('http://174.129.92.139:8001/api/v1/reservations', 
+      formData.append('startDate',startDate);
+      formData.append('endDate', endDate);
+      const response =await fetch(GET_RESERVATIONS, 
       {
         method: 'POST',
               mode: 'cors',

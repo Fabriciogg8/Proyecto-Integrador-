@@ -29,7 +29,7 @@ export const Reservas = () => {
               marca={producto.brand}
               precio={producto.price}
               descripcion={producto.description}
-              caracteristicas={producto.description}
+              caracteristicas={producto.characteristics}
               imagenes={producto.images}
             />
           </div> 
