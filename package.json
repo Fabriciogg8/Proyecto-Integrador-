@@ -16,6 +16,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@reduxjs/toolkit": "^1.9.7",
     "bootstrap": "^5.3.2",
+    "date-fns": "^2.30.0",
     "jwt-decode": "^4.0.0",
     "mdb-react-ui-kit": "^7.0.0",
     "react": "^18.2.0",

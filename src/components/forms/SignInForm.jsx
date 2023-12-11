@@ -69,5 +69,4 @@ export const SignInForm = ({ errors, onSubmitCallback }) => {
       </Button>
     </Form>
   )
-  
 }

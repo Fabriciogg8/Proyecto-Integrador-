@@ -1,32 +1,32 @@
-.productosYCategorias{
-    display: flex;
-    flex-direction:row;
+.productosYCategorias {
+  display: flex;
+  flex-direction: row;
 }
-.productosFiltrados{
-    margin-left: 30rem;
+.productosFiltrados {
+  margin-left: 30rem;
 }
-li{
-    list-style: none;
+li {
+  list-style: none;
 }
 /* Estilos para pantallas chicas (celular) */
 @media (max-width: 768px) {
-    .productosYCategorias {
-        flex-direction: column; 
-    }
+  .productosYCategorias {
+    flex-direction: column;
+  }
 
-    .productosFiltrados {
-        margin-left: 0; 
-    }
+  .productosFiltrados {
+    margin-left: 0;
+  }
 }
 /* Estilos para pantallas medianas (tablet) */
 @media (min-width: 769px) and (max-width: 1024px) {
-    .productosYCategorias {
-        flex-direction: row; 
-    }
+  .productosYCategorias {
+    flex-direction: row;
+  }
 
-    .productosFiltrados {
-        margin-left: 15rem; 
-    }
+  .productosFiltrados {
+    margin-left: 15rem;
+  }
 }
 
 .filtradoHeader button {
@@ -41,14 +41,12 @@ li{
 }
 
 .listaCategorias button {
-    background-color: #2e316e;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 12vw;
-    margin: 5px;
-  
-  
-  }
+  background-color: #2e316e;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 12vw;
+  margin: 5px;
+}

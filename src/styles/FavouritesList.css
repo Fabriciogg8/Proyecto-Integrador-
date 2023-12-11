@@ -1,0 +1,24 @@
+.fw-bold span {
+    width: 35px;
+    height: 35px;
+    padding: 1%;
+    border: none;
+    border-radius: 50%;
+    position: relative;
+    top: -1.5rem;
+    right: -3.5em;
+    z-index: 1;
+}
+
+.favourites-list-h4 {
+  padding-top: 3vh;
+  padding-left: 4.2vw;
+}
+
+.favourites-list-p {
+  padding-left: 4.2vw;
+}
+
+.favourite-card {
+  padding-left: 1vw;
+}

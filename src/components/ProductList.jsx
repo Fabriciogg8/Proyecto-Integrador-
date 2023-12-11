@@ -1,20 +1,23 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from 'react';
-import CardProduct from './product/CardProduct';
+import React, { useEffect, useState } from 'react'
+import CardProduct from './product/CardProduct'
 
-export const productsPerPage = 10;
+export const productsPerPage = 10
 
-const ProductList = ({ products, currentPage}) => {
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
-  
+const ProductList = ({ products, currentPage }) => {
+  const indexOfLastProduct = currentPage * productsPerPage
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage
+  const currentProducts = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct,
+  )
+
   return (
     <div>
       <div className='row cardsContainers'>
         {products.map(instrumento => {
           const imagen =
-            instrumento.images && instrumento.images.length > 0 
+            instrumento.images && instrumento.images.length > 0
               ? instrumento.images[0]
               : null
           return (
@@ -24,13 +27,13 @@ const ProductList = ({ products, currentPage}) => {
               name={instrumento.name}
               price={instrumento.price}
               image={imagen}
+              caracteristicas={instrumento.characteristics}
             />
           )
         })}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProductList;
-
+export default ProductList

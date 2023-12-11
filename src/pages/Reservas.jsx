@@ -2,18 +2,16 @@ import ProductDetail from '../components/product/ProductDetail'
 import { useParams } from 'react-router-dom'
 import { useContext, useEffect } from 'react'
 import { ProductContext } from '../conexts/ProductContext'
-import {DetalleReserva} from '../components/forms/DetalleReserva'
+import { DetalleReserva } from '../components/forms/DetalleReserva'
 import '../styles/Reservas.css'
 
 export const Reservas = () => {
-    const { id } = useParams()
-    const { state, fetchCurrentProduct } = useContext(ProductContext)
-
-    useEffect(() => {
-      fetchCurrentProduct(id)
-    }, []);
-  
-    const producto = state.currentProduct;
+  const { id } = useParams()
+  const { state, fetchCurrentProduct } = useContext(ProductContext)
+  const producto = state.currentProduct
+  useEffect(() => {
+    fetchCurrentProduct(id)
+  }, [])
 
     return (
       <div className='reservas'>
@@ -34,10 +32,11 @@ export const Reservas = () => {
               caracteristicas={producto.description}
               imagenes={producto.images}
             />
-          </div>
-        </div>
+          </div> 
+         </div>
       </div>
-    );
-  };
+    </div>
+  )
+}
 
-export default Reservas;
+export default Reservas
