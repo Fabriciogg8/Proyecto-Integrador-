@@ -1,4 +1,3 @@
-
 import React, { useContext, useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap'
 import CardCategory from '../components/product/CardCategory'
@@ -6,9 +5,12 @@ import Buscador from '../components/buscador/Buscador'
 import BrandSlider from '../components/buscador/BrandSlider'
 import { ProductContext } from '../conexts/ProductContext'
 import ProductList, { productsPerPage } from '../components/ProductList';
+import Pagination from '../components/Pagination';
 import '../styles/Home.css';
-import Hero from '../components/hero/Hero'
+import Hero from '../components/hero/Hero';
 import WhatsappButton from '../components/WhatsappButton'
+import { useAuthStore } from '../hooks/useAuthStore'
+import { USER_FAVORITES, GET_CURRENT_PRODUCT } from '../helpers/endpoints'
 
 const Home = () => {
   const { state, fetchProducts } = useContext(ProductContext);
@@ -23,8 +25,6 @@ const Home = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const instrumentos = state.products
-
-  
 
   /*const categorias = [*/
     // ... (código de categorías)
@@ -72,15 +72,30 @@ const Home = () => {
   const totalProductsCount = instrumentos.length;
   const filteredProductsCount = filteredProducts.length;
 
-  const nextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${GET_CURRENT_PRODUCT}?page=${currentPage}&order=random`);
+        const data = await response.json();
+        setProductos(data.content);
+        setTotalPages(data.totalPages);
+        } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
 
+    fetchData();
+  }, [currentPage]);
+  
   const prevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
     }
   };
 
@@ -88,12 +103,25 @@ const Home = () => {
     setCurrentPage(1);
   };
 
-  const totalPages = Math.ceil(instrumentos.length / productsPerPage);
+
+  const categorias = [
+    // ... (código de categorías)
+  ];
+  
+  //-------favoritos-------------
+
+
+  const { status, user, checkAuthToken } = useAuthStore()
+
+  useEffect(() => {
+    checkAuthToken()
+  }, [status])  
+
 
   return (
     <>
-    <Hero />
-    <Buscador />
+      <Hero />
+      <Buscador />
       <Container>
         <Row className='justify-content-start flex-wrap'>
           {categorias.length
@@ -114,19 +142,30 @@ const Home = () => {
         Categorías filtradas: {selectedCategories.join(' - ')}
       </p>
 
-      {filteredProducts.length > 0 ? (
+    
+        <div className='card-container d-flex flex-row overflow-auto justify-content-start'>
+          {categorias.length
+            ? categorias.map((categoria) => (
+                <CardCategory
+                  key={categoria.id}
+                  name={categoria.name}
+                  img={categoria.img}
+                />
+              ))
+            : null}
+        </div>
+{filteredProducts.length > 0 ? (
         <ProductList
-          products={filteredProducts}
-          currentPage={currentPage}
-          nextPage={nextPage}
-          prevPage={prevPage}
-          goToFirstPage={goToFirstPage}
-          productsPerPage={productsPerPage}
+          products={productos}
         />
-      ) : (
-        <p className='leyendaFiltros'>No existen productos para las categorías seleccionadas.</p>
-      )}
-
+        <Pagination
+        prevPage={prevPage}
+        nextPage={nextPage}
+        goToFirstPage={goToFirstPage}
+        currentPage={currentPage}
+        totalPages={totalPages}
+      /> ) : (
+        <p className='leyendaFiltros'>No existen productos para las categorías seleccionadas.</p>)}
       <BrandSlider />
       <WhatsappButton/>
     </Container>
@@ -135,4 +174,3 @@ const Home = () => {
 };
 
 export default Home;
-

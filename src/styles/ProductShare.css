@@ -1,10 +1,11 @@
 .btn-modal {
     border: none;
     background-color: transparent;
+    margin-right: 1%;
 }
 
 .share-icon-button {
-    height: 6vh;
+    height: 26px;
     background-color: transparent;
 }
 

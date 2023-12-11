@@ -50,22 +50,42 @@ nav {
   color: white !important;
 }
 
-.user-sub {
-  color: white !important;
-  font-weight: 600;
+.nav-item {
+  padding-right: 20px;
+  transition: all 0.6s ease;
 }
 
-.user-sub p {
-  color: var(--headings-text-color);
-  font-weight: 900;
-  display: inline-block;
-  background-color: white;
-  border: 3px solid var(--headings-text-color);
+.nav-link.dropdown-toggle::after {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color:  var(--body-text-color);
+  border-top: 0.4em solid;
+  border-right: 0.4em solid transparent;
+  border-left: 0.4em solid transparent;
+  transition: all 0.6s ease;
+}
+
+.nav-link .user-sub {
+  color: var(--body-text-color);
+  display: flex;
+  align-items: center;
+}
+
+
+.user-sub .user-pill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--details-color);
   border-radius: 50%;
-  width: 2.2vw;
-  height: 4.8vh;
-  padding: 0.6vh 0vw 0.1vh 0.33vw;
-  margin: 5px;
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+}
+.user-pill p {
+  margin-bottom: 0;
 }
 
 .opt-dropdown {
@@ -74,9 +94,48 @@ nav {
   border: none;
 }
 
-.dropdown-menu[data-bs-popper] {
-  right: 0;
-  left: unset;
+.nav-item .dropdown-menu[data-bs-popper] {
+  width: 100%;
+  border-radius: 0 0 5px 5px;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 0;
+  opacity: 0;
+  margin-top: calc(var(--mdb-navbar-padding-top) + var(--mdb-dropdown-spacer));
+  z-index: -1;
+}
+
+.nav-item.show.dropdown .dropdown-menu[data-bs-popper] {
+  height: 200%;
+  opacity: 1;
+  z-index: 1;
+  padding: 15px;
+}
+
+.dropdown-item {
+  position: relative;
+  padding-left: 0;
+}
+
+.nav-item .dropdown-menu .dropdown-item::after {
+  content:"";
+  display: block;
+  height: 2px;
+  width: 0;
+  position: absolute;
+  left: 0;
+  background-color: var(--header-background-color);
+  transition: width 0.4s ease;
+}
+
+.nav-item .dropdown-menu .dropdown-item:hover {
+  background-color: transparent;
+}
+
+.nav-item .dropdown-menu .dropdown-item:hover::after {
+  width: 100%;
 }
 
 .header > button {
@@ -90,6 +149,21 @@ nav {
 @media (max-width: 767px) {
   .navbar-brand small {
     display: none;
+  }
+  .nav-link.dropdown-toggle::after, #basic-navbar-nav {
+    display: none;
+  }
+  .navbar-toggler-icon {
+    background-image: var(--mdb-navbar-toggler-icon-bg) !important;
+  }
+  .user-sub{ 
+    display: flex;
+    align-items: center;
+    
+  }
+  .user-sub .user-pill {
+    margin-left: 0;
+    margin-right: 10px;
   }
 }
 
