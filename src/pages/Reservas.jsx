@@ -35,7 +35,6 @@ export const Reservas = () => {
           </div> 
          </div>
       </div>
-    </div>
   )
 }
 

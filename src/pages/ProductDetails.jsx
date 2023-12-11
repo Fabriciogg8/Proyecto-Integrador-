@@ -23,11 +23,6 @@ export const ProductDetails = () => {
       // Si el usuario no ha iniciado sesión, redirige al formulario específico para reservas
       if (startDate && endDate) {
         navigate('/signinReserva')
-      } else {
-        alert(
-          'Por favor, selecciona fechas de inicio y fin antes de continuar con la reserva.',
-        )
-        navigate('/home')
       }
       else{
         Swal.fire('Por favor, selecciona la fecha antes de continuar con la reserva.');
@@ -73,5 +68,5 @@ export const ProductDetails = () => {
     </div>
   )
 }
-
+}
 export default ProductDetails

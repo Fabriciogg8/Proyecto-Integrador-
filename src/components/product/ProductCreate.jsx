@@ -29,53 +29,7 @@ const ProductCreate = () => {
     setSelectedCategory(event.target.value)
   }
 
-  const handleSubmit = async event => {
-    event.preventDefault()
-
-    const formData = new FormData()
-    formData.append('name', event.target.name.value)
-    formData.append('categoryName', selectedCategory)
-    formData.append('brand', event.target.brand.value)
-    formData.append('model', event.target.model.value)
-    formData.append('description', event.target.description.value)
-    formData.append('price', parseFloat(event.target.price.value))
-    formData.append('discount', parseInt(event.target.discount.value))
-
-    for (let i = 0; i < selectedCharacteristics.length; i++) {
-      formData.append('characteristics', selectedCharacteristics[i])
-    }
-
-    for (let i = 0; i < selectedFiles.length; i++) {
-      formData.append('imagesFiles', selectedFiles[i])
-    }
-
-    try {
-      const response = await fetch(CREATE_PRODUCT, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData,
-      })
-
-      console.log(formData)
-
-      if (response.ok) {
-        console.log('Éxito en la creación del producto')
-      } else {
-          const imagesArray = [];
-          for (let i = 0; i < files.length; i++) {
-              imagesArray.push(files[i]);
-          }
-          setSelectedFiles(imagesArray);
-      }
-  };
- 
-    const handleSelectChange = (event) => {
-        setSelectedCategory(event.target.value);
-      };
-   
-    const handleSubmit = async (event) => {
+  const handleSubmit = async (event) => {
       event.preventDefault();
       const formData = new FormData();
       formData.append('name', event.target.name.value);
@@ -99,7 +53,22 @@ const ProductCreate = () => {
         formData.append('characteristics', selectedCharacteristics[4]);
 
       }
-    } catch (error) {
+      try {
+        const response = await fetch(CREATE_PRODUCT, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          },
+          body: formData,
+        });
+        console.log(formData);
+        if (response.ok) {
+            console.log("ANDUVO")
+        } else if (!response.ok) {
+          console.log("no anduvo")
+          console.log(selectedCharacteristics)
+        }
+      } catch (error) {
       console.error('Error en la solicitud: ', error)
     }
   }
