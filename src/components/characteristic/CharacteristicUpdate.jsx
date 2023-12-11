@@ -43,26 +43,6 @@ const CharacteristicUpdate = ({ name }) => {
             console.error('Error en la solicitud: ', error)
         }
     }
-    console.log(event.target.name.value)
-    try {
-      const response = await fetch(`${UPDATE_CHARACTERISTIC}${name}`, {
-        method: 'PUT',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData,
-      })
-      console.log(event.target.name.value)
-      console.log(formData)
-      if (response.ok) {
-        console.log('ANDUVO EL PUT')
-      } else if (!response.ok) {
-        console.log('no anduvo el put')
-      }
-    } catch (error) {
-      console.error('Error en la solicitud: ', error)
-    }
-  }
 
   return (
     <section className='h-100 h-custom' style={{ backgroundColor: '#d8c690' }}>

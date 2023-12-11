@@ -24,6 +24,7 @@ const ProductDetail = ({
   imagenes,
   rating,
   ratingCount,
+  caracteristicas,
 }) => {
   const navigate = useNavigate()
   const { user } = useAuthStore()
@@ -74,29 +75,9 @@ const ProductDetail = ({
   useEffect(() => {
     getData()
   }, [])
-  console.log(caracteristicas)
+
   return (
     <div className='everyDetail'>
-      {/* <section className='top-section'>
-        <div className='d-flex justify-content-between align-items-center detailHeader'>
-          <div className='text-start'>
-            <h1 className='mb-0'>{nombre}</h1>
-            <p className='title-a mb-0'>{categoria}</p>
-
-          </div>
-          <div className='text-start-second'>
-            <ShareButton name={nombre} description={descripcion}/>
-            <button className='btn btn-light'>
-              <Link to='/'>
-                <BsArrowLeft className='iconBack' />
-              </Link>
-            </button>
-          </div>
-        </div>
-        {favs.map(fav => (
-          fav.id == id ? <div className='favHead'><small>Éste producto se encuentra en tus favoritos ❤️</small></div> : ""
-        ))}
-      </section> */}
       <div>
         <div className='everyDetail'>
           {nombre && (
@@ -173,7 +154,7 @@ const ProductDetail = ({
                 <section className='descripYCaract'>
                   <div className='rating-ratingCount'>
                     <span>
-                      Valoraciones recibidas: {ratingCount == null &&(0)}
+                      Valoraciones recibidas: {ratingCount == null && 0}
                       <span>{ratingCount}</span>
                     </span>
                     <Rating
@@ -189,9 +170,9 @@ const ProductDetail = ({
                   </div>
                   <div className='caracteristicasProd'>
                     <h4>Caracteristicas</h4>
-                    {caracteristicas.map((object,index) =>(
+                    {caracteristicas.map((object, index) => (
                       <div key={index}>
-                        <img src={object.image} alt="" />
+                        <img src={object.image} alt='' />
                         <p>{object.name}</p>
                       </div>
                     ))}
