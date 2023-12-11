@@ -19,6 +19,10 @@ const Home = () => {
 
   // const [selectedCategory, setSelectedCategory] = useState(null);
 
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+ 
   const [currentPage, setCurrentPage] = useState(1)
   const [productos, setProductos] = useState([])
   const [totalPages, setTotalPages] = useState(0)
