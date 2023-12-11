@@ -8,6 +8,7 @@ import {
   MDBCard,
   MDBCardBody,
   MDBCol,
+  MDBCardImage,
   MDBContainer,
   MDBRow,
   MDBTypography,
@@ -17,6 +18,11 @@ const ReservasList = () => {
   const [reservas, setReservas] = useState([])
   const { user } = useAuthStore()
   const token = localStorage.getItem('token')
+const acortarDescripcion = (description) => {
+    const palabras = description.split(' ')
+    const descriptionAcortada = palabras.slice(0, 14).join(' ')
+    return `${descriptionAcortada}...`
+}
   const getReservas = async () => {
     try {
       const response = await fetch(
@@ -59,26 +65,30 @@ const ReservasList = () => {
                 <div key={index}>
                   <MDBCardBody className='p-4 '>
                     <div className='d-flex flex-start favourite-card'>
+                      <MDBCardImage
+                        className='rounded-circle shadow-1-strong me-3'
+                        src={object.product.images[0]}
+                        alt='avatar'
+                        width='60'
+                        height='60'
+                      />
                       <div>
                         <MDBTypography tag='h6' className='fw-bold mb-1 '>
-                          Producto: {object.productId}
+                          {object.product.name}
                         </MDBTypography>
                         <div className='d-flex align-items-center mb-3'>
                           <p className='mb-0'>
                             <span className='badge bg-primary'>
                               Reservado desde:{' '}
-                              {format(new Date(object.startDate), 'yyyy-MM-dd')}
-                            </span>
-                          </p>
-                        </div>
-                        <div className='d-flex align-items-center mb-3'>
-                          <p className='mb-0'>
-                            <span className='badge bg-primary'>
-                              Reservado hasta:{' '}
+                              {format(new Date(object.startDate), 'yyyy-MM-dd')}{' '}
+                              - hasta{' '}
                               {format(new Date(object.endDate), 'yyyy-MM-dd')}
                             </span>
                           </p>
                         </div>
+                        <p className='mb-0'>
+                          {acortarDescripcion(object.product.description)}
+                        </p>
                       </div>
                     </div>
                   </MDBCardBody>
