@@ -9,13 +9,16 @@ import takamine from '/takamine.jpg'
 
 const BrandSlider = () => {
   const scrollers = document.querySelectorAll('.scroller')
-  const [isEffectAdded, setIsEffectAdded] = useState(false);
-  
+  const [isEffectAdded, setIsEffectAdded] = useState(false)
+
   useEffect(() => {
-    if ((!window.matchMedia('(prefers-reduced-motion: reduce)').matches) && !isEffectAdded) {
-      addAnimation();
+    if (
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+      !isEffectAdded
+    ) {
+      addAnimation()
     }
-  }, )
+  })
 
   function addAnimation() {
     scrollers.forEach(scroller => {
@@ -30,7 +33,7 @@ const BrandSlider = () => {
         scrollerInner.appendChild(duplicatedItem)
       })
     })
-    setIsEffectAdded(true);
+    setIsEffectAdded(true)
   }
 
   return (

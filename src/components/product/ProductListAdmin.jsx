@@ -1,55 +1,56 @@
 import { Table, Button } from 'react-bootstrap'
-import { useContext, useEffect, useState} from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ProductContext } from '../../conexts/ProductContext'
 import { DELETE_PRODUCT, GET_ALL_CATEGORIES, GET_CURRENT_PRODUCT, EDIT_PRODUCT, GET_CHARACTERISTIC } from '../../helpers/endpoints'
 import Modal from 'react-bootstrap/Modal'
 import '../../styles/ModalEditProd.css'
 import Pagination from '../Pagination'
-import { Link } from 'react-router-dom'
  
-export const ProductList = () => {
-  const { state, fetchProducts, fetchCurrentProduct } = useContext(ProductContext)
-    const [currentPage, setCurrentPage] = useState(1);
-    const [productos, setProductos] = useState([]);
-    const [totalPages, setTotalPages] = useState(0);
-  
-  const token = localStorage.getItem('token');
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
-  
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await fetch(`${GET_CURRENT_PRODUCT}?page=${currentPage}`);
-          const data = await response.json();
-          setProductos(data.content);
-          setTotalPages(data.totalPages);
-          } catch (error) {
-          console.error('Error fetching products:', error);
-        }
-      };
-  
-      fetchData();
-    }, [currentPage]);
-    
-    const prevPage = () => {
-      if (currentPage > 1) {
-        setCurrentPage(currentPage - 1);
+export const ProductList = () => {
+  const { state, fetchCurrentProduct } =
+    useContext(ProductContext)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [productos, setProductos] = useState([])
+  const [totalPages, setTotalPages] = useState(0)
+
+  const token = localStorage.getItem('token')
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `${GET_CURRENT_PRODUCT}?page=${currentPage}`,
+        )
+        const data = await response.json()
+        setProductos(data.content)
+        setTotalPages(data.totalPages)
+      } catch (error) {
+        console.error('Error fetching products:', error)
       }
-    };
-  
-    const nextPage = () => {
-      if (currentPage < totalPages) {
-        setCurrentPage(currentPage + 1);
-      }
-    };
-  
-    const goToFirstPage = () => {
-      setCurrentPage(1);
-    };
-  
+    }
+
+    fetchData()
+  }, [currentPage])
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1)
+    }
+  }
+
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1)
+    }
+  }
+
+  const goToFirstPage = () => {
+    setCurrentPage(1)
+  }
 
   const instrumentos = productos
 
@@ -122,28 +123,29 @@ export const ProductList = () => {
       formData.append('price', event.target.newPrice.value);
     
 
-    var myHeaders = new Headers();
+    var myHeaders = new Headers()
     //myHeaders.append("Content-Type", "multipart/form-data");
-    myHeaders.append("Authorization", `Bearer ${token}`);
-      try {
-        /*var raw = JSON.stringify({
+    myHeaders.append('Authorization', `Bearer ${token}`)
+    try {
+      /*var raw = JSON.stringify({
           "category": event.target.selectCategoria.value,
         });*/
-      
-       
-       const response = await fetch(`${EDIT_PRODUCT}/${producto.id}`, {
-          method: 'PUT',
-          headers: myHeaders,
-          body:formData,
 
-        });
-        console.log(response)
-        handleClose();
-        //fetchProducts();
-      } catch (error) {
-        alert('Error al asignarle una nueva categoria a el producto', error);
-        console.error('Error al asignarle una nueva categoria a el producto', error);
-      }
+      const response = await fetch(`${EDIT_PRODUCT}/${producto.id}`, {
+        method: 'PUT',
+        headers: myHeaders,
+        body: formData,
+      })
+      console.log(response)
+      handleClose()
+      //fetchProducts();
+    } catch (error) {
+      alert('Error al asignarle una nueva categoria a el producto', error)
+      console.error(
+        'Error al asignarle una nueva categoria a el producto',
+        error,
+      )
+    }
   }
 
   //-----------
@@ -155,7 +157,9 @@ export const ProductList = () => {
   }
 
   const handleDelete = async id => {
-    const confirmDelete = window.confirm('¿Estás seguro de que quieres eliminar este producto?');
+    const confirmDelete = window.confirm(
+      '¿Estás seguro de que quieres eliminar este producto?',
+    )
 
     if (confirmDelete) {
       try {
@@ -171,14 +175,11 @@ export const ProductList = () => {
           window.location.reload()
         }
       } catch (error) {
-        console.error('Error al eliminar el producto', error);
+        console.error('Error al eliminar el producto', error)
       }
     }
   }
   return (
-
-    
-
     <div style={{ backgroundColor: '#d8c690' }}>
       <h1 className='text-center' style={{ color: 'black' }}>
         Lista de Productos
@@ -197,7 +198,6 @@ export const ProductList = () => {
               <td>{instrumento.id}</td>
               <td>{instrumento.name}</td>
               <td>
-           
                 <Button
                   variant='secondary'
                   onClick={() => handleEdit(instrumento.id)}
@@ -217,23 +217,27 @@ export const ProductList = () => {
             </tr>
           ))}
         </tbody>
-
       </Table>
 
-<Modal show={show} onHide={handleClose}>
-      <form onSubmit={handleEditProduct} >
-        <Modal.Header closeButton>
-          <Modal.Title>Editar Producto</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+      <Modal show={show} onHide={handleClose}>
+        <form onSubmit={handleEditProduct}>
+          <Modal.Header closeButton>
+            <Modal.Title>Editar Producto</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
             <div className='modalInputsTitle'>
-            <span>Actual</span>
-            <span>Asignar</span>
+              <span>Actual</span>
+              <span>Asignar</span>
             </div>
 
             <div className='modalInputs'>
-            <span>{producto.name + " "}</span>
-            <input type="text" name="newName" id="newName" placeholder='Nuevo Nombre'/>
+              <span>{producto.name + ' '}</span>
+              <input
+                type='text'
+                name='newName'
+                id='newName'
+                placeholder='Nuevo Nombre'
+              />
             </div>
 
             <div className='modalInputs'>
@@ -283,34 +287,51 @@ export const ProductList = () => {
                         </select>
             </div>
             <div className='modalInputs'>
-            <span>{producto.brand + " "}</span>
-            <input type="text" name="newBrand" id="newBrand" placeholder='Nueva Marca'/>
+              <span>{producto.brand + ' '}</span>
+              <input
+                type='text'
+                name='newBrand'
+                id='newBrand'
+                placeholder='Nueva Marca'
+              />
             </div>
 
             <div className='modalInputs'>
-            <span>{producto.model + " "}</span>
-            <input type="text" name="newModel" id="newModel" placeholder='Nuevo Modelo'/>
+              <span>{producto.model + ' '}</span>
+              <input
+                type='text'
+                name='newModel'
+                id='newModel'
+                placeholder='Nuevo Modelo'
+              />
             </div>
 
             <div className='modalInputs'>
-            <span>{producto.price + " "}</span>
-            <input type="number" name="newPrice" id="newPrice" placeholder='Nuevo Precio'/>
+              <span>{producto.price + ' '}</span>
+              <input
+                type='number'
+                name='newPrice'
+                id='newPrice'
+                placeholder='Nuevo Precio'
+              />
             </div>
 
             <div className='modalInputs'>
-            <textarea name="newDescription" id="newDescription" placeholder='Nueva Descripcion...'/>
+              <textarea
+                name='newDescription'
+                id='newDescription'
+                placeholder='Nueva Descripcion...'
+              />
             </div>
-          
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cerrar
-          </Button>
-          <Button variant="primary" type="submit">
-            Guardar
-          </Button>
-          
-        </Modal.Footer>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant='secondary' onClick={handleClose}>
+              Cerrar
+            </Button>
+            <Button variant='primary' type='submit'>
+              Guardar
+            </Button>
+          </Modal.Footer>
         </form>
       </Modal>
 
@@ -321,7 +342,5 @@ export const ProductList = () => {
         currentPage={currentPage}
         totalPages={totalPages}
       />
-
     </div>
-  )
-}
+)}
