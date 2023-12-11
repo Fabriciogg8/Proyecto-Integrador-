@@ -13,7 +13,7 @@ import ScoreProduct from '../product/ScoreProduct'
 import ShowScores from '../product/ShowScores'
 import { Rating } from 'react-simple-star-rating'
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const ProductDetail = ({
   categoria,
@@ -87,7 +87,8 @@ const ProductDetail = ({
 
           </div>
           <div className='text-start-second'>
-            <ShareButton name={nombre} description={descripcion} image={prod} />
+            {/**<ShareButton name={nombre} description={descripcion} image={prod} />**/}
+            <ShareButton name={nombre} description={descripcion} />
             <button className='btn btn-light'>
               <Link to='/'>
                 <BsArrowLeft className='iconBack' />
@@ -111,7 +112,8 @@ const ProductDetail = ({
                   <p className='title-a mb-0'>{categoria}</p>
                 </div>
                 <div className='text-start-second'>
-                  <ShareButton name={nombre} description={descripcion} image={prod} />
+                  {/* <ShareButton name={nombre} description={descripcion} image={prod} /> */}
+                  <ShareButton name={nombre} description={descripcion} />
                   <button className='btn btn-light' onClick={navigateBack}>
                     <BsArrowLeft className='iconBack' />
                   </button>

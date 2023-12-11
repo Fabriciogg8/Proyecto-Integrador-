@@ -132,7 +132,7 @@ const Home = () => {
           {categorias.length
             ? categorias.map((categoria) => (
                 <CardCategory
-                  key={categoria.id}
+                  key={categoria.name}
                   name={categoria.name}
                   img={categoria.img}
                   onClick={handleCategoryClick} 

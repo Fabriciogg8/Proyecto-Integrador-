@@ -14,23 +14,61 @@ export const DetalleReserva = () => {
   const { state, fetchCurrentProduct } = useContext(ProductContext)
   const { user } = useAuthStore();
   const {startDate, endDate} = useReservaContext()
+  const token = localStorage.getItem('token')
 
   useEffect(() => {
     fetchCurrentProduct(id)
   }, []);
   
-  const [formData, setFormData] = useState({
+  const [form, setForm] = useState({
     firstName: user.firstName,
     lastName: user.lastName,
     email: user.sub,
-    startDate: format(startDate, 'd MMMM yyyy', { locale: es }),
-    endDate: format(endDate, 'd MMMM yyyy', { locale: es })
+    startDateForm: format(startDate, 'd MMMM yyyy', { locale: es }),
+    endDateForm: format(endDate, 'd MMMM yyyy', { locale: es })
   });
 
-  const handleSubmit = e => {
-    e.preventDefault()
-  }
+  const convertDateToNumber = (date) => {
+    return date ? Math.floor(date.getTime() / 1000) : null;
+  };
 
+  const handleSubmit =async(e) => {
+    e.preventDefault()
+
+    try{
+      const formData = new FormData();
+      formData.append('productId', id);
+      formData.append('startDate', convertDateToNumber(startDate));
+      formData.append('endDate', convertDateToNumber(endDate));
+      const response =await fetch('http://174.129.92.139:8001/api/v1/reservations', 
+      {
+        method: 'POST',
+              mode: 'cors',
+              headers: {
+                'Authorization': `Bearer ${token}`,
+              },
+        body: formData,
+      })
+      console.log(response) 
+
+      if (response.ok) {
+        const responseData = await response.json();
+        console.log('Respuesta del servidor', responseData);
+        alert(`${user.firstName}, ¡Tu reserva se ha realizado con éxito!`);
+        navigate()
+      } else {
+        console.error('Error en la solicitud:', response.statusText);
+        console.error('Detalles del error:', await response.text());
+      }
+    } catch (error) {
+      console.error('Errores al enviar la reserva', error);
+    }
+  };
+
+  const handleCloseAlert = () => {
+    setShowConfirmation(false);
+  };
+ 
   return (
     <div className='container'>
       <h2>Formulario de Reserva</h2>
@@ -44,7 +82,7 @@ export const DetalleReserva = () => {
             className='form-control'
             id='firstName'
             name='firstName'
-            value={formData.firstName}
+            value={form.firstName}
             readOnly
           />
         </div>
@@ -58,7 +96,7 @@ export const DetalleReserva = () => {
             className='form-control'
             id='lastName'
             name='lastName'
-            value={formData.lastName}
+            value={form.lastName}
             readOnly
           />
         </div>
@@ -72,7 +110,7 @@ export const DetalleReserva = () => {
             className='form-control'
             id='email'
             name='email'
-            value={formData.email}
+            value={form.email}
             readOnly
           />
         </div>
@@ -86,7 +124,7 @@ export const DetalleReserva = () => {
             className='form-control'
             id='email'
             name='email'
-            value={formData.startDate}
+            value={form.startDateForm}
             readOnly
           />
         </div>
@@ -100,7 +138,7 @@ export const DetalleReserva = () => {
             className='form-control'
             id='email'
             name='email'
-            value={formData.endDate}
+            value={form.endDateForm}
             readOnly
           />
         </div>
