@@ -419,5 +419,15 @@ a img {
 
 
 
+.div-caracs-individual img {
+  margin: 4px 4px 8px 4px;
+  height: 4em;
+  width: 4em;
+}
+
+.div-caracs-individual span {
+  font-size: 20px;
+  font-weight: 600;
+}
 /*----------------------*/
 

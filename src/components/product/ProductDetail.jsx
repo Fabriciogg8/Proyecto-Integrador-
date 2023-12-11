@@ -143,9 +143,9 @@ const ProductDetail = ({
                   <div className='caracteristicasProd'>
                     <h4>Caracteristicas</h4>
                     {caracteristicas.map((object,index) =>(
-                      <div key={index}>
+                      <div key={index} className='div-caracs-individual'>
                         <img src={object.image} alt="" />
-                        <p>{object.name}</p>
+                        <span>{object.name}</span>
                       </div>
                     ))}
                   </div>
