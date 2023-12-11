@@ -92,3 +92,7 @@
     padding-right: 30px;
   }
 }
+
+.search-bar .row {
+align-items: flex-end;
+}
