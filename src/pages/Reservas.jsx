@@ -14,7 +14,7 @@ export const Reservas = () => {
   }, [])
 
   const producto = state.currentProduct
-
+  console.log(producto)
   return (
     <div className='reservas'>
       <div className='row align-items-center'>
