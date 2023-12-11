@@ -5,22 +5,23 @@ import { useState } from 'react'
 const CharacteristicCreate = () => {
   const [selectedFile, setSelectedFile] = useState(null)
 
-  const handleFileChange = event => {
-    const file = event.target.files[0] // Tomar solo el primer archivo
-    if (file && file.type.startsWith('image/')) {
-      setSelectedFile(file)
-    } else {
-      event.target.value = null
-      setSelectedFile(null)
+    const handleFileChange = (event) => {
+        const file = event.target.files[0]; 
+        if (file && file.type.startsWith('image/')) {
+            setSelectedFile(file);
+        } else {
+            event.target.value = null;
+            setSelectedFile(null);
     }
   }
 
-  const token = localStorage.getItem('token')
-  const handleSubmit = async event => {
-    event.preventDefault()
-    const formData = new FormData()
-    formData.append('name', event.target.name.value)
-    formData.append('image', selectedFile) // Cambiado a singular
+    const token = localStorage.getItem('token');
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const formData = new FormData();
+        formData.append('name', event.target.name.value);
+        formData.append('image', selectedFile); 
+
 
     try {
       const response = await fetch(CREATE_CHARACTERISTIC, {

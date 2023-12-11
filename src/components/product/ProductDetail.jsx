@@ -170,17 +170,13 @@ const ProductDetail = ({
                   </div>
                   <div className='caracteristicasProd'>
                     <h4>Caracteristicas</h4>
-                    {caracteristicas.length > 0 ? (
-                      caracteristicas.map((object, index) => (
-                        <div key={index}>
-                          <img src={object.image} alt='' />
-                          <p>{object.name}</p>
-                        </div>
-                      ))
-                    ) : (
-                      <p>No hay características disponibles.</p>
-                    )}
-                  </div>
+                    {caracteristicas.map((object,index) =>(
+                      <div key={index} className='div-caracs-individual'>
+                        <img src={object.image} alt="" />
+                        <span>{object.name}</span>
+                      </div>
+                    ))}
+
 
                   <ScoreProduct id={id} />
                 </section>

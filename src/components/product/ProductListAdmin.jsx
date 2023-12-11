@@ -58,11 +58,23 @@ export const ProductList = () => {
   const [categories, setCategories] = useState([]);
   const [characteristics, setCharacteristics] = useState([]);
 
-  const getCategories = () => {
-    fetch(GET_ALL_CATEGORIES)
-      .then(response => response.json())
-      .then(json => setCategories(json))
-      .catch(error => console.error(error));
+  const getCategories = async () => {
+    try {
+      const response = await fetch(GET_ALL_CATEGORIES, {
+          method: 'GET',
+          headers: {
+          'Authorization': `Bearer ${token}`
+          },
+      });
+      if (!response.ok) {
+          throw new Error(`Error en la solicitud: ${response.status}`);
+      }
+      const data = await response.json();
+      setCategories(data);
+      } catch (error) {
+          console.error("Error al obtener datos:", error);
+      }
+    
   };
 
   const getCharacteristics = async () => {

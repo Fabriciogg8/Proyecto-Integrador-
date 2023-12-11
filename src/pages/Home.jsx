@@ -10,12 +10,13 @@ import '../styles/Home.css'
 import Hero from '../components/hero/Hero'
 import WhatsappButton from '../components/WhatsappButton'
 import { useAuthStore } from '../hooks/useAuthStore'
-import { USER_FAVORITES, GET_CURRENT_PRODUCT } from '../helpers/endpoints'
+import { USER_FAVORITES, GET_CURRENT_PRODUCT, GET_ALL_CATEGORIES } from '../helpers/endpoints'
 
-const Home = () => {
-  const { state, fetchProducts } = useContext(ProductContext)
-  const [categorias, setCategorias] = useState([])
-  const [selectedCategories, setSelectedCategories] = useState([])
+const Home = () => {  
+  const { state, fetchProducts } = useContext(ProductContext);
+  const [categorias, setCategorias] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const token = state.token;
 
   // const [selectedCategory, setSelectedCategory] = useState(null);
 
@@ -24,25 +25,30 @@ const Home = () => {
   const [totalPages, setTotalPages] = useState(0)
 
   /*const categorias = [*/
-  // ... (código de categorías)
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const response = await fetch(
-          'http://174.129.92.139:8001/api/v1/categories',
-        )
-        const data = await response.json()
-        // Actualizar el estado con las categorías obtenidas
-        setCategorias(data)
-      } catch (error) {
-        console.error('Error al obtener categorías:', error)
-      }
-    }
+    // ... (código de categorías)
+    useEffect(() => {
+      const fetchCategories = async () => {
+        try {
+          const response = await fetch(GET_ALL_CATEGORIES, {
+              method: 'GET',
+              headers: {
+              'Authorization': `Bearer ${token}`
+              },
+          });
+          if (!response.ok) {
+              throw new Error(`Error en la solicitud: ${response.status}`);
+          }
+          const data = await response.json();
+          setCategorias(data);
+          } catch (error) {
+              console.error("Error al obtener datos:", error);
+          }
+      };
+    
+      fetchCategories();
+    }, [])
 
-    fetchCategories()
-  }, [])
-
-  const handleCategoryClick = categoryName => {
+  const handleCategoryClick = (categoryName) => {
     if (selectedCategories.includes(categoryName)) {
       setSelectedCategories(prevSelected =>
         prevSelected.filter(category => category !== categoryName),
