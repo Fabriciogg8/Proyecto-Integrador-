@@ -59,19 +59,19 @@
 }
 
 /*------CARD POLICY----*/
-.policy h5{
+.policy h5 {
   color: var(--headings-text-color);
 }
-.policy p{
+.policy p {
   color: var(--body-text-color-inverted);
 }
 
 /*------CARD CATEGORIA PRODUCTO----*/
 /* Cards.css */
 .overflow-Category {
-  color: var(--secondary-foreground-color); 
-  width: auto; 
-  height: 5rem; 
+  color: var(--secondary-foreground-color);
+  width: auto;
+  height: 5rem;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -79,55 +79,55 @@
   padding: 1rem;
 }
 
-.card-titleCategory{
+.card-titleCategory {
   font-size: 1rem;
-  margin: 0; 
-  padding: 0; 
+  margin: 0;
+  padding: 0;
 }
-.botonFiltro{
+.botonFiltro {
   color: var(--secondary-foreground-color);
   border-radius: 10px;
   padding: 0.5rem;
   background-color: var(--secondary-background-color);
 }
-.leyendaFiltros{
+.leyendaFiltros {
   color: var(--secondary-background-color);
   font-size: 1rem;
 }
 /*------CARD SIGNIN----*/
-.aclaracionSignIn{
+.aclaracionSignIn {
   text-align: center;
   color: var(--secondary-background-color);
 }
 
-.fav-button{
+.fav-button {
   width: 35px;
-    height: 35px;
-    padding: 1%;
-    border: none;
-    background-color: rgba(146, 146, 146, 0.521);
-    border-radius: 50%;
-    margin-bottom: auto;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 1;
+  height: 35px;
+  padding: 1%;
+  border: none;
+  background-color: rgba(146, 146, 146, 0.521);
+  border-radius: 50%;
+  margin-bottom: auto;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
 }
 
-.tituloCard{
+.tituloCard {
   text-overflow: ellipsis;
-white-space: nowrap;
+  white-space: nowrap;
   overflow: hidden;
 }
 
-.fav-button:hover{
+.fav-button:hover {
   width: 38px;
   height: 38px;
   padding: 1%;
   background-color: rgba(29, 116, 17, 0.384);
 }
 
-.cardProduct{
+.cardProduct {
   height: 45%;
   width: 45%;
   padding: 1%;
@@ -135,7 +135,7 @@ white-space: nowrap;
   background-color: var(--header-background-color);
 }
 
-.cardFavBtn{
+.cardFavBtn {
   display: flex;
   align-items: end;
   justify-content: end;

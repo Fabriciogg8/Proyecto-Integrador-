@@ -6,26 +6,26 @@ import { useAuthStore } from '../../hooks/useAuthStore.js'
 import { ProductContext } from '../../conexts/ProductContext.jsx'
 import { useReservaContext } from '../../conexts/ReservaContext.jsx'
 import Calendario from '../buscador/Calendario.jsx'
-import { format } from 'date-fns';
-import es from 'date-fns/locale/es';
+import { format } from 'date-fns'
+import es from 'date-fns/locale/es'
 
 export const DetalleReserva = () => {
   const { id } = useParams()
   const { state, fetchCurrentProduct } = useContext(ProductContext)
-  const { user } = useAuthStore();
-  const {startDate, endDate} = useReservaContext()
+  const { user } = useAuthStore()
+  const { startDate, endDate } = useReservaContext()
 
   useEffect(() => {
     fetchCurrentProduct(id)
-  }, []);
-  
+  }, [])
+
   const [formData, setFormData] = useState({
     firstName: user.firstName,
     lastName: user.lastName,
     email: user.sub,
     startDate: format(startDate, 'd MMMM yyyy', { locale: es }),
-    endDate: format(endDate, 'd MMMM yyyy', { locale: es })
-  });
+    endDate: format(endDate, 'd MMMM yyyy', { locale: es }),
+  })
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -108,8 +108,7 @@ export const DetalleReserva = () => {
         <button type='submit' className='btn btn-primary'>
           Enviar Reserva
         </button>
-
       </form>
     </div>
-  );
-};
+  )
+}

@@ -227,40 +227,110 @@ const ProductCreate = () => {
                       />
                     </div>
                     <input
-                      className='images-upload'
-                      name='files'
-                      id='file'
-                      type='file'
-                      accept='image/*'
-                      onChange={handleFileChange}
-                      multiple
+                      type='text'
+                      id='form3Example1q'
+                      className='input-values-instruments'
+                      name='name'
+                      autoComplete='off'
                     />
-                    <label className='file-button' htmlFor='file'>
-                      <img src='/photo-upload.svg' className='photo-upload' />
-                      Elige las fotos
+                  </div>
+                  <div className='margin-labels mb-4'>
+                    <label htmlFor='form3Example1q'>Marca</label>
+                    <input
+                      type='text'
+                      id='form3Example1q'
+                      className='input-values-instruments'
+                      name='brand'
+                    />
+                  </div>
+                  <div className='margin-labels mb-4'>
+                    <label htmlFor='form3Example1q'>Modelo</label>
+                    <input
+                      type='text'
+                      id='form3Example1q'
+                      className='input-values-instruments'
+                      name='model'
+                    />
+                  </div>
+                  <div className='margin-labels mb-4'>
+                    <label htmlFor='form3Example1q'>Descripción</label>
+                    <textarea
+                      rows='7'
+                      id='form3Example1q'
+                      className='input-values-instruments'
+                      name='description'
+                    ></textarea>
+                  </div>
+                  <div className='col-md-6 mb-4'>
+                    <select
+                      className='form-select'
+                      aria-label='Default select example'
+                      value={selectedCategory}
+                      onChange={handleSelectChange}
+                    >
+                      <option value='DEFAULT' disabled>
+                        Tipo de instrumento
+                      </option>
+                      <option value='Cuerdaa'>Cuerda</option>
+                      <option value='Vientoo'>Viento</option>
+                      <option value='Percucionn'>Percusión</option>
+                      <option value='Tecladoo'>Teclado</option>
+                    </select>
+                  </div>
+                  <div className='margin-labels mb-4'>
+                    <label htmlFor='form3Example1q'>Precio ($USD)</label>
+                    <input
+                      type='number'
+                      step='0.01'
+                      id='form3Example1q'
+                      className='input-values-instruments'
+                      name='price'
+                    />
+                  </div>
+                  <div className='margin-labels mb-4'>
+                    <label htmlFor='form3Example1q'>Descuento</label>
+                    <input
+                      type='number'
+                      id='form3Example1q'
+                      className='input-values-instruments'
+                      name='discount'
+                    />
+                  </div>
+                  <input
+                    className='images-upload'
+                    name='files'
+                    id='file'
+                    type='file'
+                    accept='image/*'
+                    onChange={handleFileChange}
+                    multiple
+                  />
+                  <label className='file-button' htmlFor='file'>
+                    <img src='/photo-upload.svg' className='photo-upload' />
+                    Elige las fotos
+                  </label>
+                  {selectedFiles == undefined ||
+                  selectedFiles == undefined ||
+                  selectedFiles == undefined ? (
+                    <p className='warning-message'>
+                      Tienes que subir de 5 a 7 imágenes
+                    </p>
+                  ) : (
+                    <label>
+                      Has subido {selectedFiles.length} imágenes con éxito
                     </label>
-                    {selectedFiles == undefined ||
-                    selectedFiles == undefined ||
-                    selectedFiles == undefined ? (
-                      <p className='warning-message'>
-                        Tienes que subir de 5 a 7 imágenes
-                      </p>
-                    ) : (
-                      <label>
-                        Has subido {selectedFiles.length} imágenes con éxito
-                      </label>
-                    )}
-                    <button type='submit' className='btn btn-lg mb-1 submitt'>
-                      Submit
-                    </button>
-                  </form>
-                </div>
+                  )}
+                  <button type='submit' className='btn btn-lg mb-1 submitt'>
+                    Submit
+                  </button>
+                </form>
               </div>
             </div>
           </div>
         </div>
-      </section>
-    )
+      </div>
+    </section>
+  )
 }
 
-export default ProductCreate;
+export default ProductCreate

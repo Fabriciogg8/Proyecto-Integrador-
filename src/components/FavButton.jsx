@@ -81,7 +81,9 @@ const FavButton = ({id , email}) => {
       }
     return (
     <>
-      <button className='fav-button' onClick={handleClick}>💚</button>
+      <button className='fav-button' onClick={handleClick}>
+        💚
+      </button>
     </>
   )
 }
