@@ -5,8 +5,10 @@ export const REGISTER_USER_ENDPOINT = `${API_URL}/auth/register`
 export const LOGIN_USER_ENDPOINT = `${API_URL}/auth/login`
 export const GET_RANDOM_PRODUCTS = `${API_URL}/products?order=random`
 export const GET_CURRENT_PRODUCT = `${API_URL}/products`
+export const GET_ALL_PRODUCTS = `${API_URL}/products/all`
 export const CREATE_PRODUCT = `${API_URL}/products`
 export const DELETE_PRODUCT = `${API_URL}/products`
+export const GET_RESERVATION = `${API_URL}/reservations`
 export const CREATE_REVIEW = `${API_URL}/reviews`
 export const GET_RESERVATIONS = `${API_URL}/reservations`
 export const GET_REVIEWS_ON_SPECIFIC_PRODUCT = `${API_URL}/reviews/product/`
@@ -19,3 +21,4 @@ export const UPDATE_CHARACTERISTIC = `${API_URL}/characteristic/`
 export const USER_FAVORITES = `${API_URL}/favorites/list`
 export const USER_FAVORITES_REMOVE = `${API_URL}/favorites/remove`
 export const USER_FAVORITES_ADD = `${API_URL}/favorites/add`
+export const EDIT_PRODUCT =  `${API_URL}/products`

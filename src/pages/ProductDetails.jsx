@@ -1,38 +1,72 @@
-import { useParams } from 'react-router-dom'
-import { useContext, useEffect } from 'react'
+import { useNavigate,useParams } from 'react-router-dom'
+import { useContext, useEffect} from 'react'
 import { ProductContext } from '../conexts/ProductContext'
+import { useReservaContext } from '../conexts/ReservaContext'
 import CardPolicy from '../components/product/CardPolicy'
 import  ProductDetail  from "../components/product/ProductDetail"
+import { useAuthStore } from '../hooks/useAuthStore'
 
 export const ProductDetails = () => {
-  const { id } = useParams()
-
+  const { id } = useParams();
   const { state, fetchCurrentProduct } = useContext(ProductContext)
+  const { user } = useAuthStore()
+  const navigate = useNavigate();
+  const {startDate, endDate} = useReservaContext()
 
   useEffect(() => {
-    fetchCurrentProduct(id)
+    fetchCurrentProduct(id);
   }, []);
 
-  const producto = state.currentProduct
-
-  console.log(producto)
+  const handleOnClickReserva = async () => {
+    if (!user.sub || user.sub.trim() === '') {
+       // Si el usuario no ha iniciado sesión, redirige al formulario específico para reservas
+      if (startDate && endDate) {
+        navigate('/signinReserva')
+      }
+      else{
+        alert('Por favor, selecciona fechas de inicio y fin antes de continuar con la reserva.');
+        navigate('/home');
+      }
+    }
+    else{
+  /**Verifica antes de avanzar sobre la reserva si se seleccionaron las fechas**/
+    if (startDate && endDate) {
+      navigate(`/reservas/${id}`);
+     } else {
+      alert('Por favor, selecciona fechas de inicio y fin antes de continuar con la reserva.');
+      navigate('/home');
+    }
+  }
+}
+  if (!state.currentProduct) {
+      return <div>Loading...</div>;
+    }
+  const product = state.currentProduct;
 
   return (
     <div className='Details'>
       <ProductDetail
-        key={producto.id}
-        categoria={producto.category}
-        nombre={producto.name}
-        marca={producto.brand}
-        precio={producto.price}
-        descripcion={producto.description}
-        caracteristicas={producto.description}
-        imagenes={producto.images}
-        rating={producto.rating}
-        ratingCount={producto.ratingCount}
-        id={producto.id}
+        key={product.id}
+        categoria={product.category}
+        nombre={product.name}
+        marca={product.brand}
+        precio={product.price}
+        descripcion={product.description}
+        caracteristicas={product.characteristics}
+        imagenes={product.images}
+        rating={product.rating}
+        ratingCount={product.ratingCount}
+        id={product.id}
+
       />
-      <CardPolicy/>
+      <CardPolicy />
+      <div className="text-center">
+        <button onClick={handleOnClickReserva} className='btn btn-primary mt-3'>
+          Ir a Reservas
+        </button>
+      </div>
     </div>
-  )
-}
+  );
+};
+
+export default ProductDetails

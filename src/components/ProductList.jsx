@@ -1,21 +1,14 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
 import CardProduct from './product/CardProduct';
-import Pagination from './Pagination';
 
-export const productsPerPage = 6;
+export const productsPerPage = 10;
 
-const ProductList = ({ products, currentPage, nextPage, prevPage, goToFirstPage, productsPerPage }) => {
-  const [totalPages, setTotalPages] = useState(1);
-
-  useEffect(() => {
-    setTotalPages(Math.ceil(products.length / productsPerPage));
-  }, [products, productsPerPage]);
-
+const ProductList = ({ products, currentPage}) => {
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
-  console.log(currentProducts);
+  
   return (
     <div>
       <div className='row cardsContainers'>
@@ -31,19 +24,11 @@ const ProductList = ({ products, currentPage, nextPage, prevPage, goToFirstPage,
               name={instrumento.name}
               price={instrumento.price}
               image={imagen}
-              
+              caracteristicas={instrumento.characteristics}
             />
           )
         })}
       </div>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        nextPage={nextPage}
-        prevPage={prevPage}
-        goToFirstPage={goToFirstPage}
-        productsPerPage={productsPerPage}
-      />
     </div>
   );
 };

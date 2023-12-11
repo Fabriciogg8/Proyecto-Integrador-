@@ -2,13 +2,14 @@
 import React from 'react';
 
 const Pagination = ({
-  currentPage,
-  totalPages,
-  nextPage,
   prevPage,
+  nextPage,
   goToFirstPage,
+  currentPage,
+  totalPages
   
 }) => {
+
   return (
     <div className='pagination'>
       <button onClick={prevPage} disabled={currentPage === 1}>

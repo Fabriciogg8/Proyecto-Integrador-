@@ -38,6 +38,7 @@ export default function ShowScores({id}) {
     })
     return (
     <section style={{ backgroundColor: 'transparent' }}>
+        {reservas[0] && (
         <MDBContainer className="py-5 container-score" >
             <MDBRow className="justify-items-left-score">
                 <MDBCol>
@@ -86,6 +87,7 @@ export default function ShowScores({id}) {
                 </MDBCol>
             </MDBRow>
         </MDBContainer>
+        )}
     </section>
     );
 }

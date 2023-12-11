@@ -54,7 +54,9 @@ const FavButton = ({id , email}) => {
           } catch (error) {
               console.error('Error en la solicitud: ', error)
           }
-          window.location.reload();
+          if(window.location.href.includes("/favourites")){
+            window.location.reload();
+          }
         } else if (statusFav == true) {
           try {
             const response = await fetch(`${USER_FAVORITES_REMOVE}?userEmail=${email}&productId=${id}`, {
@@ -71,7 +73,10 @@ const FavButton = ({id , email}) => {
         } catch (error) {
             console.error('Error en la solicitud: ', error)
         }
-        window.location.reload();
+        if(window.location.href.includes("/favourites")){
+          window.location.reload();
+        }
+        
         }
       }
     return (

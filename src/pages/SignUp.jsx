@@ -15,10 +15,10 @@ export const SignUp = () => {
     setErrors(errors)
 
     if (!validator.isEmail(email)) {
-      errors.email = 'El email es invalido'
+      errors.email = 'El email es inválido'
     }
     if (!validator.isLength(password, { min: 8, max: 30 })) {
-      errors.password = 'El password es requerido'
+      errors.password = 'La contraseña es requerida'
     }
     if (!validator.isLength(firstname, { min: 2, max: 30 })) {
       errors.firstname = 'El nombre es requerido'
@@ -42,7 +42,7 @@ export const SignUp = () => {
         <hr />
         <SignUpForm errors={errors} onSubmitCallback={register} />
         <div className='mt-4 ms-2'>
-          <Link to={'/signin'}>Ya tienes una cuenta ? Iniciar Sesion.</Link>
+          <Link to={'/signin'}>Ya tienes una cuenta ? Iniciar Sesión.</Link>
         </div>
       </Card>
     </Container>

@@ -1,38 +1,40 @@
-import { useState } from 'react'
-import { Form, Button } from 'react-bootstrap'
-import { useAuthStore } from '../../hooks/useAuthStore.js'
-import { useEffect } from 'react'
-import Swal from 'sweetalert2'
+import { useState } from 'react';
+import { Form, Button } from 'react-bootstrap';
+import { useAuthStore } from '../../hooks/useAuthStore.js';
+import { useEffect } from 'react';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
-export const SignInForm = ({ errors, onSubmitCallback }) => {
-  const { errorMessage } = useAuthStore()
+export const SignInFormReserva = ({ errors, onSubmitCallback }) => {
+  const { errorMessage } = useAuthStore();
+  const navigate = useNavigate();
 
   const [formValues, setFormValues] = useState({
     email: '',
     password: '',
-  })
+  });
 
   const onInputChange = ({ target }) => {
     setFormValues({
       ...formValues,
       [target.name]: target.value,
-    })
-  }
+    });
+  };
 
-  const onSubmit = e => {
-    e.preventDefault()
-    onSubmitCallback(formValues)
-  }
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    await onSubmitCallback(formValues);
+  };
 
   useEffect(() => {
     if (errorMessage !== undefined) {
-      Swal.fire('Error en la autenticación', errorMessage, 'error')
+      Swal.fire('Error en la autenticación', errorMessage, 'error');
       setFormValues({
         email: '',
         password: '',
-      })
+      });
     }
-  }, [errorMessage])
+  }, [errorMessage]);
 
   return (
     <Form onSubmit={onSubmit} className='m-2'>
@@ -41,7 +43,7 @@ export const SignInForm = ({ errors, onSubmitCallback }) => {
         <Form.Control
           name='email'
           type='email'
-          placeholder='Ingrese su Email'
+          placeholder='Enter email'
           value={formValues.email}
           onChange={onInputChange}
           isInvalid={errors.email}
@@ -55,7 +57,7 @@ export const SignInForm = ({ errors, onSubmitCallback }) => {
         <Form.Control
           name='password'
           type='password'
-          placeholder='Ingrese su Contraseña'
+          placeholder='Ingrese Contraseña'
           value={formValues.password}
           onChange={onInputChange}
           isInvalid={errors.password}
@@ -65,9 +67,9 @@ export const SignInForm = ({ errors, onSubmitCallback }) => {
         </Form.Control.Feedback>
       </Form.Group>
       <Button variant='primary' type='submit' className='mt-2'>
-        Iniciar Sesión
+        Iniciar Sesion
       </Button>
     </Form>
-  )
-  
-}
+  );
+};
+
