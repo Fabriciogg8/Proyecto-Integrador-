@@ -5,11 +5,10 @@ import { DELETE_PRODUCT, GET_ALL_CATEGORIES, GET_CURRENT_PRODUCT, EDIT_PRODUCT, 
 import Modal from 'react-bootstrap/Modal'
 import '../../styles/ModalEditProd.css'
 import Pagination from '../Pagination'
-import { Link } from 'react-router-dom'
  
 
 export const ProductList = () => {
-  const { state, fetchProducts, fetchCurrentProduct } =
+  const { state, fetchCurrentProduct } =
     useContext(ProductContext)
   const [currentPage, setCurrentPage] = useState(1)
   const [productos, setProductos] = useState([])
@@ -332,5 +331,4 @@ export const ProductList = () => {
         totalPages={totalPages}
       />
     </div>
-  )
-}}
+)}
