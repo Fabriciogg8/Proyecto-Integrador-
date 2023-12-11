@@ -19,12 +19,9 @@ const Home = () => {
 
   // const [selectedCategory, setSelectedCategory] = useState(null);
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
   const [currentPage, setCurrentPage] = useState(1);
-  const instrumentos = state.products
+  const [productos, setProductos] = useState([]);
+  const [totalPages, setTotalPages] = useState(0);
 
   /*const categorias = [*/
     // ... (código de categorías)
@@ -62,14 +59,14 @@ const Home = () => {
   };
 
   const filteredProducts = selectedCategories.length > 0
-  ? instrumentos.filter((producto) =>
+  ? productos.filter((producto) =>
       producto.category && selectedCategories.includes(producto.category)
     )
-  : instrumentos;
+  : productos;
 
   console.log(filteredProducts)
 
-  const totalProductsCount = instrumentos.length;
+  const totalProductsCount = productos.length;
   const filteredProductsCount = filteredProducts.length;
 
   useEffect(() => {
@@ -103,11 +100,7 @@ const Home = () => {
     setCurrentPage(1);
   };
 
-
-  const categorias = [
-    // ... (código de categorías)
-  ];
-  
+ 
   //-------favoritos-------------
 
 
@@ -123,22 +116,14 @@ const Home = () => {
       <Hero />
       <Buscador />
       <Container>
-        <Row className='justify-content-start flex-wrap'>
-          {categorias.length
-            ? categorias.map((categoria) => (
-                <CardCategory key={categoria.name} name={categoria.name} onClick={handleCategoryClick} />
-              ))
-            : null}
-        </Row>
-      
       {selectedCategories.length > 0 && (
-        <button className="botonFiltro" onClick={clearFilters}>Limpiar Filtros</button>
+        <button className="botonFiltro text-light" onClick={clearFilters}>Limpiar Filtros</button>
       )}
 
-      <p className='leyendaFiltros'>
+      <p className='leyendaFiltros text-light'>
         Productos filtrados: {filteredProductsCount} / Total: {totalProductsCount}
       </p>
-      <p className='leyendaFiltros'>
+      <p className='leyendaFiltros text-light'>
         Categorías filtradas: {selectedCategories.join(' - ')}
       </p>
 
@@ -150,22 +135,26 @@ const Home = () => {
                   key={categoria.id}
                   name={categoria.name}
                   img={categoria.img}
+                  onClick={handleCategoryClick} 
                 />
               ))
             : null}
         </div>
 {filteredProducts.length > 0 ? (
-        <ProductList
+  <>
+   <ProductList
           products={productos}
         />
         <Pagination
-        prevPage={prevPage}
-        nextPage={nextPage}
-        goToFirstPage={goToFirstPage}
-        currentPage={currentPage}
-        totalPages={totalPages}
-      /> ) : (
-        <p className='leyendaFiltros'>No existen productos para las categorías seleccionadas.</p>)}
+          prevPage={prevPage}
+          nextPage={nextPage}
+          goToFirstPage={goToFirstPage}
+          currentPage={currentPage}
+          totalPages={totalPages}
+      />
+  </>
+        ) : (
+        <p className='leyendaFiltros text-light'>No existen productos para las categorías seleccionadas.</p>)}
       <BrandSlider />
       <WhatsappButton/>
     </Container>

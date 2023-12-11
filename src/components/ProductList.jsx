@@ -24,7 +24,6 @@ const ProductList = ({ products, currentPage}) => {
               name={instrumento.name}
               price={instrumento.price}
               image={imagen}
-              
             />
           )
         })}
