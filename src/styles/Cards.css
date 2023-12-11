@@ -66,6 +66,34 @@
   color: var(--body-text-color-inverted);
 }
 
+/*------CARD CATEGORIA PRODUCTO----*/
+/* Cards.css */
+.overflow-Category {
+  color: var(--secondary-foreground-color); 
+  width: auto; 
+  height: 5rem; 
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.card-titleCategory{
+  font-size: 1rem;
+  margin: 0; 
+  padding: 0; 
+}
+.botonFiltro{
+  color: var(--secondary-foreground-color);
+  border-radius: 10px;
+  padding: 0.5rem;
+  background-color: var(--secondary-background-color);
+}
+.leyendaFiltros{
+  color: var(--secondary-background-color);
+  font-size: 1rem;
+
 /*------CARD SIGNIN----*/
 .aclaracionSignIn{
   text-align: center;
@@ -111,5 +139,4 @@ white-space: nowrap;
   display: flex;
   align-items: end;
   justify-content: end;
-
 }

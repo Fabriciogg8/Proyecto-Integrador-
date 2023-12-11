@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { Container } from 'react-bootstrap';
-import CardCategory from '../components/product/CardCategory';
-import Buscador from '../components/buscador/Buscador';
-import BrandSlider from '../components/buscador/BrandSlider';
-import ProductList from '../components/ProductList';
+import React, { useContext, useEffect, useState } from 'react';
+import { Container, Row } from 'react-bootstrap'
+import CardCategory from '../components/product/CardCategory'
+import Buscador from '../components/buscador/Buscador'
+import BrandSlider from '../components/buscador/BrandSlider'
+import { ProductContext } from '../conexts/ProductContext'
+import ProductList, { productsPerPage } from '../components/ProductList';
 import Pagination from '../components/Pagination';
 import '../styles/Home.css';
 import Hero from '../components/hero/Hero';
@@ -12,14 +13,64 @@ import { useAuthStore } from '../hooks/useAuthStore'
 import { USER_FAVORITES, GET_CURRENT_PRODUCT } from '../helpers/endpoints'
 
 const Home = () => {
+  const { state, fetchProducts } = useContext(ProductContext);
+  const [categorias, setCategorias] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+
+  // const [selectedCategory, setSelectedCategory] = useState(null);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [productos, setProductos] = useState([]);
-  const [totalPages, setTotalPages] = useState(0);
+  const instrumentos = state.products
 
-  const categorias = [
+  /*const categorias = [*/
     // ... (código de categorías)
-  ];
+    useEffect(() => {
+      const fetchCategories = async () => {
+        try {
+          const response = await fetch("http://174.129.92.139:8001/api/v1/categories");
+          const data = await response.json();
+          // Actualizar el estado con las categorías obtenidas
+          setCategorias(data);
+        } catch (error) {
+          console.error("Error al obtener categorías:", error);
+        }
+      };
+    
+      fetchCategories();
+    }, [])
+
+  const handleCategoryClick = (categoryName) => {
+
+    if (selectedCategories.includes(categoryName)) {
+  
+      setSelectedCategories((prevSelected) =>
+        prevSelected.filter((category) => category !== categoryName)
+      );
+    } else {
+      
+      setSelectedCategories((prevSelected) => [...prevSelected, categoryName]);
+    }
+  };
+
+  const clearFilters = () => {
+    // Limpiar los filtros reiniciando el estado de las categorías seleccionadas
+    setSelectedCategories([]);
+  };
+
+  const filteredProducts = selectedCategories.length > 0
+  ? instrumentos.filter((producto) =>
+      producto.category && selectedCategories.includes(producto.category)
+    )
+  : instrumentos;
+
+  console.log(filteredProducts)
+
+  const totalProductsCount = instrumentos.length;
+  const filteredProductsCount = filteredProducts.length;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -72,6 +123,26 @@ const Home = () => {
       <Hero />
       <Buscador />
       <Container>
+        <Row className='justify-content-start flex-wrap'>
+          {categorias.length
+            ? categorias.map((categoria) => (
+                <CardCategory key={categoria.name} name={categoria.name} onClick={handleCategoryClick} />
+              ))
+            : null}
+        </Row>
+      
+      {selectedCategories.length > 0 && (
+        <button className="botonFiltro" onClick={clearFilters}>Limpiar Filtros</button>
+      )}
+
+      <p className='leyendaFiltros'>
+        Productos filtrados: {filteredProductsCount} / Total: {totalProductsCount}
+      </p>
+      <p className='leyendaFiltros'>
+        Categorías filtradas: {selectedCategories.join(' - ')}
+      </p>
+
+    
         <div className='card-container d-flex flex-row overflow-auto justify-content-start'>
           {categorias.length
             ? categorias.map((categoria) => (
@@ -83,7 +154,7 @@ const Home = () => {
               ))
             : null}
         </div>
-
+{filteredProducts.length > 0 ? (
         <ProductList
           products={productos}
         />
@@ -93,7 +164,8 @@ const Home = () => {
         goToFirstPage={goToFirstPage}
         currentPage={currentPage}
         totalPages={totalPages}
-      />
+      /> ) : (
+        <p className='leyendaFiltros'>No existen productos para las categorías seleccionadas.</p>)}
       <BrandSlider />
       <WhatsappButton/>
     </Container>
