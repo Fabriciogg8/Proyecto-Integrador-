@@ -18,11 +18,11 @@ export const Reservas = () => {
     return (
       <div className='reservas'>
         <div className='row align-items-center'>
-          <div className='col-md-5 sub'>
+          <div className='col-md-4 sub'>
             {/* Formulario de reserva */}
             <DetalleReserva />
           </div>
-          <div className='col-md-6 reservasProducto'>
+          <div className='col-md-8 reservasProducto'>
             {/* Detalles del producto */}
             <ProductDetail
               key={producto.id}

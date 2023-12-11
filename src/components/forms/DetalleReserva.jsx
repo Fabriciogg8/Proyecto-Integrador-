@@ -1,6 +1,7 @@
 import { useLocation, useParams } from 'react-router-dom'
 import React, { useState, useEffect, useContext } from 'react'
 import 'react-datepicker/dist/react-datepicker.css'
+import Swal from 'sweetalert2';
 
 import { useAuthStore } from '../../hooks/useAuthStore.js'
 import { ProductContext } from '../../conexts/ProductContext.jsx'
@@ -54,8 +55,9 @@ export const DetalleReserva = () => {
       if (response.ok) {
         const responseData = await response.json();
         console.log('Respuesta del servidor', responseData);
-        alert(`${user.firstName}, ¡Tu reserva se ha realizado con éxito!`);
+        Swal.fire(`${user.firstName}, ¡Tu reserva se ha realizado con éxito!`);
         navigate()
+
       } else {
         console.error('Error en la solicitud:', response.statusText);
         console.error('Detalles del error:', await response.text());

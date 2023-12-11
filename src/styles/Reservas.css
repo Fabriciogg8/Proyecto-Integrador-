@@ -7,11 +7,10 @@
     background-color:  #4e577b;
 }
 
-.sub{   
+.sub .container{   
     background-color: #dadbdf;
     border-radius: 2%;
-    padding: 1%;
-    margin-top: -5vh;
+    margin-top: -105vw;
 }
 
 .sub button{
@@ -21,7 +20,14 @@
 
 .reservasProducto .everyDetail {
     background-color:  #4e577b;
+    margin: 2vw 
 
 };
 
+
+@media (max-width: 1200px){
+    .sub .container {
+        margin-top: 0; /* O ajusta según sea necesario */
+    }
+    }
   
