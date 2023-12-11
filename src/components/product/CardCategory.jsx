@@ -15,4 +15,4 @@ function CardCategory({name, onClick}) {
   )
 }
 
-export default CardCategory
+export default CardCategory;

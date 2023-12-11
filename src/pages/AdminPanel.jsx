@@ -2,7 +2,7 @@ import { Link, Routes, Route } from 'react-router-dom'
 import ProductCreate from '../components/product/ProductCreate'
 import CreateCategory from '../components/category/CreateCategory'
 import CategoryProduct from '../components/CategoryProduct'
-import EditProduct from '../components/product/EditProduct'
+
 import { ProductList } from '../components/product/ProductListAdmin'
 import '../styles/Panel.css'
 import { useAuthStore } from '../hooks/useAuthStore'
@@ -34,13 +34,13 @@ export const AdminPanel = () => {
     return (
       <div className='container-fluid admin-panel'>
         <div className='row'>
-          <aside className='col-3 text-dark p-4'>
+          <aside className='col-3 text-light p-4'>
             <nav>
               <h4 className='admin-panel-task-title'>Tareas</h4>
               <ul className='list-unstyled'>
                 <li onClick={(e) => handleChangeTitle(e)}>
                   <div className='admin-panel-task-item'>
-                    <Link to='ver-productos' className='text-dark'>
+                    <Link to='ver-productos' className='text-light'>
                       Ver Productos
                     </Link>
                   </div>
@@ -48,28 +48,28 @@ export const AdminPanel = () => {
                 </li>
                 <li  onClick={(e) => handleChangeTitle(e)}>
                   <div className='admin-panel-task-item'>
-                    <Link to='crear-producto' className='text-dark'>
+                    <Link to='crear-producto' className='text-light'>
                       Crear Producto
                     </Link>
                   </div>     
                 </li>
                 <li  onClick={(e) => handleChangeTitle(e)}>
                   <div className='admin-panel-task-item'>
-                    <Link to='crear-categoria' className='text-dark'>
+                    <Link to='crear-categoria' className='text-light'>
                       Agregar Categoría
                     </Link>
                   </div>
                 </li>
                 <li  onClick={(e) => handleChangeTitle(e)}>
                   <div className='admin-panel-task-item'>
-                    <Link to='asignar-categoria' className='text-dark'>
+                    <Link to='asignar-categoria' className='text-light'>
                       Asignar Categoría
                     </Link>
                   </div>
                 </li>
                 <li  onClick={(e) => handleChangeTitle(e)}>
                   <div className='admin-panel-task-item'>
-                    <Link to='administrar-caracteristicas' className='text-dark'>
+                    <Link to='administrar-caracteristicas' className='text-light'>
                       Administrar Características
                     </Link>
                   </div>
@@ -103,8 +103,8 @@ export const AdminPanel = () => {
     return (
       <div>
         <h3 className='admin-panel-welcome-title'>Bienvenido al Panel de Administración, {userName}</h3>
-        <p className='text-dark'>Aquí podrás realizar cambios en los productos, categorías y Características.</p>
-        <p className='text-dark'>Por favor, dirígete al menú lateral izquierdo para realizar una tarea.</p>
+        <p className='text-light'>Aquí podrás realizar cambios en los productos, categorías y Características.</p>
+        <p className='text-light'>Por favor, dirígete al menú lateral izquierdo para realizar una tarea.</p>
       </div>
     )
   }
