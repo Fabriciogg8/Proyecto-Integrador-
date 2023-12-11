@@ -51,9 +51,10 @@ const FavButton = ({id , email}) => {
           if (response.ok) {
               console.log(response)
           }
-      } catch (error) {
-          console.error('Error en la solicitud: ', error)
-      }
+          } catch (error) {
+              console.error('Error en la solicitud: ', error)
+          }
+          window.location.reload();
         } else if (statusFav == true) {
           try {
             const response = await fetch(`${USER_FAVORITES_REMOVE}?userEmail=${email}&productId=${id}`, {
@@ -70,6 +71,7 @@ const FavButton = ({id , email}) => {
         } catch (error) {
             console.error('Error en la solicitud: ', error)
         }
+        window.location.reload();
         }
       }
     return (
