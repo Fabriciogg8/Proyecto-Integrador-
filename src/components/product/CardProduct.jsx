@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import React, { useEffect, useState } from "react";
+import { useEffect} from "react";
 import '../../styles/Cards.css'
 import imageNotAvailable from '/no-image-available.png'
 import FavButton from '../FavButton';
@@ -70,7 +70,6 @@ function CardProduct({ id, name, price, image }) {
             </div>
           <Link
             to={`/productDetails/${id}`}
-            
           >
           <div className='overflow'>
             <img
@@ -83,13 +82,8 @@ function CardProduct({ id, name, price, image }) {
           <div className='text-light'>
             <p className='card-title tituloCard'>{name}</p>
             <p>USD {price}</p>
-            
-            
           </div>
-          
         </div>
-     
-      
     </>
   )
 }

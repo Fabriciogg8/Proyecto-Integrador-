@@ -1,9 +1,34 @@
 import '/src/styles/ProductCreate.css'
-import { useState } from 'react';
-import { CREATE_PRODUCT } from '../../helpers/endpoints';
+import { useState, useEffect } from 'react';
+import { CREATE_PRODUCT, GET_CHARACTERISTIC } from '../../helpers/endpoints';
 
 const ProductCreate = () => {
+    const [selectedCharacteristics, setSelectedCharacteristics] = useState([]);
+    const handleSelectCharacteristic = (value) => {
+      setSelectedCharacteristics([...selectedCharacteristics, value])
+    }
+    const [arrayCharacteristics, setArrayCharacteristics] = useState([])
 
+    const getCharacteristics = async () => {
+      try {
+          const response = await fetch(GET_CHARACTERISTIC, {
+              method: 'GET',
+              headers: {
+              'Authorization': `Bearer ${token}`
+              },
+          });
+          if (!response.ok) {
+              throw new Error(`Error en la solicitud: ${response.status}`);
+          }
+          const data = await response.json();
+          setArrayCharacteristics(data);
+          } catch (error) {
+              console.error("Error al obtener datos:", error);
+          }
+      };
+      useEffect(()=>{
+          getCharacteristics();
+      }, [])
     const [selectedFiles, setSelectedFiles] = useState();
     const handleFileChange = (event) => {
       const files = event.target.files;
@@ -33,10 +58,12 @@ const ProductCreate = () => {
       formData.append('price', parseFloat(event.target.price.value));
       formData.append('discount', parseInt(event.target.discount.value));
       
+      for (let i = 0; i < selectedCharacteristics.length; i++) {
+        formData.append('characteristics', selectedCharacteristics[i]);
+      }
       for (let i = 0; i < selectedFiles.length; i++) {
         formData.append('imagesFiles', selectedFiles[i]);
       }
-
         try {
             const response = await fetch(CREATE_PRODUCT, {
               method: 'POST',
@@ -55,7 +82,6 @@ const ProductCreate = () => {
             console.error('Error en la solicitud: ', error)
         }
     }
-    
     
     return (
       <section
@@ -123,6 +149,62 @@ const ProductCreate = () => {
                         <option value='Vientoo'>Viento</option>
                         <option value='Percucionn'>Percusión</option>
                         <option value='Tecladoo'>Teclado</option>
+                      </select>
+                    </div>
+                    <div className='col-md-6 mb-4'>
+                      <select
+                        className='form-select'
+                        aria-label='Default select example'
+                        onChange={(e) => handleSelectCharacteristic(e.target.value)}
+                      >
+                        <option value='DEFAULT' disabled>
+                          Primer Característica
+                        </option>
+                        {arrayCharacteristics.map((object, index) => (
+                          <option key={index} value={object.name}>{object.name}</option>
+                        )) }
+                      </select>
+                    </div>
+                    <div className='col-md-6 mb-4'>
+                      <select
+                        className='form-select'
+                        aria-label='Default select example'
+                        onChange={(e) => handleSelectCharacteristic(e.target.value)}
+                      >
+                        <option value='DEFAULT' disabled>
+                          Segunda Caracteristica
+                        </option>
+                        {arrayCharacteristics.map((object, index) => (
+                          <option key={index} value={object.name}>{object.name}</option>
+                        )) }
+                      </select>
+                    </div>
+                    <div className='col-md-6 mb-4'>
+                      <select
+                        className='form-select'
+                        aria-label='Default select example'
+                        onChange={(e) => handleSelectCharacteristic(e.target.value)}
+                      >
+                        <option value='DEFAULT' disabled>
+                          Tercer Caracteristica
+                        </option>
+                        {arrayCharacteristics.map((object, index) => (
+                          <option key={index} value={object.name}>{object.name}</option>
+                        )) }
+                      </select>
+                    </div>
+                    <div className='col-md-6 mb-4'>
+                      <select
+                        className='form-select'
+                        aria-label='Default select example'
+                        onChange={(e) => handleSelectCharacteristic(e.target.value)}
+                      >
+                        <option value='DEFAULT' disabled>
+                          Cuarta Caracteristica
+                        </option>
+                        {arrayCharacteristics.map((object, index) => (
+                          <option key={index} value={object.name}>{object.name}</option>
+                        )) }
                       </select>
                     </div>
                     <div className='margin-labels mb-4'>

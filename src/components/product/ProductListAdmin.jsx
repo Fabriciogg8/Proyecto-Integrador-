@@ -1,7 +1,7 @@
 import { Table, Button } from 'react-bootstrap'
 import { useContext, useEffect, useState} from 'react'
 import { ProductContext } from '../../conexts/ProductContext'
-import { DELETE_PRODUCT, GET_ALL_CATEGORIES, GET_CURRENT_PRODUCT, EDIT_PRODUCT } from '../../helpers/endpoints'
+import { DELETE_PRODUCT, GET_ALL_CATEGORIES, GET_CURRENT_PRODUCT, EDIT_PRODUCT, GET_CHARACTERISTIC } from '../../helpers/endpoints'
 import Modal from 'react-bootstrap/Modal'
 import '../../styles/ModalEditProd.css'
 import Pagination from '../Pagination'
@@ -13,7 +13,7 @@ export const ProductList = () => {
     const [productos, setProductos] = useState([]);
     const [totalPages, setTotalPages] = useState(0);
   
-   const token = localStorage.getItem('token');
+  const token = localStorage.getItem('token');
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -55,8 +55,7 @@ export const ProductList = () => {
 
 
   const [categories, setCategories] = useState([]);
-
-  
+  const [characteristics, setCharacteristics] = useState([]);
 
   const getCategories = () => {
     fetch(GET_ALL_CATEGORIES)
@@ -65,9 +64,27 @@ export const ProductList = () => {
       .catch(error => console.error(error));
   };
 
+  const getCharacteristics = async () => {
+    try {
+        const response = await fetch(GET_CHARACTERISTIC, {
+            method: 'GET',
+            headers: {
+            'Authorization': `Bearer ${token}`
+            },
+        });
+        if (!response.ok) {
+            throw new Error(`Error en la solicitud: ${response.status}`);
+        }
+        const data = await response.json();
+        setCharacteristics(data);
+        } catch (error) {
+            console.error("Error al obtener datos:", error);
+        }
+    };
 
   useEffect(() => {
     getCategories();
+    getCharacteristics();
   }, []);
 
 
@@ -80,6 +97,11 @@ export const ProductList = () => {
       formData.append('category', event.target.newCategory.value);
       formData.append('brand', event.target.newBrand.value);
       formData.append('model', event.target.newModel.value);
+      formData.append('newCharacteristicFirst', event.target.newCharacteristicFirst.value);
+      formData.append('newCharacteristicSecond', event.target.newCharacteristicFirst.value);
+      formData.append('newCharacteristicThird', event.target.newCharacteristicFirst.value);
+      formData.append('newCharacteristicFourth', event.target.newCharacteristicFirst.value);
+
       if(event.target.newDescription.value == "" || event.target.newDescription.value == null){
         formData.append('description', producto.description);
       }else{
@@ -125,13 +147,17 @@ export const ProductList = () => {
 
     if (confirmDelete) {
       try {
-        const response = await fetch((`${DELETE_PRODUCT}/${id}`), {
+        const response = await fetch(`${DELETE_PRODUCT}/${id}`, {
           method: 'DELETE',
           headers: {
             'Content-type': 'application/json',
+            'Authorization': `Bearer ${token}`
           },
         });
         console.log(response);
+        if(window.location.href.includes("ver-productos")){
+          window.location.reload()
+        }
       } catch (error) {
         console.error('Error al eliminar el producto', error);
       }
@@ -202,14 +228,48 @@ export const ProductList = () => {
             <span>{producto.category + " "}</span>
             <select className="form-select" name="newCategory" id="newCategory" defaultValue={"DEFAULT"}>
                             <option value="DEFAULT" disabled>Seleccione una categoria...</option>
-                            {categories.map(categoria => (
-                              <option value={categoria.name}>{categoria.name}</option>
+                            {categories.map((categoria, index) => (
+                              <option key={index} value={categoria.name}>{categoria.name}</option>
                             ))}
                             
                         </select>
-            
             </div>
-
+            <div className='modalInputs'>
+            <span>Primer Característica</span>
+            <select className="form-select" name="newCharacteristicFirst" id="newCharacteristicFirst" defaultValue={"DEFAULT"}>
+                            <option value="DEFAULT" disabled>Seleccione una categoria...</option>
+                            {characteristics.map((characteristic, index) => (
+                              <option key={index} value={characteristic.name}>{characteristic.name}</option>
+                            ))}
+                        </select>
+            </div>
+            <div className='modalInputs'>
+            <span>Segunda Característica</span>
+            <select className="form-select" name="newCharacteristicSecond" id="newCharacteristicSecond" defaultValue={"DEFAULT"}>
+                            <option value="DEFAULT" disabled>Seleccione una categoria...</option>
+                            {characteristics.map((characteristic, index) => (
+                              <option key={index} value={characteristic.name}>{characteristic.name}</option>
+                            ))}
+                        </select>
+            </div>
+            <div className='modalInputs'>
+            <span>Tercer Característica</span>
+            <select className="form-select" name="newCharacteristicThird" id="newCharacteristicThird" defaultValue={"DEFAULT"}>
+                            <option value="DEFAULT" disabled>Seleccione una categoria...</option>
+                            {characteristics.map((characteristic, index) => (
+                              <option key={index} value={characteristic.name}>{characteristic.name}</option>
+                            ))}
+                        </select>
+            </div>
+            <div className='modalInputs'>
+            <span>Cuarta Característica</span>
+            <select className="form-select" name="newCharacteristicFourth" id="newCharacteristicFourth" defaultValue={"DEFAULT"}>
+                            <option value="DEFAULT" disabled>Seleccione una categoria...</option>
+                            {characteristics.map((characteristic, index) => (
+                              <option key={index} value={characteristic.name}>{characteristic.name}</option>
+                            ))}
+                        </select>
+            </div>
             <div className='modalInputs'>
             <span>{producto.brand + " "}</span>
             <input type="text" name="newBrand" id="newBrand" placeholder='Nueva Marca'/>
