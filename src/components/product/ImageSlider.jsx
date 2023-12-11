@@ -42,8 +42,6 @@ const ImageSlider = ({ slides, show, setShowG }) => {
           })}
           </div>
       </section>
- 
-     
   );
 };
 

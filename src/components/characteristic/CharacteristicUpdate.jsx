@@ -19,9 +19,9 @@ const CharacteristicUpdate = ({name}) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
-        formData.append('name', encodeURIComponent(event.target.name.value));
+        formData.append('name', event.target.name.value);
         if (selectedFile) {
-            formData.append('image', selectedFile); // Cambiado a singular
+            formData.append('image', selectedFile); 
         }
         console.log(event.target.name.value)
         try {

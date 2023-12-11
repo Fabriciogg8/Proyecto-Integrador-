@@ -12,6 +12,7 @@ import { AdminPanel } from '../pages/AdminPanel';
 import SearchResults from '../pages/SearchResults';
 import Reservas from '../pages/Reservas';
 import { SignInReserva } from '../pages/SignInReserva'; 
+import FavouritesList from '../components/product/FavouritesList'
 
 
 export const AppRouter = () => {
@@ -46,6 +47,7 @@ export const AppRouter = () => {
               <Route path='/*' element={<Home />} />
               <Route path='/productdetails/:id' element={<ProductDetails />} />
               <Route path='/resultados' element={<SearchResults />} />
+              <Route path='/favourites' element={<FavouritesList/>}/>
               <Route path='/reservas/:id' element={<Reservas />} />
               {user.role === 'ADMIN' ? (
                 <Route path='/admin-panel/*' element={<AdminPanel />} />

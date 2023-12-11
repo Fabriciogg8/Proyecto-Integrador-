@@ -1,0 +1,26 @@
+.fav-buttonn {
+    width: 35px;
+    height: 35px;
+    padding: 1%;
+    border: none;
+    background-color: rgba(146, 146, 146, 0.521);
+    border-radius: 50%;
+    margin-bottom: auto;
+    position: relative;
+    top: 0px;
+    right: -15px;
+    z-index: 1;
+}
+
+.favourites-list-h4 {
+  padding-top: 3vh;
+  padding-left: 4.2vw;
+}
+
+.favourites-list-p {
+  padding-left: 4.2vw;
+}
+
+.favourite-card {
+  padding-left: 1vw;
+}

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { useState, useEffect } from 'react'
 import WhatsappButton from '../WhatsappButton'
-
+import { Link } from 'react-router-dom';
 import { USER_FAVORITES } from '../../helpers/endpoints'
 import { useAuthStore } from '../../hooks/useAuthStore'
 
@@ -24,9 +24,10 @@ const ProductDetail = ({
   id,
   imagenes,
   rating,
-  ratingCount
+  ratingCount,
+  caracteristicas
 }) => {
-
+  const {  user} = useAuthStore();
 
   const navigate = useNavigate();
 
@@ -76,65 +77,43 @@ const ProductDetail = ({
   useEffect(() => {
     getData();
   }, [])
-
+  console.log(caracteristicas)
   return (
     <div className='everyDetail'>
-      <section className='top-section'>
-        <div className='d-flex justify-content-between align-items-center detailHeader'>
-          <div className='text-start'>
-            <h1 className='mb-0'>{nombre}</h1>
-            <p className='title-a mb-0'>{categoria}</p>
-
-          </div>
-          <div className='text-start-second'>
-            <ShareButton name={nombre} description={descripcion} image={prod} />
-            <button className='btn btn-light'>
-              <Link to='/'>
-                <BsArrowLeft className='iconBack' />
-              </Link>
-            </button>
-          </div>
-        </div>
-        {favs.map(fav => (
-          fav.id == id ? <div className='favHead'><small>Éste producto se encuentra en tus favoritos ❤️</small></div> : ""
-        ))}
-      </section>
       <div>
-
-
         <div className='everyDetail'>
           {nombre && (
             <><section className='top-section'>
-              <div className='d-flex justify-content-between align-items-center'>
-                <div className='text-start'>
-                  <h1 className='mb-0'>{nombre}</h1>
-                  <p className='title-a mb-0'>{categoria}</p>
-                </div>
-                <div className='text-start-second'>
-                  <ShareButton name={nombre} description={descripcion} image={prod} />
-                  <button className='btn btn-light' onClick={navigateBack}>
-                    <BsArrowLeft className='iconBack' />
-                  </button>
-                </div>
+            <div className='d-flex justify-content-between align-items-center detailHeader'>
+              <div className='text-start'>
+                <h1 className='mb-0'>{nombre}</h1>
+                <p className='title-a mb-0'>{categoria}</p>
               </div>
-            </section>
+              <div className='text-start-second'>
+                <ShareButton name={nombre} description={descripcion} image={imagenes[0]} />
+                <button className='btn btn-light'>
+                  <Link to='/'>
+                    <BsArrowLeft className='iconBack' />
+                  </Link>
+                </button>
+              </div>
+            </div>
+            {favs.map((fav, index) => (
+              fav.id == id ? <div key={index} className='favHead'><small>Éste producto se encuentra en tus favoritos ❤️</small></div> : ""
+            ))}
+          </section>
               <div>
-
                 <div className='contenedorGalery'>
                   <div className='galeryContainer g-container'>
                     {imagenes.map((imagen, index) => (<img key={index} src={imagen} className='prodDetailGallery' alt="" onClick={() => showGallery(true)} />)
                     )}
-
                   </div>
                 </div>
-
                 <section className='sliderContainer' style={showG ? { display: "block" } : { display: "none" }}>
                   <p className='closeGallery' onClick={() => showGallery(false)}>&times;</p>
                   <div className='slider'>
-
                     <FaArrowAltCircleLeft className='left-arrow' onClick={prevSlide} />
                     <FaArrowAltCircleRight className='right-arrow' onClick={nextSlide} />
-
                     {imagenes.map((slide, index) => {
                       return (
                         <div
@@ -144,18 +123,15 @@ const ProductDetail = ({
                           {index === current && (
                             <img src={slide} alt='travel image' className='image' />
                           )}
-
                         </div>
                       );
                     })}
                   </div>
                 </section>
-
-
                 <section className='descripYCaract'>
                   <div className='rating-ratingCount'>
                     <span>
-                      Valoraciones recibidas:
+                      Valoraciones recibidas: {ratingCount == null &&(0)}
                       <span>{ratingCount}</span>
                     </span>
                     <Rating initialValue={rating} size={36} readonly allowFraction />
@@ -166,19 +142,12 @@ const ProductDetail = ({
                   </div>
                   <div className='caracteristicasProd'>
                     <h4>Caracteristicas</h4>
-                    <hr />
-                    <p>
-                      <FontAwesomeIcon
-                        icon={faInfoCircle}
-                        style={{ marginRight: '10px' }} />
-                      Marca: {marca}
-                    </p>
-                    <p>
-                      <FontAwesomeIcon
-                        icon={faInfoCircle}
-                        style={{ marginRight: '10px' }} />
-                      Precio: {precio}
-                    </p>
+                    {caracteristicas.map((object,index) =>(
+                      <div key={index}>
+                        <img src={object.image} alt="" />
+                        <p>{object.name}</p>
+                      </div>
+                    ))}
                   </div>
                   <ScoreProduct id={id} />
                 </section>

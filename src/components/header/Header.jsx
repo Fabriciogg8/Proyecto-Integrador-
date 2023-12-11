@@ -66,6 +66,11 @@ const Header = () => {
                             Administración
                           </NavDropdown.Item> 
                           <NavDropdown.Divider />
+                          <NavDropdown.Item as={NavLink} to={'/favourites'}>
+                            Favoritos
+                          </NavDropdown.Item>
+                          <NavDropdown.Divider/>
+                          <NavDropdown.Divider />
                         </> 
                       )}
                       <>
