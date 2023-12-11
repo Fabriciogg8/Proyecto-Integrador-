@@ -6,7 +6,7 @@ import FavButton from '../FavButton';
 import { useAuthStore } from '../../hooks/useAuthStore'
 import { USER_FAVORITES } from '../../helpers/endpoints'
 
-function CardProduct({ id, name, price }) {
+function CardProduct({ id, name, price, image }) {
   const cardImage = imageNotAvailable
   const { status, user, checkAuthToken } = useAuthStore()
 
@@ -74,7 +74,7 @@ function CardProduct({ id, name, price }) {
           >
           <div className='overflow'>
             <img
-              src={cardImage}
+              src={image}
               alt=''
               className='card-img-top imgCardProducto'
             />

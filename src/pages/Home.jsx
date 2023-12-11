@@ -1,35 +1,46 @@
-
-import React, { useContext, useEffect, useState } from 'react';
-import { Container } from 'react-bootstrap'
-import CardCategory from '../components/product/CardCategory'
-import Buscador from '../components/buscador/Buscador'
-import BrandSlider from '../components/buscador/BrandSlider'
-import { ProductContext } from '../conexts/ProductContext'
-import ProductList, { productsPerPage } from '../components/ProductList';
+import React, { useEffect, useState } from 'react';
+import { Container } from 'react-bootstrap';
+import CardCategory from '../components/product/CardCategory';
+import Buscador from '../components/buscador/Buscador';
+import BrandSlider from '../components/buscador/BrandSlider';
+import ProductList from '../components/ProductList';
+import Pagination from '../components/Pagination';
 import '../styles/Home.css';
-import Hero from '../components/hero/Hero'
+import Hero from '../components/hero/Hero';
 import WhatsappButton from '../components/WhatsappButton'
 import { useAuthStore } from '../hooks/useAuthStore'
-
+import { USER_FAVORITES, GET_CURRENT_PRODUCT } from '../helpers/endpoints'
 
 const Home = () => {
-  const { state, fetchProducts } = useContext(ProductContext);
-  const { status, user, checkAuthToken } = useAuthStore()
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
 
   const [currentPage, setCurrentPage] = useState(1);
-  const instrumentos = state.products
-
-
- 
-  
+  const [productos, setProductos] = useState([]);
+  const [totalPages, setTotalPages] = useState(0);
 
   const categorias = [
     // ... (código de categorías)
   ];
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${GET_CURRENT_PRODUCT}?page=${currentPage}&order=random`);
+        const data = await response.json();
+        setProductos(data.content);
+        setTotalPages(data.totalPages);
+        } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchData();
+  }, [currentPage]);
+  
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
   const nextPage = () => {
     if (currentPage < totalPages) {
@@ -37,51 +48,52 @@ const Home = () => {
     }
   };
 
-  const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
   const goToFirstPage = () => {
     setCurrentPage(1);
   };
 
-  const totalPages = Math.ceil(instrumentos.length / productsPerPage);
 
+  const categorias = [
+    // ... (código de categorías)
+  ];
+  
   //-------favoritos-------------
 
- 
 
-  //----------------------
+  const { status, user, checkAuthToken } = useAuthStore()
+
+  useEffect(() => {
+    checkAuthToken()
+  }, [status])  
+
+
   return (
     <>
-    <Hero />
-    <Buscador />
+      <Hero />
+      <Buscador />
       <Container>
-      <div className='card-container d-flex flex-row overflow-auto justify-content-start'>
-        {categorias.length
-          ? categorias.map((categoria) => (
-              <CardCategory
-                key={categoria.id}
-                name={categoria.name}
-                img={categoria.img}
-              />
-            ))
-          : null}
-      </div>
+        <div className='card-container d-flex flex-row overflow-auto justify-content-start'>
+          {categorias.length
+            ? categorias.map((categoria) => (
+                <CardCategory
+                  key={categoria.id}
+                  name={categoria.name}
+                  img={categoria.img}
+                />
+              ))
+            : null}
+        </div>
 
-
-      {/* Asegúrate de pasar productsPerPage a ProductList */}
-      <ProductList
-        products={instrumentos}
-        currentPage={currentPage}
-        nextPage={nextPage}
+        <ProductList
+          products={productos}
+        />
+        <Pagination
         prevPage={prevPage}
+        nextPage={nextPage}
         goToFirstPage={goToFirstPage}
-        productsPerPage={productsPerPage}
+        currentPage={currentPage}
+        totalPages={totalPages}
       />
-
       <BrandSlider />
       <WhatsappButton/>
     </Container>

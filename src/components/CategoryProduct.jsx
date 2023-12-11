@@ -86,7 +86,7 @@ function CategoryProduct() {
                         <select className="form-select" name="selectCategoria" id="selectCategoria" defaultValue={"DEFAULT"}>
                             <option value="DEFAULT" disabled>Seleccione una categoria...</option>
                             {categories.map(categoria => (
-                              <option value={categoria.name}>{categoria.name}</option>
+                              <option key={categoria.name} value={categoria.name}>{categoria.name}</option>
                             ))}
                             
                         </select>

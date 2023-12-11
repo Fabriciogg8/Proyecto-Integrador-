@@ -1,25 +1,57 @@
 import { Table, Button } from 'react-bootstrap'
 import { useContext, useEffect, useState} from 'react'
 import { ProductContext } from '../../conexts/ProductContext'
-import { DELETE_PRODUCT } from '../../helpers/endpoints'
+import { DELETE_PRODUCT, GET_ALL_CATEGORIES, GET_CURRENT_PRODUCT, EDIT_PRODUCT } from '../../helpers/endpoints'
 import Modal from 'react-bootstrap/Modal'
 import '../../styles/ModalEditProd.css'
-import { EDIT_PRODUCT } from '../../helpers/endpoints';
-import { GET_ALL_CATEGORIES } from '../../helpers/endpoints'
-
+import Pagination from '../Pagination'
+import { Link } from 'react-router-dom'
+ 
 export const ProductList = () => {
-  const token = localStorage.getItem('token');
+  const { state, fetchProducts, fetchCurrentProduct } = useContext(ProductContext)
+    const [currentPage, setCurrentPage] = useState(1);
+    const [productos, setProductos] = useState([]);
+    const [totalPages, setTotalPages] = useState(0);
+  
+   const token = localStorage.getItem('token');
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-    const { state, fetchProducts, fetchCurrentProduct } = useContext(ProductContext)
+  
     useEffect(() => {
-      fetchProducts()
-    }, [])
+      const fetchData = async () => {
+        try {
+          const response = await fetch(`${GET_CURRENT_PRODUCT}?page=${currentPage}`);
+          const data = await response.json();
+          setProductos(data.content);
+          setTotalPages(data.totalPages);
+          } catch (error) {
+          console.error('Error fetching products:', error);
+        }
+      };
+  
+      fetchData();
+    }, [currentPage]);
+    
+    const prevPage = () => {
+      if (currentPage > 1) {
+        setCurrentPage(currentPage - 1);
+      }
+    };
+  
+    const nextPage = () => {
+      if (currentPage < totalPages) {
+        setCurrentPage(currentPage + 1);
+      }
+    };
+  
+    const goToFirstPage = () => {
+      setCurrentPage(1);
+    };
+  
 
-
-  const instrumentos = state.products
+  const instrumentos = productos
 
 
   const [categories, setCategories] = useState([]);
@@ -88,8 +120,6 @@ export const ProductList = () => {
     handleShow()
   }
 
-  
-
   const handleDelete = async id => {
     const confirmDelete = window.confirm('¿Estás seguro de que quieres eliminar este producto?');
 
@@ -101,13 +131,11 @@ export const ProductList = () => {
             'Content-type': 'application/json',
           },
         });
-        console.log(response)
-        fetchProducts();
+        console.log(response);
       } catch (error) {
         console.error('Error al eliminar el producto', error);
       }
     }
-    
   }
   return (
 
@@ -131,7 +159,7 @@ export const ProductList = () => {
               <td>{instrumento.id}</td>
               <td>{instrumento.name}</td>
               <td>
-              
+           
                 <Button
                   variant='secondary'
                   onClick={() => handleEdit(instrumento.id)}
@@ -139,7 +167,7 @@ export const ProductList = () => {
                 >
                   Editar
                 </Button>
-              
+
                 <Button
                   variant='danger'
                   onClick={() => handleDelete(instrumento.id)}
@@ -151,8 +179,6 @@ export const ProductList = () => {
             </tr>
           ))}
         </tbody>
-
-        
 
       </Table>
 
@@ -215,7 +241,15 @@ export const ProductList = () => {
         </Modal.Footer>
         </form>
       </Modal>
-    
+
+      <Pagination
+        prevPage={prevPage}
+        nextPage={nextPage}
+        goToFirstPage={goToFirstPage}
+        currentPage={currentPage}
+        totalPages={totalPages}
+      />
+
     </div>
   )
 }

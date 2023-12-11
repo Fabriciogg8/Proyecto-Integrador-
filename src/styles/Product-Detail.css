@@ -178,6 +178,23 @@ a img {
   font-size: 1.0em;
 }
 
+.rating-ratingCount {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+
+.rating-ratingCount span{
+  color: var(--primary-button-background-color);
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.rating-ratingCount span span{
+  color: white;
+  font-weight: 600;
+  font-size: 30px;
+}
 
 /*IMAGENES DE PRODUCTO*/
 @media (min-width: 920px) {
@@ -199,7 +216,7 @@ a img {
   max-width: 100%;
 }
 
-@media (min-width: 920px) {
+/* @media (min-width: 920px) {
   .galeryContainer > img:first-of-type {
     grid-area: 1/1/3/1;
   }
@@ -219,7 +236,7 @@ a img {
   .galeryContainer > img {
     display: none;
   }
-}
+} */
 
 .prodDetailGallery {
   border-radius: 5px;
@@ -365,6 +382,29 @@ a img {
   display: flex;
 }
 
+/* #root {
+  background-color: #5e5e5e;
+} */
+
+.mb-3 .date{
+ margin-right: 1vw;
+}
+
+.react-datepicker__input-container input {
+  border-bottom-left-radius: 0.25rem;
+  border-left: 1px solid #ced4da;
+}
+
+.react-datepicker__input-container input:focus {
+  border-left-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.container h2{
+  margin-top: 2%;
+}
+
+
 .closeGallery{
   font-size: 80px;
   position: absolute;
@@ -376,6 +416,7 @@ a img {
   cursor: pointer;
   user-select: none;
 }
+
 
 
 /*----------------------*/
