@@ -1,8 +1,39 @@
 import { USER_FAVORITES, USER_FAVORITES_REMOVE, USER_FAVORITES_ADD } from '../helpers/endpoints';
 import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 const FavButton = ({id , email}) => {
   const [statusFav, setStatusFav] = useState(false)
+
+  let toastMixin = Swal.mixin({
+    toast: true,
+    icon: 'success',
+    title: 'General Title',
+    animation: false,
+    position: 'top-right',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  });
+
+  let toastMixinNegativo = Swal.mixin({
+    toast: true,
+    icon: 'error',
+    title: 'General Title',
+    animation: false,
+    position: 'top-right',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  });
 
   const getData = async () => {
     try {
@@ -29,10 +60,9 @@ const FavButton = ({id , email}) => {
     };
     useEffect(()=>{
         getData();
-    }, [])
+    }, [statusFav])
 
-
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token');
     const handleClick = async () =>{
       var raw = {
         "userEmail": email,
@@ -49,7 +79,12 @@ const FavButton = ({id , email}) => {
               body: JSON.stringify(raw),
           });
           if (response.ok) {
+              setStatusFav(true);
               console.log(response)
+              toastMixin.fire({
+                animation: true,
+                title: 'Se agregó a tu lista de favoritos'
+              })
           }
           } catch (error) {
               console.error('Error en la solicitud: ', error)
@@ -69,6 +104,11 @@ const FavButton = ({id , email}) => {
             });
             if (response.ok) {
                 console.log(response)
+                setStatusFav(false);
+                toastMixinNegativo.fire({
+                  animation: true,
+                  title: 'Se eliminó de tu lista de favoritos'
+                })
             }
         } catch (error) {
             console.error('Error en la solicitud: ', error)
