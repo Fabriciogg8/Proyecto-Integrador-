@@ -26,7 +26,7 @@ export const DetalleReserva = () => {
     lastName: user.lastName,
     email: user.sub,
     startDateForm: startDate,
-    endDateForm: endDate
+    endDateForm: endDate,
   });
 
 
@@ -40,8 +40,8 @@ export const DetalleReserva = () => {
     try{
       const formData = new FormData();
       formData.append('productId', id);
-      formData.append('startDate',startDate);
-      formData.append('endDate', endDate);
+      formData.append('startDate',convertDateToNumber (startDate));
+      formData.append('endDate', convertDateToNumber(endDate));
       const response =await fetch(GET_RESERVATIONS, 
       {
         method: 'POST',
