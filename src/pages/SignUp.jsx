@@ -21,12 +21,16 @@ export const SignUp = () => {
       errors.password = 'La contraseña es requerida'
     }
     if (!validator.isLength(firstname, { min: 2, max: 30 })) {
-      errors.firstname = 'El nombre es requerido'
-    }
-    if (!validator.isLength(lastname, { min: 2, max: 30 })) {
-      errors.lastname = 'El apellido es requerido'
+      errors.firstname = 'El nombre debe tener entre 2 y 30 caracteres'
+    } else if (!/^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ\s]+$/.test(firstname)) {
+      errors.firstname = 'El nombre solo puede contener letras y espacios'
     }
 
+    if (!validator.isLength(lastname, { min: 2, max: 30 })) {
+      errors.lastname = 'El apellido debe tener entre 2 y 30 caracteres'
+    } else if (!/^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ\s]+$/.test(lastname)) {
+      errors.lastname = 'El apellido solo puede contener letras y espacios'
+    }
     if (!isObjectEmpty(errors)) {
       setErrors(errors)
       return
