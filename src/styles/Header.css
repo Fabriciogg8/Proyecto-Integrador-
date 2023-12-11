@@ -153,9 +153,6 @@ nav {
   #basic-navbar-nav {
     display: none;
   }
-  .navbar-toggler-icon {
-    background-image: var(--mdb-navbar-toggler-icon-bg) !important;
-  }
   .user-sub {
     display: flex;
     align-items: center;
@@ -166,6 +163,11 @@ nav {
   }
 }
 
+@media(max-width: 991px) {
+  .navbar-toggler-icon {
+    background-image: var(--mdb-navbar-toggler-icon-bg) !important;
+  }
+}
 @media (min-width: 992px) {
   .opt-dropdown {
     display: none;
