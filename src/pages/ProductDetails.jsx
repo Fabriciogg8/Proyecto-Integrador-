@@ -57,6 +57,7 @@ export const ProductDetails = () => {
         rating={product.rating}
         ratingCount={product.ratingCount}
         id={product.id}
+
       />
       <CardPolicy />
       <div className="text-center">

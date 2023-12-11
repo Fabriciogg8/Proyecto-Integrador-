@@ -5,25 +5,27 @@ import Home from '../pages/Home';
 import { useAuthStore } from '../hooks/useAuthStore';
 import Header from '../components/header/Header';
 import Footer from '../components/Footer';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ProductDetails from '../pages/ProductDetails';
 import Resultados from '../pages/Resultados';
 import { AdminPanel } from '../pages/AdminPanel';
 import SearchResults from '../pages/SearchResults';
 import Reservas from '../pages/Reservas';
-import { SignInReserva } from '../pages/SignInReserva'; // Corregir la importación aquí
+import { SignInReserva } from '../pages/SignInReserva'; 
+
 
 export const AppRouter = () => {
   const { status, user, checkAuthToken } = useAuthStore();
 
   useEffect(() => {
     checkAuthToken();
-  }, [status]);
+  }, [status])
 
   if (status === 'checking') {
     return <h1>Checking...</h1>;
   }
 
+ 
   return (
     <div className='app-container'>
       <Header />

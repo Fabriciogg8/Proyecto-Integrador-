@@ -8,14 +8,18 @@ import Pagination from '../components/Pagination';
 import '../styles/Home.css';
 import Hero from '../components/hero/Hero';
 import WhatsappButton from '../components/WhatsappButton'
-import { USER_FAVORITES, GET_CURRENT_PRODUCT } from '../helpers/endpoints'
 import { useAuthStore } from '../hooks/useAuthStore'
-
+import { USER_FAVORITES, GET_CURRENT_PRODUCT } from '../helpers/endpoints'
 
 const Home = () => {
+
   const [currentPage, setCurrentPage] = useState(1);
   const [productos, setProductos] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
+
+  const categorias = [
+    // ... (código de categorías)
+  ];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,13 +59,14 @@ const Home = () => {
   
   //-------favoritos-------------
 
+
   const { status, user, checkAuthToken } = useAuthStore()
 
   useEffect(() => {
     checkAuthToken()
   }, [status])  
 
- 
+
   return (
     <>
       <Hero />

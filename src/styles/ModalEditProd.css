@@ -1,0 +1,35 @@
+.modal-dialog{
+    margin-top: 24%;
+  }
+
+  .modalInputs{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .modalInputs span {
+    width: 100%;
+  }
+
+  .modalInputsTitle{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 5%;
+  }
+
+  .modalInputs select{
+    height: 6%;
+    width: 83%;
+    margin-bottom: 4%;
+    background-color: #3B3B3B;
+    color: black;
+  }
+
+
+  .modalInputs textarea{
+    width: 100%;
+    max-height: 200px;
+    min-height: 130px;
+  }

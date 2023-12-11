@@ -2,6 +2,7 @@ import { Link, Routes, Route } from 'react-router-dom'
 import ProductCreate from '../components/product/ProductCreate'
 import CreateCategory from '../components/category/CreateCategory'
 import CategoryProduct from '../components/CategoryProduct'
+import EditProduct from '../components/product/EditProduct'
 import { ProductList } from '../components/product/ProductListAdmin'
 import '../styles/Panel.css'
 import { useAuthStore } from '../hooks/useAuthStore'
@@ -19,7 +20,6 @@ export const AdminPanel = () => {
         </div>
       ) 
     }
-
     const handleChangeTitle = (e) => {
       const listItems = document.querySelectorAll(".admin-panel-task-item a");
       const selectedItem = e.target;
