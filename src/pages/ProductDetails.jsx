@@ -5,6 +5,7 @@ import { useReservaContext } from '../conexts/ReservaContext'
 import CardPolicy from '../components/product/CardPolicy'
 import ProductDetail from '../components/product/ProductDetail'
 import { useAuthStore } from '../hooks/useAuthStore'
+import Swal from 'sweetalert2';
 
 export const ProductDetails = () => {
   const { id } = useParams()
@@ -28,17 +29,20 @@ export const ProductDetails = () => {
         )
         navigate('/home')
       }
-    } else {
-      /**Verifica antes de avanzar sobre la reserva si se seleccionaron las fechas**/
-      if (startDate && endDate) {
-        navigate(`/reservas/${id}`)
-      } else {
-        alert(
-          'Por favor, selecciona fechas de inicio y fin antes de continuar con la reserva.',
-        )
-        navigate('/home')
+      else{
+        Swal.fire('Por favor, selecciona la fecha antes de continuar con la reserva.');
+        navigate('/home');
       }
     }
+    else{
+  /**Verifica antes de avanzar sobre la reserva si se seleccionaron las fechas**/
+    if (startDate && endDate) {
+      navigate(`/reservas/${id}`);
+     } else {
+      Swal.fire('Por favor, selecciona la fecha antes de continuar con la reserva.');
+      navigate('/home');
+    }
+
   }
   if (!state.currentProduct) {
     return <div>Loading...</div>

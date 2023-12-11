@@ -34,7 +34,7 @@
     "react-slick": "^0.29.0",
     "react-whatsapp": "^0.3.0",
     "slick-carousel": "^1.8.1",
-    "sweetalert2": "^11.9.0",
+    "sweetalert2": "^11.10.1",
     "validator": "^13.11.0"
   },
   "devDependencies": {
