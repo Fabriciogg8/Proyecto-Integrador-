@@ -74,7 +74,7 @@ const ProductDetail = ({
   useEffect(() => {
     getData()
   }, [])
-
+  console.log(caracteristicas)
   return (
     <div className='everyDetail'>
       {/* <section className='top-section'>
@@ -170,11 +170,10 @@ const ProductDetail = ({
                     })}
                   </div>
                 </section>
-
                 <section className='descripYCaract'>
                   <div className='rating-ratingCount'>
                     <span>
-                      Valoraciones recibidas:
+                      Valoraciones recibidas: {ratingCount == null &&(0)}
                       <span>{ratingCount}</span>
                     </span>
                     <Rating
@@ -190,21 +189,12 @@ const ProductDetail = ({
                   </div>
                   <div className='caracteristicasProd'>
                     <h4>Caracteristicas</h4>
-                    <hr />
-                    <p>
-                      <FontAwesomeIcon
-                        icon={faInfoCircle}
-                        style={{ marginRight: '10px' }}
-                      />
-                      Marca: {marca}
-                    </p>
-                    <p>
-                      <FontAwesomeIcon
-                        icon={faInfoCircle}
-                        style={{ marginRight: '10px' }}
-                      />
-                      Precio: {precio}
-                    </p>
+                    {caracteristicas.map((object,index) =>(
+                      <div key={index}>
+                        <img src={object.image} alt="" />
+                        <p>{object.name}</p>
+                      </div>
+                    ))}
                   </div>
                   <ScoreProduct id={id} />
                 </section>

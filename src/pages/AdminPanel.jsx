@@ -7,7 +7,6 @@ import { ProductList } from '../components/product/ProductListAdmin'
 import '../styles/Panel.css'
 import { useAuthStore } from '../hooks/useAuthStore'
 import CharacteristicAdmin from '../components/characteristic/CharacteristicAdmin'
-import ProductUpdate from '../components/product/ProductUpdate'
 
 export const AdminPanel = () => {
   const isMobile = window.innerWidth < 768

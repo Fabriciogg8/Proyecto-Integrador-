@@ -1,17 +1,19 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
-import { SignIn } from '../pages/SignIn'
-import { SignUp } from '../pages/SignUp'
-import Home from '../pages/Home'
-import { useAuthStore } from '../hooks/useAuthStore'
-import Header from '../components/header/Header'
-import Footer from '../components/Footer'
-import { useEffect, useState } from 'react'
-import ProductDetails from '../pages/ProductDetails'
-import Resultados from '../pages/Resultados'
-import { AdminPanel } from '../pages/AdminPanel'
-import SearchResults from '../pages/SearchResults'
-import Reservas from '../pages/Reservas'
-import { SignInReserva } from '../pages/SignInReserva'
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { SignIn } from '../pages/SignIn';
+import { SignUp } from '../pages/SignUp';
+import Home from '../pages/Home';
+import { useAuthStore } from '../hooks/useAuthStore';
+import Header from '../components/header/Header';
+import Footer from '../components/Footer';
+import { useEffect, useState } from 'react';
+import ProductDetails from '../pages/ProductDetails';
+import Resultados from '../pages/Resultados';
+import { AdminPanel } from '../pages/AdminPanel';
+import SearchResults from '../pages/SearchResults';
+import Reservas from '../pages/Reservas';
+import { SignInReserva } from '../pages/SignInReserva'; 
+import FavouritesList from '../components/product/FavouritesList'
+
 
 export const AppRouter = () => {
   const { status, user, checkAuthToken } = useAuthStore()
@@ -44,6 +46,7 @@ export const AppRouter = () => {
               <Route path='/*' element={<Home />} />
               <Route path='/productdetails/:id' element={<ProductDetails />} />
               <Route path='/resultados' element={<SearchResults />} />
+              <Route path='/favourites' element={<FavouritesList/>}/>
               <Route path='/reservas/:id' element={<Reservas />} />
               {user.role === 'ADMIN' ? (
                 <Route path='/admin-panel/*' element={<AdminPanel />} />

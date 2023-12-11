@@ -19,13 +19,30 @@ const ImageSlider = ({ slides, show, setShowG }) => {
   }
 
   return (
-    <section
-      className='sliderContainer'
-      style={show ? { display: 'block' } : { display: 'none' }}
-    >
-      <div className='slider'>
-        <FaArrowAltCircleLeft className='left-arrow' onClick={prevSlide} />
-        <FaArrowAltCircleRight className='right-arrow' onClick={nextSlide} />
+      <section className='sliderContainer' style={show ? {display:"block"} : {display:"none"}}>
+          <div className='slider'>
+            
+          <FaArrowAltCircleLeft className='left-arrow' onClick={prevSlide} />
+          <FaArrowAltCircleRight className='right-arrow' onClick={nextSlide} />
+        
+          {slides.map((slide, index) => {
+              return (
+              <div
+                  className={index === current ? 'slide active' : 'slide'}
+                  key={index}
+              >
+                <p className='closeGallery' onClick={() => setShowG(false)}>&times;</p>
+                  {index === current && (
+                  <img src={slide} alt='product image' className='image' />
+                  )}
+                  
+              </div>
+              );
+          })}
+          </div>
+      </section>
+  );
+};
 
         {slides.map((slide, index) => {
           return (

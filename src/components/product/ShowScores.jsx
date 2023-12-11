@@ -38,59 +38,56 @@ export default function ShowScores({ id }) {
   })
   return (
     <section style={{ backgroundColor: 'transparent' }}>
-      <MDBContainer className='py-5 container-score'>
-        <MDBRow className='justify-items-left-score'>
-          <MDBCol>
-            <MDBCard className='container-comments'>
-              {reservas.map((object, index) => (
-                <div key={index}>
-                  <MDBCardBody className='p-4'>
-                    {index == 0 && (
-                      <div>
-                        <MDBTypography tag='h4' className='mb-0'>
-                          Comentarios
-                        </MDBTypography>
-                        <p className='fw-light mb-4 pb-2 font-comments-score'>
-                          Últimos comentarios de usuarios
-                        </p>
-                      </div>
-                    )}
-                    <div className='d-flex flex-start'>
-                      <MDBCardImage
-                        className='rounded-circle shadow-1-strong me-3'
-                        src='https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp'
-                        alt='avatar'
-                        width='60'
-                        height='60'
-                      />
-                      <div>
-                        <MDBTypography tag='h6' className='fw-bold mb-1'>
-                          {object.userName}
-                        </MDBTypography>
-                        <div className='mb-3'>
-                          <Rating
-                            readonly
-                            size={22}
-                            allowFraction
-                            initialValue={object.rating}
-                          />
-                          <p className='mb-0 date-score-product'>
-                            {object.createdAt.split('T')[0]}
-                          </p>
+        {reservas[0] && (
+        <MDBContainer className="py-5 container-score" >
+            <MDBRow className="justify-items-left-score">
+                <MDBCol>
+                    <MDBCard className="container-comments">
+                        {reservas.map((object, index) =>(
+                            <div key={index}>
+                                <MDBCardBody className="p-4">
+                                {index == 0 && (
+                                    <div>
+                                        <MDBTypography tag="h4" className="mb-0">
+                                            Comentarios 
+                                        </MDBTypography>
+                                        <p className="fw-light mb-4 pb-2 font-comments-score">
+                                            Últimos comentarios de usuarios
+                                        </p>
+                                    </div>
+                                )}
+                                <div className="d-flex flex-start">
+                                <MDBCardImage
+                                    className="rounded-circle shadow-1-strong me-3"
+                                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp"
+                                    alt="avatar"
+                                    width="60"
+                                    height="60"
+                                />
+                                <div>
+                                <MDBTypography tag="h6" className="fw-bold mb-1">
+                                    {object.userName}
+                                </MDBTypography>
+                                <div className="mb-3">
+                                <Rating readonly size={22} allowFraction initialValue={object.rating}/>
+                                <p className="mb-0 date-score-product">
+                                    {object.createdAt.split('T')[0]}
+                                </p>
+                                </div>
+                                    <p className="mb-0 font-comments-score">
+                                        {object.comment}
+                                    </p>
+                                </div>
+                                </div>
+                            </MDBCardBody>
+                            <hr className="my-0" />
                         </div>
-                        <p className='mb-0 font-comments-score'>
-                          {object.comment}
-                        </p>
-                      </div>
-                    </div>
-                  </MDBCardBody>
-                  <hr className='my-0' />
-                </div>
-              ))}
-            </MDBCard>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
+                        ))}
+                    </MDBCard>
+                </MDBCol>
+            </MDBRow>
+        </MDBContainer>
+        )}
     </section>
   )
 }

@@ -54,7 +54,7 @@ export const ProductDetails = () => {
         marca={product.brand}
         precio={product.price}
         descripcion={product.description}
-        caracteristicas={product.description}
+        caracteristicas={product.characteristics}
         imagenes={product.images}
         rating={product.rating}
         ratingCount={product.ratingCount}

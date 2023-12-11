@@ -58,23 +58,27 @@ const Header = () => {
                 </>
               ) : (
                 <NavDropdown
-                  title={
-                    <span className='user-sub'>
-                      {user.firstName} {user.lastName}
-                      <div className='user-pill'>
-                        <p>{userAvatar}</p>
-                      </div>
-                    </span>
-                  }
-                  id='basic-nav-dropdown'
-                >
-                  {user.role === 'ADMIN' && (
-                    <>
-                      <NavDropdown.Item as={NavLink} to={'/admin-panel'}>
-                        Administración
-                      </NavDropdown.Item>
-                      <NavDropdown.Divider />
-                    </>
+                      title={<span className='user-sub'>{user.firstName} {user.lastName}<div className='user-pill'><p>{userAvatar}</p></div></span>}
+                      id='basic-nav-dropdown'
+                    >
+                      {user.role === 'ADMIN' && (
+                         <>
+                          <NavDropdown.Item as={NavLink} to={'/admin-panel'}>
+                            Administración
+                          </NavDropdown.Item> 
+                          <NavDropdown.Divider />
+                          <NavDropdown.Item as={NavLink} to={'/favourites'}>
+                            Favoritos
+                          </NavDropdown.Item>
+                          <NavDropdown.Divider/>
+                          <NavDropdown.Divider />
+                        </> 
+                      )}
+                      <>
+                        <NavDropdown.Item onClick={logout}>
+                        Cerrar Sesión
+                      </NavDropdown.Item></>  
+                </NavDropdown> 
                   )}
                   <>
                     <NavDropdown.Item onClick={logout}>
