@@ -25,6 +25,11 @@ const Home = () => {
 
   /*const categorias = [*/
   // ... (código de categorías)
+
+  useEffect(() => {
+    fetchProducts();
+  }, []); 
+
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -141,7 +146,8 @@ const Home = () => {
         </div>
         {filteredProducts.length > 0 ? (
           <>
-            <ProductList products={productos} />
+            {/* <ProductList products={productos} /> */}
+            <ProductList products={filteredProducts} />
             <Pagination
               prevPage={prevPage}
               nextPage={nextPage}
