@@ -1,35 +1,53 @@
-import { useState, useEffect } from 'react'
-import { CREATE_PRODUCT, GET_CHARACTERISTIC } from '../../helpers/endpoints'
-
 import '/src/styles/ProductCreate.css'
+import { useState, useEffect } from 'react';
+import { CREATE_PRODUCT, GET_CHARACTERISTIC } from '../../helpers/endpoints';
 
 const ProductCreate = () => {
-  const [selectedCharacteristics, setSelectedCharacteristics] = useState([])
-  const [arrayCharacteristics, setArrayCharacteristics] = useState([])
-  const [selectedFiles, setSelectedFiles] = useState()
-  const [selectedCategory, setSelectedCategory] = useState('DEFAULT')
-  const token = localStorage.getItem('token')
-
-  const handleSelectCharacteristic = value => {
-    setSelectedCharacteristics([...selectedCharacteristics, value])
-  }
-
-  const handleFileChange = event => {
-    const files = event.target.files
-
-    if (files.length < 5 || files.length > 7) {
-      event.target.value = null
-    } else {
-      const imagesArray = Array.from(files)
-      setSelectedFiles(imagesArray)
+    const [selectedCharacteristics, setSelectedCharacteristics] = useState([]);
+    const handleSelectCharacteristic = (value) => {
+      setSelectedCharacteristics([...selectedCharacteristics, value])
     }
-  }
+    const [arrayCharacteristics, setArrayCharacteristics] = useState([])
 
-  const handleSelectChange = event => {
-    setSelectedCategory(event.target.value)
-  }
-
-  const handleSubmit = async (event) => {
+    const getCharacteristics = async () => {
+      try {
+          const response = await fetch(GET_CHARACTERISTIC, {
+              method: 'GET',
+              headers: {
+              'Authorization': `Bearer ${token}`
+              },
+          });
+          if (!response.ok) {
+              throw new Error(`Error en la solicitud: ${response.status}`);
+          }
+          const data = await response.json();
+          setArrayCharacteristics(data);
+          } catch (error) {
+              console.error("Error al obtener datos:", error);
+          }
+      };
+      useEffect(()=>{
+          getCharacteristics();
+      }, [])
+    const [selectedFiles, setSelectedFiles] = useState();
+    const handleFileChange = (event) => {
+      const files = event.target.files;
+      if (files.length > 7 || files.length < 5) {
+          event.target.value = null;
+      } else {
+          const imagesArray = [];
+          for (let i = 0; i < files.length; i++) {
+              imagesArray.push(files[i]);
+          }
+          setSelectedFiles(imagesArray);
+      }
+  };
+    const [selectedCategory, setSelectedCategory] = useState('DEFAULT');
+    const handleSelectChange = (event) => {
+        setSelectedCategory(event.target.value);
+      };
+    const token = localStorage.getItem('token');
+    const handleSubmit = async (event) => {
       event.preventDefault();
       const formData = new FormData();
       formData.append('name', event.target.name.value);
@@ -51,63 +69,47 @@ const ProductCreate = () => {
       }
       if(selectedCharacteristics[4]){
         formData.append('characteristics', selectedCharacteristics[4]);
-
       }
-      try {
-        const response = await fetch(CREATE_PRODUCT, {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${token}`
-          },
-          body: formData,
-        });
-        console.log(formData);
-        if (response.ok) {
-            console.log("ANDUVO")
-        } else if (!response.ok) {
-          console.log("no anduvo")
-          console.log(selectedCharacteristics)
+      for (let i = 0; i < selectedFiles.length; i++) {
+        formData.append('imagesFiles', selectedFiles[i]);
+      }
+        try {
+            const response = await fetch(CREATE_PRODUCT, {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${token}`
+              },
+              body: formData,
+            });
+            console.log(formData);
+            if (response.ok) {
+                console.log("ANDUVO")
+            } else if (!response.ok) {
+              console.log("no anduvo")
+              console.log(selectedCharacteristics)
+            }
+        } catch (error) {
+            console.error('Error en la solicitud: ', error)
         }
-      } catch (error) {
-      console.error('Error en la solicitud: ', error)
     }
-  }
-
-  const getCharacteristics = async () => {
-    try {
-      const response = await fetch(GET_CHARACTERISTIC, {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-
-      if (!response.ok) {
-        throw new Error(`Error en la solicitud: ${response.status}`)
-      }
-      const data = await response.json()
-      setArrayCharacteristics(data)
-    } catch (error) {
-      console.error('Error al obtener datos:', error)
-    }
-  }
-
-  useEffect(() => {
-    getCharacteristics()
-  }, [])
-
-  return (
-    <section className='h-100 h-custom' style={{ backgroundColor: '#d8c690' }}>
-      <div className='container py-5 h-100'>
-        <div className='row'>
-          <div className='col-lg-8 col-xl-12'>
-            <div className='card rounded-3 form-background'>
-              <div className='card-body p-4 p-md-5'>
-                <h3 className='mb-4 px-md-2'>Registre su producto</h3>
-                <form onSubmit={handleSubmit} className='px-md-2'>
-                  <form onSubmit={handleSubmit} className='px-md-2'>
+    
+    return (
+      <section
+        className='h-100 h-custom'
+        style={{ backgroundColor: '#d8c690' }}
+      >
+        <div className='container py-5 h-100'>
+          <div className='row'>
+            <div className='col-lg-8 col-xl-12'>
+              <div className='card rounded-3 form-background'>
+                <div className='card-body p-4 p-md-5'>
+                  <h3 className='mb-4 px-md-2'>Registre su producto</h3>
+                  <form
+                    onSubmit={handleSubmit}
+                    className='px-md-2'
+                  >
                     <div className='margin-labels mb-4'>
-                      <label htmlFor=''>Nombre</label>
+                      <label htmlFor=''>Name</label>
                       <input
                         type='text'
                         id='form3Example1q'
@@ -159,7 +161,62 @@ const ProductCreate = () => {
                         <option value='Teclado'>Teclado</option>
                       </select>
                     </div>
-                    {/* ... (se repite para cada Característica) */}
+                    <div className='col-md-6 mb-4'>
+                      <select
+                        className='form-select'
+                        aria-label='Default select example'
+                        onChange={(e) => handleSelectCharacteristic(e.target.value)}
+                      >
+                        <option value='DEFAULT' disabled>
+                          Primer Característica
+                        </option>
+                        {arrayCharacteristics.map((object, index) => (
+                          <option key={index} value={object.name}>{object.name}</option>
+                        )) }
+                      </select>
+                    </div>
+                    <div className='col-md-6 mb-4'>
+                      <select
+                        className='form-select'
+                        aria-label='Default select example'
+                        onChange={(e) => handleSelectCharacteristic(e.target.value)}
+                      >
+                        <option value='DEFAULT' disabled>
+                          Segunda Caracteristica
+                        </option>
+                        {arrayCharacteristics.map((object, index) => (
+                          <option key={index} value={object.name}>{object.name}</option>
+                        )) }
+                      </select>
+                    </div>
+                    <div className='col-md-6 mb-4'>
+                      <select
+                        className='form-select'
+                        aria-label='Default select example'
+                        onChange={(e) => handleSelectCharacteristic(e.target.value)}
+                      >
+                        <option value='DEFAULT' disabled>
+                          Tercer Caracteristica
+                        </option>
+                        {arrayCharacteristics.map((object, index) => (
+                          <option key={index} value={object.name}>{object.name}</option>
+                        )) }
+                      </select>
+                    </div>
+                    <div className='col-md-6 mb-4'>
+                      <select
+                        className='form-select'
+                        aria-label='Default select example'
+                        onChange={(e) => handleSelectCharacteristic(e.target.value)}
+                      >
+                        <option value='DEFAULT' disabled>
+                          Cuarta Caracteristica
+                        </option>
+                        {arrayCharacteristics.map((object, index) => (
+                          <option key={index} value={object.name}>{object.name}</option>
+                        )) }
+                      </select>
+                    </div>
                     <div className='margin-labels mb-4'>
                       <label htmlFor='form3Example1q'>Precio ($USD)</label>
                       <input
@@ -204,17 +261,16 @@ const ProductCreate = () => {
                       </label>
                     )}
                     <button type='submit' className='btn btn-lg mb-1 submitt'>
-                      Enviar
+                      Submit
                     </button>
                   </form>
-                </form>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  )
+      </section>
+    )
 }
 
-export default ProductCreate
+export default ProductCreate;
