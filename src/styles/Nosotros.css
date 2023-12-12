@@ -29,7 +29,7 @@
     height: 480px; 
     position: relative; 
     z-index: 1; 
-    background-color: rgb(229, 229, 229);
+    background-color:var(--header-background-color);
   }
 
   #about-us .card img {
@@ -52,7 +52,24 @@
 
 #about-us .card-content p {
     margin: 5px 0; 
-    color: rgb(27, 32, 98);
+    color: rgb(255, 255, 255);
 }
 
            
+#about-us a {
+    color: rgb(220, 174, 59);
+    font-size:30px;
+}
+
+/* Media Query para tabletas y dispositivos móviles */
+@media screen and (max-width: 768px) {
+    #about-us .card-container .card {
+        width: 100%; /* Hacer que las tarjetas ocupen el 100% del ancho en dispositivos más pequeños */
+    }
+}
+/* Media Query para pantallas entre 768px y 1100px */
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    #about-us .card-container .card {
+        width: calc(33.33% - 20px);
+    }
+}

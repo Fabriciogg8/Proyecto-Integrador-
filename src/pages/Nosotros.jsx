@@ -49,7 +49,7 @@ const Nosotros = () => {
           <div className='card'>
             <img src='../../public/Nosotros/VIR.jpg' alt='Virginia' />
             <div className='card-content'>
-              <h3>Virdinia de Rebolledo</h3>
+              <h3>Virginia de Rebolledo</h3>
               <p>Rol: Frontend - UX/UI</p>
             </div>
           </div>
@@ -65,7 +65,7 @@ const Nosotros = () => {
           <div className='card'>
             <img src='../../public/Nosotros/Fabri.jpeg' alt='Fabri' />
             <div className='card-content'>
-              <h3>Nombre2</h3>
+              <h3>Fabricio González</h3>
               <p>Rol: Backend</p>
             </div>
           </div>
