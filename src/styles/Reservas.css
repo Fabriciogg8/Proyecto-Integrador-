@@ -16,7 +16,7 @@
   background-color: #dadbdf;
   border-radius: 2%;
   padding: 1%;
-  margin-top: -5vh;
+  margin-top: -890px;
 }
 
 .sub button {
@@ -29,8 +29,9 @@
     margin: 2vw 
 };
 
-@media (max-width: 1200px){
+@media (max-width: 700px){
     .sub .container {
-        margin-top: 0;
+        margin-top: 0 !important;
    }}
+
 
