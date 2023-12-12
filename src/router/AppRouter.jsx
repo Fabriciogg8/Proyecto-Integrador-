@@ -14,6 +14,7 @@ import Reservas from '../pages/Reservas';
 import { SignInReserva } from '../pages/SignInReserva'; 
 import FavouritesList from '../components/product/FavouritesList'
 import ReservasList from '../components/product/ReservasList'
+import Nosotros from '../pages/Nosotros';
 
 
 export const AppRouter = () => {
@@ -41,6 +42,7 @@ export const AppRouter = () => {
               <Route path='/productdetails/:id' element={<ProductDetails />} />
               <Route path='/resultados' element={<SearchResults />} />
               <Route path='/reservas/:id' element={<Reservas />} />
+              <Route path='/nosotros' element={<Nosotros />} />
             </>
           ) : (
             <>
@@ -50,6 +52,7 @@ export const AppRouter = () => {
               <Route path='/favourites' element={<FavouritesList />} />
               <Route path='/reservas' element={<ReservasList />} />
               <Route path='/reservas/:id' element={<Reservas />} />
+              <Route path='/nosotros' element={<Nosotros />} />
               {user.role === 'ADMIN' ? (
                 <Route path='/admin-panel/*' element={<AdminPanel />} />
               ) : (
