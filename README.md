@@ -2,7 +2,7 @@
 
 ## "Nuestros instrumentos, tu inspiración temporal"
 
-[Descripción breve de la aplicación y su propósito]
+Notas Prestadas es una aplicación creada con el fin de que el usuario cuente con una experiencia agradable al momento de alquilar un producto para uso personal.
 
 ## Tabla de Contenidos
 
@@ -22,12 +22,12 @@
 
 ## Descripción
 
-Notas Prestadas es un proyecto desarrollado en el marco del proyecto Integrador dentro de la Carrera de Certified Tech Developer de Digital House. Esta aplicación tiene como propósito [proporcionar una descripción más detallada de la aplicación, su propósito y sus características clave].
+Notas Prestadas es un proyecto desarrollado en el marco del proyecto Integrador dentro de la Carrera de Certified Tech Developer de Digital House. Esta aplicación tiene como propósito construir una experiencia agradable al usuario de principio a fin, permitiéndole no solamente alquilar un producto aleatorio, sino también dejar su valoración y comentario logrando que sienta que su opinión y participación es esencial para el sitio web.
 
 ## Tecnologías
 
-- Frontend: [Vite](https://vitejs.dev/) y [React](https://es.reactjs.org/)
-- Backend: Java
+- Frontend: [Vite](https://vitejs.dev/), [React](https://es.reactjs.org/) [Redux](https://redux.js.org/)
+- Backend: [Java](https://www.java.com/es/), [Spring boot](https://spring.io/).
 
 ## Capturas de Pantalla
 
@@ -57,7 +57,6 @@ Integrantes:
 - **Virginia de Rebolledo**
 - **Sergio Racchumi**
 - **Matías Crino**
-- **Agustina Hernandez**
 
 ## Licencia
 
