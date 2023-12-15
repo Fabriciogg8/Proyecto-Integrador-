@@ -18,7 +18,9 @@
 
 ## Demo
 
-[Enlace a una demo en vivo o un video de demostración de la aplicación, si está disponible.]
+En el siguiente enlace se puede ver la presentación final de la aplicación
+
+https://www.dropbox.com/scl/fi/cdnm50n2gcoxc6govbjw4/Notas-prestadas-Hecho-con-Clipchamp_1702603104006.mp4?rlkey=ig53zdghnh29h31tn64kbt46x&dl=0
 
 ## Descripción
 
